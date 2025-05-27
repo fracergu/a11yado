@@ -1,100 +1,117 @@
 ---
-import Layout from '../../layouts/Layout.astro';
-import OrderedList from '../../components/OrderedList.astro';
-import OrderedListItem from '../../components/OrderedListItem.astro';
-import Card from '../../components/Card.astro';
-import CardGrid from '../../components/CardGrid.astro';
-import Banner from '../../components/Banner.astro';
-import GuideHeader from '../../components/GuideHeader.astro';
-
-const bestPractices = [
-  {
-    title: "Categoriza tus elementos:",
-    content: "Separa los elementos en \"informativos\" y \"decorativos\" antes de aplicar contraste."
-  },
-  {
-    title: "Verifica el contraste durante el diseño:",
-    content: "Revisa manualmente los colores mientras los eliges. Esto entrenará tu ojo para reconocer qué colores cumplen los requisitos."
-  },
-  {
-    title: "Supera los mínimos:",
-    content: "Si quieres que algo se vea, asegúrate de que tenga suficiente contraste para que todo el mundo pueda verlo."
-  },
-  {
-    title: "Si usas colores problemáticos:",
-    content: "Asegura alto contraste entre ellos y considera agregar indicadores adicionales (iconos, patrones, etc.)."
-  }
-];
+import Layout from '../../layouts/Layout.astro'
+import OrderedList from '../../components/OrderedList.astro'
+import OrderedListItem from '../../components/OrderedListItem.astro'
+import Card from '../../components/Card.astro'
+import CardGrid from '../../components/CardGrid.astro'
+import Banner from '../../components/Banner.astro'
+import Header from '../../components/Header.astro'
 ---
 
 <Layout title="Colores y Contraste - a11yado">
   <article>
-    <GuideHeader 
+    <Header
       title="Colores y Contraste"
       description="Asegurar un contraste adecuado entre el color de cada elemento informativo y su fondo."
     />
 
     <section>
       <h2>Conceptos básicos</h2>
-      
-      <h3>Elementos que llevan información</h3>
-      <ul class="concept-list">
-        <li>Texto</li>
-        <li>Imágenes de texto (SVGs o imágenes donde el texto es el elemento principal)</li>
-        <li>Iconos independientes</li>
-      </ul>
 
-      <h3>Elementos decorativos</h3>
-      <ul class="concept-list">
-        <li>Elementos desactivados (Botones, controles)</li>
-        <li>Patrones de fondo</li>
-        <li>Bordes artísticos</li>
-        <li>Fotografías</li>
-        <li>Logotipos</li>
-      </ul>
-
-      <div class="callout">
-        <strong>¿Por qué es importante?</strong>
-        <ul>
-          <li>Las condiciones de iluminación ambiental pueden afectar la visibilidad</li>
-          <li>Con la edad, se reduce la capacidad de percibir el contraste</li>
-          <li>Las personas con discapacidades visuales necesitan mayor contraste</li>
-        </ul>
-      </div>
-    </section>
-
-    <section>
-      <h2>Requisitos de contraste</h2>
-      
-      <CardGrid columns="auto" minWidth="280px">
-        <Card title="Elementos decorativos y deshabilitados" variant="primary" borderAccent>
-          <p><strong>Sin requisito de contraste</strong></p>
-          <p class="small-text">Aunque no sea obligatorio, se recomienda mantener buen contraste</p>
+      <CardGrid columns="2">
+        <Card
+          title="Elementos que llevan información"
+          variant="primary"
+          borderAccent
+        >
+          <ul>
+            <li>Texto</li>
+            <li>
+              Imágenes de texto (SVGs o imágenes donde el texto es el elemento
+              principal)
+            </li>
+            <li>Iconos independientes</li>
+          </ul>
         </Card>
-
-        <Card title="Elementos que llevan información" variant="primary" borderAccent>
-          <p><strong>Mínimo 4.5:1</strong></p>
-          <p class="small-text">Este es el estándar general para texto normal</p>
-        </Card>
-
-        <Card title="Excepciones con 3:1" variant="primary" borderAccent>
-          <ul class="exception-list">
-            <li><strong>Texto grande:</strong> 14pt negrita+ o 18pt regular+</li>
-            <li><strong>Controles de UI:</strong> información visual necesaria para identificar y operar un control</li>
-            <li><strong>Objetos gráficos:</strong> partes necesarias para entender el contenido</li>
+        <Card title="Elementos decorativos" variant="primary" borderAccent>
+          <ul>
+            <li>Elementos desactivados (Botones, controles)</li>
+            <li>Patrones de fondo</li>
+            <li>Bordes artísticos</li>
+            <li>Fotografías</li>
+            <li>Logotipos</li>
           </ul>
         </Card>
       </CardGrid>
 
-      <Banner title="💡 Consejo:" variant="warning">
+      <Banner title="¿Por qué es importante?" variant="info">
+        <ul>
+          <li>
+            Las condiciones de iluminación ambiental pueden afectar la
+            visibilidad
+          </li>
+          <li>Con la edad, se reduce la capacidad de percibir el contraste</li>
+          <li>
+            Las personas con discapacidades visuales necesitan mayor contraste
+          </li>
+        </ul>
+      </Banner>
+    </section>
+
+    <section>
+      <h2>Requisitos de contraste</h2>
+
+      <CardGrid columns="auto" minWidth="280px">
+        <Card
+          title="Elementos decorativos y deshabilitados"
+          variant="primary"
+          borderAccent
+        >
+          <p><strong>Sin requisito de contraste</strong></p>
+          <p class="small-text">
+            Aunque no sea obligatorio, se recomienda mantener buen contraste
+          </p>
+        </Card>
+
+        <Card
+          title="Elementos que llevan información"
+          variant="primary"
+          borderAccent
+        >
+          <p><strong>Mínimo 4.5:1</strong></p>
+          <p class="small-text">
+            Este es el estándar general para texto normal
+          </p>
+        </Card>
+        <Card title="Excepciones con 3:1" variant="primary" borderAccent>
+          <ul>
+            <li>
+              <strong>Texto grande:</strong> 14pt negrita+ o 18pt regular+
+            </li>
+            <li>
+              <strong>Controles de UI:</strong> información visual necesaria para
+              identificar y operar un control
+            </li>
+            <li>
+              <strong>Objetos gráficos:</strong> partes necesarias para entender
+              el contenido
+            </li>
+          </ul>
+        </Card>
+      </CardGrid>
+
+      <Banner title="💡 Consejo" variant="warning">
         <p>No busques los mínimos, intenta superarlos.</p>
       </Banner>
     </section>
 
     <section>
       <h2>Combinaciones problemáticas</h2>
-      <p>Evita estas combinaciones de colores, especialmente si no tienes alto contraste:</p>
-      
+      <p>
+        Evita estas combinaciones de colores, especialmente si no tienes alto
+        contraste:
+      </p>
+
       <div class="color-problems">
         <div class="problem-combo critical">
           <div class="color-sample red"></div>
@@ -102,37 +119,37 @@ const bestPractices = [
           <span>Rojo y verde</span>
           <span class="badge critical">¡Crítico!</span>
         </div>
-        
+
         <div class="problem-combo">
           <div class="color-sample green"></div>
           <div class="color-sample brown"></div>
           <span>Verde y marrón</span>
         </div>
-        
+
         <div class="problem-combo">
           <div class="color-sample green"></div>
           <div class="color-sample blue"></div>
           <span>Verde y azul</span>
         </div>
-        
+
         <div class="problem-combo">
           <div class="color-sample green"></div>
           <div class="color-sample gray"></div>
           <span>Verde y gris</span>
         </div>
-        
+
         <div class="problem-combo">
           <div class="color-sample green"></div>
           <div class="color-sample black"></div>
           <span>Verde y negro</span>
         </div>
-        
+
         <div class="problem-combo">
           <div class="color-sample blue"></div>
           <div class="color-sample gray"></div>
           <span>Azul y gris</span>
         </div>
-        
+
         <div class="problem-combo">
           <div class="color-sample blue"></div>
           <div class="color-sample purple"></div>
@@ -143,48 +160,79 @@ const bestPractices = [
 
     <section>
       <h2>Ejemplos prácticos</h2>
-      
+
       <h3>Contraste insuficiente</h3>
       <CardGrid columns="2" gap="lg">
         <Card variant="danger" borderAccent title="Ratio: 2.8:1 ❌">
-            <p style="color: #999; background: #fff; padding: 1rem; border-radius: 4px;">Este texto tiene contraste insuficiente (2.8:1)</p>
+          <p
+            style="color: #999; background: #fff; padding: 1rem; border-radius: 4px;"
+          >
+            Este texto tiene contraste insuficiente (2.8:1)
+          </p>
         </Card>
-        
+
         <Card variant="danger" borderAccent title="Ratio: 1.5:1 ❌">
-            <p style="color: #ffcc00; background: #fff; padding: 1rem; border-radius: 4px;">Amarillo sobre blanco es difícil de leer (1.5:1)</p>
+          <p
+            style="color: #ffcc00; background: #fff; padding: 1rem; border-radius: 4px;"
+          >
+            Amarillo sobre blanco es difícil de leer (1.5:1)
+          </p>
         </Card>
       </CardGrid>
 
       <h3>Contraste adecuado</h3>
-      <CardGrid  columns="2" gap="lg">
+      <CardGrid columns="2" gap="lg">
         <Card variant="success" borderAccent title="Ratio: 12.6:1 ✅">
-          <p style="color: #333; background: #fff; padding: 1rem; border-radius: 4px;">Este texto tiene buen contraste (12.6:1)</p>
+          <p
+            style="color: #333; background: #fff; padding: 1rem; border-radius: 4px;"
+          >
+            Este texto tiene buen contraste (12.6:1)
+          </p>
         </Card>
-        
+
         <Card variant="success" borderAccent title="Ratio: 4.5:1 ✅">
-          <p style="color: #fff; background: #2563eb; padding: 1rem; border-radius: 4px;">Blanco sobre azul oscuro (4.5:1)</p>
+          <p
+            style="color: #fff; background: #2563eb; padding: 1rem; border-radius: 4px;"
+          >
+            Blanco sobre azul oscuro (4.5:1)
+          </p>
         </Card>
       </CardGrid>
     </section>
 
     <section>
       <h2>Mejores prácticas</h2>
-      
+
       <OrderedList>
-        <OrderedListItem number={1} title="Categoriza tus elementos:">
-          <p>Separa los elementos en "informativos" y "decorativos" antes de aplicar contraste.</p>
+        <OrderedListItem number={1} title="Categoriza tus elementos">
+          <p>
+            Separa los elementos en "informativos" y "decorativos" antes de
+            aplicar contraste.
+          </p>
         </OrderedListItem>
 
-        <OrderedListItem number={2} title="Verifica el contraste durante el diseño:">
-          <p>Revisa manualmente los colores mientras los eliges. Esto entrenará tu ojo para reconocer qué colores cumplen los requisitos.</p>
+        <OrderedListItem
+          number={2}
+          title="Verifica el contraste durante el diseño"
+        >
+          <p>
+            Revisa manualmente los colores mientras los eliges. Esto entrenará
+            tu ojo para reconocer qué colores cumplen los requisitos.
+          </p>
         </OrderedListItem>
 
-        <OrderedListItem number={3} title="Supera los mínimos:">
-          <p>Si quieres que algo se vea, asegúrate de que tenga suficiente contraste para que todo el mundo pueda verlo.</p>
+        <OrderedListItem number={3} title="Supera los mínimos">
+          <p>
+            Si quieres que algo se vea, asegúrate de que tenga suficiente
+            contraste para que todo el mundo pueda verlo.
+          </p>
         </OrderedListItem>
 
-        <OrderedListItem number={4} title="Si usas colores problemáticos:">
-          <p>Asegura alto contraste entre ellos y considera agregar indicadores adicionales (iconos, patrones, etc.).</p>
+        <OrderedListItem number={4} title="Si usas colores problemáticos">
+          <p>
+            Asegura alto contraste entre ellos y considera agregar indicadores
+            adicionales (iconos, patrones, etc.).
+          </p>
         </OrderedListItem>
       </OrderedList>
     </section>
@@ -192,19 +240,26 @@ const bestPractices = [
     <section>
       <h2>Independencia de color</h2>
       <p>
-        Asegúrate de que el color no sea el <strong>único</strong> medio visual para transmitir información, 
-        indicar una acción o distinguir elementos. Puedes usar color, pero no como la única forma de diferenciar.
+        Asegúrate de que el color no sea el <strong>único</strong> medio visual para
+        transmitir información, indicar una acción o distinguir elementos. Puedes
+        usar color, pero no como la única forma de diferenciar.
       </p>
 
-      <Banner title="🔍 Prueba de escala de grises" variant="info" subtitle="La técnica más efectiva">
+      <Banner
+        title="🔍 Prueba de escala de grises"
+        variant="info"
+        subtitle="La técnica más efectiva"
+      >
         <p>
-          <strong>Convierte tu diseño a escala de grises y pregúntate:</strong> 
+          <strong>Convierte tu diseño a escala de grises y pregúntate:</strong>
           "¿Hay algo que no puedo identificar o diferenciar sin los colores?"
         </p>
         <ol>
           <li>Aplica un filtro de escala de grises a tu diseño</li>
           <li>Revisa si puedes distinguir todos los elementos importantes</li>
-          <li>Identifica qué necesita indicadores adicionales no basados en color</li>
+          <li>
+            Identifica qué necesita indicadores adicionales no basados en color
+          </li>
         </ol>
       </Banner>
 
@@ -231,13 +286,19 @@ const bestPractices = [
         <div class="example-grid">
           <Banner title="❌ Enlaces solo por color" variant="bad">
             <div class="demo-bad">
-              <p>Este párrafo tiene un <span class="link-color">enlace</span> que solo se diferencia por color.</p>
+              <p>
+                Este párrafo tiene un <span class="link-color">enlace</span> que
+                solo se diferencia por color.
+              </p>
             </div>
           </Banner>
 
           <Banner title="✅ Enlaces con subrayado" variant="good">
             <div class="demo-good">
-              <p>Este párrafo tiene un <a href="#" class="proper-link">enlace</a> con subrayado y color.</p>
+              <p>
+                Este párrafo tiene un <a href="#" class="proper-link">enlace</a>
+                con subrayado y color.
+              </p>
             </div>
           </Banner>
         </div>
@@ -250,7 +311,9 @@ const bestPractices = [
             <ul>
               <li><strong>En texto:</strong> Subrayado + color</li>
               <li><strong>Botones:</strong> Negrita + contraste alto</li>
-              <li><strong>Al pasar el cursor:</strong> Cambios estructurales adicionales</li>
+              <li>
+                <strong>Al pasar el cursor:</strong> Cambios estructurales adicionales
+              </li>
             </ul>
           </Card>
 
@@ -296,7 +359,7 @@ const bestPractices = [
     <section>
       <h2>Ejemplos de gráficos accesibles</h2>
       <p>
-        Los gráficos deben ser comprensibles sin depender únicamente del color. 
+        Los gráficos deben ser comprensibles sin depender únicamente del color.
         Aquí tienes ejemplos prácticos usando patrones, formas y etiquetas.
       </p>
 
@@ -307,15 +370,30 @@ const bestPractices = [
             <h4>❌ Solo color</h4>
             <div class="bar-chart">
               <div class="bar-container">
-                <div class="bar bar-red" style="height: 80%;" title="Ventas: 80%"></div>
+                <div
+                  class="bar bar-red"
+                  style="height: 80%;"
+                  title="Ventas: 80%"
+                >
+                </div>
                 <span class="bar-label">Ventas</span>
               </div>
               <div class="bar-container">
-                <div class="bar bar-blue" style="height: 60%;" title="Marketing: 60%"></div>
+                <div
+                  class="bar bar-blue"
+                  style="height: 60%;"
+                  title="Marketing: 60%"
+                >
+                </div>
                 <span class="bar-label">Marketing</span>
               </div>
               <div class="bar-container">
-                <div class="bar bar-green" style="height: 45%;" title="Soporte: 45%"></div>
+                <div
+                  class="bar bar-green"
+                  style="height: 45%;"
+                  title="Soporte: 45%"
+                >
+                </div>
                 <span class="bar-label">Soporte</span>
               </div>
             </div>
@@ -326,15 +404,30 @@ const bestPractices = [
             <h4>🔍 En escala de grises</h4>
             <div class="bar-chart grayscale">
               <div class="bar-container">
-                <div class="bar bar-red" style="height: 80%;" title="Ventas: 80%"></div>
+                <div
+                  class="bar bar-red"
+                  style="height: 80%;"
+                  title="Ventas: 80%"
+                >
+                </div>
                 <span class="bar-label">Ventas</span>
               </div>
               <div class="bar-container">
-                <div class="bar bar-blue" style="height: 60%;" title="Marketing: 60%"></div>
+                <div
+                  class="bar bar-blue"
+                  style="height: 60%;"
+                  title="Marketing: 60%"
+                >
+                </div>
                 <span class="bar-label">Marketing</span>
               </div>
               <div class="bar-container">
-                <div class="bar bar-green" style="height: 45%;" title="Soporte: 45%"></div>
+                <div
+                  class="bar bar-green"
+                  style="height: 45%;"
+                  title="Soporte: 45%"
+                >
+                </div>
                 <span class="bar-label">Soporte</span>
               </div>
             </div>
@@ -345,15 +438,30 @@ const bestPractices = [
             <h4>✅ Color + patrones</h4>
             <div class="bar-chart">
               <div class="bar-container">
-                <div class="bar bar-red pattern-diagonal" style="height: 80%;" title="Ventas: 80%"></div>
+                <div
+                  class="bar bar-red pattern-diagonal"
+                  style="height: 80%;"
+                  title="Ventas: 80%"
+                >
+                </div>
                 <span class="bar-label">Ventas (80%)</span>
               </div>
               <div class="bar-container">
-                <div class="bar bar-blue pattern-dots" style="height: 60%;" title="Marketing: 60%"></div>
+                <div
+                  class="bar bar-blue pattern-dots"
+                  style="height: 60%;"
+                  title="Marketing: 60%"
+                >
+                </div>
                 <span class="bar-label">Marketing (60%)</span>
               </div>
               <div class="bar-container">
-                <div class="bar bar-green pattern-lines" style="height: 45%;" title="Soporte: 45%"></div>
+                <div
+                  class="bar bar-green pattern-lines"
+                  style="height: 45%;"
+                  title="Soporte: 45%"
+                >
+                </div>
                 <span class="bar-label">Soporte (45%)</span>
               </div>
             </div>
@@ -364,15 +472,30 @@ const bestPractices = [
             <h4>🔍 Patrones en escala de grises</h4>
             <div class="bar-chart grayscale">
               <div class="bar-container">
-                <div class="bar bar-red pattern-diagonal" style="height: 80%;" title="Ventas: 80%"></div>
+                <div
+                  class="bar bar-red pattern-diagonal"
+                  style="height: 80%;"
+                  title="Ventas: 80%"
+                >
+                </div>
                 <span class="bar-label">Ventas (80%)</span>
               </div>
               <div class="bar-container">
-                <div class="bar bar-blue pattern-dots" style="height: 60%;" title="Marketing: 60%"></div>
+                <div
+                  class="bar bar-blue pattern-dots"
+                  style="height: 60%;"
+                  title="Marketing: 60%"
+                >
+                </div>
                 <span class="bar-label">Marketing (60%)</span>
               </div>
               <div class="bar-container">
-                <div class="bar bar-green pattern-lines" style="height: 45%;" title="Soporte: 45%"></div>
+                <div
+                  class="bar bar-green pattern-lines"
+                  style="height: 45%;"
+                  title="Soporte: 45%"
+                >
+                </div>
                 <span class="bar-label">Soporte (45%)</span>
               </div>
             </div>
@@ -387,19 +510,37 @@ const bestPractices = [
             <div class="line-chart">
               <svg viewBox="0 0 300 150" class="chart-svg">
                 <!-- Línea 1 -->
-                <polyline points="20,120 80,90 140,70 200,80 260,50" 
-                          stroke="#dc2626" stroke-width="3" fill="none"/>
+                <polyline
+                  points="20,120 80,90 140,70 200,80 260,50"
+                  stroke="#dc2626"
+                  stroke-width="3"
+                  fill="none"></polyline>
                 <!-- Línea 2 -->
-                <polyline points="20,100 80,110 140,95 200,100 260,85" 
-                          stroke="#2563eb" stroke-width="3" fill="none"/>
+                <polyline
+                  points="20,100 80,110 140,95 200,100 260,85"
+                  stroke="#2563eb"
+                  stroke-width="3"
+                  fill="none"></polyline>
                 <!-- Línea 3 -->
-                <polyline points="20,80 80,70 140,85 200,75 260,70" 
-                          stroke="#16a34a" stroke-width="3" fill="none"/>
+                <polyline
+                  points="20,80 80,70 140,85 200,75 260,70"
+                  stroke="#16a34a"
+                  stroke-width="3"
+                  fill="none"></polyline>
               </svg>
               <div class="legend">
-                <span class="legend-item"><span class="legend-color" style="background: #dc2626;"></span>Producto A</span>
-                <span class="legend-item"><span class="legend-color" style="background: #2563eb;"></span>Producto B</span>
-                <span class="legend-item"><span class="legend-color" style="background: #16a34a;"></span>Producto C</span>
+                <span class="legend-item"
+                  ><span class="legend-color" style="background: #dc2626;"
+                  ></span>Producto A</span
+                >
+                <span class="legend-item"
+                  ><span class="legend-color" style="background: #2563eb;"
+                  ></span>Producto B</span
+                >
+                <span class="legend-item"
+                  ><span class="legend-color" style="background: #16a34a;"
+                  ></span>Producto C</span
+                >
               </div>
             </div>
             <p class="chart-desc">Las líneas se confunden sin color</p>
@@ -410,19 +551,37 @@ const bestPractices = [
             <div class="line-chart grayscale">
               <svg viewBox="0 0 300 150" class="chart-svg">
                 <!-- Línea 1 -->
-                <polyline points="20,120 80,90 140,70 200,80 260,50" 
-                          stroke="#dc2626" stroke-width="3" fill="none"/>
+                <polyline
+                  points="20,120 80,90 140,70 200,80 260,50"
+                  stroke="#dc2626"
+                  stroke-width="3"
+                  fill="none"></polyline>
                 <!-- Línea 2 -->
-                <polyline points="20,100 80,110 140,95 200,100 260,85" 
-                          stroke="#2563eb" stroke-width="3" fill="none"/>
+                <polyline
+                  points="20,100 80,110 140,95 200,100 260,85"
+                  stroke="#2563eb"
+                  stroke-width="3"
+                  fill="none"></polyline>
                 <!-- Línea 3 -->
-                <polyline points="20,80 80,70 140,85 200,75 260,70" 
-                          stroke="#16a34a" stroke-width="3" fill="none"/>
+                <polyline
+                  points="20,80 80,70 140,85 200,75 260,70"
+                  stroke="#16a34a"
+                  stroke-width="3"
+                  fill="none"></polyline>
               </svg>
               <div class="legend grayscale">
-                <span class="legend-item"><span class="legend-color" style="background: #dc2626;"></span>Producto A</span>
-                <span class="legend-item"><span class="legend-color" style="background: #2563eb;"></span>Producto B</span>
-                <span class="legend-item"><span class="legend-color" style="background: #16a34a;"></span>Producto C</span>
+                <span class="legend-item"
+                  ><span class="legend-color" style="background: #dc2626;"
+                  ></span>Producto A</span
+                >
+                <span class="legend-item"
+                  ><span class="legend-color" style="background: #2563eb;"
+                  ></span>Producto B</span
+                >
+                <span class="legend-item"
+                  ><span class="legend-color" style="background: #16a34a;"
+                  ></span>Producto C</span
+                >
               </div>
             </div>
             <p class="chart-desc">¡Líneas indistinguibles!</p>
@@ -433,24 +592,38 @@ const bestPractices = [
             <div class="line-chart">
               <svg viewBox="0 0 300 150" class="chart-svg">
                 <!-- Línea 1: sólida -->
-                <polyline points="20,120 80,90 140,70 200,80 260,50" 
-                          stroke="#dc2626" stroke-width="4" fill="none"/>
+                <polyline
+                  points="20,120 80,90 140,70 200,80 260,50"
+                  stroke="#dc2626"
+                  stroke-width="4"
+                  fill="none"></polyline>
                 <!-- Línea 2: punteada -->
-                <polyline points="20,100 80,110 140,95 200,100 260,85" 
-                          stroke="#2563eb" stroke-width="3" fill="none" stroke-dasharray="8,4"/>
+                <polyline
+                  points="20,100 80,110 140,95 200,100 260,85"
+                  stroke="#2563eb"
+                  stroke-width="3"
+                  fill="none"
+                  stroke-dasharray="8,4"></polyline>
                 <!-- Línea 3: discontinua -->
-                <polyline points="20,80 80,70 140,85 200,75 260,70" 
-                          stroke="#16a34a" stroke-width="2" fill="none" stroke-dasharray="12,6"/>
+                <polyline
+                  points="20,80 80,70 140,85 200,75 260,70"
+                  stroke="#16a34a"
+                  stroke-width="2"
+                  fill="none"
+                  stroke-dasharray="12,6"></polyline>
               </svg>
               <div class="legend">
                 <span class="legend-item">
-                  <span class="legend-line legend-solid"></span>Producto A (sólida)
+                  <span class="legend-line legend-solid"></span>Producto A
+                  (sólida)
                 </span>
                 <span class="legend-item">
-                  <span class="legend-line legend-dashed"></span>Producto B (punteada)
+                  <span class="legend-line legend-dashed"></span>Producto B
+                  (punteada)
                 </span>
                 <span class="legend-item">
-                  <span class="legend-line legend-dotted"></span>Producto C (discontinua)
+                  <span class="legend-line legend-dotted"></span>Producto C
+                  (discontinua)
                 </span>
               </div>
             </div>
@@ -462,24 +635,38 @@ const bestPractices = [
             <div class="line-chart grayscale">
               <svg viewBox="0 0 300 150" class="chart-svg">
                 <!-- Línea 1: sólida -->
-                <polyline points="20,120 80,90 140,70 200,80 260,50" 
-                          stroke="#dc2626" stroke-width="4" fill="none"/>
+                <polyline
+                  points="20,120 80,90 140,70 200,80 260,50"
+                  stroke="#dc2626"
+                  stroke-width="4"
+                  fill="none"></polyline>
                 <!-- Línea 2: punteada -->
-                <polyline points="20,100 80,110 140,95 200,100 260,85" 
-                          stroke="#2563eb" stroke-width="3" fill="none" stroke-dasharray="8,4"/>
+                <polyline
+                  points="20,100 80,110 140,95 200,100 260,85"
+                  stroke="#2563eb"
+                  stroke-width="3"
+                  fill="none"
+                  stroke-dasharray="8,4"></polyline>
                 <!-- Línea 3: discontinua -->
-                <polyline points="20,80 80,70 140,85 200,75 260,70" 
-                          stroke="#16a34a" stroke-width="2" fill="none" stroke-dasharray="12,6"/>
+                <polyline
+                  points="20,80 80,70 140,85 200,75 260,70"
+                  stroke="#16a34a"
+                  stroke-width="2"
+                  fill="none"
+                  stroke-dasharray="12,6"></polyline>
               </svg>
               <div class="legend grayscale">
                 <span class="legend-item">
-                  <span class="legend-line legend-solid"></span>Producto A (sólida)
+                  <span class="legend-line legend-solid"></span>Producto A
+                  (sólida)
                 </span>
                 <span class="legend-item">
-                  <span class="legend-line legend-dashed"></span>Producto B (punteada)
+                  <span class="legend-line legend-dashed"></span>Producto B
+                  (punteada)
                 </span>
                 <span class="legend-item">
-                  <span class="legend-line legend-dotted"></span>Producto C (discontinua)
+                  <span class="legend-line legend-dotted"></span>Producto C
+                  (discontinua)
                 </span>
               </div>
             </div>
@@ -494,21 +681,42 @@ const bestPractices = [
             <div class="pie-chart">
               <svg viewBox="0 0 200 200" class="pie-svg">
                 <!-- Fondo blanco -->
-                <circle cx="100" cy="100" r="80" fill="white" stroke="#ddd" stroke-width="1"/>
-                
+                <circle
+                  cx="100"
+                  cy="100"
+                  r="80"
+                  fill="white"
+                  stroke="#ddd"
+                  stroke-width="1"></circle>
+
                 <!-- Sección 1: 40% (144°) - Rojo -->
-                <path d="M 100 20 A 80 80 0 0 1 156.4 156.4 L 100 100 Z" fill="#dc2626"/>
-                
+                <path
+                  d="M 100 20 A 80 80 0 0 1 156.4 156.4 L 100 100 Z"
+                  fill="#dc2626"></path>
+
                 <!-- Sección 2: 30% (108°) - Azul -->
-                <path d="M 156.4 156.4 A 80 80 0 0 1 43.6 156.4 L 100 100 Z" fill="#2563eb"/>
-                
+                <path
+                  d="M 156.4 156.4 A 80 80 0 0 1 43.6 156.4 L 100 100 Z"
+                  fill="#2563eb"></path>
+
                 <!-- Sección 3: 30% (108°) - Verde -->
-                <path d="M 43.6 156.4 A 80 80 0 0 1 100 20 L 100 100 Z" fill="#16a34a"/>
+                <path
+                  d="M 43.6 156.4 A 80 80 0 0 1 100 20 L 100 100 Z"
+                  fill="#16a34a"></path>
               </svg>
               <div class="legend">
-                <span class="legend-item"><span class="legend-color" style="background: #dc2626;"></span>Ventas 40%</span>
-                <span class="legend-item"><span class="legend-color" style="background: #2563eb;"></span>Marketing 30%</span>
-                <span class="legend-item"><span class="legend-color" style="background: #16a34a;"></span>Soporte 30%</span>
+                <span class="legend-item"
+                  ><span class="legend-color" style="background: #dc2626;"
+                  ></span>Ventas 40%</span
+                >
+                <span class="legend-item"
+                  ><span class="legend-color" style="background: #2563eb;"
+                  ></span>Marketing 30%</span
+                >
+                <span class="legend-item"
+                  ><span class="legend-color" style="background: #16a34a;"
+                  ></span>Soporte 30%</span
+                >
               </div>
             </div>
             <p class="chart-desc">Imposible distinguir secciones sin color</p>
@@ -519,21 +727,42 @@ const bestPractices = [
             <div class="pie-chart grayscale">
               <svg viewBox="0 0 200 200" class="pie-svg">
                 <!-- Fondo blanco -->
-                <circle cx="100" cy="100" r="80" fill="white" stroke="#ddd" stroke-width="1"/>
-                
+                <circle
+                  cx="100"
+                  cy="100"
+                  r="80"
+                  fill="white"
+                  stroke="#ddd"
+                  stroke-width="1"></circle>
+
                 <!-- Sección 1: 40% (144°) - Rojo -->
-                <path d="M 100 20 A 80 80 0 0 1 156.4 156.4 L 100 100 Z" fill="#dc2626"/>
-                
+                <path
+                  d="M 100 20 A 80 80 0 0 1 156.4 156.4 L 100 100 Z"
+                  fill="#dc2626"></path>
+
                 <!-- Sección 2: 30% (108°) - Azul -->
-                <path d="M 156.4 156.4 A 80 80 0 0 1 43.6 156.4 L 100 100 Z" fill="#2563eb"/>
-                
+                <path
+                  d="M 156.4 156.4 A 80 80 0 0 1 43.6 156.4 L 100 100 Z"
+                  fill="#2563eb"></path>
+
                 <!-- Sección 3: 30% (108°) - Verde -->
-                <path d="M 43.6 156.4 A 80 80 0 0 1 100 20 L 100 100 Z" fill="#16a34a"/>
+                <path
+                  d="M 43.6 156.4 A 80 80 0 0 1 100 20 L 100 100 Z"
+                  fill="#16a34a"></path>
               </svg>
               <div class="legend grayscale">
-                <span class="legend-item"><span class="legend-color" style="background: #dc2626;"></span>Ventas 40%</span>
-                <span class="legend-item"><span class="legend-color" style="background: #2563eb;"></span>Marketing 30%</span>
-                <span class="legend-item"><span class="legend-color" style="background: #16a34a;"></span>Soporte 30%</span>
+                <span class="legend-item"
+                  ><span class="legend-color" style="background: #dc2626;"
+                  ></span>Ventas 40%</span
+                >
+                <span class="legend-item"
+                  ><span class="legend-color" style="background: #2563eb;"
+                  ></span>Marketing 30%</span
+                >
+                <span class="legend-item"
+                  ><span class="legend-color" style="background: #16a34a;"
+                  ></span>Soporte 30%</span
+                >
               </div>
             </div>
             <p class="chart-desc">¡Círculo completamente gris!</p>
@@ -544,29 +773,49 @@ const bestPractices = [
             <div class="pie-chart">
               <svg viewBox="0 0 200 200" class="pie-svg">
                 <!-- Fondo blanco -->
-                <circle cx="100" cy="100" r="80" fill="white" stroke="#ddd" stroke-width="1"/>
-                
+                <circle
+                  cx="100"
+                  cy="100"
+                  r="80"
+                  fill="white"
+                  stroke="#ddd"
+                  stroke-width="1"></circle>
+
                 <!-- Sección 1: 40% - Rojo con borde -->
-                <path d="M 100 20 A 80 80 0 0 1 156.4 156.4 L 100 100 Z" fill="#dc2626" stroke="white" stroke-width="2"/>
-                
+                <path
+                  d="M 100 20 A 80 80 0 0 1 156.4 156.4 L 100 100 Z"
+                  fill="#dc2626"
+                  stroke="white"
+                  stroke-width="2"></path>
+
                 <!-- Sección 2: 30% - Azul con borde -->
-                <path d="M 156.4 156.4 A 80 80 0 0 1 43.6 156.4 L 100 100 Z" fill="#2563eb" stroke="white" stroke-width="2"/>
-                
+                <path
+                  d="M 156.4 156.4 A 80 80 0 0 1 43.6 156.4 L 100 100 Z"
+                  fill="#2563eb"
+                  stroke="white"
+                  stroke-width="2"></path>
+
                 <!-- Sección 3: 30% - Verde con borde -->
-                <path d="M 43.6 156.4 A 80 80 0 0 1 100 20 L 100 100 Z" fill="#16a34a" stroke="white" stroke-width="2"/>
-                
+                <path
+                  d="M 43.6 156.4 A 80 80 0 0 1 100 20 L 100 100 Z"
+                  fill="#16a34a"
+                  stroke="white"
+                  stroke-width="2"></path>
+
                 <!-- Etiquetas directas -->
                 <text x="130" y="70" class="pie-label">Ventas</text>
                 <text x="135" y="85" class="pie-label">40%</text>
-                
+
                 <text x="100" y="140" class="pie-label">Marketing</text>
                 <text x="100" y="155" class="pie-label">30%</text>
-                
+
                 <text x="65" y="70" class="pie-label">Soporte</text>
                 <text x="70" y="85" class="pie-label">30%</text>
               </svg>
             </div>
-            <p class="chart-desc">Etiquetas directas eliminan dependencia de color</p>
+            <p class="chart-desc">
+              Etiquetas directas eliminan dependencia de color
+            </p>
           </div>
 
           <div class="chart-example">
@@ -574,24 +823,42 @@ const bestPractices = [
             <div class="pie-chart grayscale">
               <svg viewBox="0 0 200 200" class="pie-svg">
                 <!-- Fondo blanco -->
-                <circle cx="100" cy="100" r="80" fill="white" stroke="#ddd" stroke-width="1"/>
-                
+                <circle
+                  cx="100"
+                  cy="100"
+                  r="80"
+                  fill="white"
+                  stroke="#ddd"
+                  stroke-width="1"></circle>
+
                 <!-- Sección 1: 40% - Rojo con borde -->
-                <path d="M 100 20 A 80 80 0 0 1 156.4 156.4 L 100 100 Z" fill="#dc2626" stroke="white" stroke-width="2"/>
-                
+                <path
+                  d="M 100 20 A 80 80 0 0 1 156.4 156.4 L 100 100 Z"
+                  fill="#dc2626"
+                  stroke="white"
+                  stroke-width="2"></path>
+
                 <!-- Sección 2: 30% - Azul con borde -->
-                <path d="M 156.4 156.4 A 80 80 0 0 1 43.6 156.4 L 100 100 Z" fill="#2563eb" stroke="white" stroke-width="2"/>
-                
+                <path
+                  d="M 156.4 156.4 A 80 80 0 0 1 43.6 156.4 L 100 100 Z"
+                  fill="#2563eb"
+                  stroke="white"
+                  stroke-width="2"></path>
+
                 <!-- Sección 3: 30% - Verde con borde -->
-                <path d="M 43.6 156.4 A 80 80 0 0 1 100 20 L 100 100 Z" fill="#16a34a" stroke="white" stroke-width="2"/>
-                
+                <path
+                  d="M 43.6 156.4 A 80 80 0 0 1 100 20 L 100 100 Z"
+                  fill="#16a34a"
+                  stroke="white"
+                  stroke-width="2"></path>
+
                 <!-- Etiquetas directas -->
                 <text x="130" y="70" class="pie-label">Ventas</text>
                 <text x="135" y="85" class="pie-label">40%</text>
-                
+
                 <text x="100" y="140" class="pie-label">Marketing</text>
                 <text x="100" y="155" class="pie-label">30%</text>
-                
+
                 <text x="65" y="70" class="pie-label">Soporte</text>
                 <text x="70" y="85" class="pie-label">30%</text>
               </svg>
@@ -633,7 +900,9 @@ const bestPractices = [
                 <span class="step-label">Confirmación</span>
               </div>
             </div>
-            <p class="chart-desc">Aún con números, difícil distinguir estados</p>
+            <p class="chart-desc">
+              Aún con números, difícil distinguir estados
+            </p>
           </div>
 
           <div class="chart-example">
@@ -667,7 +936,9 @@ const bestPractices = [
                 <span class="step-label">Confirmación</span>
               </div>
             </div>
-            <p class="chart-desc">¡Los números ayudan, pero sigue siendo confuso!</p>
+            <p class="chart-desc">
+              ¡Los números ayudan, pero sigue siendo confuso!
+            </p>
           </div>
 
           <div class="chart-example">
@@ -675,8 +946,14 @@ const bestPractices = [
             <div class="progress-tracker">
               <div class="step completed">
                 <div class="step-circle">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                  >
+                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"
+                    ></path>
                   </svg>
                 </div>
                 <span class="step-label">Registro</span>
@@ -684,8 +961,14 @@ const bestPractices = [
               <div class="step-line completed-line"></div>
               <div class="step completed">
                 <div class="step-circle">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                  >
+                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"
+                    ></path>
                   </svg>
                 </div>
                 <span class="step-label">Verificación</span>
@@ -713,8 +996,14 @@ const bestPractices = [
             <div class="progress-tracker grayscale">
               <div class="step completed">
                 <div class="step-circle">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                  >
+                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"
+                    ></path>
                   </svg>
                 </div>
                 <span class="step-label">Registro</span>
@@ -722,8 +1011,14 @@ const bestPractices = [
               <div class="step-line completed-line"></div>
               <div class="step completed">
                 <div class="step-circle">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                  >
+                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"
+                    ></path>
                   </svg>
                 </div>
                 <span class="step-label">Verificación</span>
@@ -748,88 +1043,73 @@ const bestPractices = [
         </div>
 
         <div class="chart-tips">
-         <h3>💡 Consejos para gráficos accesibles</h3>
-         <CardGrid columns="auto" minWidth="200px">
-           <Card title="🔍 Prueba en escala de grises" variant="info" borderAccent>
-             <p>Convierte tu gráfico a escala de grises. ¿Sigues pudiendo interpretar los datos?</p>
-           </Card>
-           <Card title="📊 Usa patrones" variant="info" borderAccent>
-             <p>Rayas, puntos, líneas discontinuas ayudan a diferenciar elementos.</p>
-           </Card>
-           <Card title="🏷️ Etiqueta directamente" variant="info" borderAccent>
-             <p>Coloca valores y nombres directamente en o cerca de cada elemento.</p>
-           </Card>
-           <Card title="🎯 Combina técnicas" variant="info" borderAccent>
-             <p>Color + patrón + etiquetas = máxima accesibilidad.</p>
-           </Card>
-         </CardGrid>
-       </div>
-     </div>
-   </section>
+          <h3>💡 Consejos para gráficos accesibles</h3>
+          <CardGrid columns="auto" minWidth="200px">
+            <Card
+              title="🔍 Prueba en escala de grises"
+              variant="info"
+              borderAccent
+            >
+              <p>
+                Convierte tu gráfico a escala de grises. ¿Sigues pudiendo
+                interpretar los datos?
+              </p>
+            </Card>
+            <Card title="📊 Usa patrones" variant="info" borderAccent>
+              <p>
+                Rayas, puntos, líneas discontinuas ayudan a diferenciar
+                elementos.
+              </p>
+            </Card>
+            <Card title="🏷️ Etiqueta directamente" variant="info" borderAccent>
+              <p>
+                Coloca valores y nombres directamente en o cerca de cada
+                elemento.
+              </p>
+            </Card>
+            <Card title="🎯 Combina técnicas" variant="info" borderAccent>
+              <p>Color + patrón + etiquetas = máxima accesibilidad.</p>
+            </Card>
+          </CardGrid>
+        </div>
+      </div>
+    </section>
 
-   <section>
-     <h2>Herramientas útiles</h2>
-    <div class="tools">
-      <p>Para verificar el contraste de tus colores, puedes usar:</p>
-      <ul class="tools-list">
-        <li><a href="https://webaim.org/resources/contrastchecker/" target="_blank" rel="noopener">Verificador de Contraste WebAIM</a></li>
-        <li><a href="https://www.colour-contrast-analyser.org/" target="_blank" rel="noopener">Analizador de Contraste de Color</a></li>
-        <li>Herramientas de desarrollador del navegador</li>
-        <li>Extensiones del navegador para verificar contraste</li>
-      </ul>
-      <p class="tools-note">
-        💡 <strong>Consejo:</strong> Consulta la página de <a href="/tools">Herramientas</a> para una lista completa de recursos de accesibilidad.
-      </p>
-    </div>
-  </section>
-</article>
+    <section>
+      <h2>Herramientas útiles</h2>
+      <div class="tools">
+        <p>Para verificar el contraste de tus colores, puedes usar:</p>
+        <ul class="tools-list">
+          <li>
+            <a
+              href="https://webaim.org/resources/contrastchecker/"
+              target="_blank"
+              rel="noopener">Verificador de Contraste WebAIM</a
+            >
+          </li>
+          <li>
+            <a
+              href="https://www.colour-contrast-analyser.org/"
+              target="_blank"
+              rel="noopener">Analizador de Contraste de Color</a
+            >
+          </li>
+          <li>Herramientas de desarrollador del navegador</li>
+          <li>Extensiones del navegador para verificar contraste</li>
+        </ul>
+        <p class="tools-note">
+          💡 <strong>Consejo:</strong> Consulta la página de <a href="/tools"
+            >Herramientas</a
+          > para una lista completa de recursos de accesibilidad.
+        </p>
+      </div>
+    </section>
+  </article>
 </Layout>
 
-<style>
+<style lang="scss">
   article {
     max-width: 90ch;
-  }
-
-  .concept-list {
-    margin-bottom: var(--spacing-lg);
-    padding-left: var(--spacing-lg);
-  }
-
-  .concept-list li {
-    margin-bottom: var(--spacing-xs);
-  }
-
-  .callout {
-    background-color: #e0f2fe;
-    border: 1px solid #0891b2;
-    border-radius: 8px;
-    padding: var(--spacing-lg);
-    margin: var(--spacing-xl) 0;
-  }
-
-  .callout strong {
-    color: #0891b2;
-    display: block;
-    margin-bottom: var(--spacing-sm);
-  }
-
-  .exception-list {
-    list-style: none;
-    padding: 0;
-    margin: var(--spacing-md) 0 0 0;
-  }
-
-  .exception-list li {
-    margin-bottom: var(--spacing-sm);
-    padding-left: var(--spacing-md);
-    position: relative;
-  }
-
-  .exception-list li:before {
-    content: "→";
-    position: absolute;
-    left: 0;
-    color: var(--color-primary);
   }
 
   .small-text {
@@ -853,11 +1133,11 @@ const bestPractices = [
     background-color: var(--color-surface);
     border-radius: 8px;
     border: 1px solid var(--color-border);
-  }
 
-  .problem-combo.critical {
-    border-color: #dc2626;
-    background-color: #fef2f2;
+    &.critical {
+      border-color: #dc2626;
+      background-color: #fef2f2;
+    }
   }
 
   .color-sample {
@@ -865,15 +1145,29 @@ const bestPractices = [
     height: 20px;
     border-radius: 4px;
     border: 1px solid var(--color-border);
-  }
 
-  .red { background-color: #dc2626; }
-  .green { background-color: #16a34a; }
-  .brown { background-color: #a16207; }
-  .blue { background-color: #2563eb; }
-  .gray { background-color: #6b7280; }
-  .black { background-color: #000000; }
-  .purple { background-color: #9333ea; }
+    &.red {
+      background-color: #dc2626;
+    }
+    &.green {
+      background-color: #16a34a;
+    }
+    &.brown {
+      background-color: #a16207;
+    }
+    &.blue {
+      background-color: #2563eb;
+    }
+    &.gray {
+      background-color: #6b7280;
+    }
+    &.black {
+      background-color: #000000;
+    }
+    &.purple {
+      background-color: #9333ea;
+    }
+  }
 
   .badge {
     font-size: 0.75rem;
@@ -881,11 +1175,11 @@ const bestPractices = [
     border-radius: 4px;
     font-weight: 600;
     text-transform: uppercase;
-  }
 
-  .badge.critical {
-    background-color: #dc2626;
-    color: white;
+    &.critical {
+      background-color: #dc2626;
+      color: white;
+    }
   }
 
   .ratio {
@@ -902,15 +1196,15 @@ const bestPractices = [
 
   .tools-list {
     margin-top: var(--spacing-md);
-  }
 
-  .tools-list a {
-    color: var(--color-primary);
-    text-decoration: none;
-  }
+    a {
+      color: var(--color-primary);
+      text-decoration: none;
 
-  .tools-list a:hover {
-    text-decoration: underline;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
   }
 
   .tools-note {
@@ -918,14 +1212,13 @@ const bestPractices = [
     padding-top: var(--spacing-md);
     border-top: 1px solid var(--color-border);
     font-size: 0.9rem;
+
+    a {
+      color: var(--color-primary);
+      font-weight: 600;
+    }
   }
 
-  .tools-note a {
-    color: var(--color-primary);
-    font-weight: 600;
-  }
-
-  /* Estilos para independencia de color */
   .independence-examples {
     margin: var(--spacing-xl) 0;
   }
@@ -936,7 +1229,8 @@ const bestPractices = [
     gap: var(--spacing-lg);
   }
 
-  .demo-bad, .demo-good {
+  .demo-bad,
+  .demo-good {
     background-color: var(--color-background);
     padding: var(--spacing-md);
     border-radius: 4px;
@@ -969,10 +1263,10 @@ const bestPractices = [
   .proper-link {
     color: var(--color-primary);
     text-decoration: underline;
-  }
 
-  .proper-link:hover {
-    text-decoration: none;
+    &:hover {
+      text-decoration: none;
+    }
   }
 
   .example-desc {
@@ -982,20 +1276,8 @@ const bestPractices = [
     font-style: italic;
   }
 
-  .independence-tips {
-    margin: var(--spacing-xl) 0;
-  }
-
-  /* Estilos para gráficos */
   .charts-section {
     margin: var(--spacing-xl) 0;
-  }
-
-  .chart-comparison {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: var(--spacing-xl);
-    margin: var(--spacing-lg) 0;
   }
 
   .chart-comparison-grid {
@@ -1003,37 +1285,30 @@ const bestPractices = [
     grid-template-columns: repeat(2, 1fr);
     gap: var(--spacing-lg) var(--spacing-xl);
     margin: var(--spacing-lg) 0;
-  }
 
-  /* Separador visual entre filas */
-  .chart-comparison-grid .chart-example:nth-child(2n) {
-    position: relative;
-  }
+    .chart-example:nth-child(2n) {
+      position: relative;
+    }
 
-  .chart-comparison-grid .chart-example:nth-child(2)::after {
-    content: "";
-    position: absolute;
-    bottom: calc(-1 * var(--spacing-lg) / 2);
-    left: calc(-1 * var(--spacing-xl) / 2);
-    right: calc(-1 * var(--spacing-xl) / 2);
-    height: 1px;
-    background: linear-gradient(to right, transparent, var(--color-border), transparent);
-  }
+    .chart-example:nth-child(2)::after {
+      content: '';
+      position: absolute;
+      bottom: calc(-1 * var(--spacing-lg) / 2);
+      left: calc(-1 * var(--spacing-xl) / 2);
+      right: calc(-1 * var(--spacing-xl) / 2);
+      height: 1px;
+      background: linear-gradient(
+        to right,
+        transparent,
+        var(--color-border),
+        transparent
+      );
+    }
 
-  /* Mejorar la separación visual entre parejas */
-  .chart-comparison-grid .chart-example:nth-child(3) {
-    margin-top: var(--spacing-md);
-  }
-
-  .chart-comparison-grid .chart-example:nth-child(4) {
-    margin-top: var(--spacing-md);
-  }
-
-  .progress-comparison-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: var(--spacing-xl);
-    margin: var(--spacing-lg) 0;
+    .chart-example:nth-child(3),
+    .chart-example:nth-child(4) {
+      margin-top: var(--spacing-md);
+    }
   }
 
   .grayscale {
@@ -1045,11 +1320,11 @@ const bestPractices = [
     border: 1px solid var(--color-border);
     border-radius: 8px;
     padding: var(--spacing-lg);
-  }
 
-  .chart-example h4 {
-    margin: 0 0 var(--spacing-md) 0;
-    font-size: 1rem;
+    h4 {
+      margin: 0 0 var(--spacing-md) 0;
+      font-size: 1rem;
+    }
   }
 
   .chart-desc {
@@ -1059,7 +1334,6 @@ const bestPractices = [
     font-style: italic;
   }
 
-  /* Gráfico de barras */
   .bar-chart {
     display: flex;
     align-items: end;
@@ -1086,15 +1360,21 @@ const bestPractices = [
     border-radius: 4px 4px 0 0;
     position: relative;
     transition: all 0.3s ease;
-  }
 
-  .bar:hover {
-    transform: translateY(-2px);
-  }
+    &:hover {
+      transform: translateY(-2px);
+    }
 
-  .bar-red { background-color: #dc2626; }
-  .bar-blue { background-color: #2563eb; }
-  .bar-green { background-color: #16a34a; }
+    &.bar-red {
+      background-color: #dc2626;
+    }
+    &.bar-blue {
+      background-color: #2563eb;
+    }
+    &.bar-green {
+      background-color: #16a34a;
+    }
+  }
 
   .bar-label {
     font-size: 0.875rem;
@@ -1103,32 +1383,34 @@ const bestPractices = [
     font-weight: 600;
   }
 
-  /* Patrones para barras */
   .pattern-diagonal {
-    background-image: 
-      linear-gradient(45deg, rgba(255,255,255,0.3) 25%, transparent 25%),
-      linear-gradient(-45deg, rgba(255,255,255,0.3) 25%, transparent 25%),
-      linear-gradient(45deg, transparent 75%, rgba(255,255,255,0.3) 75%),
-      linear-gradient(-45deg, transparent 75%, rgba(255,255,255,0.3) 75%);
+    background-image:
+      linear-gradient(45deg, rgba(255, 255, 255, 0.3) 25%, transparent 25%),
+      linear-gradient(-45deg, rgba(255, 255, 255, 0.3) 25%, transparent 25%),
+      linear-gradient(45deg, transparent 75%, rgba(255, 255, 255, 0.3) 75%),
+      linear-gradient(-45deg, transparent 75%, rgba(255, 255, 255, 0.3) 75%);
     background-size: 8px 8px;
   }
 
   .pattern-dots {
-    background-image: radial-gradient(circle, rgba(255,255,255,0.4) 2px, transparent 2px);
+    background-image: radial-gradient(
+      circle,
+      rgba(255, 255, 255, 0.4) 2px,
+      transparent 2px
+    );
     background-size: 12px 12px;
   }
 
   .pattern-lines {
     background-image: repeating-linear-gradient(
       0deg,
-      rgba(255,255,255,0.3),
-      rgba(255,255,255,0.3) 2px,
+      rgba(255, 255, 255, 0.3),
+      rgba(255, 255, 255, 0.3) 2px,
       transparent 2px,
       transparent 6px
     );
   }
 
-  /* Gráfico de líneas */
   .line-chart {
     margin: var(--spacing-md) 0;
   }
@@ -1169,33 +1451,30 @@ const bestPractices = [
     width: 20px;
     height: 3px;
     border-radius: 1px;
+
+    &.legend-solid {
+      background-color: #dc2626;
+    }
+    &.legend-dashed {
+      background: repeating-linear-gradient(
+        to right,
+        #2563eb 0px,
+        #2563eb 8px,
+        transparent 8px,
+        transparent 12px
+      );
+    }
+    &.legend-dotted {
+      background: repeating-linear-gradient(
+        to right,
+        #16a34a 0px,
+        #16a34a 4px,
+        transparent 4px,
+        transparent 8px
+      );
+    }
   }
 
-  .legend-solid {
-    background-color: #dc2626;
-  }
-
-  .legend-dashed {
-    background: repeating-linear-gradient(
-      to right,
-      #2563eb 0px,
-      #2563eb 8px,
-      transparent 8px,
-      transparent 12px
-    );
-  }
-
-  .legend-dotted {
-    background: repeating-linear-gradient(
-      to right,
-      #16a34a 0px,
-      #16a34a 4px,
-      transparent 4px,
-      transparent 8px
-    );
-  }
-
-  /* Gráfico circular */
   .pie-chart {
     display: flex;
     flex-direction: column;
@@ -1219,19 +1498,18 @@ const bestPractices = [
     pointer-events: none;
   }
 
-  /* Consejos para gráficos */
   .chart-tips {
     margin: var(--spacing-2xl) 0 var(--spacing-xl) 0;
     padding: var(--spacing-xl);
     background-color: #f0f9ff;
     border: 2px solid #0891b2;
     border-radius: 8px;
-  }
 
-  .chart-tips h3 {
-    color: #0891b2;
-    margin-top: 0;
-    margin-bottom: var(--spacing-lg);
+    h3 {
+      color: #0891b2;
+      margin-top: 0;
+      margin-bottom: var(--spacing-lg);
+    }
   }
 
   .tips-grid {
@@ -1245,22 +1523,21 @@ const bestPractices = [
     border: 1px solid #0891b2;
     border-radius: 6px;
     padding: var(--spacing-md);
+
+    h4 {
+      color: #0891b2;
+      margin: 0 0 var(--spacing-xs) 0;
+      font-size: 0.9rem;
+    }
+
+    p {
+      margin: 0;
+      font-size: 0.875rem;
+      color: var(--color-text-light);
+      line-height: 1.4;
+    }
   }
 
-  .tip-card h4 {
-    color: #0891b2;
-    margin: 0 0 var(--spacing-xs) 0;
-    font-size: 0.9rem;
-  }
-
-  .tip-card p {
-    margin: 0;
-    font-size: 0.875rem;
-    color: var(--color-text-light);
-    line-height: 1.4;
-  }
-
-  /* Progress Tracker */
   .progress-tracker {
     display: flex;
     align-items: center;
@@ -1300,7 +1577,7 @@ const bestPractices = [
     background-color: var(--color-border);
     margin: 0 var(--spacing-sm);
     align-self: flex-start;
-    margin-top: 15px; /* Centrar con el círculo (32px/2 - 1px) */
+    margin-top: 15px;
   }
 
   .step-label {
@@ -1315,7 +1592,6 @@ const bestPractices = [
     font-weight: 600;
   }
 
-  /* Estados solo por color (problemático) */
   .completed-color .step-circle {
     background-color: #16a34a;
     color: white;
@@ -1331,7 +1607,6 @@ const bestPractices = [
     color: var(--color-text-light);
   }
 
-  /* Estados accesibles con indicadores visuales */
   .completed .step-circle {
     background-color: #16a34a;
     color: white;
@@ -1374,22 +1649,18 @@ const bestPractices = [
       grid-template-columns: 1fr;
     }
 
-    .chart-comparison {
-      grid-template-columns: 1fr;
-    }
-
     .chart-comparison-grid {
       grid-template-columns: 1fr;
       gap: var(--spacing-lg);
-    }
 
-    .chart-comparison-grid .chart-example:nth-child(3),
-    .chart-comparison-grid .chart-example:nth-child(4) {
-      margin-top: 0;
-    }
+      .chart-example:nth-child(3),
+      .chart-example:nth-child(4) {
+        margin-top: 0;
+      }
 
-    .chart-comparison-grid .chart-example:nth-child(2)::after {
-      display: none;
+      .chart-example:nth-child(2)::after {
+        display: none;
+      }
     }
 
     .tips-grid {
@@ -1431,4 +1702,4 @@ const bestPractices = [
       height: 28px;
     }
   }
-</style> 
+</style>

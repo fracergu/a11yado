@@ -1,26 +1,26 @@
 ---
 export interface Props {
-  title?: string;
-  variant?: 'default' | 'primary' | 'success' | 'warning' | 'danger' | 'info';
-  borderAccent?: boolean;
-  class?: string;
+  title?: string
+  variant?: 'default' | 'primary' | 'success' | 'warning' | 'danger' | 'info'
+  borderAccent?: boolean
+  class?: string
 }
 
-const { 
-  title, 
-  variant = 'default', 
+const {
+  title,
+  variant = 'default',
   borderAccent = false,
-  class: className = '' 
-} = Astro.props;
+  class: className = '',
+} = Astro.props
 
 const variantClasses = {
   default: 'border-color-border bg-white',
   primary: 'border-color-primary bg-white border-l-color-primary',
   success: 'border-green-500 bg-green-50 border-l-green-500',
-  warning: 'border-yellow-500 bg-yellow-50 border-l-yellow-500', 
+  warning: 'border-yellow-500 bg-yellow-50 border-l-yellow-500',
   danger: 'border-red-500 bg-red-50 border-l-red-500',
-  info: 'border-blue-500 bg-white border-l-blue-500'
-};
+  info: 'border-blue-500 bg-white border-l-blue-500',
+}
 
 const titleColors = {
   default: 'text-color-text',
@@ -28,16 +28,14 @@ const titleColors = {
   success: 'text-green-700',
   warning: 'text-yellow-700',
   danger: 'text-red-700',
-  info: 'text-blue-700'
-};
+  info: 'text-blue-700',
+}
 ---
 
-<div class={`card ${variantClasses[variant]} ${borderAccent ? 'border-l-4' : ''} ${className}`}>
-  {title && (
-    <h4 class={`card-title ${titleColors[variant]}`}>
-      {title}
-    </h4>
-  )}
+<div
+  class={`card ${variantClasses[variant]} ${borderAccent ? 'border-l-4' : ''} ${className}`}
+>
+  {title && <h4 class={`card-title ${titleColors[variant]}`}>{title}</h4>}
   <div class="card-content">
     <slot />
   </div>
@@ -51,7 +49,7 @@ const titleColors = {
     background-color: var(--color-surface);
   }
 
-  .card.bg-white {  
+  .card.bg-white {
     background-color: white;
   }
 
@@ -173,4 +171,4 @@ const titleColors = {
   .card-content :global(p:last-child) {
     margin-bottom: 0;
   }
-</style> 
+</style>

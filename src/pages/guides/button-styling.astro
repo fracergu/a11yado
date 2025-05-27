@@ -1,53 +1,60 @@
 ---
-import Layout from '../../layouts/Layout.astro';
-import Checklist from '../../components/Checklist.astro';
-import GuideHeader from '../../components/GuideHeader.astro';
-import Banner from '../../components/Banner.astro';
-import OrderedList from '../../components/OrderedList.astro';
-import OrderedListItem from '../../components/OrderedListItem.astro';
-import CardGrid from '../../components/CardGrid.astro';
-import Card from '../../components/Card.astro';
-import Label from '../../components/Label.astro';
+import Layout from '../../layouts/Layout.astro'
+import Checklist from '../../components/Checklist.astro'
+import Header from '../../components/Header.astro'
+import Banner from '../../components/Banner.astro'
+import OrderedList from '../../components/OrderedList.astro'
+import OrderedListItem from '../../components/OrderedListItem.astro'
+import CardGrid from '../../components/CardGrid.astro'
+import Card from '../../components/Card.astro'
+import Label from '../../components/Label.astro'
 
 const checklistItems = [
-  "Los botones usan formas consistentes",
-  "La jerarquía visual es clara (primario/secundario/terciario)",
-  "Hay suficiente espacio entre elementos interactivos",
-  "Los targets táctiles son de al menos 44px",
-  "Solo hay un CTA principal por sección",
-  "Los elementos no interactivos no parecen botones",
-  "La capitalización es consistente"
-];
+  'Los botones usan formas consistentes',
+  'La jerarquía visual es clara (primario/secundario/terciario)',
+  'Hay suficiente espacio entre elementos interactivos',
+  'Los targets táctiles son de al menos 44px',
+  'Solo hay un CTA principal por sección',
+  'Los elementos no interactivos no parecen botones',
+  'La capitalización es consistente',
+]
 ---
 
 <Layout title="Estilizado de Botones - a11yado">
   <article>
-    <GuideHeader title="Estilizado de Botones" description="Los usuarios deben poder identificar qué elementos son interactivos simplemente mirando la interfaz, sin tener que explorar con el cursor." />
+    <Header
+      title="Estilizado de Botones"
+      description="Los usuarios deben poder identificar qué elementos son interactivos simplemente mirando la interfaz, sin tener que explorar con el cursor."
+    />
 
     <section>
       <h2>¿Por qué importa el estilizado?</h2>
       <p>
-        Cuanto más esfuerzo requiera una interfaz para descubrir qué es interactivo, 
-        menos se usará. Los botones necesitan <strong>señalizadores visuales claros</strong> 
+        Cuanto más esfuerzo requiera una interfaz para descubrir qué es
+        interactivo, menos se usará. Los botones necesitan <strong
+          >señalizadores visuales claros</strong
+        >
         que comuniquen su función de forma inmediata.
       </p>
 
-      <Banner title="Principio fundamental" variant="info">
-          <p>
-            <strong>La claridad siempre gana sobre la consistencia.</strong> 
-            Si necesitas sacrificar consistencia para mejorar la usabilidad, hazlo.
-          </p>
-        </div>
+      <Banner title="🎯 Principio fundamental" variant="info">
+        <p>
+          <strong>La claridad siempre gana sobre la consistencia.</strong>
+          Si necesitas sacrificar consistencia para mejorar la usabilidad, hazlo.
+        </p>
       </Banner>
     </section>
 
     <section>
       <h2>Las 7 técnicas clave</h2>
-      
+
       <OrderedList>
         <OrderedListItem number={1} title="Técnica de Forma">
-          <p>La forma puede indicar si algo es un botón. Los rectángulos son la opción más segura.</p>
-          
+          <p>
+            La forma puede indicar si algo es un botón. Los rectángulos son la
+            opción más segura.
+          </p>
+
           <CardGrid columns="2" gap="lg">
             <Card title="✅ Formas seguras" variant="success" borderAccent>
               <div class="button-group">
@@ -57,7 +64,7 @@ const checklistItems = [
               </div>
               <p class="demo-desc">Formas reconocibles como botones</p>
             </Card>
-            
+
             <Card title="⚠️ Formas creativas" variant="warning" borderAccent>
               <div class="button-group">
                 <button class="demo-btn hexagon">Hexágono</button>
@@ -68,56 +75,67 @@ const checklistItems = [
             </Card>
           </CardGrid>
 
-        <CardGrid columns="2" gap="lg">
-          <Card title="Inconsistente" variant="danger" borderAccent>
-            <div class="button-group">
-              <button class="demo-btn rectangular">Copiar</button>
-              <button class="demo-btn circle">+</button>
-              <button class="demo-btn pill">Eliminar</button>
-            </div>
-          </Card>
+          <CardGrid columns="2" gap="lg">
+            <Card title="❌ Inconsistente" variant="danger" borderAccent>
+              <div class="button-group">
+                <button class="demo-btn rectangular">Copiar</button>
+                <button class="demo-btn circle">+</button>
+                <button class="demo-btn pill">Eliminar</button>
+              </div>
+            </Card>
 
-          <Card title="Consistente" variant="success" borderAccent>
-            <div class="button-group">
-              <button class="demo-btn rectangular">Copiar</button>
-              <button class="demo-btn rectangular">Agregar</button>
-              <button class="demo-btn rectangular">Eliminar</button>
-            </div>
-          </Card>
-        </CardGrid>
-
+            <Card title="✅ Consistente" variant="success" borderAccent>
+              <div class="button-group">
+                <button class="demo-btn rectangular">Copiar</button>
+                <button class="demo-btn rectangular">Agregar</button>
+                <button class="demo-btn rectangular">Eliminar</button>
+              </div>
+            </Card>
+          </CardGrid>
         </OrderedListItem>
 
         <OrderedListItem number={2} title="Técnica de Radio de Borde">
-          <p>El radio de borde cambia la "personalidad" del botón: de más serio a más divertido.</p>
-          
-            <CardGrid columns="3" gap="lg">
-              <Card variant="default">
-                <div style="display: flex; flex-direction: column; align-items: center">
-                  <button class="demo-btn serious">Serio (0px)</button>
-                  <Label text="Formal, profesional" variant="small" />
-                </div>
-              </Card>
-              <Card variant="default">
-                <div style="display: flex; flex-direction: column; align-items: center">
-                  <button class="demo-btn moderate">Moderado (4px)</button>
-                  <Label text="Equilibrado, amigable" variant="small" />
-                </div>
-              </Card>
-              <Card variant="default">
-                <div style="display: flex; flex-direction: column; align-items: center">
-                  <button class="demo-btn playful">Juguetón (100%)</button>
-                  <Label text="Casual, divertido" variant="small" />
-                </div>
-              </Card>
-            </CardGrid>
+          <p>
+            El radio de borde cambia la "personalidad" del botón: de más serio a
+            más divertido.
+          </p>
+
+          <CardGrid columns="3" gap="lg">
+            <Card variant="default">
+              <div
+                style="display: flex; flex-direction: column; align-items: center"
+              >
+                <button class="demo-btn serious">Serio (0px)</button>
+                <Label text="Formal, profesional" variant="small" />
+              </div>
+            </Card>
+            <Card variant="default">
+              <div
+                style="display: flex; flex-direction: column; align-items: center"
+              >
+                <button class="demo-btn moderate">Moderado (4px)</button>
+                <Label text="Equilibrado, amigable" variant="small" />
+              </div>
+            </Card>
+            <Card variant="default">
+              <div
+                style="display: flex; flex-direction: column; align-items: center"
+              >
+                <button class="demo-btn playful">Juguetón (50px)</button>
+                <Label text="Casual, divertido" variant="small" />
+              </div>
+            </Card>
+          </CardGrid>
         </OrderedListItem>
 
         <OrderedListItem number={3} title="Técnica de Relleno y Color">
-          <p>Usa cambios estructurales (no solo color) para crear jerarquía visual.</p>
-          
+          <p>
+            Usa cambios estructurales (no solo color) para crear jerarquía
+            visual.
+          </p>
+
           <CardGrid columns="2" gap="lg">
-            <Card title="Jerarquía de botones" >
+            <Card title="Jerarquía de botones">
               <div class="button-hierarchy">
                 <button class="demo-btn primary">Primario (Sólido)</button>
                 <button class="demo-btn secondary">Secundario (Borde)</button>
@@ -143,7 +161,7 @@ const checklistItems = [
               <div class="form-example">
                 <div class="form-field">
                   <label>Nombre de usuario:</label>
-                  <input type="text" placeholder="Ingresa tu nombre">
+                  <input type="text" placeholder="Ingresa tu nombre" />
                 </div>
                 <div class="form-actions">
                   <button class="demo-btn tertiary">Cancelar</button>
@@ -156,38 +174,61 @@ const checklistItems = [
 
         <OrderedListItem number={4} title="Técnica de Sombra y Elevación">
           <p>Las sombras comunican elevación e importancia visual.</p>
-          <CardGrid columns="1" gap="lg">
-            <Card title="Niveles de elevación" variant="default">
-              <div class="shadow-examples">
-                <div class="shadow-demo">
-                  <button class="demo-btn no-shadow">Sin sombra</button>
-                  <span class="shadow-label">Color "pesado" para dominio visual</span>
-                </div>
-                <div class="shadow-demo">
-                  <button class="demo-btn small-shadow">Sombra pequeña</button>
-                  <span class="shadow-label">Elevación ligera, importancia</span>
-                </div>
-                <div class="shadow-demo">
-                  <button class="demo-btn long-shadow">Sombra larga</button>
-                  <span class="shadow-label">Alta elevación, llama atención</span>
-                </div>
+
+          <CardGrid columns="3" gap="lg">
+            <Card variant="default">
+              <div
+                style="display: flex; flex-direction: column; align-items: center"
+              >
+                <button class="demo-btn no-shadow">Sin sombra</button>
+                <Label
+                  text="Color 'pesado' para dominio visual"
+                  variant="small"
+                />
               </div>
             </Card>
-
-            <Card title="🔍 Estados interactivos con sombras" variant="info">
-              <div class="state-examples">
-                <button class="demo-btn interactive-shadow">Pasa el cursor aquí</button>
-                <p class="demo-desc" style="margin-top: 1rem;">La sombra aumenta al hacer hover</p>
+            <Card variant="default">
+              <div
+                style="display: flex; flex-direction: column; align-items: center"
+              >
+                <button class="demo-btn small-shadow">Sombra pequeña</button>
+                <Label text="Elevación ligera, importancia" variant="small" />
+              </div>
+            </Card>
+            <Card variant="default">
+              <div
+                style="display: flex; flex-direction: column; align-items: center"
+              >
+                <button class="demo-btn long-shadow">Sombra larga</button>
+                <Label text="Alta elevación, llama atención" variant="small" />
               </div>
             </Card>
           </CardGrid>
+
+          <Banner title="💡 Estados interactivos" variant="tip">
+            <div style="text-align: center;">
+              <button class="demo-btn interactive-shadow"
+                >Pasa el cursor aquí</button
+              >
+              <p style="margin-top: 1rem; margin-bottom: 0;">
+                La sombra aumenta al hacer hover
+              </p>
+            </div>
+          </Banner>
         </OrderedListItem>
 
         <OrderedListItem number={5} title="Técnica de Competencia">
-          <p>Elementos con estilos similares compiten entre sí. Los CTAs deben destacar claramente.</p>
-          
+          <p>
+            Elementos con estilos similares compiten entre sí. Los CTAs deben
+            destacar claramente.
+          </p>
+
           <CardGrid columns="2" gap="lg">
-            <Card title="❌ Demasiada competencia" variant="danger" borderAccent>
+            <Card
+              title="❌ Demasiada competencia"
+              variant="danger"
+              borderAccent
+            >
               <div class="competing-interface">
                 <div class="fake-header">Tecnologías Frontend</div>
                 <div class="fake-header">Aprende las Mejores Herramientas</div>
@@ -196,7 +237,11 @@ const checklistItems = [
                   <button class="demo-btn competing">Vue.js</button>
                   <button class="demo-btn competing">Angular</button>
                 </div>
-                <input type="text" class="competing-input" placeholder="Buscar frameworks...">
+                <input
+                  type="text"
+                  class="competing-input"
+                  placeholder="Buscar frameworks..."
+                />
                 <button class="demo-btn competing">Buscar</button>
               </div>
               <p class="demo-desc">Todo compite por atención</p>
@@ -211,8 +256,14 @@ const checklistItems = [
                   <span class="product-tag">Vue.js</span>
                   <span class="product-tag">Angular</span>
                 </div>
-                <input type="text" class="clean-input" placeholder="Buscar frameworks...">
-                <button class="demo-btn primary prominent">Explorar Tecnologías</button>
+                <input
+                  type="text"
+                  class="clean-input"
+                  placeholder="Buscar frameworks..."
+                />
+                <button class="demo-btn primary prominent"
+                  >Explorar Tecnologías</button
+                >
               </div>
               <p class="demo-desc">Un CTA principal claro</p>
             </Card>
@@ -220,12 +271,17 @@ const checklistItems = [
         </OrderedListItem>
 
         <OrderedListItem number={6} title="Técnica de Proximidad">
-          <p>El espacio adecuado permite que los elementos interactivos respiren y destaquen.</p>
-          
+          <p>
+            El espacio adecuado permite que los elementos interactivos respiren
+            y destaquen.
+          </p>
+
           <CardGrid columns="2" gap="lg">
             <Card title="❌ Muy apretado" variant="danger" borderAccent>
               <div class="cramped-interface">
-                <button class="demo-btn small">Guardar</button><button class="demo-btn small">Cancelar</button><button class="demo-btn small">Eliminar</button>
+                <button class="demo-btn small">Guardar</button><button
+                  class="demo-btn small">Cancelar</button
+                ><button class="demo-btn small">Eliminar</button>
               </div>
               <p class="demo-desc">Difícil de usar, errores accidentales</p>
             </Card>
@@ -252,16 +308,19 @@ const checklistItems = [
 
         <OrderedListItem number={7} title="Técnica de Capitalización">
           <p>El tipo de capitalización transmite diferentes tonos de voz.</p>
-          
+
           <Card variant="default">
             <div class="capitalization-examples">
               <div class="cap-demo">
                 <button class="demo-btn cap-sentence">Enviar mensaje</button>
-                <span class="cap-label">Sentence case - Amigable, conversacional ✅</span>
+                <span class="cap-label"
+                  >Sentence case - Amigable, conversacional ✅</span
+                >
               </div>
               <div class="cap-demo">
                 <button class="demo-btn cap-title">Enviar Mensaje</button>
-                <span class="cap-label">Title Case - Uniforme, autoritario</span>
+                <span class="cap-label">Title Case - Uniforme, autoritario</span
+                >
               </div>
               <div class="cap-demo">
                 <button class="demo-btn cap-upper">ENVIAR MENSAJE</button>
@@ -269,7 +328,8 @@ const checklistItems = [
               </div>
               <div class="cap-demo">
                 <button class="demo-btn cap-lower">enviar mensaje</button>
-                <span class="cap-label">lower case - Casual, poco esfuerzo</span>
+                <span class="cap-label">lower case - Casual, poco esfuerzo</span
+                >
               </div>
             </div>
           </Card>
@@ -279,13 +339,13 @@ const checklistItems = [
 
     <section>
       <h2>Mejores prácticas adicionales</h2>
-      
+
       <div class="additional-practices">
         <div class="practice-card">
           <h4>🎯 Reserva señalizadores para botones</h4>
           <p>
-            No uses formas rectangulares, sombras o colores de botón 
-            para elementos no interactivos.
+            No uses formas rectangulares, sombras o colores de botón para
+            elementos no interactivos.
           </p>
           <div class="practice-example">
             <div class="bad-signifiers">
@@ -298,8 +358,8 @@ const checklistItems = [
         <div class="practice-card">
           <h4>⚖️ Consistencia vs. Claridad</h4>
           <p>
-            Mantén consistencia, pero prioriza siempre la claridad 
-            y usabilidad del usuario.
+            Mantén consistencia, pero prioriza siempre la claridad y usabilidad
+            del usuario.
           </p>
           <div class="balance-example">
             <div class="consistency-benefit">
@@ -325,7 +385,7 @@ const checklistItems = [
 
     <section>
       <h2>Lista de verificación</h2>
-      <Checklist 
+      <Checklist
         title="✅ Antes de publicar, verifica:"
         items={checklistItems}
         variant="success"
@@ -337,20 +397,33 @@ const checklistItems = [
       <div class="tools">
         <p>Para verificar la efectividad de tus botones:</p>
         <ul class="tools-list">
-          <li><strong>Prueba de 5 segundos:</strong> ¿Los usuarios identifican rápidamente qué es interactivo?</li>
-          <li><strong>Prueba de accesibilidad:</strong> ¿Los botones son navegables por teclado?</li>
-          <li><strong>Prueba en dispositivos:</strong> ¿Los targets táctiles son cómodos?</li>
-          <li><strong>Prueba de contraste:</strong> ¿Los botones tienen suficiente contraste?</li>
+          <li>
+            <strong>Prueba de 5 segundos:</strong> ¿Los usuarios identifican rápidamente
+            qué es interactivo?
+          </li>
+          <li>
+            <strong>Prueba de accesibilidad:</strong> ¿Los botones son navegables
+            por teclado?
+          </li>
+          <li>
+            <strong>Prueba en dispositivos:</strong> ¿Los targets táctiles son cómodos?
+          </li>
+          <li>
+            <strong>Prueba de contraste:</strong> ¿Los botones tienen suficiente
+            contraste?
+          </li>
         </ul>
         <p class="tools-note">
-          💡 <strong>Consejo:</strong> Consulta la página de <a href="/tools">Herramientas</a> para recursos específicos de testing.
+          💡 <strong>Consejo:</strong> Consulta la página de <a href="/tools"
+            >Herramientas</a
+          > para recursos específicos de testing.
         </p>
       </div>
     </section>
   </article>
 </Layout>
 
-<style>
+<style lang="scss">
   article {
     max-width: 90ch;
   }
@@ -368,10 +441,10 @@ const checklistItems = [
     text-decoration: none;
     background-color: var(--color-primary);
     color: white;
-  }
 
-  .demo-btn:hover {
-    background-color: #1e40af;
+    &:hover {
+      background-color: #1e40af;
+    }
   }
 
   .button-group {
@@ -381,16 +454,22 @@ const checklistItems = [
     flex-wrap: wrap;
   }
 
-  .rectangular { border-radius: 4px; }
-  .rounded { border-radius: 8px; }
-  .pill { border-radius: 50px; }
-  
+  .rectangular {
+    border-radius: 4px;
+  }
+  .rounded {
+    border-radius: 8px;
+  }
+  .pill {
+    border-radius: 50px;
+  }
+
   .hexagon {
     border-radius: 0;
     clip-path: polygon(20% 0%, 80% 0%, 100% 50%, 80% 100%, 20% 100%, 0% 50%);
     padding: var(--spacing-sm) var(--spacing-lg);
   }
-  
+
   .circle {
     border-radius: 50%;
     width: 40px;
@@ -400,7 +479,7 @@ const checklistItems = [
     align-items: center;
     justify-content: center;
   }
-  
+
   .diamond {
     border-radius: 0;
     transform: rotate(45deg);
@@ -412,9 +491,15 @@ const checklistItems = [
     justify-content: center;
   }
 
-  .serious { border-radius: 0; }
-  .moderate { border-radius: 4px; }
-  .playful { border-radius: 50px; }
+  .serious {
+    border-radius: 0;
+  }
+  .moderate {
+    border-radius: 4px;
+  }
+  .playful {
+    border-radius: 50px;
+  }
 
   .button-hierarchy {
     display: flex;
@@ -427,32 +512,32 @@ const checklistItems = [
     background-color: var(--color-primary);
     color: white;
     border: 2px solid var(--color-primary);
-  }
 
-  .primary:hover {
-    background-color: #1e40af;
-    border-color: #1e40af;
+    &:hover {
+      background-color: #1e40af;
+      border-color: #1e40af;
+    }
   }
 
   .secondary {
     background-color: transparent;
     color: var(--color-primary);
     border: 2px solid var(--color-primary);
-  }
 
-  .secondary:hover {
-    background-color: var(--color-primary);
-    color: white;
+    &:hover {
+      background-color: var(--color-primary);
+      color: white;
+    }
   }
 
   .tertiary {
     background-color: transparent;
     color: var(--color-primary);
     border: 2px solid transparent;
-  }
 
-  .tertiary:hover {
-    background-color: #f3f4f6;
+    &:hover {
+      background-color: #f3f4f6;
+    }
   }
 
   .hierarchy-explanation {
@@ -473,9 +558,16 @@ const checklistItems = [
     border-radius: 50%;
   }
 
-  .primary-dot { background-color: var(--color-primary); }
-  .secondary-dot { border: 2px solid var(--color-primary); background-color: transparent; }
-  .tertiary-dot { background-color: var(--color-text-light); }
+  .primary-dot {
+    background-color: var(--color-primary);
+  }
+  .secondary-dot {
+    border: 2px solid var(--color-primary);
+    background-color: transparent;
+  }
+  .tertiary-dot {
+    background-color: var(--color-text-light);
+  }
 
   .form-example {
     max-width: 300px;
@@ -483,19 +575,19 @@ const checklistItems = [
 
   .form-field {
     margin-bottom: var(--spacing-md);
-  }
 
-  .form-field label {
-    display: block;
-    margin-bottom: var(--spacing-xs);
-    font-weight: 500;
-  }
+    label {
+      display: block;
+      margin-bottom: var(--spacing-xs);
+      font-weight: 500;
+    }
 
-  .form-field input {
-    width: 100%;
-    padding: var(--spacing-sm);
-    border: 1px solid var(--color-border);
-    border-radius: 4px;
+    input {
+      width: 100%;
+      padding: var(--spacing-sm);
+      border: 1px solid var(--color-border);
+      border-radius: 4px;
+    }
   }
 
   .form-actions {
@@ -524,10 +616,10 @@ const checklistItems = [
   .no-shadow {
     box-shadow: none;
     background-color: #1e40af;
-  }
 
-  .no-shadow:hover {
-    background-color: #1e3a8a;
+    &:hover {
+      background-color: #1e3a8a;
+    }
   }
 
   .small-shadow {
@@ -553,15 +645,18 @@ const checklistItems = [
 
   .interactive-shadow {
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-    transition: box-shadow 0.2s ease, transform 0.2s ease;
+    transition:
+      box-shadow 0.2s ease,
+      transform 0.2s ease;
+
+    &:hover {
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+      transform: translateY(-3px);
+    }
   }
 
-  .interactive-shadow:hover {
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
-    transform: translateY(-3px);
-  }
-
-  .competing-interface, .clear-interface {
+  .competing-interface,
+  .clear-interface {
     background-color: var(--color-background);
     padding: var(--spacing-md);
     border-radius: 6px;
@@ -589,10 +684,10 @@ const checklistItems = [
     color: white;
     padding: var(--spacing-xs);
     font-size: 0.75rem;
-  }
 
-  .competing:hover {
-    background-color: #4b5563;
+    &:hover {
+      background-color: #4b5563;
+    }
   }
 
   .competing-input {
@@ -604,15 +699,17 @@ const checklistItems = [
     box-sizing: border-box;
   }
 
-  .clear-interface h5 {
-    margin: 0 0 var(--spacing-xs) 0;
-    color: var(--color-text);
-  }
+  .clear-interface {
+    h5 {
+      margin: 0 0 var(--spacing-xs) 0;
+      color: var(--color-text);
+    }
 
-  .clear-interface p {
-    margin: 0 0 var(--spacing-md) 0;
-    color: var(--color-text-light);
-    font-size: 0.875rem;
+    p {
+      margin: 0 0 var(--spacing-md) 0;
+      color: var(--color-text-light);
+      font-size: 0.875rem;
+    }
   }
 
   .product-grid {
@@ -712,10 +809,18 @@ const checklistItems = [
     border-radius: 6px;
   }
 
-  .cap-sentence { text-transform: none; }
-  .cap-title { text-transform: capitalize; }
-  .cap-upper { text-transform: uppercase; }
-  .cap-lower { text-transform: lowercase; }
+  .cap-sentence {
+    text-transform: none;
+  }
+  .cap-title {
+    text-transform: capitalize;
+  }
+  .cap-upper {
+    text-transform: uppercase;
+  }
+  .cap-lower {
+    text-transform: lowercase;
+  }
 
   .cap-label {
     font-size: 0.875rem;
@@ -736,12 +841,12 @@ const checklistItems = [
     border-radius: 8px;
     padding: var(--spacing-lg);
     border-left: 4px solid var(--color-primary);
-  }
 
-  .practice-card h4 {
-    color: var(--color-primary);
-    margin: 0 0 var(--spacing-md) 0;
-    font-size: 1rem;
+    h4 {
+      color: var(--color-primary);
+      margin: 0 0 var(--spacing-md) 0;
+      font-size: 1rem;
+    }
   }
 
   .practice-example {
@@ -772,15 +877,16 @@ const checklistItems = [
     margin: var(--spacing-md) 0;
   }
 
-  .consistency-benefit, .distinctness-benefit {
+  .consistency-benefit,
+  .distinctness-benefit {
     background-color: var(--color-background);
     padding: var(--spacing-md);
     border-radius: 6px;
-  }
 
-  .consistency-benefit ul, .distinctness-benefit ul {
-    margin: var(--spacing-sm) 0 0 var(--spacing-lg);
-    font-size: 0.875rem;
+    ul {
+      margin: var(--spacing-sm) 0 0 var(--spacing-lg);
+      font-size: 0.875rem;
+    }
   }
 
   /* Herramientas */
@@ -793,10 +899,10 @@ const checklistItems = [
 
   .tools-list {
     margin-top: var(--spacing-md);
-  }
 
-  .tools-list li {
-    margin-bottom: var(--spacing-sm);
+    li {
+      margin-bottom: var(--spacing-sm);
+    }
   }
 
   .tools-note {
@@ -804,11 +910,11 @@ const checklistItems = [
     padding-top: var(--spacing-md);
     border-top: 1px solid var(--color-border);
     font-size: 0.9rem;
-  }
 
-  .tools-note a {
-    color: var(--color-primary);
-    font-weight: 600;
+    a {
+      color: var(--color-primary);
+      font-weight: 600;
+    }
   }
 
   .demo-desc {
@@ -844,4 +950,4 @@ const checklistItems = [
       grid-template-columns: 1fr;
     }
   }
-</style> 
+</style>

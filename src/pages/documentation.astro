@@ -1,22 +1,21 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import GuideHeader from '../components/GuideHeader.astro';
-import Banner from '../components/Banner.astro';
+import Layout from '../layouts/Layout.astro'
+import Header from '../components/Header.astro'
+import Banner from '../components/Banner.astro'
 ---
 
 <Layout title="Documentación Oficial - a11yado">
   <article>
-    <GuideHeader 
+    <Header
       title="Documentación Oficial"
       description="Las fuentes oficiales y autorizadas para accesibilidad web. Estas son las especificaciones reales que debes consultar para implementaciones profesionales."
     />
 
-
     <Banner title="⚠️ Importante" variant="warning">
       <p>
-        <strong>a11yado</strong> es únicamente una herramienta educativa para hacer más 
-        accesibles los conceptos básicos de accesibilidad web. No pretende sustituir 
-        la documentación oficial, que siempre debe ser la referencia principal para 
+        <strong>a11yado</strong> es únicamente una herramienta educativa para hacer
+        más accesibles los conceptos básicos de accesibilidad web. No pretende sustituir
+        la documentación oficial, que siempre debe ser la referencia principal para
         cualquier implementación profesional.
       </p>
     </Banner>
@@ -29,18 +28,33 @@ import Banner from '../components/Banner.astro';
           <span class="status current">Estándar Actual</span>
         </div>
         <p>
-          La especificación oficial más importante para accesibilidad web. La 
-          versión actual que añade nuevos criterios de éxito enfocados en móviles y usuarios 
-          con discapacidades cognitivas.
+          La especificación oficial más importante para accesibilidad web. La
+          versión actual que añade nuevos criterios de éxito enfocados en
+          móviles y usuarios con discapacidades cognitivas.
         </p>
         <div class="links">
-          <a href="https://www.w3.org/WAI/WCAG22/quickref/" target="_blank" rel="noopener" class="link-primary">
+          <a
+            href="https://www.w3.org/WAI/WCAG22/quickref/"
+            target="_blank"
+            rel="noopener"
+            class="link-primary"
+          >
             Referencia Rápida WCAG 2.2
           </a>
-          <a href="https://www.w3.org/TR/WCAG22/" target="_blank" rel="noopener" class="link-secondary">
+          <a
+            href="https://www.w3.org/TR/WCAG22/"
+            target="_blank"
+            rel="noopener"
+            class="link-secondary"
+          >
             Especificación Completa
           </a>
-          <a href="https://www.w3.org/WAI/WCAG22/Understanding/" target="_blank" rel="noopener" class="link-secondary">
+          <a
+            href="https://www.w3.org/WAI/WCAG22/Understanding/"
+            target="_blank"
+            rel="noopener"
+            class="link-secondary"
+          >
             Guía de Comprensión
           </a>
         </div>
@@ -52,14 +66,25 @@ import Banner from '../components/Banner.astro';
           <span class="status stable">Estable</span>
         </div>
         <p>
-          La versión anterior, ampliamente adoptada. Define criterios de éxito 
-          organizados en cuatro principios: Perceptible, Operable, Comprensible y Robusto.
+          La versión anterior, ampliamente adoptada. Define criterios de éxito
+          organizados en cuatro principios: Perceptible, Operable, Comprensible
+          y Robusto.
         </p>
         <div class="links">
-          <a href="https://www.w3.org/WAI/WCAG21/quickref/" target="_blank" rel="noopener" class="link-secondary">
+          <a
+            href="https://www.w3.org/WAI/WCAG21/quickref/"
+            target="_blank"
+            rel="noopener"
+            class="link-secondary"
+          >
             Referencia Rápida WCAG 2.1
           </a>
-          <a href="https://www.w3.org/TR/WCAG21/" target="_blank" rel="noopener" class="link-secondary">
+          <a
+            href="https://www.w3.org/TR/WCAG21/"
+            target="_blank"
+            rel="noopener"
+            class="link-secondary"
+          >
             Especificación Completa
           </a>
         </div>
@@ -71,11 +96,16 @@ import Banner from '../components/Banner.astro';
           <span class="status draft">En Desarrollo</span>
         </div>
         <p>
-          La próxima generación de WCAG, actualmente en desarrollo. Introduce un nuevo 
-          modelo de conformidad y se enfoca en la experiencia del usuario.
+          La próxima generación de WCAG, actualmente en desarrollo. Introduce un
+          nuevo modelo de conformidad y se enfoca en la experiencia del usuario.
         </p>
         <div class="links">
-          <a href="https://www.w3.org/TR/wcag-3.0/" target="_blank" rel="noopener" class="link-secondary">
+          <a
+            href="https://www.w3.org/TR/wcag-3.0/"
+            target="_blank"
+            rel="noopener"
+            class="link-secondary"
+          >
             Borrador de Trabajo
           </a>
         </div>
@@ -84,22 +114,32 @@ import Banner from '../components/Banner.astro';
 
     <section>
       <h2>Legislación y Normativas</h2>
-      
+
       <div class="doc-card">
         <div class="doc-header">
           <h3>ADA - Ley de Estadounidenses con Discapacidades</h3>
           <span class="status law">Ley Federal (EE.UU.)</span>
         </div>
         <p>
-          Ley federal estadounidense que prohíbe la discriminación por discapacidad. 
-          Aunque no especifica estándares técnicos para sitios web, los tribunales 
-          suelen usar WCAG como referencia.
+          Ley federal estadounidense que prohíbe la discriminación por
+          discapacidad. Aunque no especifica estándares técnicos para sitios
+          web, los tribunales suelen usar WCAG como referencia.
         </p>
         <div class="links">
-          <a href="https://www.ada.gov/" target="_blank" rel="noopener" class="link-primary">
+          <a
+            href="https://www.ada.gov/"
+            target="_blank"
+            rel="noopener"
+            class="link-primary"
+          >
             Sitio Oficial ADA
           </a>
-          <a href="https://www.ada.gov/resources/web-guidance/" target="_blank" rel="noopener" class="link-secondary">
+          <a
+            href="https://www.ada.gov/resources/web-guidance/"
+            target="_blank"
+            rel="noopener"
+            class="link-secondary"
+          >
             Guía Web ADA
           </a>
         </div>
@@ -111,14 +151,25 @@ import Banner from '../components/Banner.astro';
           <span class="status law">Ley Federal (EE.UU.)</span>
         </div>
         <p>
-          Estándar de accesibilidad para tecnología federal en Estados Unidos. 
-          Basado en WCAG 2.0 Nivel AA y se aplica a todas las agencias federales.
+          Estándar de accesibilidad para tecnología federal en Estados Unidos.
+          Basado en WCAG 2.0 Nivel AA y se aplica a todas las agencias
+          federales.
         </p>
         <div class="links">
-          <a href="https://www.section508.gov/" target="_blank" rel="noopener" class="link-primary">
+          <a
+            href="https://www.section508.gov/"
+            target="_blank"
+            rel="noopener"
+            class="link-primary"
+          >
             Section 508.gov
           </a>
-          <a href="https://www.access-board.gov/ict/" target="_blank" rel="noopener" class="link-secondary">
+          <a
+            href="https://www.access-board.gov/ict/"
+            target="_blank"
+            rel="noopener"
+            class="link-secondary"
+          >
             Estándares TIC
           </a>
         </div>
@@ -130,14 +181,24 @@ import Banner from '../components/Banner.astro';
           <span class="status law">Directiva UE</span>
         </div>
         <p>
-          Directiva europea que establece requisitos de accesibilidad para 
+          Directiva europea que establece requisitos de accesibilidad para
           productos y servicios digitales en la Unión Europea.
         </p>
         <div class="links">
-          <a href="https://ec.europa.eu/social/main.jsp?catId=1202" target="_blank" rel="noopener" class="link-primary">
+          <a
+            href="https://ec.europa.eu/social/main.jsp?catId=1202"
+            target="_blank"
+            rel="noopener"
+            class="link-primary"
+          >
             Información Oficial UE
           </a>
-          <a href="https://eur-lex.europa.eu/eli/dir/2019/882/oj" target="_blank" rel="noopener" class="link-secondary">
+          <a
+            href="https://eur-lex.europa.eu/eli/dir/2019/882/oj"
+            target="_blank"
+            rel="noopener"
+            class="link-secondary"
+          >
             Texto Legal
           </a>
         </div>
@@ -149,11 +210,16 @@ import Banner from '../components/Banner.astro';
           <span class="status law">Ley Nacional</span>
         </div>
         <p>
-          Normativa española sobre accesibilidad de sitios web y aplicaciones móviles 
-          del sector público, basada en WCAG 2.1 Nivel AA.
+          Normativa española sobre accesibilidad de sitios web y aplicaciones
+          móviles del sector público, basada en WCAG 2.1 Nivel AA.
         </p>
         <div class="links">
-          <a href="https://www.boe.es/eli/es/rd/2018/09/07/1112/con" target="_blank" rel="noopener" class="link-primary">
+          <a
+            href="https://www.boe.es/eli/es/rd/2018/09/07/1112/con"
+            target="_blank"
+            rel="noopener"
+            class="link-primary"
+          >
             BOE - Texto Completo
           </a>
         </div>
@@ -162,28 +228,51 @@ import Banner from '../components/Banner.astro';
 
     <section>
       <h2>Recursos Adicionales</h2>
-      
+
       <div class="resource-grid">
         <div class="resource-card">
           <h3>WAI - Iniciativa de Accesibilidad Web</h3>
-          <p>Iniciativa del W3C para desarrollar estándares y recursos de accesibilidad web.</p>
-          <a href="https://www.w3.org/WAI/" target="_blank" rel="noopener" class="link-primary">
+          <p>
+            Iniciativa del W3C para desarrollar estándares y recursos de
+            accesibilidad web.
+          </p>
+          <a
+            href="https://www.w3.org/WAI/"
+            target="_blank"
+            rel="noopener"
+            class="link-primary"
+          >
             Visitar WAI
           </a>
         </div>
 
         <div class="resource-card">
           <h3>Prácticas de Autoría ARIA</h3>
-          <p>Guía oficial para implementar ARIA (Aplicaciones de Internet Ricas Accesibles).</p>
-          <a href="https://www.w3.org/WAI/ARIA/apg/" target="_blank" rel="noopener" class="link-primary">
+          <p>
+            Guía oficial para implementar ARIA (Aplicaciones de Internet Ricas
+            Accesibles).
+          </p>
+          <a
+            href="https://www.w3.org/WAI/ARIA/apg/"
+            target="_blank"
+            rel="noopener"
+            class="link-primary"
+          >
             Ver Guía ARIA
           </a>
         </div>
 
         <div class="resource-card">
           <h3>WebAIM</h3>
-          <p>Organización sin fines de lucro con excelentes recursos educativos.</p>
-          <a href="https://webaim.org/" target="_blank" rel="noopener" class="link-primary">
+          <p>
+            Organización sin fines de lucro con excelentes recursos educativos.
+          </p>
+          <a
+            href="https://webaim.org/"
+            target="_blank"
+            rel="noopener"
+            class="link-primary"
+          >
             Visitar WebAIM
           </a>
         </div>
@@ -191,7 +280,12 @@ import Banner from '../components/Banner.astro';
         <div class="resource-card">
           <h3>Fundación ONCE</h3>
           <p>Recursos españoles sobre accesibilidad y tecnología.</p>
-          <a href="https://www.fundaciononce.es/" target="_blank" rel="noopener" class="link-primary">
+          <a
+            href="https://www.fundaciononce.es/"
+            target="_blank"
+            rel="noopener"
+            class="link-primary"
+          >
             Visitar ONCE
           </a>
         </div>
@@ -200,9 +294,13 @@ import Banner from '../components/Banner.astro';
   </article>
 </Layout>
 
-<style>
+<style lang="scss">
   article {
     max-width: 75ch;
+  }
+
+  h3 {
+    margin-top: 0;
   }
 
   .doc-card {
@@ -211,11 +309,11 @@ import Banner from '../components/Banner.astro';
     border-radius: 8px;
     padding: var(--spacing-lg);
     margin-bottom: var(--spacing-lg);
-  }
 
-  .doc-card.primary {
-    border-color: var(--color-primary);
-    background-color: #eff6ff;
+    &.primary {
+      border-color: var(--color-primary);
+      background-color: #eff6ff;
+    }
   }
 
   .doc-header {
@@ -233,26 +331,26 @@ import Banner from '../components/Banner.astro';
     font-weight: 600;
     text-transform: uppercase;
     white-space: nowrap;
-  }
 
-  .status.current {
-    background-color: #16a34a;
-    color: white;
-  }
+    &.current {
+      background-color: #16a34a;
+      color: white;
+    }
 
-  .status.stable {
-    background-color: #6b7280;
-    color: white;
-  }
+    &.stable {
+      background-color: #6b7280;
+      color: white;
+    }
 
-  .status.draft {
-    background-color: #f59e0b;
-    color: white;
-  }
+    &.draft {
+      background-color: #f59e0b;
+      color: white;
+    }
 
-  .status.law {
-    background-color: #7c3aed;
-    color: white;
+    &.law {
+      background-color: #7c3aed;
+      color: white;
+    }
   }
 
   .links {
@@ -270,10 +368,10 @@ import Banner from '../components/Banner.astro';
     border-radius: 4px;
     font-weight: 500;
     transition: background-color 0.2s;
-  }
 
-  .link-primary:hover {
-    background-color: var(--color-primary-dark);
+    &:hover {
+      background-color: var(--color-primary-dark);
+    }
   }
 
   .link-secondary {
@@ -283,11 +381,11 @@ import Banner from '../components/Banner.astro';
     border: 1px solid var(--color-primary);
     border-radius: 4px;
     transition: all 0.2s;
-  }
 
-  .link-secondary:hover {
-    background-color: var(--color-primary);
-    color: white;
+    &:hover {
+      background-color: var(--color-primary);
+      color: white;
+    }
   }
 
   .resource-grid {
@@ -302,23 +400,25 @@ import Banner from '../components/Banner.astro';
     border: 1px solid var(--color-border);
     border-radius: 8px;
     padding: var(--spacing-lg);
-    transition: transform 0.2s, box-shadow 0.2s;
-  }
+    transition:
+      transform 0.2s,
+      box-shadow 0.2s;
 
-  .resource-card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  }
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
 
-  .resource-card h3 {
-    color: var(--color-primary);
-    margin-bottom: var(--spacing-sm);
-  }
+    h3 {
+      color: var(--color-primary);
+      margin-bottom: var(--spacing-sm);
+    }
 
-  .resource-card p {
-    color: var(--color-text-light);
-    margin-bottom: var(--spacing-md);
-    font-size: 0.9rem;
+    p {
+      color: var(--color-text-light);
+      margin-bottom: var(--spacing-md);
+      font-size: 0.9rem;
+    }
   }
 
   @media (max-width: 768px) {
@@ -335,4 +435,4 @@ import Banner from '../components/Banner.astro';
       grid-template-columns: 1fr;
     }
   }
-</style> 
+</style>

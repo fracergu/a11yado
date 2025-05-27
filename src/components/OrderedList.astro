@@ -1,11 +1,9 @@
 ---
 export interface Props {
-  class?: string;
+  class?: string
 }
 
-const { 
-  class: className = '' 
-} = Astro.props;
+const { class: className = '' } = Astro.props
 ---
 
 <ol class={`ordered-list ${className}`}>
@@ -21,4 +19,4 @@ const {
     display: grid;
     gap: var(--spacing-lg);
   }
-</style> 
+</style>

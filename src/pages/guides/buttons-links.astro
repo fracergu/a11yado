@@ -1,52 +1,55 @@
 ---
-import Layout from '../../layouts/Layout.astro';
-import Card from '../../components/Card.astro';
-import CardGrid from '../../components/CardGrid.astro';
-import ToolsSection from '../../components/ToolsSection.astro';
-import Banner from '../../components/Banner.astro';
+import Layout from '../../layouts/Layout.astro'
+import Card from '../../components/Card.astro'
+import CardGrid from '../../components/CardGrid.astro'
+import ToolsSection from '../../components/ToolsSection.astro'
+import Banner from '../../components/Banner.astro'
+import BannerGrid from '../../components/BannerGrid.astro'
+import Header from '../../components/Header.astro'
 
 const buttonsLinksTools = [
   {
-    name: "Prueba de contexto",
-    description: "¿El texto tiene sentido por sí solo?"
+    name: 'Prueba de contexto',
+    description: '¿El texto tiene sentido por sí solo?',
   },
   {
-    name: "Prueba de escaneo", 
-    description: "¿Las palabras importantes están al inicio?"
+    name: 'Prueba de escaneo',
+    description: '¿Las palabras importantes están al inicio?',
   },
   {
-    name: "Prueba de unicidad",
-    description: "¿Cada enlace es diferente en la página?"
+    name: 'Prueba de unicidad',
+    description: '¿Cada enlace es diferente en la página?',
   },
   {
-    name: "Lectores de pantalla",
-    description: "Escucha cómo suenan tus enlaces"
-  }
-];
+    name: 'Lectores de pantalla',
+    description: 'Escucha cómo suenan tus enlaces',
+  },
+]
 ---
 
 <Layout title="Botones y Enlaces - a11yado">
   <article>
-    <header>
-      <h1>Botones y Enlaces</h1>
-      <p class="lead">
-        El texto de botones y enlaces debe comunicar claramente qué acción se realizará 
-        o a dónde llevará al usuario.
-      </p>
-    </header>
+    <Header
+      title="Botones y Enlaces"
+      description="El texto de botones y enlaces debe comunicar claramente qué acción se realizará o a dónde llevará al usuario."
+    />
 
     <section>
       <h2>¿Qué son los señalizadores?</h2>
       <p>
-        Los <strong>señalizadores</strong> son las pistas visuales, auditivas o textuales 
-        que indican cómo se puede interactuar con un elemento. En botones y enlaces, el texto es 
-        el señalizador más importante.
+        Los <strong>señalizadores</strong> son las pistas visuales, auditivas o textuales
+        que indican cómo se puede interactuar con un elemento. En botones y enlaces,
+        el texto es el señalizador más importante.
       </p>
 
       <Banner title="Señalizadores efectivos deben ser:" variant="concept">
         <ul>
-          <li><strong>Apropiados:</strong> Que correspondan con la acción o destino</li>
-          <li><strong>Claros:</strong> Fáciles de interpretar por tu audiencia</li>
+          <li>
+            <strong>Apropiados:</strong> Que correspondan con la acción o destino
+          </li>
+          <li>
+            <strong>Claros:</strong> Fáciles de interpretar por tu audiencia
+          </li>
           <li><strong>Específicos:</strong> Únicos y descriptivos</li>
         </ul>
       </Banner>
@@ -54,37 +57,56 @@ const buttonsLinksTools = [
 
     <section>
       <h2>Botones: Palabras de acción</h2>
-      <p>Los botones deben usar verbos que describan claramente la acción que se realizará.</p>
+      <p>
+        Los botones deben usar verbos que describan claramente la acción que se
+        realizará.
+      </p>
 
-      <div class="examples-grid">
-        <Banner title="❌ Ambiguo" variant="bad" subtitle="¿Sí a qué? ¿No a qué?">
+      <BannerGrid columns="2" gap="lg">
+        <Banner
+          title="❌ Ambiguo"
+          variant="bad"
+          subtitle="¿Sí a qué? ¿No a qué?"
+        >
           <div class="button-demo">
             <button class="demo-button">Sí</button>
             <button class="demo-button">No</button>
           </div>
         </Banner>
 
-        <Banner title="✅ Específico" variant="good" subtitle="Acción clara y específica">
+        <Banner
+          title="✅ Específico"
+          variant="good"
+          subtitle="Acción clara y específica"
+        >
           <div class="button-demo">
             <button class="demo-button">Guardar cambios</button>
             <button class="demo-button">Descartar</button>
           </div>
         </Banner>
-      </div>
+      </BannerGrid>
 
-      <div class="examples-grid">
-        <Banner title="❌ Genérico" variant="bad" subtitle="¿Continuar con qué?">
+      <BannerGrid columns="2" gap="lg">
+        <Banner
+          title="❌ Genérico"
+          variant="bad"
+          subtitle="¿Continuar con qué?"
+        >
           <div class="button-demo">
             <button class="demo-button">Continuar</button>
           </div>
         </Banner>
 
-        <Banner title="✅ Descriptivo" variant="good" subtitle="Acción y objeto claros">
+        <Banner
+          title="✅ Descriptivo"
+          variant="good"
+          subtitle="Acción y objeto claros"
+        >
           <div class="button-demo">
             <button class="demo-button">Descargar actualización</button>
           </div>
         </Banner>
-      </div>
+      </BannerGrid>
 
       <Banner title="💡 Fórmula para buenos botones" variant="tip">
         <p><strong>Verbo + Objeto = Claridad</strong></p>
@@ -99,53 +121,91 @@ const buttonsLinksTools = [
     <section>
       <h2>Enlaces: Evita "Leer más"</h2>
       <p>
-        Los enlaces ambiguos como "leer más", "clic aquí" o "detalles" crean problemas 
-        de usabilidad, accesibilidad y SEO.
+        Los enlaces ambiguos como "leer más", "clic aquí" o "detalles" crean
+        problemas de usabilidad, accesibilidad y SEO.
       </p>
 
       <div class="blog-comparison">
-        <Banner title="❌ Enlaces ambiguos" variant="bad" subtitle="Todos los enlaces dicen lo mismo">
+        <Banner
+          title="❌ Enlaces ambiguos"
+          variant="bad"
+          subtitle="Todos los enlaces dicen lo mismo"
+        >
           <div class="blog-posts">
             <article class="blog-post">
               <h5>Optimización de Bases de Datos</h5>
-              <p>Técnicas avanzadas para mejorar el rendimiento de consultas SQL...</p>
+              <p>
+                Técnicas avanzadas para mejorar el rendimiento de consultas
+                SQL...
+              </p>
               <a href="#" class="read-more-link">leer más</a>
               <div class="post-meta">Francisco C. Backend 2 comentarios</div>
             </article>
-            
+
             <article class="blog-post">
               <h5>Componentes Reutilizables</h5>
-              <p>Cómo crear componentes modulares que mejoren la mantenibilidad...</p>
+              <p>
+                Cómo crear componentes modulares que mejoren la
+                mantenibilidad...
+              </p>
               <a href="#" class="read-more-link">leer más</a>
               <div class="post-meta">Francisco C. Frontend 1 comentario</div>
             </article>
-            
+
             <article class="blog-post">
               <h5>Testing Automatizado</h5>
-              <p>Estrategias para implementar pruebas efectivas en tu aplicación...</p>
+              <p>
+                Estrategias para implementar pruebas efectivas en tu
+                aplicación...
+              </p>
               <a href="#" class="read-more-link">leer más</a>
               <div class="post-meta">Francisco C. Backend 3 comentarios</div>
             </article>
           </div>
         </Banner>
 
-        <Banner title="✅ Enlaces descriptivos" variant="good" subtitle="Cada enlace es único y descriptivo">
+        <Banner
+          title="✅ Enlaces descriptivos"
+          variant="good"
+          subtitle="Cada enlace es único y descriptivo"
+        >
           <div class="blog-posts">
             <article class="blog-post">
-              <h5><a href="#" class="title-link accessible-link">Optimización de Bases de Datos</a></h5>
-              <p>Técnicas avanzadas para mejorar el rendimiento de consultas SQL...</p>
+              <h5>
+                <a href="#" class="title-link accessible-link"
+                  >Optimización de Bases de Datos</a
+                >
+              </h5>
+              <p>
+                Técnicas avanzadas para mejorar el rendimiento de consultas
+                SQL...
+              </p>
               <div class="post-meta">Francisco C. Backend 2 comentarios</div>
             </article>
-            
+
             <article class="blog-post">
-              <h5><a href="#" class="title-link accessible-link">Componentes Reutilizables</a></h5>
-              <p>Cómo crear componentes modulares que mejoren la mantenibilidad...</p>
+              <h5>
+                <a href="#" class="title-link accessible-link"
+                  >Componentes Reutilizables</a
+                >
+              </h5>
+              <p>
+                Cómo crear componentes modulares que mejoren la
+                mantenibilidad...
+              </p>
               <div class="post-meta">Francisco C. Frontend 1 comentario</div>
             </article>
-            
+
             <article class="blog-post">
-              <h5><a href="#" class="title-link accessible-link">Testing Automatizado</a></h5>
-              <p>Estrategias para implementar pruebas efectivas en tu aplicación...</p>
+              <h5>
+                <a href="#" class="title-link accessible-link"
+                  >Testing Automatizado</a
+                >
+              </h5>
+              <p>
+                Estrategias para implementar pruebas efectivas en tu
+                aplicación...
+              </p>
               <div class="post-meta">Francisco C. Backend 3 comentarios</div>
             </article>
           </div>
@@ -159,97 +219,135 @@ const buttonsLinksTools = [
 
       <CardGrid columns="auto" minWidth="250px">
         <Card title="🖱️ Asume dispositivo" variant="danger" borderAccent>
-          <p>No todos usan ratón. Algunos usan teclado, pantalla táctil o tecnologías asistivas.</p>
+          <p>
+            No todos usan ratón. Algunos usan teclado, pantalla táctil o
+            tecnologías asistivas.
+          </p>
         </Card>
-        
+
         <Card title="🧠 Subestima al usuario" variant="danger" borderAccent>
-          <p>Los usuarios saben cómo hacer clic. No necesitan que se lo digas.</p>
+          <p>
+            Los usuarios saben cómo hacer clic. No necesitan que se lo digas.
+          </p>
         </Card>
-        
+
         <Card title="🎭 Oculta la acción" variant="danger" borderAccent>
           <p>No dice qué pasará al hacer clic. Es una promesa vacía.</p>
         </Card>
       </CardGrid>
 
-      <div class="examples-grid">
+      <BannerGrid columns="2" gap="lg">
         <Banner title="❌ Oculta información" variant="bad">
           <div class="link-demo">
-            <p>Para más consejos de programación <a href="#" class="demo-link">clic aquí</a></p>
-            <p>Para ver nuestros proyectos <a href="#" class="demo-link">clic aquí</a></p>
+            <p>
+              Para más consejos de programación <a href="#" class="demo-link"
+                >clic aquí</a
+              >
+            </p>
+            <p>
+              Para ver nuestros proyectos <a href="#" class="demo-link"
+                >clic aquí</a
+              >
+            </p>
           </div>
         </Banner>
 
         <Banner title="✅ Revela información" variant="good">
           <div class="link-demo">
-            <p><a href="#" class="demo-link">Suscríbete a nuestro newsletter</a> para más consejos de programación</p>
-            <p><a href="#" class="demo-link">Ve nuestro portafolio de proyectos</a></p>
+            <p>
+              <a href="#" class="demo-link">Suscríbete a nuestro newsletter</a> para
+              más consejos de programación
+            </p>
+            <p>
+              <a href="#" class="demo-link"
+                >Ve nuestro portafolio de proyectos</a
+              >
+            </p>
           </div>
         </Banner>
-      </div>
+      </BannerGrid>
     </section>
 
     <section>
       <h2>Frontloading: Lo importante primero</h2>
       <p>
-        Coloca las palabras más importantes al inicio del texto del enlace o botón. 
-        Los usuarios escanean de izquierda a derecha.
+        Coloca las palabras más importantes al inicio del texto del enlace o
+        botón. Los usuarios escanean de izquierda a derecha.
       </p>
-      <div class="examples-grid">
+      <BannerGrid columns="2" gap="lg">
+        <Banner title="❌ Casos problemáticos" variant="bad">
+          <div class="comparison">
+            <div class="before">
+              <span class="label">Acción:</span>
+              <button class="demo-button">Clic aquí para suscribirte</button>
+            </div>
+            <div class="before">
+              <span class="label">Tema:</span>
+              <a href="#" class="demo-link"
+                >Leer más sobre optimización de código</a
+              >
+            </div>
+          </div>
+        </Banner>
 
-      <Banner title="❌ Casos problemáticos" variant="bad">
-        <div class="comparison">
-          <div class="before">
-            <span class="label">Acción:</span>
-            <button class="demo-button">Clic aquí para suscribirte</button>
+        <Banner title="✅ Casos mejorados" variant="good">
+          <div class="comparison">
+            <div class="after">
+              <span class="label">Acción:</span>
+              <button class="demo-button"
+                >Suscríbete a nuestro newsletter</button
+              >
+            </div>
+            <div class="after">
+              <span class="label">Tema:</span>
+              <a href="#" class="demo-link"
+                >Técnicas de optimización de código</a
+              >
+            </div>
           </div>
-          <div class="before">
-            <span class="label">Tema:</span>
-            <a href="#" class="demo-link">Leer más sobre optimización de código</a>
-          </div>
-        </div>
-      </Banner>
-
-      <Banner title="✅ Casos mejorados" variant="good">
-        <div class="comparison">
-          <div class="after">
-            <span class="label">Acción:</span>
-            <button class="demo-button">Suscríbete a nuestro newsletter</button>
-          </div>
-          <div class="after">
-            <span class="label">Tema:</span>
-            <a href="#" class="demo-link">Técnicas de optimización de código</a>
-          </div>
-        </div>
-      </Banner>
-      </div>
+        </Banner>
+      </BannerGrid>
     </section>
 
     <section>
       <h2>Enlaces externos y archivos</h2>
-      <p>Indica cuando un enlace abre en nueva pestaña o descarga un archivo.</p>
+      <p>
+        Indica cuando un enlace abre en nueva pestaña o descarga un archivo.
+      </p>
 
+      <Banner
+        title="❌ URLs desnudas"
+        variant="bad"
+        subtitle="Difícil de leer y no describe el contenido"
+      >
+        <div class="link-demo">
+          <p>
+            Consulta la documentación en: <span class="naked-url"
+              >http://www.ejemplo.com/api-documentation.pdf</span
+            >
+          </p>
+        </div>
+      </Banner>
 
-        <Banner title="❌ URLs desnudas" variant="bad" subtitle="Difícil de leer y no describe el contenido">
-          <div class="link-demo">
-            <p>Consulta la documentación en: <span class="naked-url">http://www.ejemplo.com/api-documentation.pdf</span></p>
+      <Banner title="✅ Enlaces externos" variant="good">
+        <div class="link-demo">
+          <div class="link-item">
+            <a href="#" class="demo-link external"
+              >Documentación de React <span class="external-icon">↗</span></a
+            >
           </div>
-        </Banner>
-
-        <Banner title="✅ Enlaces externos" variant="good">
-          <div class="link-demo">
-            <div class="link-item">
-              <a href="#" class="demo-link external">Documentación de React <span class="external-icon">↗</span></a>
-            </div>
-            <div class="link-item">
-              <a href="#" class="demo-link external">Guía de JavaScript (PDF) <span class="file-icon">📄</span></a>
-            </div>
+          <div class="link-item">
+            <a href="#" class="demo-link external"
+              >Guía de JavaScript (PDF) <span class="file-icon">📄</span></a
+            >
           </div>
-        </Banner>
+        </div>
+      </Banner>
     </section>
 
     <section>
       <h2>Mejores prácticas resumidas</h2>
-      
+
       <CardGrid columns="auto" minWidth="250px">
         <Card title="🎯 Para botones" variant="primary" borderAccent>
           <ul>
@@ -280,25 +378,15 @@ const buttonsLinksTools = [
       </CardGrid>
     </section>
 
-    <ToolsSection 
-      title="Herramientas útiles"
-      tools={buttonsLinksTools}
-    >
+    <ToolsSection title="Herramientas útiles" tools={buttonsLinksTools}>
       <p>Para verificar la claridad de tus botones y enlaces:</p>
     </ToolsSection>
   </article>
 </Layout>
 
-<style>
+<style lang="scss">
   article {
     max-width: 90ch;
-  }
-
-  .examples-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: var(--spacing-lg);
-    margin: var(--spacing-xl) 0;
   }
 
   .button-demo {
@@ -318,10 +406,10 @@ const buttonsLinksTools = [
     font-weight: 500;
     cursor: pointer;
     transition: background-color 0.2s;
-  }
 
-  .demo-button:hover {
-    background-color: var(--color-primary-dark);
+    &:hover {
+      background-color: var(--color-primary-dark);
+    }
   }
 
   .blog-comparison {
@@ -329,6 +417,10 @@ const buttonsLinksTools = [
     grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
     gap: var(--spacing-xl);
     margin: var(--spacing-xl) 0;
+
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+    }
   }
 
   .blog-posts {
@@ -342,49 +434,49 @@ const buttonsLinksTools = [
     padding: var(--spacing-md);
     border-radius: 6px;
     border: 1px solid var(--color-border);
-  }
 
-  .blog-post h5 {
-    margin: 0 0 var(--spacing-sm) 0;
-    font-size: 1rem;
-    font-weight: 600;
-  }
+    h5 {
+      margin: 0 0 var(--spacing-sm) 0;
+      font-size: 1rem;
+      font-weight: 600;
+    }
 
-  .blog-post p {
-    margin: 0 0 var(--spacing-sm) 0;
-    font-size: 0.875rem;
-    color: var(--color-text-light);
+    p {
+      margin: 0 0 var(--spacing-sm) 0;
+      font-size: 0.875rem;
+      color: var(--color-text-light);
+    }
   }
 
   .read-more-link {
     color: var(--color-primary);
     text-decoration: none;
     font-size: 0.875rem;
-  }
 
-  .read-more-link:hover {
-    text-decoration: underline;
+    &:hover {
+      text-decoration: underline;
+    }
   }
 
   .title-link {
     color: var(--color-text);
     text-decoration: none;
     font-weight: 600;
-  }
 
-  .title-link:hover {
-    color: var(--color-primary);
-    text-decoration: underline;
+    &:hover {
+      color: var(--color-primary);
+      text-decoration: underline;
+    }
   }
 
   .accessible-link {
     color: var(--color-primary) !important;
     text-decoration: underline;
-  }
 
-  .accessible-link:hover {
-    color: var(--color-primary-dark) !important;
-    text-decoration: none;
+    &:hover {
+      color: var(--color-primary-dark) !important;
+      text-decoration: none;
+    }
   }
 
   .post-meta {
@@ -399,67 +491,24 @@ const buttonsLinksTools = [
 
   .link-item {
     margin-bottom: var(--spacing-sm);
-  }
 
-  .link-item:last-child {
-    margin-bottom: 0;
+    &:last-child {
+      margin-bottom: 0;
+    }
   }
 
   .demo-link {
     color: var(--color-primary);
     text-decoration: underline;
+
+    &:hover {
+      color: var(--color-primary-dark);
+    }
   }
 
-  .demo-link:hover {
-    color: var(--color-primary-dark);
-  }
-
-  .comparison {
-    display: flex;
-    flex-direction: column;
-    gap: var(--spacing-sm);
-  }
-
-  .before, .after {
-    display: flex;
-    align-items: center;
-    gap: var(--spacing-sm);
-  }
-
-  .label {
-    font-size: 0.875rem;
-    font-weight: 600;
-    min-width: 80px;
-  }
-
-  .external-icon, .file-icon {
+  .external-icon,
+  .file-icon {
     font-size: 0.875rem;
     margin-left: var(--spacing-xs);
   }
-
-  .naked-url {
-    color: var(--color-text-light);
-    font-family: monospace;
-    font-size: 0.875rem;
-    word-break: break-all;
-  }
-
-  @media (max-width: 768px) {
-    .examples-grid {
-      grid-template-columns: 1fr;
-    }
-
-    .blog-comparison {
-      grid-template-columns: 1fr;
-    }
-
-    .comparison {
-      gap: var(--spacing-md);
-    }
-
-    .before, .after {
-      flex-direction: column;
-      align-items: flex-start;
-    }
-  }
-</style> 
+</style>

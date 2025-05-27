@@ -1,19 +1,36 @@
 ---
-import Layout from '../../layouts/Layout.astro';
-import GuideHeader from '../../components/GuideHeader.astro';
+import Layout from '../../layouts/Layout.astro'
+import Header from '../../components/Header.astro'
+import Banner from '../../components/Banner.astro'
 ---
 
 <Layout title="Guías Prácticas - a11yado">
   <article>
-    <GuideHeader 
+    <Header
       title="Guías Prácticas"
       description="Conceptos de accesibilidad web explicados de forma simple y práctica, con ejemplos que puedes aplicar inmediatamente a tus proyectos."
     />
 
+    <Banner title="📚 Acerca de estas guías" variant="info">
+      <p>
+        Cada guía está diseñada para ser práctica y directa. Incluyen ejemplos
+        de código, demostraciones visuales y listas de verificación que puedes
+        usar en tus proyectos.
+      </p>
+      <p>
+        <strong>Recuerda:</strong> Estas guías simplifican conceptos complejos. Consulta
+        siempre la <a href="/documentation">documentación oficial</a>
+        para implementaciones profesionales.
+      </p>
+    </Banner>
+
     <section>
       <h2>Fundamentos Visuales</h2>
-      <p>Aspectos básicos de accesibilidad que afectan la percepción visual del contenido.</p>
-      
+      <p>
+        Aspectos básicos de accesibilidad que afectan la percepción visual del
+        contenido.
+      </p>
+
       <div class="guides-grid">
         <div class="guide-card available">
           <div class="guide-header">
@@ -21,17 +38,15 @@ import GuideHeader from '../../components/GuideHeader.astro';
             <span class="status available">Disponible</span>
           </div>
           <p>
-            Aprende a usar colores con contraste adecuado para que todos 
-            puedan leer tu contenido. Incluye ejemplos prácticos y herramientas.
+            Aprende a usar colores con contraste adecuado para que todos puedan
+            leer tu contenido. Incluye ejemplos prácticos y herramientas.
           </p>
           <div class="guide-topics">
             <span class="topic">Requisitos de contraste</span>
             <span class="topic">Combinaciones problemáticas</span>
             <span class="topic">Herramientas de verificación</span>
           </div>
-          <a href="/guides/colors" class="guide-link">
-            Ir a la guía →
-          </a>
+          <a href="/guides/colors" class="guide-link"> Ir a la guía → </a>
         </div>
 
         <div class="guide-card coming-soon">
@@ -40,8 +55,8 @@ import GuideHeader from '../../components/GuideHeader.astro';
             <span class="status coming-soon">Próximamente</span>
           </div>
           <p>
-            Tamaños de fuente, espaciado, legibilidad y cómo elegir 
-            tipografías que funcionen para todos los usuarios.
+            Tamaños de fuente, espaciado, legibilidad y cómo elegir tipografías
+            que funcionen para todos los usuarios.
           </p>
           <div class="guide-topics">
             <span class="topic">Tamaños mínimos</span>
@@ -56,8 +71,8 @@ import GuideHeader from '../../components/GuideHeader.astro';
             <span class="status coming-soon">Próximamente</span>
           </div>
           <p>
-            Cómo crear diseños que funcionen en todos los dispositivos 
-            y tamaños de pantalla de forma accesible.
+            Cómo crear diseños que funcionen en todos los dispositivos y tamaños
+            de pantalla de forma accesible.
           </p>
           <div class="guide-topics">
             <span class="topic">Breakpoints accesibles</span>
@@ -71,7 +86,7 @@ import GuideHeader from '../../components/GuideHeader.astro';
     <section>
       <h2>Interacción y Navegación</h2>
       <p>Cómo hacer tu sitio navegable y usable para todos los usuarios.</p>
-      
+
       <div class="guides-grid">
         <div class="guide-card available">
           <div class="guide-header">
@@ -79,7 +94,7 @@ import GuideHeader from '../../components/GuideHeader.astro';
             <span class="status available">Disponible</span>
           </div>
           <p>
-            Las 4 reglas oficiales de WCAG para crear estados de foco accesibles 
+            Las 4 reglas oficiales de WCAG para crear estados de foco accesibles
             que funcionen para todos los usuarios de teclado.
           </p>
           <div class="guide-topics">
@@ -87,9 +102,7 @@ import GuideHeader from '../../components/GuideHeader.astro';
             <span class="topic">Ejemplos prácticos</span>
             <span class="topic">Estrategias recomendadas</span>
           </div>
-          <a href="/guides/focus-states" class="guide-link">
-            Ir a la guía →
-          </a>
+          <a href="/guides/focus-states" class="guide-link"> Ir a la guía → </a>
         </div>
 
         <div class="guide-card coming-soon">
@@ -98,8 +111,8 @@ import GuideHeader from '../../components/GuideHeader.astro';
             <span class="status coming-soon">Próximamente</span>
           </div>
           <p>
-            Orden de tabulación, enlaces de salto y técnicas avanzadas 
-            para navegación completa por teclado.
+            Orden de tabulación, enlaces de salto y técnicas avanzadas para
+            navegación completa por teclado.
           </p>
           <div class="guide-topics">
             <span class="topic">Orden lógico de tabulación</span>
@@ -114,8 +127,8 @@ import GuideHeader from '../../components/GuideHeader.astro';
             <span class="status available">Disponible</span>
           </div>
           <p>
-            Cómo escribir texto claro y descriptivo para botones y enlaces 
-            que comunique efectivamente la acción o destino.
+            Cómo escribir texto claro y descriptivo para botones y enlaces que
+            comunique efectivamente la acción o destino.
           </p>
           <div class="guide-topics">
             <span class="topic">Señalizadores efectivos</span>
@@ -133,7 +146,7 @@ import GuideHeader from '../../components/GuideHeader.astro';
             <span class="status available">Disponible</span>
           </div>
           <p>
-            Las 7 técnicas clave para hacer botones que se vean claramente 
+            Las 7 técnicas clave para hacer botones que se vean claramente
             interactivos y comuniquen su función de forma inmediata.
           </p>
           <div class="guide-topics">
@@ -152,7 +165,7 @@ import GuideHeader from '../../components/GuideHeader.astro';
             <span class="status available">Disponible</span>
           </div>
           <p>
-            Cómo hacer que los enlaces sean visualmente distinguibles del texto 
+            Cómo hacer que los enlaces sean visualmente distinguibles del texto
             normal y consistentes entre sí, usando técnicas accesibles.
           </p>
           <div class="guide-topics">
@@ -160,9 +173,7 @@ import GuideHeader from '../../components/GuideHeader.astro';
             <span class="topic">Consistencia visual</span>
             <span class="topic">Colores luminosos</span>
           </div>
-          <a href="/guides/link-styling" class="guide-link">
-            Ir a la guía →
-          </a>
+          <a href="/guides/link-styling" class="guide-link"> Ir a la guía → </a>
         </div>
 
         <div class="guide-card coming-soon">
@@ -171,8 +182,8 @@ import GuideHeader from '../../components/GuideHeader.astro';
             <span class="status coming-soon">Próximamente</span>
           </div>
           <p>
-            Crear menús de navegación accesibles, migas de pan, 
-            y sistemas de navegación complejos.
+            Crear menús de navegación accesibles, migas de pan, y sistemas de
+            navegación complejos.
           </p>
           <div class="guide-topics">
             <span class="topic">Menús desplegables</span>
@@ -185,8 +196,10 @@ import GuideHeader from '../../components/GuideHeader.astro';
 
     <section>
       <h2>Formularios e Entrada de Datos</h2>
-      <p>Cómo crear formularios que sean fáciles de usar y accesibles para todos.</p>
-      
+      <p>
+        Cómo crear formularios que sean fáciles de usar y accesibles para todos.
+      </p>
+
       <div class="guides-grid">
         <div class="guide-card coming-soon">
           <div class="guide-header">
@@ -194,7 +207,7 @@ import GuideHeader from '../../components/GuideHeader.astro';
             <span class="status coming-soon">Próximamente</span>
           </div>
           <p>
-            Etiquetas, validación, mensajes de error y cómo estructurar 
+            Etiquetas, validación, mensajes de error y cómo estructurar
             formularios para que sean accesibles.
           </p>
           <div class="guide-topics">
@@ -210,7 +223,7 @@ import GuideHeader from '../../components/GuideHeader.astro';
             <span class="status coming-soon">Próximamente</span>
           </div>
           <p>
-            Checkboxes, botones de radio, selects, selectores de fecha y otros 
+            Checkboxes, botones de radio, selects, selectores de fecha y otros
             componentes accesibles de entrada de datos.
           </p>
           <div class="guide-topics">
@@ -225,7 +238,7 @@ import GuideHeader from '../../components/GuideHeader.astro';
     <section>
       <h2>Contenido y Estructura</h2>
       <p>Cómo organizar y presentar contenido de forma accesible.</p>
-      
+
       <div class="guides-grid">
         <div class="guide-card coming-soon">
           <div class="guide-header">
@@ -233,8 +246,8 @@ import GuideHeader from '../../components/GuideHeader.astro';
             <span class="status coming-soon">Próximamente</span>
           </div>
           <p>
-            Usar HTML semántico correctamente: encabezados, landmarks, 
-            listas y otros elementos estructurales.
+            Usar HTML semántico correctamente: encabezados, landmarks, listas y
+            otros elementos estructurales.
           </p>
           <div class="guide-topics">
             <span class="topic">Jerarquía de encabezados</span>
@@ -249,7 +262,7 @@ import GuideHeader from '../../components/GuideHeader.astro';
             <span class="status coming-soon">Próximamente</span>
           </div>
           <p>
-            Texto alternativo, imágenes decorativas, videos accesibles, 
+            Texto alternativo, imágenes decorativas, videos accesibles,
             transcripciones y subtítulos.
           </p>
           <div class="guide-topics">
@@ -265,8 +278,8 @@ import GuideHeader from '../../components/GuideHeader.astro';
             <span class="status coming-soon">Próximamente</span>
           </div>
           <p>
-            Crear tablas accesibles con encabezados apropiados, 
-            título descriptivo y estructura clara para lectores de pantalla.
+            Crear tablas accesibles con encabezados apropiados, título
+            descriptivo y estructura clara para lectores de pantalla.
           </p>
           <div class="guide-topics">
             <span class="topic">Encabezados de tabla</span>
@@ -276,24 +289,10 @@ import GuideHeader from '../../components/GuideHeader.astro';
         </div>
       </div>
     </section>
-
-    <div class="progress-info">
-      <h2>📚 Acerca de estas guías</h2>
-      <p>
-        Cada guía está diseñada para ser práctica y directa. Incluyen ejemplos de código, 
-        demostraciones visuales y listas de verificación que puedes 
-        usar en tus proyectos.
-      </p>
-      <p>
-        <strong>Recuerda:</strong> Estas guías simplifican conceptos complejos. 
-        Consulta siempre la <a href="/documentation">documentación oficial</a> 
-        para implementaciones profesionales.
-      </p>
-    </div>
   </article>
 </Layout>
 
-<style>
+<style lang="scss">
   article {
     max-width: 80ch;
   }
@@ -310,21 +309,29 @@ import GuideHeader from '../../components/GuideHeader.astro';
     border: 1px solid var(--color-border);
     border-radius: 8px;
     padding: var(--spacing-lg);
-    transition: transform 0.2s, box-shadow 0.2s;
+    transition:
+      transform 0.2s,
+      box-shadow 0.2s;
     position: relative;
-  }
 
-  .guide-card:hover {
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  }
+    &:hover {
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
 
-  .guide-card.available {
-    border-color: var(--color-primary);
-    border-width: 2px;
-  }
+    &.available {
+      border-color: var(--color-primary);
+      border-width: 2px;
+    }
 
-  .guide-card.coming-soon {
-    opacity: 0.7;
+    &.coming-soon {
+      opacity: 0.7;
+    }
+
+    p {
+      color: var(--color-text-light);
+      margin-bottom: var(--spacing-md);
+      line-height: 1.5;
+    }
   }
 
   .guide-header {
@@ -333,11 +340,11 @@ import GuideHeader from '../../components/GuideHeader.astro';
     align-items: flex-start;
     gap: var(--spacing-sm);
     margin-bottom: var(--spacing-md);
-  }
 
-  .guide-header h3 {
-    color: var(--color-primary);
-    flex: 1;
+    h3 {
+      color: var(--color-primary);
+      flex: 1;
+    }
   }
 
   .status {
@@ -347,22 +354,16 @@ import GuideHeader from '../../components/GuideHeader.astro';
     font-weight: 600;
     text-transform: uppercase;
     white-space: nowrap;
-  }
 
-  .status.available {
-    background-color: #16a34a;
-    color: white;
-  }
+    &.available {
+      background-color: #16a34a;
+      color: white;
+    }
 
-  .status.coming-soon {
-    background-color: #f59e0b;
-    color: white;
-  }
-
-  .guide-card p {
-    color: var(--color-text-light);
-    margin-bottom: var(--spacing-md);
-    line-height: 1.5;
+    &.coming-soon {
+      background-color: #f59e0b;
+      color: white;
+    }
   }
 
   .guide-topics {
@@ -389,37 +390,10 @@ import GuideHeader from '../../components/GuideHeader.astro';
     text-decoration: none;
     font-weight: 600;
     transition: color 0.2s;
-  }
 
-  .guide-link:hover {
-    color: var(--color-primary-dark);
-  }
-
-  .progress-info {
-    background-color: var(--color-surface);
-    border-radius: 8px;
-    padding: var(--spacing-xl);
-    margin: var(--spacing-2xl) 0;
-    border-left: 4px solid var(--color-primary);
-  }
-
-  .progress-info h2 {
-    margin-top: 0;
-    color: var(--color-primary);
-  }
-
-  .progress-info p {
-    margin-bottom: var(--spacing-md);
-    color: var(--color-text-light);
-  }
-
-  .progress-info p:last-child {
-    margin-bottom: 0;
-  }
-
-  .progress-info a {
-    color: var(--color-primary);
-    font-weight: 600;
+    &:hover {
+      color: var(--color-primary-dark);
+    }
   }
 
   @media (max-width: 768px) {
@@ -432,4 +406,4 @@ import GuideHeader from '../../components/GuideHeader.astro';
       align-items: flex-start;
     }
   }
-</style> 
+</style>

@@ -1,44 +1,45 @@
 ---
-import Layout from '../../layouts/Layout.astro';
-import GuideHeader from '../../components/GuideHeader.astro';
-import Banner from '../../components/Banner.astro';
-import Card from '../../components/Card.astro';
-import CardGrid from '../../components/CardGrid.astro';
-import Checklist from '../../components/Checklist.astro';
-import ToolsSection from '../../components/ToolsSection.astro';
+import Layout from '../../layouts/Layout.astro'
+import Header from '../../components/Header.astro'
+import Banner from '../../components/Banner.astro'
+import Card from '../../components/Card.astro'
+import CardGrid from '../../components/CardGrid.astro'
+import Checklist from '../../components/Checklist.astro'
+import ToolsSection from '../../components/ToolsSection.astro'
+import BannerGrid from '../../components/BannerGrid.astro'
 
 const checklistItems = [
-  "Los enlaces son visualmente diferentes del texto normal",
-  "Todos los enlaces usan el mismo estilo en toda la aplicación",
-  "No usas azul o subrayado para texto no-clickeable",
-  "Los enlaces son identificables sin depender solo del color",
-  "Los efectos hover/focus proporcionan retroalimentación clara",
-  "El contraste de color cumple con los requisitos WCAG"
-];
+  'Los enlaces son visualmente diferentes del texto normal',
+  'Todos los enlaces usan el mismo estilo en toda la aplicación',
+  'No usas azul o subrayado para texto no-clickeable',
+  'Los enlaces son identificables sin depender solo del color',
+  'Los efectos hover/focus proporcionan retroalimentación clara',
+  'El contraste de color cumple con los requisitos WCAG',
+]
 
 const linkTools = [
   {
-    name: "Contraste de color",
-    description: "WebAIM Color Contrast Checker"
+    name: 'Contraste de color',
+    description: 'WebAIM Color Contrast Checker',
   },
   {
-    name: "Colores luminosos WCAG",
-    description: "w3.org/WAI/WCAG22/working-examples/link-contrast"
+    name: 'Colores luminosos WCAG',
+    description: 'w3.org/WAI/WCAG22/working-examples/link-contrast',
   },
   {
-    name: "Simulador de daltonismo",
-    description: "Colorblinding.com"
+    name: 'Simulador de daltonismo',
+    description: 'Colorblinding.com',
   },
   {
-    name: "Test de navegación",
-    description: "Navega solo con teclado (Tab)"
-  }
-];
+    name: 'Test de navegación',
+    description: 'Navega solo con teclado (Tab)',
+  },
+]
 ---
 
 <Layout title="Estilizado de Enlaces - a11yado">
   <article>
-    <GuideHeader 
+    <Header
       title="Estilizado de Enlaces"
       description="Haz que los enlaces sean visualmente distinguibles del texto normal y consistentes entre sí, para que las personas puedan identificar qué es interactivo sin tener que explorar con el cursor."
     />
@@ -46,92 +47,145 @@ const linkTools = [
     <section>
       <h2>¿Por qué es importante el estilizado de enlaces?</h2>
       <p>
-        Los usuarios necesitan poder identificar qué elementos son interactivos simplemente 
-        mirando la interfaz. Si los enlaces se ven igual que el texto normal, las personas 
-        tendrán que "barrer" la página con el cursor para encontrar qué es clickeable.
+        Los usuarios necesitan poder identificar qué elementos son interactivos
+        simplemente mirando la interfaz. Si los enlaces se ven igual que el
+        texto normal, las personas tendrán que "barrer" la página con el cursor
+        para encontrar qué es clickeable.
       </p>
 
-      <Banner title="Un buen estilizado de enlaces debe ser:" variant="concept">
+      <Banner
+        title="🎯 Un buen estilizado de enlaces debe ser:"
+        variant="concept"
+      >
         <ul>
-          <li><strong>Distinguible:</strong> Claramente diferente del texto normal</li>
+          <li>
+            <strong>Distinguible:</strong> Claramente diferente del texto normal
+          </li>
           <li><strong>Consistente:</strong> Igual en toda la aplicación</li>
-          <li><strong>Accesible:</strong> Funciona para personas con daltonismo</li>
+          <li>
+            <strong>Accesible:</strong> Funciona para personas con daltonismo
+          </li>
         </ul>
       </Banner>
     </section>
 
     <section>
       <h2>Técnica recomendada: Subrayado + Color</h2>
-      <p>La forma más accesible de estilizar enlaces es combinar subrayado con color azul.</p>
+      <p>
+        La forma más accesible de estilizar enlaces es combinar subrayado con
+        color azul.
+      </p>
 
-      <div class="examples-grid">
+      <BannerGrid columns="2" gap="lg">
         <Banner title="✅ Enlaces accesibles" variant="good">
           <div class="text-demo">
             <p>
-              Para mejorar tu código JavaScript, consulta la 
-              <a href="#" class="accessible-link">guía de ES6+ y módulos</a> 
+              Para mejorar tu código JavaScript, consulta la
+              <a href="#" class="accessible-link">guía de ES6+ y módulos</a>
               que explica las características modernas del lenguaje.
             </p>
             <p>
-              También puedes revisar nuestros 
-              <a href="#" class="accessible-link">patrones de diseño en TypeScript</a> 
-              y <a href="#" class="accessible-link">mejores prácticas de testing</a>.
+              También puedes revisar nuestros
+              <a href="#" class="accessible-link"
+                >patrones de diseño en TypeScript</a
+              >
+              y <a href="#" class="accessible-link"
+                >mejores prácticas de testing</a
+              >.
             </p>
           </div>
-          <p class="example-desc">Subrayado + color azul = máxima accesibilidad</p>
+          <p class="example-desc">
+            Subrayado + color azul = máxima accesibilidad
+          </p>
         </Banner>
 
         <Banner title="❌ Enlaces problemáticos" variant="bad">
           <div class="text-demo">
             <p>
-              Para mejorar tu código JavaScript, consulta la 
-              <a href="#" class="problematic-link">guía de ES6+ y módulos</a> 
+              Para mejorar tu código JavaScript, consulta la
+              <a href="#" class="problematic-link">guía de ES6+ y módulos</a>
               que explica las características modernas del lenguaje.
             </p>
             <p>
-              También puedes revisar nuestros 
-              <a href="#" class="problematic-link">patrones de diseño en TypeScript</a> 
-              y <a href="#" class="problematic-link">mejores prácticas de testing</a>.
+              También puedes revisar nuestros
+              <a href="#" class="problematic-link"
+                >patrones de diseño en TypeScript</a
+              >
+              y <a href="#" class="problematic-link"
+                >mejores prácticas de testing</a
+              >.
             </p>
           </div>
-          <p class="example-desc">Solo color = invisible para personas con daltonismo</p>
+          <p class="example-desc">
+            Solo color = invisible para personas con daltonismo
+          </p>
         </Banner>
-      </div>
+      </BannerGrid>
     </section>
 
     <section>
       <h2>Estrategias de estilizado</h2>
-      <p>Si no quieres usar subrayado, aquí tienes 3 alternativas accesibles:</p>
+      <p>
+        Si no quieres usar subrayado, aquí tienes 3 alternativas accesibles:
+      </p>
 
       <CardGrid columns="auto" minWidth="300px">
-        <Card title="Estrategia 1: Otros estilos de texto" variant="primary" borderAccent>
+        <Card
+          title="Estrategia 1: Otros estilos de texto"
+          variant="primary"
+          borderAccent
+        >
           <div class="strategy-demo">
             <p>
-              Consulta nuestros <a href="#" class="bold-link">tutoriales de React</a> 
+              Consulta nuestros <a href="#" class="bold-link"
+                >tutoriales de React</a
+              >
               para ver técnicas avanzadas de componentes.
             </p>
           </div>
           <div class="strategy-details">
-            <p><strong>Opciones:</strong> Negrita, cursiva, tamaño de fuente, tipografía diferente, borde</p>
-            <p><strong>Importante:</strong> Solo usa ese estilo para enlaces, nunca para texto normal</p>
+            <p>
+              <strong>Opciones:</strong> Negrita, cursiva, tamaño de fuente, tipografía
+              diferente, borde
+            </p>
+            <p>
+              <strong>Importante:</strong> Solo usa ese estilo para enlaces, nunca
+              para texto normal
+            </p>
           </div>
         </Card>
 
-        <Card title="Estrategia 2: Color luminoso + efectos hover/focus" variant="primary" borderAccent>
+        <Card
+          title="Estrategia 2: Color luminoso + efectos hover/focus"
+          variant="primary"
+          borderAccent
+        >
           <div class="strategy-demo">
             <p>
-              Revisa la <a href="#" class="luminous-link">documentación de APIs REST</a> 
+              Revisa la <a href="#" class="luminous-link"
+                >documentación de APIs REST</a
+              >
               para más información sobre integración.
             </p>
           </div>
           <div class="strategy-details">
-            <p><strong>Requisitos:</strong> Contraste 3:1 con texto + 4.5:1 con fondo</p>
-            <p><strong>Efectos:</strong> Subrayado al hacer hover, borde al enfocar</p>
-            <p><strong>Nota:</strong> Menos accesible que el subrayado permanente</p>
+            <p>
+              <strong>Requisitos:</strong> Contraste 3:1 con texto + 4.5:1 con fondo
+            </p>
+            <p>
+              <strong>Efectos:</strong> Subrayado al hacer hover, borde al enfocar
+            </p>
+            <p>
+              <strong>Nota:</strong> Menos accesible que el subrayado permanente
+            </p>
           </div>
         </Card>
 
-        <Card title="Estrategia 3: Ubicación independiente" variant="primary" borderAccent>
+        <Card
+          title="Estrategia 3: Ubicación independiente"
+          variant="primary"
+          borderAccent
+        >
           <div class="strategy-demo">
             <div class="standalone-links">
               <a href="#" class="standalone-link">DOCUMENTACIÓN</a>
@@ -140,9 +194,13 @@ const linkTools = [
             </div>
           </div>
           <div class="strategy-details">
-            <p><strong>Ubicación:</strong> Separado del texto, no dentro de párrafos</p>
+            <p>
+              <strong>Ubicación:</strong> Separado del texto, no dentro de párrafos
+            </p>
             <p><strong>Estilo:</strong> Negrita o mayúsculas pequeñas</p>
-            <p><strong>Contexto:</strong> Su posición indica que es interactivo</p>
+            <p>
+              <strong>Contexto:</strong> Su posición indica que es interactivo
+            </p>
           </div>
         </Card>
       </CardGrid>
@@ -150,33 +208,48 @@ const linkTools = [
 
     <section>
       <h2>Comparación visual de estrategias</h2>
-      <p>Aquí puedes ver las diferentes estrategias aplicadas al mismo contenido:</p>
+      <p>
+        Aquí puedes ver las diferentes estrategias aplicadas al mismo contenido:
+      </p>
 
       <CardGrid columns="2" minWidth="280px">
         <Card title="Subrayado tradicional" variant="primary" borderAccent>
           <div class="blog-card">
-            <h5><a href="#" class="underlined-link">Arquitectura de Microservicios</a></h5>
-            <p>Cómo diseñar y implementar una arquitectura escalable con Node.js y Docker...</p>
-            <div class="meta">
-              Francisco Cerdán • Backend • 5 comentarios
-            </div>
+            <h5>
+              <a href="#" class="underlined-link"
+                >Arquitectura de Microservicios</a
+              >
+            </h5>
+            <p>
+              Cómo diseñar y implementar una arquitectura escalable con Node.js
+              y Docker...
+            </p>
+            <div class="meta">Francisco Cerdán • Backend • 5 comentarios</div>
           </div>
         </Card>
 
         <Card title="Color luminoso + hover" variant="primary" borderAccent>
           <div class="blog-card">
-            <h5><a href="#" class="luminous-hover-link">Arquitectura de Microservicios</a></h5>
-            <p>Cómo diseñar y implementar una arquitectura escalable con Node.js y Docker...</p>
-            <div class="meta">
-              Francisco Cerdán • Backend • 5 comentarios
-            </div>
+            <h5>
+              <a href="#" class="luminous-hover-link"
+                >Arquitectura de Microservicios</a
+              >
+            </h5>
+            <p>
+              Cómo diseñar y implementar una arquitectura escalable con Node.js
+              y Docker...
+            </p>
+            <div class="meta">Francisco Cerdán • Backend • 5 comentarios</div>
           </div>
         </Card>
 
         <Card title="Ubicación independiente" variant="primary" borderAccent>
           <div class="blog-card">
             <h5>Arquitectura de Microservicios</h5>
-            <p>Cómo diseñar y implementar una arquitectura escalable con Node.js y Docker...</p>
+            <p>
+              Cómo diseñar y implementar una arquitectura escalable con Node.js
+              y Docker...
+            </p>
             <div class="meta">Francisco Cerdán • Backend • 5 comentarios</div>
             <div class="standalone-actions">
               <a href="#" class="standalone-action">VER TUTORIAL</a>
@@ -184,13 +257,22 @@ const linkTools = [
           </div>
         </Card>
 
-        <Card title="Estilo alternativo (negrita)" variant="primary" borderAccent>
+        <Card
+          title="Estilo alternativo (negrita)"
+          variant="primary"
+          borderAccent
+        >
           <div class="blog-card">
-            <h5><a href="#" class="bold-style-link">Arquitectura de Microservicios</a></h5>
-            <p>Cómo diseñar y implementar una arquitectura escalable con Node.js y Docker...</p>
-            <div class="meta">
-              Francisco Cerdán • Backend • 5 comentarios
-            </div>
+            <h5>
+              <a href="#" class="bold-style-link"
+                >Arquitectura de Microservicios</a
+              >
+            </h5>
+            <p>
+              Cómo diseñar y implementar una arquitectura escalable con Node.js
+              y Docker...
+            </p>
+            <div class="meta">Francisco Cerdán • Backend • 5 comentarios</div>
           </div>
         </Card>
       </CardGrid>
@@ -201,7 +283,11 @@ const linkTools = [
       <p>Una vez que elijas un estilo, manténlo en toda tu aplicación.</p>
 
       <CardGrid columns="auto" minWidth="280px">
-        <Card title="🔒 Reserva estos elementos SOLO para enlaces" variant="danger" borderAccent>
+        <Card
+          title="🔒 Reserva estos elementos SOLO para enlaces"
+          variant="danger"
+          borderAccent
+        >
           <ul>
             <li>Subrayado</li>
             <li>Texto azul</li>
@@ -212,17 +298,26 @@ const linkTools = [
           </p>
         </Card>
 
-        <Card title="🎨 Elige un color para elementos interactivos" variant="primary" borderAccent>
+        <Card
+          title="🎨 Elige un color para elementos interactivos"
+          variant="primary"
+          borderAccent
+        >
           <p>
-            Reserva un color específico para todos los elementos clickeables 
+            Reserva un color específico para todos los elementos clickeables
             (enlaces, botones) y evita usarlo en elementos no-interactivos.
           </p>
         </Card>
 
-        <Card title="📐 Mantén consistencia visual" variant="primary" borderAccent>
+        <Card
+          title="📐 Mantén consistencia visual"
+          variant="primary"
+          borderAccent
+        >
           <p>
-            Si eliges negrita para enlaces, úsala siempre. Si eliges subrayado, 
-            úsalo siempre. La consistencia ayuda a los usuarios a aprender tu interfaz.
+            Si eliges negrita para enlaces, úsala siempre. Si eliges subrayado,
+            úsalo siempre. La consistencia ayuda a los usuarios a aprender tu
+            interfaz.
           </p>
         </Card>
       </CardGrid>
@@ -230,16 +325,18 @@ const linkTools = [
 
     <section>
       <h2>Errores comunes a evitar</h2>
-      
-      <CardGrid columns="auto" minWidth="300px">
+
+      <BannerGrid columns="2" gap="lg">
         <Banner title="❌ Usar azul para texto no-clickeable" variant="bad">
           <div class="mistake-demo">
             <p>
-              <span class="fake-link">Nota importante:</span> 
+              <span class="fake-link">Nota importante:</span>
               Recuerda validar todas las entradas del usuario antes de procesarlas.
             </p>
           </div>
-          <p class="mistake-desc">El texto azul parece un enlace pero no lo es</p>
+          <p class="mistake-desc">
+            El texto azul parece un enlace pero no lo es
+          </p>
         </Banner>
 
         <Banner title="❌ Subrayar texto decorativo" variant="bad">
@@ -247,7 +344,9 @@ const linkTools = [
             <p>
               <span class="fake-underline">Configuración del Proyecto</span>
             </p>
-            <p>Aquí están los pasos para configurar tu entorno de desarrollo...</p>
+            <p>
+              Aquí están los pasos para configurar tu entorno de desarrollo...
+            </p>
           </div>
           <p class="mistake-desc">El subrayado sugiere que es clickeable</p>
         </Banner>
@@ -255,19 +354,19 @@ const linkTools = [
         <Banner title="❌ Enlaces inconsistentes" variant="bad">
           <div class="mistake-demo">
             <p>
-              Ve nuestros <a href="#" class="inconsistent-1">repositorios</a> y 
+              Ve nuestros <a href="#" class="inconsistent-1">repositorios</a> y
               <a href="#" class="inconsistent-2">tutoriales</a> para más información.
             </p>
           </div>
           <p class="mistake-desc">Diferentes estilos confunden al usuario</p>
         </Banner>
-      </CardGrid>
+      </BannerGrid>
     </section>
 
     <section>
       <h2>Lista de verificación</h2>
-      
-      <Checklist 
+
+      <Checklist
         title="✅ Antes de publicar, verifica que:"
         items={checklistItems}
         variant="success"
@@ -276,26 +375,16 @@ const linkTools = [
 
     <section>
       <h2>Herramientas útiles</h2>
-      <ToolsSection 
-        title="Herramientas útiles"
-        tools={linkTools}
-      >
+      <ToolsSection title="Herramientas útiles" tools={linkTools}>
         <p>Para verificar la accesibilidad de tus enlaces:</p>
       </ToolsSection>
     </section>
   </article>
 </Layout>
 
-<style>
+<style lang="scss">
   article {
     max-width: 90ch;
-  }
-
-  .examples-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-    gap: var(--spacing-lg);
-    margin: var(--spacing-xl) 0;
   }
 
   .text-demo {
@@ -304,33 +393,33 @@ const linkTools = [
     border-radius: 6px;
     margin: var(--spacing-md) 0;
     border: 1px solid var(--color-border);
-  }
 
-  .text-demo p {
-    margin: 0 0 var(--spacing-sm) 0;
-    line-height: 1.6;
-  }
+    p {
+      margin: 0 0 var(--spacing-sm) 0;
+      line-height: 1.6;
 
-  .text-demo p:last-child {
-    margin-bottom: 0;
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
   }
 
   .accessible-link {
     color: #0066cc;
     text-decoration: underline;
-  }
 
-  .accessible-link:hover {
-    color: #004499;
+    &:hover {
+      color: #004499;
+    }
   }
 
   .problematic-link {
     color: #0066cc;
     text-decoration: none;
-  }
 
-  .problematic-link:hover {
-    color: #004499;
+    &:hover {
+      color: #004499;
+    }
   }
 
   .example-desc {
@@ -346,43 +435,37 @@ const linkTools = [
     border-radius: 6px;
     margin: var(--spacing-md) 0;
     border: 1px solid var(--color-border);
-  }
 
-  .strategy-demo p {
-    margin: 0;
-    line-height: 1.6;
+    p {
+      margin: 0;
+      line-height: 1.6;
+    }
   }
 
   .bold-link {
     color: var(--color-text);
     text-decoration: none;
     font-weight: 700;
-  }
 
-  .bold-link:hover {
-    color: var(--color-primary);
+    &:hover {
+      color: var(--color-primary);
+    }
   }
 
   .luminous-link {
     color: #0066cc;
     text-decoration: none;
     transition: all 0.2s;
-  }
 
-  .luminous-link:hover {
-    text-decoration: underline;
-    color: #004499;
-  }
+    &:hover {
+      text-decoration: underline;
+      color: #004499;
+    }
 
-  .luminous-link:focus {
-    outline: 2px solid #0066cc;
-    outline-offset: 2px;
-  }
-
-  .standalone-links {
-    display: flex;
-    gap: var(--spacing-md);
-    flex-wrap: wrap;
+    &:focus {
+      outline: 2px solid #0066cc;
+      outline-offset: 2px;
+    }
   }
 
   .standalone-link {
@@ -391,20 +474,10 @@ const linkTools = [
     font-weight: 700;
     font-size: 0.875rem;
     letter-spacing: 0.5px;
-  }
 
-  .standalone-link:hover {
-    color: var(--color-primary);
-  }
-
-  .strategy-details {
-    margin-top: var(--spacing-md);
-  }
-
-  .strategy-details p {
-    margin: var(--spacing-xs) 0;
-    font-size: 0.875rem;
-    color: var(--color-text-light);
+    &:hover {
+      color: var(--color-primary);
+    }
   }
 
   .blog-card {
@@ -412,20 +485,20 @@ const linkTools = [
     padding: var(--spacing-md);
     border-radius: 6px;
     border: 1px solid var(--color-border);
-  }
 
-  .blog-card h5 {
-    margin: 0 0 var(--spacing-sm) 0;
-    font-size: 1rem;
-    font-weight: 600;
-    color: var(--color-text);
-  }
+    h5 {
+      margin: 0 0 var(--spacing-sm) 0;
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--color-text);
+    }
 
-  .blog-card p {
-    margin: 0 0 var(--spacing-sm) 0;
-    font-size: 0.875rem;
-    color: var(--color-text-light);
-    line-height: 1.5;
+    p {
+      margin: 0 0 var(--spacing-sm) 0;
+      font-size: 0.875rem;
+      color: var(--color-text-light);
+      line-height: 1.5;
+    }
   }
 
   .meta {
@@ -436,21 +509,21 @@ const linkTools = [
   .underlined-link {
     color: #0066cc;
     text-decoration: underline;
-  }
 
-  .underlined-link:hover {
-    color: #004499;
+    &:hover {
+      color: #004499;
+    }
   }
 
   .luminous-hover-link {
     color: #0066cc;
     text-decoration: none;
     transition: all 0.2s;
-  }
 
-  .luminous-hover-link:hover {
-    text-decoration: underline;
-    color: #004499;
+    &:hover {
+      text-decoration: underline;
+      color: #004499;
+    }
   }
 
   .standalone-actions {
@@ -465,20 +538,20 @@ const linkTools = [
     font-weight: 700;
     font-size: 0.75rem;
     letter-spacing: 0.5px;
-  }
 
-  .standalone-action:hover {
-    color: var(--color-primary);
+    &:hover {
+      color: var(--color-primary);
+    }
   }
 
   .bold-style-link {
     color: var(--color-text);
     text-decoration: none;
     font-weight: 700;
-  }
 
-  .bold-style-link:hover {
-    color: var(--color-primary);
+    &:hover {
+      color: var(--color-primary);
+    }
   }
 
   .rule-note {
@@ -494,11 +567,11 @@ const linkTools = [
     border-radius: 6px;
     margin: var(--spacing-md) 0;
     border: 1px solid var(--color-border);
-  }
 
-  .mistake-demo p {
-    margin: 0;
-    line-height: 1.6;
+    p {
+      margin: 0;
+      line-height: 1.6;
+    }
   }
 
   .fake-link {
@@ -528,16 +601,4 @@ const linkTools = [
     margin: var(--spacing-sm) 0 0 0;
     font-style: italic;
   }
-
-
-  @media (max-width: 768px) {
-    .examples-grid {
-      grid-template-columns: 1fr;
-    }
-
-    .standalone-links {
-      flex-direction: column;
-      align-items: flex-start;
-    }
-  }
-</style> 
+</style>

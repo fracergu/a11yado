@@ -1,17 +1,17 @@
 ---
 export interface Props {
-  title?: string;
-  subtitle?: string;
-  variant?: 'good' | 'bad' | 'info' | 'tip' | 'concept' | 'warning' | 'neutral';
-  class?: string;
+  title?: string
+  subtitle?: string
+  variant?: 'good' | 'bad' | 'info' | 'tip' | 'concept' | 'warning' | 'neutral'
+  class?: string
 }
 
-const { 
-  title, 
+const {
+  title,
   subtitle,
   variant = 'neutral',
-  class: className = '' 
-} = Astro.props;
+  class: className = '',
+} = Astro.props
 
 const variantClasses = {
   good: 'border-green-600 bg-green-50',
@@ -20,8 +20,8 @@ const variantClasses = {
   tip: 'border-yellow-500 bg-yellow-50',
   concept: 'border-cyan-600 bg-cyan-50',
   warning: 'border-orange-500 bg-orange-50',
-  neutral: 'border-gray-300 bg-gray-50'
-};
+  neutral: 'border-gray-300 bg-gray-50',
+}
 
 const titleColors = {
   good: 'text-green-800',
@@ -30,8 +30,8 @@ const titleColors = {
   tip: 'text-yellow-800',
   concept: 'text-cyan-800',
   warning: 'text-orange-800',
-  neutral: 'text-gray-800'
-};
+  neutral: 'text-gray-800',
+}
 
 const borderWidths = {
   good: 'border-2',
@@ -40,24 +40,18 @@ const borderWidths = {
   tip: 'border-1',
   concept: 'border-1',
   warning: 'border-1',
-  neutral: 'border-1'
-};
+  neutral: 'border-1',
+}
 ---
 
-<div class={`banner ${variantClasses[variant]} ${borderWidths[variant]} ${className}`}>
-  {title && (
-    <h4 class={`banner-title ${titleColors[variant]}`}>
-      {title}
-    </h4>
-  )}
+<div
+  class={`banner ${variantClasses[variant]} ${borderWidths[variant]} ${className}`}
+>
+  {title && <h4 class={`banner-title ${titleColors[variant]}`}>{title}</h4>}
   <div class="banner-content">
     <slot />
   </div>
-  {subtitle && (
-    <p class="banner-subtitle">
-      {subtitle}
-    </p>
-  )}
+  {subtitle && <p class="banner-subtitle">{subtitle}</p>}
 </div>
 
 <style>
@@ -217,4 +211,4 @@ const borderWidths = {
       padding: var(--spacing-md);
     }
   }
-</style> 
+</style>

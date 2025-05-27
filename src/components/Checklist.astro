@@ -1,29 +1,29 @@
 ---
 export interface Props {
-  title?: string;
-  items: string[];
-  variant?: 'success' | 'primary' | 'warning';
-  class?: string;
+  title?: string
+  items: string[]
+  variant?: 'success' | 'primary' | 'warning'
+  class?: string
 }
 
-const { 
-  title = "✅ Lista de verificación", 
+const {
+  title = '✅ Lista de verificación',
   items,
   variant = 'success',
-  class: className = '' 
-} = Astro.props;
+  class: className = '',
+} = Astro.props
 
 const variantClasses = {
   success: 'border-l-green-500 bg-green-50',
   primary: 'border-l-color-primary bg-color-surface',
-  warning: 'border-l-yellow-500 bg-yellow-50'
-};
+  warning: 'border-l-yellow-500 bg-yellow-50',
+}
 
 const titleColors = {
   success: 'text-green-700',
-  primary: 'text-color-primary', 
-  warning: 'text-yellow-700'
-};
+  primary: 'text-color-primary',
+  warning: 'text-yellow-700',
+}
 ---
 
 <div class={`checklist ${variantClasses[variant]} ${className}`}>
@@ -31,19 +31,27 @@ const titleColors = {
     {title}
   </h4>
   <div class="checklist-grid">
-    {items.map((item) => (
-      <label class="checklist-item">
-        <div class="checkbox-container">
-          <input type="checkbox" class="checkbox-input" />
-          <div class="checkbox-custom">
-            <svg class="checkbox-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
-              <polyline points="20,6 9,17 4,12"></polyline>
-            </svg>
+    {
+      items.map((item) => (
+        <label class="checklist-item">
+          <div class="checkbox-container">
+            <input type="checkbox" class="checkbox-input" />
+            <div class="checkbox-custom">
+              <svg
+                class="checkbox-icon"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="3"
+              >
+                <polyline points="20,6 9,17 4,12" />
+              </svg>
+            </div>
           </div>
-        </div>
-        <span class="checklist-text">{item}</span>
-      </label>
-    ))}
+          <span class="checklist-text">{item}</span>
+        </label>
+      ))
+    }
   </div>
 </div>
 
@@ -199,7 +207,7 @@ const titleColors = {
     .checklist {
       padding: var(--spacing-lg);
     }
-    
+
     .checklist-grid {
       grid-template-columns: 1fr;
     }
@@ -208,4 +216,4 @@ const titleColors = {
       font-size: 1rem;
     }
   }
-</style> 
+</style>

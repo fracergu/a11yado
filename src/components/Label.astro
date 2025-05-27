@@ -1,21 +1,17 @@
 ---
 export interface Props {
-  text: string;
-  variant?: 'default' | 'small' | 'muted';
-  class?: string;
+  text: string
+  variant?: 'default' | 'small' | 'muted'
+  class?: string
 }
 
-const { 
-  text,
-  variant = 'default',
-  class: className = '' 
-} = Astro.props;
+const { text, variant = 'default', class: className = '' } = Astro.props
 
 const variantClasses = {
   default: 'text-color-text-light text-sm',
   small: 'text-color-text-light text-xs',
-  muted: 'text-color-text-light text-sm opacity-75'
-};
+  muted: 'text-color-text-light text-sm opacity-75',
+}
 ---
 
 <span class={`label ${variantClasses[variant]} ${className}`}>
@@ -45,4 +41,4 @@ const variantClasses = {
   .opacity-75 {
     opacity: 0.75;
   }
-</style> 
+</style>

@@ -1,51 +1,59 @@
 ---
 export interface Props {
-  title?: string;
+  title?: string
   tools?: Array<{
-    name: string;
-    description: string;
-    url?: string;
-  }>;
-  showToolsPageLink?: boolean;
-  class?: string;
+    name: string
+    description: string
+    url?: string
+  }>
+  showToolsPageLink?: boolean
+  class?: string
 }
 
-const { 
-  title = "Herramientas útiles",
+const {
+  title = 'Herramientas útiles',
   tools = [],
   showToolsPageLink = true,
-  class: className = '' 
-} = Astro.props;
+  class: className = '',
+} = Astro.props
 ---
 
 <section class={`tools-section ${className}`}>
   <h2>{title}</h2>
   <div class="tools">
-    {tools.length > 0 && (
-      <>
-        <p>Para verificar y mejorar la accesibilidad:</p>
-        <ul class="tools-list">
-          {tools.map((tool) => (
-            <li>
-              <strong>{tool.name}:</strong> 
-              {tool.url ? (
-                <a href={tool.url} target="_blank" rel="noopener">{tool.description}</a>
-              ) : (
-                tool.description
-              )}
-            </li>
-          ))}
-        </ul>
-      </>
-    )}
-    
+    {
+      tools.length > 0 && (
+        <>
+          <p>Para verificar y mejorar la accesibilidad:</p>
+          <ul class="tools-list">
+            {tools.map((tool) => (
+              <li>
+                <strong>{tool.name}:</strong>
+                {tool.url ? (
+                  <a href={tool.url} target="_blank" rel="noopener">
+                    {tool.description}
+                  </a>
+                ) : (
+                  tool.description
+                )}
+              </li>
+            ))}
+          </ul>
+        </>
+      )
+    }
+
     <slot />
-    
-    {showToolsPageLink && (
-      <p class="tools-note">
-        💡 <strong>Consejo:</strong> Consulta la página de <a href="/tools">Herramientas</a> para una lista completa de recursos de accesibilidad.
-      </p>
-    )}
+
+    {
+      showToolsPageLink && (
+        <p class="tools-note">
+          💡 <strong>Consejo:</strong> Consulta la página de{' '}
+          <a href="/tools">Herramientas</a> para una lista completa de recursos
+          de accesibilidad.
+        </p>
+      )
+    }
   </div>
 </section>
 
@@ -99,4 +107,4 @@ const {
       font-size: 1.5rem;
     }
   }
-</style> 
+</style>

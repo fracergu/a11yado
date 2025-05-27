@@ -1,77 +1,75 @@
 ---
-import Layout from '../../layouts/Layout.astro';
-import Card from '../../components/Card.astro';
-import CardGrid from '../../components/CardGrid.astro';
-import Checklist from '../../components/Checklist.astro';
-import ToolsSection from '../../components/ToolsSection.astro';
-import Banner from '../../components/Banner.astro';
-import OrderedList from '../../components/OrderedList.astro';
-import OrderedListItem from '../../components/OrderedListItem.astro';
-import GuideHeader from '../../components/GuideHeader.astro';
-
-const wcagRules = [
-  {
-    title: "Tamaño del Indicador",
-    content: "El indicador de foco debe ser al menos tan grande como un perímetro de 2px CSS alrededor del componente. Solución simple: Usa un outline sólido de 2px o más grueso."
-  },
-  {
-    title: "Contraste de Color", 
-    content: "Debe haber contraste 3:1 o mayor entre los estados enfocado y no enfocado. Ejemplo: Fondo blanco → outline azul = cambio de blanco a azul."
-  },
-  {
-    title: "Contraste Adyacente",
-    content: "El indicador debe tener contraste 3:1 o mayor contra los colores adyacentes (fondo y componente). Tip: Usa un gap entre el outline y el elemento para simplificar."
-  },
-  {
-    title: "No Oculto",
-    content: "El componente enfocado no debe estar oculto por contenido como headers pegajosos o modales. Cuidado con: Sticky headers, footers y overlays."
-  }
-];
+import Layout from '../../layouts/Layout.astro'
+import Card from '../../components/Card.astro'
+import CardGrid from '../../components/CardGrid.astro'
+import Checklist from '../../components/Checklist.astro'
+import ToolsSection from '../../components/ToolsSection.astro'
+import Banner from '../../components/Banner.astro'
+import OrderedList from '../../components/OrderedList.astro'
+import OrderedListItem from '../../components/OrderedListItem.astro'
+import Header from '../../components/Header.astro'
 
 const checklistItems = [
-  "¿El outline es de al menos 2px de grosor?",
-  "¿Hay contraste 3:1+ entre estados enfocado/no enfocado?",
-  "¿El indicador contrasta 3:1+ con colores adyacentes?",
-  "¿Los elementos enfocados no se ocultan tras otros contenidos?",
-  "¿El estilo comunica claramente \"enfocado\"?",
-  "¿Funciona en modo claro y oscuro?",
-  "¿Todos los elementos interactivos tienen estado de foco?",
-  "¿El orden de tabulación es lógico?"
-];
+  '¿El outline es de al menos 2px de grosor?',
+  '¿Hay contraste 3:1+ entre estados enfocado/no enfocado?',
+  '¿El indicador contrasta 3:1+ con colores adyacentes?',
+  '¿Los elementos enfocados no se ocultan tras otros contenidos?',
+  '¿El estilo comunica claramente "enfocado"?',
+  '¿Funciona en modo claro y oscuro?',
+  '¿Todos los elementos interactivos tienen estado de foco?',
+  '¿El orden de tabulación es lógico?',
+]
 
 const focusTools = [
   {
-    name: "Navegación por teclado",
-    description: "Usa solo Tab, Shift+Tab, Enter, Space"
+    name: 'Navegación por teclado',
+    description: 'Usa solo Tab, Shift+Tab, Enter, Space',
   },
   {
-    name: "Herramientas de contraste",
-    description: "WebAIM, Colour Contrast Analyser"
+    name: 'Herramientas de contraste',
+    description: 'WebAIM, Colour Contrast Analyser',
   },
   {
-    name: "DevTools",
-    description: "Inspecciona estados :focus en el navegador"
-  }
-];
+    name: 'DevTools',
+    description: 'Inspecciona estados :focus en el navegador',
+  },
+]
 ---
 
 <Layout title="Estados de Foco - a11yado">
   <article>
-    <GuideHeader title="Estados de Foco" description="Los estados de foco son indicadores visuales que muestran qué elemento está actualmente seleccionado para interacción por teclado. Son esenciales para la navegación accesible." />
+    <Header
+      title="Estados de Foco"
+      description="Los estados de foco son indicadores visuales que muestran qué elemento está actualmente seleccionado para interacción por teclado. Son esenciales para la navegación accesible."
+    />
 
     <section>
       <h2>¿Por qué son importantes?</h2>
       <p>
-        Los estados de foco permiten a los usuarios navegar tu sitio usando solo el teclado. 
-        Sin indicadores claros, es imposible saber dónde estás en la página.
+        Los estados de foco permiten a los usuarios navegar tu sitio usando solo
+        el teclado. Sin indicadores claros, es imposible saber dónde estás en la
+        página.
       </p>
 
-      <Banner title="Usuarios que dependen de estados de foco:" variant="concept">
+      <Banner
+        title="👥 Usuarios que dependen de estados de foco"
+        variant="concept"
+      >
         <ul>
-          <li><strong>Usuarios de teclado:</strong> Personas con discapacidades motoras</li>
-          <li><strong>Usuarios de lectores de pantalla:</strong> Personas con discapacidades visuales</li>
-          <li><strong>Usuarios de switch control:</strong> Personas con movilidad limitada</li>
-          <li><strong>Usuarios avanzados:</strong> Desarrolladores y power users que prefieren el teclado</li>
+          <li>
+            <strong>Usuarios de teclado:</strong> Personas con discapacidades motoras
+          </li>
+          <li>
+            <strong>Usuarios de lectores de pantalla:</strong> Personas con discapacidades
+            visuales
+          </li>
+          <li>
+            <strong>Usuarios de switch control:</strong> Personas con movilidad limitada
+          </li>
+          <li>
+            <strong>Usuarios avanzados:</strong> Desarrolladores y power users que
+            prefieren el teclado
+          </li>
         </ul>
       </Banner>
     </section>
@@ -79,57 +77,83 @@ const focusTools = [
     <section>
       <h2>Las 4 reglas oficiales de WCAG</h2>
       <p>
-        Para que un estado de foco sea accesible, debe cumplir estos 4 criterios oficiales 
-        más 1 regla bonus de usabilidad.
+        Para que un estado de foco sea accesible, debe cumplir estos 4 criterios
+        oficiales más 1 regla bonus de usabilidad.
       </p>
 
       <OrderedList>
         <OrderedListItem number={1} title="Tamaño del Indicador">
-          <p>El indicador de foco debe ser al menos tan grande como un perímetro de 2px CSS alrededor del componente. Solución simple: Usa un outline sólido de 2px o más grueso.</p>
+          <p>
+            El indicador de foco debe ser al menos tan grande como un perímetro
+            de 2px CSS alrededor del componente. Solución simple: Usa un outline
+            sólido de 2px o más grueso.
+          </p>
         </OrderedListItem>
 
         <OrderedListItem number={2} title="Contraste de Color">
-          <p>Debe haber contraste 3:1 o mayor entre los estados enfocado y no enfocado. Ejemplo: Fondo blanco → outline azul = cambio de blanco a azul.</p>
+          <p>
+            Debe haber contraste 3:1 o mayor entre los estados enfocado y no
+            enfocado. Ejemplo: Fondo blanco → outline azul = cambio de blanco a
+            azul.
+          </p>
         </OrderedListItem>
 
         <OrderedListItem number={3} title="Contraste Adyacente">
-          <p>El indicador debe tener contraste 3:1 o mayor contra los colores adyacentes (fondo y componente). Tip: Usa un gap entre el outline y el elemento para simplificar.</p>
+          <p>
+            El indicador debe tener contraste 3:1 o mayor contra los colores
+            adyacentes (fondo y componente). Tip: Usa un gap entre el outline y
+            el elemento para simplificar.
+          </p>
         </OrderedListItem>
 
         <OrderedListItem number={4} title="No Oculto">
-          <p>El componente enfocado no debe estar oculto por contenido como headers pegajosos o modales. Cuidado con: Sticky headers, footers y overlays.</p>
+          <p>
+            El componente enfocado no debe estar oculto por contenido como
+            headers pegajosos o modales. Cuidado con: Sticky headers, footers y
+            overlays.
+          </p>
         </OrderedListItem>
       </OrderedList>
 
-      <div class="bonus-rule">
-        <div class="rule-card bonus">
-          <div class="rule-number">+</div>
-          <h3>Señalizadores Apropiados</h3>
-          <p>
-            El estilo debe <strong>comunicar claramente</strong> que el elemento 
-            está enfocado, no confundirse con otros estados.
-          </p>
-          <div class="rule-detail">
-            <strong>Pregunta clave:</strong> ¿Se ve realmente enfocado?
-          </div>
-        </div>
-      </div>
+      <Banner title="🎯 Señalizadores apropiados" variant="concept">
+        <p>
+          El estilo debe <strong>comunicar claramente</strong> que el elemento está
+          enfocado, no confundirse con otros estados.
+        </p>
+        <p>
+          <strong>Pregunta clave:</strong> ¿Se ve realmente enfocado?
+        </p>
+      </Banner>
     </section>
 
     <section>
       <h2>Ejemplos prácticos</h2>
-      <Banner title="💡 Tip:" variant="tip">
-        Usa la tecla <kbd>Tab</kbd> para navegar entre los elementos o pasa el ratón por encima para ver sus estados de foco en acción.
+      <Banner title="💡 Tip" variant="tip">
+        Usa la tecla <kbd>Tab</kbd> para navegar entre los elementos o pasa el ratón
+        por encima para ver sus estados de foco en acción.
       </Banner>
-      
-      <Banner title="✅ Outline sólido negro (Pasa todas las reglas)" variant="good">
+
+      <Banner
+        title="✅ Outline sólido negro (Pasa todas las reglas)"
+        variant="good"
+      >
         <div class="demo-container-white">
           <div class="demo-container">
             <div class="demo-buttons">
-              <button class="demo-btn solid-black-focus">Enviar formulario</button>
-              <button class="demo-btn solid-black-focus secondary">Cancelar</button>
-              <input type="text" class="demo-input solid-black-focus" placeholder="Buscar componentes...">
-              <a href="#" class="demo-link solid-black-focus">Documentación de React</a>
+              <button class="demo-btn solid-black-focus"
+                >Enviar formulario</button
+              >
+              <button class="demo-btn solid-black-focus secondary"
+                >Cancelar</button
+              >
+              <input
+                type="text"
+                class="demo-input solid-black-focus"
+                placeholder="Buscar componentes..."
+              />
+              <a href="#" class="demo-link solid-black-focus"
+                >Documentación de React</a
+              >
             </div>
             <div class="demo-explanation">
               <p><strong>Por qué funciona:</strong></p>
@@ -149,9 +173,17 @@ const focusTools = [
           <div class="demo-container">
             <div class="demo-buttons">
               <button class="demo-btn light-blue-focus">Instalar React</button>
-              <button class="demo-btn light-blue-focus secondary">Documentación</button>
-              <input type="text" class="demo-input light-blue-focus" placeholder="npm install...">
-              <a href="#" class="demo-link light-blue-focus">Guía de TypeScript</a>
+              <button class="demo-btn light-blue-focus secondary"
+                >Documentación</button
+              >
+              <input
+                type="text"
+                class="demo-input light-blue-focus"
+                placeholder="npm install..."
+              />
+              <a href="#" class="demo-link light-blue-focus"
+                >Guía de TypeScript</a
+              >
             </div>
             <div class="demo-explanation">
               <p><strong>Por qué falla:</strong></p>
@@ -165,13 +197,20 @@ const focusTools = [
         </div>
       </Banner>
 
-      <Banner title="✅ Outline con gap (Estrategia inteligente)" variant="good">
+      <Banner
+        title="✅ Outline con gap (Estrategia inteligente)"
+        variant="good"
+      >
         <div class="demo-container-white">
           <div class="demo-container">
             <div class="demo-buttons">
               <button class="demo-btn gap-focus">Compilar TypeScript</button>
               <button class="demo-btn gap-focus secondary">Ver errores</button>
-              <input type="text" class="demo-input gap-focus" placeholder="Buscar en VSCode...">
+              <input
+                type="text"
+                class="demo-input gap-focus"
+                placeholder="Buscar en VSCode..."
+              />
               <a href="#" class="demo-link gap-focus">Manual de Astro</a>
             </div>
             <div class="demo-explanation">
@@ -191,10 +230,20 @@ const focusTools = [
         <div class="demo-container-white">
           <div class="demo-container">
             <div class="demo-buttons">
-              <button class="demo-btn background-change-focus">Deploy a Vercel</button>
-              <button class="demo-btn background-change-focus secondary">Configurar</button>
-              <input type="text" class="demo-input background-change-focus" placeholder="Nombre del proyecto...">
-              <a href="#" class="demo-link background-change-focus">Configurar Netlify</a>
+              <button class="demo-btn background-change-focus"
+                >Deploy a Vercel</button
+              >
+              <button class="demo-btn background-change-focus secondary"
+                >Configurar</button
+              >
+              <input
+                type="text"
+                class="demo-input background-change-focus"
+                placeholder="Nombre del proyecto..."
+              />
+              <a href="#" class="demo-link background-change-focus"
+                >Configurar Netlify</a
+              >
             </div>
             <div class="demo-explanation">
               <p><strong>Por qué confunde:</strong></p>
@@ -208,65 +257,85 @@ const focusTools = [
           </div>
         </div>
       </Banner>
-
     </section>
 
     <section>
       <h2>Estrategias recomendadas</h2>
-      
+
       <CardGrid columns="auto" minWidth="300px">
         <Card title="🎯 Outline sólido con gap" variant="success" borderAccent>
           <div class="strategy-demo">
-            <button class="strategy-btn demo-outline-gap">Ejemplo interactivo</button>
+            <button class="strategy-btn demo-outline-gap"
+              >Ejemplo interactivo</button
+            >
           </div>
-          <p><strong>Ventajas:</strong> Simple, funciona en todo, fácil de mantener</p>
+          <p>
+            <strong>Ventajas:</strong> Simple, funciona en todo, fácil de mantener
+          </p>
         </Card>
 
         <Card title="🎯 Doble outline" variant="success" borderAccent>
           <div class="strategy-demo">
-            <button class="strategy-btn demo-double-outline">Ejemplo interactivo</button>
+            <button class="strategy-btn demo-double-outline"
+              >Ejemplo interactivo</button
+            >
           </div>
-          <p><strong>Ventajas:</strong> Funciona en fondos claros y oscuros</p>
+          <p>
+            <strong>Ventajas:</strong> Funciona en fondos claros y oscuros
+          </p>
         </Card>
 
         <Card title="❌ Solo cambio de color" variant="danger" borderAccent>
           <div class="strategy-demo">
-            <button class="strategy-btn demo-color-change">Ejemplo problemático</button>
+            <button class="strategy-btn demo-color-change"
+              >Ejemplo problemático</button
+            >
           </div>
-          <p><strong>Problema:</strong> Puede confundir la función del elemento</p>
+          <p>
+            <strong>Problema:</strong> Puede confundir la función del elemento
+          </p>
         </Card>
 
         <Card title="❌ Outline muy delgado" variant="danger" borderAccent>
           <div class="strategy-demo">
-            <button class="strategy-btn demo-thin-outline">Ejemplo problemático</button>
+            <button class="strategy-btn demo-thin-outline"
+              >Ejemplo problemático</button
+            >
           </div>
-          <p><strong>Problema:</strong> No cumple requisitos de tamaño y contraste</p>
+          <p>
+            <strong>Problema:</strong> No cumple requisitos de tamaño y contraste
+          </p>
         </Card>
       </CardGrid>
     </section>
 
     <section>
       <h2>Casos especiales</h2>
-      
+
       <CardGrid columns="auto" minWidth="300px">
         <Card title="📱 Elementos táctiles" variant="primary" borderAccent>
           <p>
-            En dispositivos táctiles, los estados de foco pueden no ser visibles. 
-            Asegúrate de que también funcionen con :hover y :active.
+            En dispositivos táctiles, los estados de foco pueden no ser
+            visibles. Asegúrate de que también funcionen con :hover y :active.
           </p>
           <div class="case-demo">
             <button class="case-btn mobile-focus">Botón táctil</button>
           </div>
         </Card>
 
-        <Card title="🎨 Elementos personalizados" variant="primary" borderAccent>
+        <Card
+          title="🎨 Elementos personalizados"
+          variant="primary"
+          borderAccent
+        >
           <p>
-            Para componentes como dropdowns o modales, asegúrate de que el foco 
+            Para componentes como dropdowns o modales, asegúrate de que el foco
             sea visible en todos los elementos interactivos internos.
           </p>
           <div class="case-demo">
             <div class="custom-dropdown">
-              <button class="dropdown-trigger custom-focus">Abrir menú ▼</button>
+              <button class="dropdown-trigger custom-focus">Abrir menú ▼</button
+              >
               <div class="dropdown-menu">
                 <a href="#" class="dropdown-item custom-focus">Opción 1</a>
                 <a href="#" class="dropdown-item custom-focus">Opción 2</a>
@@ -278,18 +347,22 @@ const focusTools = [
 
         <Card title="🌙 Modo oscuro" variant="primary" borderAccent>
           <p>
-            En temas oscuros, usa outlines claros. El doble outline es especialmente 
-            útil para funcionar en ambos modos.
+            En temas oscuros, usa outlines claros. El doble outline es
+            especialmente útil para funcionar en ambos modos.
           </p>
           <div class="case-demo dark-theme">
             <button class="case-btn dark-focus">Botón modo oscuro</button>
-            <input type="text" class="case-input dark-focus" placeholder="Input modo oscuro">
+            <input
+              type="text"
+              class="case-input dark-focus"
+              placeholder="Input modo oscuro"
+            />
           </div>
         </Card>
       </CardGrid>
     </section>
 
-    <Checklist 
+    <Checklist
       title="✅ Antes de publicar, verifica:"
       items={checklistItems}
       variant="success"
@@ -299,7 +372,9 @@ const focusTools = [
       <div class="tools-grid">
         <Card title="📐 Para medir contraste" variant="info" borderAccent>
           <ul>
-            <li><strong>Regla 3:1:</strong> Para elementos no-texto (outlines, iconos)</li>
+            <li>
+              <strong>Regla 3:1:</strong> Para elementos no-texto (outlines, iconos)
+            </li>
             <li><strong>Regla 4.5:1:</strong> Para texto normal</li>
             <li><strong>Regla 7:1:</strong> Para texto pequeño (AAA)</li>
           </ul>
@@ -309,51 +384,9 @@ const focusTools = [
   </article>
 </Layout>
 
-<style>
+<style lang="scss">
   article {
     max-width: 90ch;
-  }
-
-  .bonus-rule {
-    margin: var(--spacing-lg) 0;
-  }
-
-  .rule-card.bonus {
-    background-color: #fef3c7;
-    border: 2px solid #f59e0b;
-    border-radius: 8px;
-    padding: var(--spacing-lg);
-    position: relative;
-  }
-
-  .rule-number {
-    position: absolute;
-    top: -12px;
-    left: var(--spacing-lg);
-    background-color: #f59e0b;
-    color: white;
-    width: 24px;
-    height: 24px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: 700;
-    font-size: 0.875rem;
-  }
-
-  .rule-card.bonus h3 {
-    margin-top: var(--spacing-sm);
-    color: #d97706;
-  }
-
-  .rule-detail {
-    background-color: var(--color-background);
-    padding: var(--spacing-sm);
-    border-radius: 4px;
-    margin-top: var(--spacing-md);
-    font-size: 0.875rem;
-    border-left: 3px solid #f59e0b;
   }
 
   .demo-container-white {
@@ -385,12 +418,12 @@ const focusTools = [
     background-color: var(--color-primary);
     color: white;
     transition: all 0.2s;
-  }
 
-  .demo-btn.secondary {
-    background-color: transparent;
-    color: var(--color-text);
-    border: 1px solid var(--color-border);
+    &.secondary {
+      background-color: transparent;
+      color: var(--color-text);
+      border: 1px solid var(--color-border);
+    }
   }
 
   .demo-input {
@@ -401,40 +434,37 @@ const focusTools = [
   }
 
   /* Focus styles for examples */
-  .solid-black-focus:focus,
-  .solid-black-focus:hover {
-    outline: 3px solid #000;
-    outline-offset: 2px;
+  .solid-black-focus {
+    &:focus,
+    &:hover {
+      outline: 3px solid #000;
+      outline-offset: 2px;
+    }
   }
 
-  .light-blue-focus:focus,
-  .light-blue-focus:hover {
-    outline: 2px solid #87ceeb;
-    outline-offset: 1px;
+  .light-blue-focus {
+    &:focus,
+    &:hover {
+      outline: 2px solid #87ceeb;
+      outline-offset: 1px;
+    }
   }
 
-  .gap-focus:focus,
-  .gap-focus:hover {
-    outline: 2px solid #0891b2;
-    outline-offset: 3px;
+  .gap-focus {
+    &:focus,
+    &:hover {
+      outline: 2px solid #0891b2;
+      outline-offset: 3px;
+    }
   }
 
-  .background-change-focus:focus,
-  .background-change-focus:hover {
-    background-color: white !important;
-    color: var(--color-text) !important;
-    outline: none;
-  }
-
-  /* Forced focus states for demonstration */
-  .forced-focus-black {
-    outline: 3px solid #000;
-    outline-offset: 2px;
-  }
-
-  .forced-focus-gap {
-    outline: 2px solid #0891b2;
-    outline-offset: 3px;
+  .background-change-focus {
+    &:focus,
+    &:hover {
+      background-color: white !important;
+      color: var(--color-text) !important;
+      outline: none;
+    }
   }
 
   /* Demo links */
@@ -444,10 +474,10 @@ const focusTools = [
     padding: var(--spacing-xs) var(--spacing-sm);
     border-radius: 4px;
     display: inline-block;
-  }
 
-  .demo-link:hover {
-    background-color: var(--color-surface);
+    &:hover {
+      background-color: var(--color-surface);
+    }
   }
 
   /* Strategy demo buttons */
@@ -462,29 +492,37 @@ const focusTools = [
     margin-bottom: var(--spacing-xs);
   }
 
-  .demo-outline-gap:focus,
-  .demo-outline-gap:hover {
-    outline: 2px solid #000;
-    outline-offset: 2px;
+  .demo-outline-gap {
+    &:focus,
+    &:hover {
+      outline: 2px solid #000;
+      outline-offset: 2px;
+    }
   }
 
-  .demo-double-outline:focus,
-  .demo-double-outline:hover {
-    outline: 2px solid #fff;
-    box-shadow: 0 0 0 4px #000;
-    outline-offset: 1px;
+  .demo-double-outline {
+    &:focus,
+    &:hover {
+      outline: 2px solid #fff;
+      box-shadow: 0 0 0 4px #000;
+      outline-offset: 1px;
+    }
   }
 
-  .demo-color-change:focus,
-  .demo-color-change:hover {
-    background-color: #f0f0f0;
-    color: var(--color-text);
-    outline: none;
+  .demo-color-change {
+    &:focus,
+    &:hover {
+      background-color: #f0f0f0;
+      color: var(--color-text);
+      outline: none;
+    }
   }
 
-  .demo-thin-outline:focus,
-  .demo-thin-outline:hover {
-    outline: 1px dashed #ccc;
+  .demo-thin-outline {
+    &:focus,
+    &:hover {
+      outline: 1px dashed #ccc;
+    }
   }
 
   /* Case demo elements */
@@ -505,13 +543,19 @@ const focusTools = [
     border-radius: 6px;
     font-size: 0.875rem;
     margin-bottom: var(--spacing-xs);
+
+    &::placeholder {
+      color: #9ca3af;
+    }
   }
 
-  .mobile-focus:focus,
-  .mobile-focus:hover,
-  .mobile-focus:active {
-    outline: 2px solid #000;
-    outline-offset: 2px;
+  .mobile-focus {
+    &:focus,
+    &:hover,
+    &:active {
+      outline: 2px solid #000;
+      outline-offset: 2px;
+    }
   }
 
   /* Custom dropdown */
@@ -550,16 +594,18 @@ const focusTools = [
     text-decoration: none;
     border-radius: 4px;
     margin: var(--spacing-xs);
+
+    &:hover {
+      background-color: var(--color-background);
+    }
   }
 
-  .dropdown-item:hover {
-    background-color: var(--color-background);
-  }
-
-  .custom-focus:focus,
-  .custom-focus:hover {
-    outline: 2px solid #000;
-    outline-offset: 1px;
+  .custom-focus {
+    &:focus,
+    &:hover {
+      outline: 2px solid #000;
+      outline-offset: 1px;
+    }
   }
 
   /* Dark theme demo */
@@ -568,26 +614,28 @@ const focusTools = [
     color: #e2e8f0;
     padding: var(--spacing-md);
     border-radius: 6px;
+
+    .case-btn {
+      background-color: #3b82f6;
+    }
+
+    .case-input {
+      background-color: #374151;
+      border-color: #6b7280;
+      color: #e2e8f0;
+
+      &::placeholder {
+        color: #9ca3af;
+      }
+    }
   }
 
-  .dark-focus:focus,
-  .dark-focus:hover {
-    outline: 2px solid #fff;
-    outline-offset: 2px;
-  }
-
-  .dark-theme .case-btn {
-    background-color: #3b82f6;
-  }
-
-  .dark-theme .case-input {
-    background-color: #374151;
-    border-color: #6b7280;
-    color: #e2e8f0;
-  }
-
-  .dark-theme .case-input::placeholder {
-    color: #9ca3af;
+  .dark-focus {
+    &:focus,
+    &:hover {
+      outline: 2px solid #fff;
+      outline-offset: 2px;
+    }
   }
 
   .demo-note {
@@ -610,16 +658,16 @@ const focusTools = [
     background-color: var(--color-background);
     padding: var(--spacing-md);
     border-radius: 6px;
-  }
 
-  .demo-explanation ul {
-    margin: var(--spacing-sm) 0 0 0;
-    padding-left: var(--spacing-lg);
-  }
+    ul {
+      margin: var(--spacing-sm) 0 0 0;
+      padding-left: var(--spacing-lg);
+    }
 
-  .demo-explanation li {
-    margin-bottom: var(--spacing-xs);
-    font-size: 0.875rem;
+    li {
+      margin-bottom: var(--spacing-xs);
+      font-size: 0.875rem;
+    }
   }
 
   .strategy-demo {
@@ -647,4 +695,4 @@ const focusTools = [
       grid-template-columns: 1fr;
     }
   }
-</style> 
+</style>

@@ -1,35 +1,35 @@
 ---
 export interface Props {
-  number: number;
-  title: string;
-  variant?: 'primary' | 'info' | 'neutral';
-  class?: string;
+  number: number
+  title: string
+  variant?: 'primary' | 'info' | 'neutral'
+  class?: string
 }
 
-const { 
+const {
   number,
   title,
   variant = 'primary',
-  class: className = '' 
-} = Astro.props;
+  class: className = '',
+} = Astro.props
 
 const variantClasses = {
   primary: 'border-l-color-primary bg-color-surface',
   info: 'border-l-blue-600 bg-blue-50',
-  neutral: 'border-l-gray-400 bg-gray-50'
-};
+  neutral: 'border-l-gray-400 bg-gray-50',
+}
 
 const numberColors = {
   primary: 'bg-color-primary text-white',
   info: 'bg-blue-600 text-white',
-  neutral: 'bg-gray-600 text-white'
-};
+  neutral: 'bg-gray-600 text-white',
+}
 
 const titleColors = {
   primary: 'text-color-primary',
   info: 'text-blue-800',
-  neutral: 'text-gray-800'
-};
+  neutral: 'text-gray-800',
+}
 ---
 
 <li class={`ordered-item ${variantClasses[variant]} ${className}`}>
@@ -55,8 +55,6 @@ const titleColors = {
     position: relative;
     list-style: none;
   }
-
-
 
   /* Variantes de color para bordes */
   .ordered-item.border-l-color-primary {
@@ -170,4 +168,4 @@ const titleColors = {
       font-size: 1rem;
     }
   }
-</style> 
+</style>

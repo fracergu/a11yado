@@ -1,22 +1,25 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import GuideHeader from '../components/GuideHeader.astro';
-import Banner from '../components/Banner.astro';
-import Card from '../components/Card.astro';
-import CardGrid from '../components/CardGrid.astro';
+import Layout from '../layouts/Layout.astro'
+import Header from '../components/Header.astro'
+import Banner from '../components/Banner.astro'
+import Card from '../components/Card.astro'
+import CardGrid from '../components/CardGrid.astro'
 ---
 
 <Layout title="Herramientas de Accesibilidad - a11yado">
   <article>
-    <GuideHeader 
+    <Header
       title="Herramientas de Accesibilidad"
       description="Extensiones, aplicaciones y servicios para evaluar, probar y mejorar la accesibilidad de tus sitios web."
     />
 
     <section>
       <h2>Para Diseñadores</h2>
-      <p>Herramientas esenciales para tomar decisiones de diseño accesibles desde el inicio.</p>
-      
+      <p>
+        Herramientas esenciales para tomar decisiones de diseño accesibles desde
+        el inicio.
+      </p>
+
       <div class="tool-grid">
         <div class="tool-card featured">
           <div class="tool-header">
@@ -24,15 +27,25 @@ import CardGrid from '../components/CardGrid.astro';
             <span class="badge best-for">Ideal para principiantes</span>
           </div>
           <p>
-            Excelente herramienta visual que muestra errores de accesibilidad 
-            directamente en la página web. Perfecta para diseñadores y personas 
+            Excelente herramienta visual que muestra errores de accesibilidad
+            directamente en la página web. Perfecta para diseñadores y personas
             nuevas en accesibilidad.
           </p>
           <div class="tool-links">
-            <a href="https://wave.webaim.org/" target="_blank" rel="noopener" class="link-primary">
+            <a
+              href="https://wave.webaim.org/"
+              target="_blank"
+              rel="noopener"
+              class="link-primary"
+            >
               WAVE Online
             </a>
-            <a href="https://wave.webaim.org/extension/" target="_blank" rel="noopener" class="link-secondary">
+            <a
+              href="https://wave.webaim.org/extension/"
+              target="_blank"
+              rel="noopener"
+              class="link-secondary"
+            >
               Extensiones Chrome/Firefox
             </a>
           </div>
@@ -49,14 +62,25 @@ import CardGrid from '../components/CardGrid.astro';
             <span class="badge essential">Esencial para diseñadores</span>
           </div>
           <p>
-            Simula diferentes tipos de discapacidades visuales para probar cómo 
-            se ven tus diseños. Indispensable para elegir colores y contrastes apropiados.
+            Simula diferentes tipos de discapacidades visuales para probar cómo
+            se ven tus diseños. Indispensable para elegir colores y contrastes
+            apropiados.
           </p>
           <div class="tool-links">
-            <a href="https://addons.mozilla.org/en-US/firefox/addon/nocoffee/" target="_blank" rel="noopener" class="link-primary">
+            <a
+              href="https://addons.mozilla.org/en-US/firefox/addon/nocoffee/"
+              target="_blank"
+              rel="noopener"
+              class="link-primary"
+            >
               Extensión Firefox
             </a>
-            <a href="https://chrome.google.com/webstore/detail/nocoffee/jjeeggmbnhckmgdhmgdckeigabjfbddl" target="_blank" rel="noopener" class="link-secondary">
+            <a
+              href="https://chrome.google.com/webstore/detail/nocoffee/jjeeggmbnhckmgdhmgdckeigabjfbddl"
+              target="_blank"
+              rel="noopener"
+              class="link-secondary"
+            >
               Extensión Chrome
             </a>
           </div>
@@ -71,8 +95,11 @@ import CardGrid from '../components/CardGrid.astro';
 
     <section>
       <h2>Para Desarrolladores</h2>
-      <p>Herramientas técnicas para integrar en tu flujo de trabajo de desarrollo.</p>
-      
+      <p>
+        Herramientas técnicas para integrar en tu flujo de trabajo de
+        desarrollo.
+      </p>
+
       <div class="tool-grid">
         <div class="tool-card featured">
           <div class="tool-header">
@@ -80,14 +107,24 @@ import CardGrid from '../components/CardGrid.astro';
             <span class="badge dev-focused">Para desarrolladores</span>
           </div>
           <p>
-            La herramienta más robusta para desarrolladores. Integrable en CI/CD, 
-            con APIs y librerías para diferentes frameworks.
+            La herramienta más robusta para desarrolladores. Integrable en
+            CI/CD, con APIs y librerías para diferentes frameworks.
           </p>
           <div class="tool-links">
-            <a href="https://chrome.google.com/webstore/detail/axe-web-accessibility-tes/lhdoppojpmngadmnindnejefpokejbdd" target="_blank" rel="noopener" class="link-primary">
+            <a
+              href="https://chrome.google.com/webstore/detail/axe-web-accessibility-tes/lhdoppojpmngadmnindnejefpokejbdd"
+              target="_blank"
+              rel="noopener"
+              class="link-primary"
+            >
               Extensión Chrome
             </a>
-            <a href="https://www.deque.com/axe/" target="_blank" rel="noopener" class="link-secondary">
+            <a
+              href="https://www.deque.com/axe/"
+              target="_blank"
+              rel="noopener"
+              class="link-secondary"
+            >
               Librerías y APIs
             </a>
           </div>
@@ -104,11 +141,16 @@ import CardGrid from '../components/CardGrid.astro';
             <span class="badge">Integrado en Chrome</span>
           </div>
           <p>
-            Auditoría de accesibilidad integrada en Chrome DevTools. 
-            Parte del flujo de trabajo de desarrollo estándar para muchos equipos.
+            Auditoría de accesibilidad integrada en Chrome DevTools. Parte del
+            flujo de trabajo de desarrollo estándar para muchos equipos.
           </p>
           <div class="tool-links">
-            <a href="https://developers.google.com/web/tools/lighthouse/" target="_blank" rel="noopener" class="link-primary">
+            <a
+              href="https://developers.google.com/web/tools/lighthouse/"
+              target="_blank"
+              rel="noopener"
+              class="link-primary"
+            >
               Documentación Lighthouse
             </a>
           </div>
@@ -123,8 +165,11 @@ import CardGrid from '../components/CardGrid.astro';
 
     <section>
       <h2>Lectores de pantalla para pruebas</h2>
-      <p>Para probar cómo los usuarios de lectores de pantalla experimentan tu sitio.</p>
-      
+      <p>
+        Para probar cómo los usuarios de lectores de pantalla experimentan tu
+        sitio.
+      </p>
+
       <div class="tool-grid">
         <div class="tool-card">
           <div class="tool-header">
@@ -132,11 +177,17 @@ import CardGrid from '../components/CardGrid.astro';
             <span class="badge free">Gratuito</span>
           </div>
           <p>
-            Lector de pantalla gratuito para Windows. Ideal para desarrolladores 
-            que quieren probar la experiencia de usuarios con discapacidades visuales.
+            Lector de pantalla gratuito para Windows. Ideal para desarrolladores
+            que quieren probar la experiencia de usuarios con discapacidades
+            visuales.
           </p>
           <div class="tool-links">
-            <a href="https://www.nvaccess.org/" target="_blank" rel="noopener" class="link-primary">
+            <a
+              href="https://www.nvaccess.org/"
+              target="_blank"
+              rel="noopener"
+              class="link-primary"
+            >
               Descargar NVDA
             </a>
           </div>
@@ -148,11 +199,16 @@ import CardGrid from '../components/CardGrid.astro';
             <span class="badge native">Nativo Apple</span>
           </div>
           <p>
-            Lector de pantalla integrado en dispositivos Apple. 
-            Se activa con Cmd+F5 en Mac o en Configuración > Accesibilidad en iOS.
+            Lector de pantalla integrado en dispositivos Apple. Se activa con
+            Cmd+F5 en Mac o en Configuración > Accesibilidad en iOS.
           </p>
           <div class="tool-links">
-            <a href="https://support.apple.com/guide/voiceover/welcome/mac" target="_blank" rel="noopener" class="link-primary">
+            <a
+              href="https://support.apple.com/guide/voiceover/welcome/mac"
+              target="_blank"
+              rel="noopener"
+              class="link-primary"
+            >
               Guía VoiceOver
             </a>
           </div>
@@ -162,22 +218,33 @@ import CardGrid from '../components/CardGrid.astro';
 
     <Banner title="💡 Recomendaciones de uso" variant="info">
       <CardGrid columns="3" minWidth="280px">
-        <Card title="Para empezar" >
-          <p>Comienza con <strong>WAVE</strong> para una visión general y <strong>NoCoffee</strong> para probar colores.</p>
+        <Card title="Para empezar">
+          <p>
+            Comienza con <strong>WAVE</strong> para una visión general y <strong
+              >NoCoffee</strong
+            > para probar colores.
+          </p>
         </Card>
-        <Card title="Para desarrollo" >
-
-          <p>Usa <strong>axe</strong> en tu flujo de trabajo de desarrollo y <strong>Lighthouse</strong> para auditorías regulares.</p>
+        <Card title="Para desarrollo">
+          <p>
+            Usa <strong>axe</strong> en tu flujo de trabajo de desarrollo y <strong
+              >Lighthouse</strong
+            > para auditorías regulares.
+          </p>
         </Card>
-          <Card title="Para pruebas completas" >
-          <p>Combina herramientas automatizadas con pruebas manuales usando <strong>NVDA</strong> o <strong>VoiceOver</strong>.</p>
+        <Card title="Para pruebas completas">
+          <p>
+            Combina herramientas automatizadas con pruebas manuales usando <strong
+              >NVDA</strong
+            > o <strong>VoiceOver</strong>.
+          </p>
         </Card>
       </CardGrid>
     </Banner>
   </article>
 </Layout>
 
-<style>
+<style lang="scss">
   article {
     max-width: 80ch;
   }
@@ -194,17 +261,25 @@ import CardGrid from '../components/CardGrid.astro';
     border: 1px solid var(--color-border);
     border-radius: 8px;
     padding: var(--spacing-lg);
-    transition: transform 0.2s, box-shadow 0.2s;
-  }
+    transition:
+      transform 0.2s,
+      box-shadow 0.2s;
 
-  .tool-card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  }
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
 
-  .tool-card.featured {
-    border-color: var(--color-primary);
-    border-width: 2px;
+    &.featured {
+      border-color: var(--color-primary);
+      border-width: 2px;
+    }
+
+    p {
+      color: var(--color-text-light);
+      margin-bottom: var(--spacing-md);
+      line-height: 1.5;
+    }
   }
 
   .tool-header {
@@ -213,11 +288,11 @@ import CardGrid from '../components/CardGrid.astro';
     align-items: flex-start;
     gap: var(--spacing-sm);
     margin-bottom: var(--spacing-md);
-  }
 
-  .tool-header h3 {
-    color: var(--color-primary);
-    flex: 1;
+    h3 {
+      color: var(--color-primary);
+      flex: 1;
+    }
   }
 
   .badge {
@@ -227,37 +302,31 @@ import CardGrid from '../components/CardGrid.astro';
     font-weight: 600;
     text-transform: uppercase;
     white-space: nowrap;
-  }
 
-  .badge.best-for {
-    background-color: #16a34a;
-    color: white;
-  }
+    &.best-for {
+      background-color: #16a34a;
+      color: white;
+    }
 
-  .badge.essential {
-    background-color: #dc2626;
-    color: white;
-  }
+    &.essential {
+      background-color: #dc2626;
+      color: white;
+    }
 
-  .badge.dev-focused {
-    background-color: var(--color-primary);
-    color: white;
-  }
+    &.dev-focused {
+      background-color: var(--color-primary);
+      color: white;
+    }
 
-  .badge.free {
-    background-color: #16a34a;
-    color: white;
-  }
+    &.free {
+      background-color: #16a34a;
+      color: white;
+    }
 
-  .badge.native {
-    background-color: #6b7280;
-    color: white;
-  }
-
-  .tool-card p {
-    color: var(--color-text-light);
-    margin-bottom: var(--spacing-md);
-    line-height: 1.5;
+    &.native {
+      background-color: #6b7280;
+      color: white;
+    }
   }
 
   .tool-links {
@@ -276,10 +345,10 @@ import CardGrid from '../components/CardGrid.astro';
     font-weight: 500;
     transition: background-color 0.2s;
     font-size: 0.9rem;
-  }
 
-  .link-primary:hover {
-    background-color: var(--color-primary-dark);
+    &:hover {
+      background-color: var(--color-primary-dark);
+    }
   }
 
   .link-secondary {
@@ -290,11 +359,11 @@ import CardGrid from '../components/CardGrid.astro';
     border-radius: 4px;
     transition: all 0.2s;
     font-size: 0.9rem;
-  }
 
-  .link-secondary:hover {
-    background-color: var(--color-primary);
-    color: white;
+    &:hover {
+      background-color: var(--color-primary);
+      color: white;
+    }
   }
 
   .tool-features {
@@ -318,11 +387,11 @@ import CardGrid from '../components/CardGrid.astro';
     padding: var(--spacing-xl);
     margin: var(--spacing-2xl) 0;
     border-left: 4px solid var(--color-primary);
-  }
 
-  .recommendations h2 {
-    margin-top: 0;
-    color: var(--color-primary);
+    h2 {
+      margin-top: 0;
+      color: var(--color-primary);
+    }
   }
 
   .recommendation-grid {
@@ -337,18 +406,12 @@ import CardGrid from '../components/CardGrid.astro';
     background-color: var(--color-background);
     border-radius: 6px;
     border: 1px solid var(--color-border);
-  }
 
-  .recommendation h3 {
-    color: var(--color-primary);
-    font-size: 1rem;
-    margin-bottom: var(--spacing-sm);
-  }
-
-  .recommendation p {
-    margin: 0;
-    font-size: 0.9rem;
-    color: var(--color-text-light);
+    p {
+      margin: 0;
+      font-size: 0.9rem;
+      color: var(--color-text-light);
+    }
   }
 
   @media (max-width: 768px) {
@@ -365,4 +428,4 @@ import CardGrid from '../components/CardGrid.astro';
       grid-template-columns: 1fr;
     }
   }
-</style> 
+</style>

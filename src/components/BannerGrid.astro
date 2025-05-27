@@ -7,9 +7,9 @@ export interface Props {
 }
 
 const {
-  columns = 'auto',
+  columns = '2',
   minWidth = '280px',
-  gap = 'lg',
+  gap = 'md',
   class: className = '',
 } = Astro.props
 
@@ -30,7 +30,7 @@ const gapSizes = {
 ---
 
 <div
-  class={`card-grid ${className}`}
+  class={`banner-grid ${className}`}
   style={`
     grid-template-columns: ${columnClasses[columns]};
     gap: ${gapSizes[gap]};
@@ -40,13 +40,18 @@ const gapSizes = {
 </div>
 
 <style>
-  .card-grid {
+  .banner-grid {
     display: grid;
-    margin: var(--spacing-xl) 0;
+    margin: var(--spacing-lg) 0;
+  }
+
+  /* Override Banner margins when inside BannerGrid */
+  .banner-grid :global(.banner) {
+    margin: 0;
   }
 
   @media (max-width: 768px) {
-    .card-grid {
+    .banner-grid {
       grid-template-columns: 1fr !important;
     }
   }
