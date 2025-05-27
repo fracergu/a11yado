@@ -1,0 +1,954 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout title="Estados de Foco - a11yado">
+  <article>
+    <header>
+      <h1>Estados de Foco</h1>
+      <p class="lead">
+        Los estados de foco son indicadores visuales que muestran qué elemento 
+        está actualmente seleccionado para interacción por teclado. Son esenciales 
+        para la navegación accesible.
+      </p>
+    </header>
+
+    <section>
+      <h2>¿Por qué son importantes?</h2>
+      <p>
+        Los estados de foco permiten a los usuarios navegar tu sitio usando solo el teclado. 
+        Sin indicadores claros, es imposible saber dónde estás en la página.
+      </p>
+
+      <div class="concept-box">
+        <h3>Usuarios que dependen de estados de foco:</h3>
+        <ul>
+          <li><strong>Usuarios de teclado:</strong> Personas con discapacidades motoras</li>
+          <li><strong>Usuarios de lectores de pantalla:</strong> Personas con discapacidades visuales</li>
+          <li><strong>Usuarios de switch control:</strong> Personas con movilidad limitada</li>
+          <li><strong>Usuarios avanzados:</strong> Desarrolladores y power users que prefieren el teclado</li>
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <h2>Las 4 reglas oficiales de WCAG</h2>
+      <p>
+        Para que un estado de foco sea accesible, debe cumplir estos 4 criterios oficiales 
+        más 1 regla bonus de usabilidad.
+      </p>
+
+      <div class="rules-grid">
+        <div class="rule-card">
+          <div class="rule-number">1</div>
+          <h3>Tamaño del Indicador</h3>
+          <p>
+            El indicador de foco debe ser <strong>al menos tan grande como un perímetro 
+            de 2px CSS</strong> alrededor del componente.
+          </p>
+          <div class="rule-detail">
+            <strong>Solución simple:</strong> Usa un outline sólido de 2px o más grueso.
+          </div>
+        </div>
+
+        <div class="rule-card">
+          <div class="rule-number">2</div>
+          <h3>Contraste de Color</h3>
+          <p>
+            Debe haber <strong>contraste 3:1 o mayor</strong> entre los estados 
+            enfocado y no enfocado.
+          </p>
+          <div class="rule-detail">
+            <strong>Ejemplo:</strong> Fondo blanco → outline azul = cambio de blanco a azul.
+          </div>
+        </div>
+
+        <div class="rule-card">
+          <div class="rule-number">3</div>
+          <h3>Contraste Adyacente</h3>
+          <p>
+            El indicador debe tener <strong>contraste 3:1 o mayor</strong> contra 
+            los colores adyacentes (fondo y componente).
+          </p>
+          <div class="rule-detail">
+            <strong>Tip:</strong> Usa un gap entre el outline y el elemento para simplificar.
+          </div>
+        </div>
+
+        <div class="rule-card">
+          <div class="rule-number">4</div>
+          <h3>No Oculto</h3>
+          <p>
+            El componente enfocado <strong>no debe estar oculto</strong> por contenido 
+            como headers pegajosos o modales.
+          </p>
+          <div class="rule-detail">
+            <strong>Cuidado con:</strong> Sticky headers, footers y overlays.
+          </div>
+        </div>
+
+        <div class="rule-card bonus">
+          <div class="rule-number">+</div>
+          <h3>Señalizadores Apropiados</h3>
+          <p>
+            El estilo debe <strong>comunicar claramente</strong> que el elemento 
+            está enfocado, no confundirse con otros estados.
+          </p>
+          <div class="rule-detail">
+            <strong>Pregunta clave:</strong> ¿Se ve realmente enfocado?
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Ejemplos prácticos</h2>
+      <p class="navigation-tip">
+        💡 <strong>Tip:</strong> Usa la tecla <kbd>Tab</kbd> para navegar entre los elementos o pasa el ratón por encima para ver sus estados de foco en acción.
+      </p>
+      
+      <div class="example-section">
+        <h3>✅ Outline sólido negro (Pasa todas las reglas)</h3>
+        <div class="demo-container">
+          <div class="demo-buttons">
+            <button class="demo-btn solid-black-focus">Enviar formulario</button>
+            <button class="demo-btn solid-black-focus secondary">Cancelar</button>
+            <input type="text" class="demo-input solid-black-focus" placeholder="Buscar componentes...">
+            <a href="#" class="demo-link solid-black-focus">Documentación de React</a>
+          </div>
+          <div class="demo-explanation">
+            <p><strong>Por qué funciona:</strong></p>
+            <ul>
+              <li>Outline de 3px cumple el tamaño mínimo</li>
+              <li>Cambio de blanco a negro: contraste 21:1</li>
+              <li>Negro contra cualquier color: excelente contraste</li>
+              <li>Outline clásico = señalizador reconocible</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="example-section">
+        <h3>❌ Outline azul claro (Falla contraste)</h3>
+        <div class="demo-container">
+          <div class="demo-buttons">
+            <button class="demo-btn light-blue-focus">Instalar React</button>
+            <button class="demo-btn light-blue-focus secondary">Documentación</button>
+            <input type="text" class="demo-input light-blue-focus" placeholder="npm install...">
+            <a href="#" class="demo-link light-blue-focus">Guía de TypeScript</a>
+          </div>
+          <div class="demo-explanation">
+            <p><strong>Por qué falla:</strong></p>
+            <ul>
+              <li>Azul claro contra blanco: solo 1.92:1 (necesita 3:1)</li>
+              <li>Azul claro contra azul oscuro: solo 2.54:1</li>
+              <li>Aunque se ve familiar, no es accesible</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="example-section">
+        <h3>✅ Outline con gap (Estrategia inteligente)</h3>
+        <div class="demo-container">
+          <div class="demo-buttons">
+            <button class="demo-btn gap-focus">Compilar TypeScript</button>
+            <button class="demo-btn gap-focus secondary">Ver errores</button>
+            <input type="text" class="demo-input gap-focus" placeholder="Buscar en VSCode...">
+            <a href="#" class="demo-link gap-focus">Manual de Astro</a>
+          </div>
+          <div class="demo-explanation">
+            <p><strong>Por qué es inteligente:</strong></p>
+            <ul>
+              <li>El gap simplifica el contraste adyacente</li>
+              <li>Solo necesitas contrastar contra el fondo</li>
+              <li>Funciona en elementos de cualquier color</li>
+              <li>Más fácil de mantener en todo el sitio</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="example-section">
+        <h3>❌ Cambio de fondo (Confunde señalizadores)</h3>
+        <div class="demo-container">
+          <div class="demo-buttons">
+            <button class="demo-btn background-change-focus">Deploy a Vercel</button>
+            <button class="demo-btn background-change-focus secondary">Configurar</button>
+            <input type="text" class="demo-input background-change-focus" placeholder="Nombre del proyecto...">
+            <a href="#" class="demo-link background-change-focus">Configurar Netlify</a>
+          </div>
+          <div class="demo-explanation">
+            <p><strong>Por qué confunde:</strong></p>
+            <ul>
+              <li>El botón primario enfocado parece secundario</li>
+              <li>El input enfocado no parece editable</li>
+              <li>Cambia la identidad visual del elemento</li>
+              <li>Los usuarios no reconocen el estado</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="example-section">
+        <h3>✅ Estados de foco siempre visibles (Para demostración)</h3>
+        <p class="demo-note">Estos elementos muestran cómo se ven los estados de foco sin necesidad de navegar:</p>
+        <div class="demo-container">
+          <div class="demo-buttons">
+            <button class="demo-btn forced-focus-black">Estado enfocado permanente</button>
+            <button class="demo-btn forced-focus-gap secondary">Con gap siempre visible</button>
+            <input type="text" class="demo-input forced-focus-black" placeholder="Input siempre enfocado" value="Francisco Cerdán">
+            <a href="#" class="demo-link forced-focus-gap">Enlace con foco visible</a>
+          </div>
+          <div class="demo-explanation">
+            <p><strong>Observa cómo:</strong></p>
+            <ul>
+              <li>El outline negro es claramente visible</li>
+              <li>El gap separa el outline del elemento</li>
+              <li>Cada elemento mantiene su identidad visual</li>
+              <li>Es fácil distinguir qué está enfocado</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Estrategias recomendadas</h2>
+      
+      <div class="strategies-grid">
+        <div class="strategy-card recommended">
+          <h4>🎯 Outline sólido con gap</h4>
+          <div class="strategy-demo">
+            <button class="strategy-btn demo-outline-gap">Ejemplo interactivo</button>
+          </div>
+          <p><strong>Ventajas:</strong> Simple, funciona en todo, fácil de mantener</p>
+        </div>
+
+        <div class="strategy-card recommended">
+          <h4>🎯 Doble outline</h4>
+          <div class="strategy-demo">
+            <button class="strategy-btn demo-double-outline">Ejemplo interactivo</button>
+          </div>
+          <p><strong>Ventajas:</strong> Funciona en fondos claros y oscuros</p>
+        </div>
+
+        <div class="strategy-card avoid">
+          <h4>❌ Solo cambio de color</h4>
+          <div class="strategy-demo">
+            <button class="strategy-btn demo-color-change">Ejemplo problemático</button>
+          </div>
+          <p><strong>Problema:</strong> Puede confundir la función del elemento</p>
+        </div>
+
+        <div class="strategy-card avoid">
+          <h4>❌ Outline muy delgado</h4>
+          <div class="strategy-demo">
+            <button class="strategy-btn demo-thin-outline">Ejemplo problemático</button>
+          </div>
+          <p><strong>Problema:</strong> No cumple requisitos de tamaño y contraste</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Casos especiales</h2>
+      
+      <div class="special-cases">
+        <div class="case-card">
+          <h4>📱 Elementos táctiles</h4>
+          <p>
+            En dispositivos táctiles, los estados de foco pueden no ser visibles. 
+            Asegúrate de que también funcionen con :hover y :active.
+          </p>
+          <div class="case-demo">
+            <button class="case-btn mobile-focus">Botón táctil</button>
+          </div>
+        </div>
+
+        <div class="case-card">
+          <h4>🎨 Elementos personalizados</h4>
+          <p>
+            Para componentes como dropdowns o modales, asegúrate de que el foco 
+            sea visible en todos los elementos interactivos internos.
+          </p>
+          <div class="case-demo">
+            <div class="custom-dropdown">
+              <button class="dropdown-trigger custom-focus">Abrir menú ▼</button>
+              <div class="dropdown-menu">
+                <a href="#" class="dropdown-item custom-focus">Opción 1</a>
+                <a href="#" class="dropdown-item custom-focus">Opción 2</a>
+                <a href="#" class="dropdown-item custom-focus">Opción 3</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="case-card">
+          <h4>🌙 Modo oscuro</h4>
+          <p>
+            En temas oscuros, usa outlines claros. El doble outline es especialmente 
+            útil para funcionar en ambos modos.
+          </p>
+          <div class="case-demo dark-theme">
+            <button class="case-btn dark-focus">Botón modo oscuro</button>
+            <input type="text" class="case-input dark-focus" placeholder="Input modo oscuro">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Lista de verificación</h2>
+      
+      <div class="checklist">
+        <h3>✅ Antes de publicar, verifica:</h3>
+        <div class="checklist-grid">
+          <label class="checklist-item">
+            <input type="checkbox" disabled>
+            <span>¿El outline es de al menos 2px de grosor?</span>
+          </label>
+          <label class="checklist-item">
+            <input type="checkbox" disabled>
+            <span>¿Hay contraste 3:1+ entre estados enfocado/no enfocado?</span>
+          </label>
+          <label class="checklist-item">
+            <input type="checkbox" disabled>
+            <span>¿El indicador contrasta 3:1+ con colores adyacentes?</span>
+          </label>
+          <label class="checklist-item">
+            <input type="checkbox" disabled>
+            <span>¿Los elementos enfocados no se ocultan tras otros contenidos?</span>
+          </label>
+          <label class="checklist-item">
+            <input type="checkbox" disabled>
+            <span>¿El estilo comunica claramente "enfocado"?</span>
+          </label>
+          <label class="checklist-item">
+            <input type="checkbox" disabled>
+            <span>¿Funciona en modo claro y oscuro?</span>
+          </label>
+          <label class="checklist-item">
+            <input type="checkbox" disabled>
+            <span>¿Todos los elementos interactivos tienen estado de foco?</span>
+          </label>
+          <label class="checklist-item">
+            <input type="checkbox" disabled>
+            <span>¿El orden de tabulación es lógico?</span>
+          </label>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Herramientas útiles</h2>
+      <div class="tools">
+        <div class="tools-grid">
+          <div class="tool-card">
+            <h4>🔍 Para testing</h4>
+            <ul>
+              <li><strong>Navegación por teclado:</strong> Usa solo Tab, Shift+Tab, Enter, Space</li>
+              <li><strong>Herramientas de contraste:</strong> WebAIM, Colour Contrast Analyser</li>
+              <li><strong>DevTools:</strong> Inspecciona estados :focus en el navegador</li>
+            </ul>
+          </div>
+          
+          <div class="tool-card">
+            <h4>📐 Para medir contraste</h4>
+            <ul>
+              <li><strong>Regla 3:1:</strong> Para elementos no-texto (outlines, iconos)</li>
+              <li><strong>Regla 4.5:1:</strong> Para texto normal</li>
+              <li><strong>Regla 7:1:</strong> Para texto pequeño (AAA)</li>
+            </ul>
+          </div>
+        </div>
+        
+        <p class="tools-note">
+          💡 <strong>Consejo:</strong> Consulta la página de <a href="/tools">Herramientas</a> para recursos específicos de testing de accesibilidad.
+        </p>
+      </div>
+    </section>
+  </article>
+</Layout>
+
+<style>
+  article {
+    max-width: 90ch;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    margin-bottom: var(--spacing-md);
+    line-height: 1.2;
+  }
+
+  .lead {
+    font-size: 1.25rem;
+    color: var(--color-text-light);
+    margin-bottom: var(--spacing-2xl);
+    line-height: 1.5;
+    padding: var(--spacing-lg);
+    background-color: var(--color-surface);
+    border-radius: 8px;
+    border-left: 4px solid var(--color-primary);
+  }
+
+  h2 {
+    font-size: 1.875rem;
+    font-weight: 600;
+    margin-top: var(--spacing-2xl);
+    margin-bottom: var(--spacing-lg);
+    color: var(--color-text);
+  }
+
+  h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin: var(--spacing-xl) 0 var(--spacing-md) 0;
+    color: var(--color-text);
+  }
+
+  .concept-box {
+    background-color: #e0f2fe;
+    border: 1px solid #0891b2;
+    border-radius: 8px;
+    padding: var(--spacing-lg);
+    margin: var(--spacing-xl) 0;
+  }
+
+  .concept-box h3 {
+    color: #0891b2;
+    margin-top: 0;
+  }
+
+  .rules-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--spacing-lg);
+    margin: var(--spacing-xl) 0;
+  }
+
+  .rule-card {
+    background-color: var(--color-surface);
+    border: 2px solid var(--color-primary);
+    border-radius: 8px;
+    padding: var(--spacing-lg);
+    position: relative;
+  }
+
+  .rule-card.bonus {
+    border-color: #f59e0b;
+    background-color: #fef3c7;
+  }
+
+  .rule-number {
+    position: absolute;
+    top: -12px;
+    left: var(--spacing-lg);
+    background-color: var(--color-primary);
+    color: white;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.875rem;
+  }
+
+  .rule-card.bonus .rule-number {
+    background-color: #f59e0b;
+  }
+
+  .rule-card h3 {
+    margin-top: var(--spacing-sm);
+    color: var(--color-primary);
+  }
+
+  .rule-card.bonus h3 {
+    color: #d97706;
+  }
+
+  .rule-detail {
+    background-color: var(--color-background);
+    padding: var(--spacing-sm);
+    border-radius: 4px;
+    margin-top: var(--spacing-md);
+    font-size: 0.875rem;
+    border-left: 3px solid var(--color-primary);
+  }
+
+  .rule-card.bonus .rule-detail {
+    border-left-color: #f59e0b;
+  }
+
+  .example-section {
+    margin: var(--spacing-2xl) 0;
+    padding: var(--spacing-lg);
+    border-radius: 8px;
+    border: 1px solid var(--color-border);
+  }
+
+  .example-section h3 {
+    margin-top: 0;
+    margin-bottom: var(--spacing-lg);
+  }
+
+  .demo-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-xl);
+    align-items: start;
+  }
+
+  .demo-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+  }
+
+  .demo-btn {
+    padding: var(--spacing-sm) var(--spacing-md);
+    border: none;
+    border-radius: 6px;
+    font-weight: 500;
+    cursor: pointer;
+    background-color: var(--color-primary);
+    color: white;
+    transition: all 0.2s;
+  }
+
+  .demo-btn.secondary {
+    background-color: transparent;
+    color: var(--color-text);
+    border: 1px solid var(--color-border);
+  }
+
+  .demo-input {
+    padding: var(--spacing-sm) var(--spacing-md);
+    border: 1px solid var(--color-border);
+    border-radius: 6px;
+    font-size: 0.875rem;
+  }
+
+  /* Focus styles for examples */
+  .solid-black-focus:focus,
+  .solid-black-focus:hover {
+    outline: 3px solid #000;
+    outline-offset: 2px;
+  }
+
+  .light-blue-focus:focus,
+  .light-blue-focus:hover {
+    outline: 2px solid #87ceeb;
+    outline-offset: 1px;
+  }
+
+  .gap-focus:focus,
+  .gap-focus:hover {
+    outline: 2px solid #0891b2;
+    outline-offset: 3px;
+  }
+
+  .background-change-focus:focus,
+  .background-change-focus:hover {
+    background-color: white !important;
+    color: var(--color-text) !important;
+    outline: none;
+  }
+
+  /* Forced focus states for demonstration */
+  .forced-focus-black {
+    outline: 3px solid #000;
+    outline-offset: 2px;
+  }
+
+  .forced-focus-gap {
+    outline: 2px solid #0891b2;
+    outline-offset: 3px;
+  }
+
+  /* Demo links */
+  .demo-link {
+    color: var(--color-primary);
+    text-decoration: underline;
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border-radius: 4px;
+    display: inline-block;
+  }
+
+  .demo-link:hover {
+    background-color: var(--color-surface);
+  }
+
+  /* Strategy demo buttons */
+  .strategy-btn {
+    background-color: var(--color-primary);
+    color: white;
+    border: none;
+    padding: var(--spacing-sm) var(--spacing-md);
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 500;
+    margin-bottom: var(--spacing-xs);
+  }
+
+  .demo-outline-gap:focus,
+  .demo-outline-gap:hover {
+    outline: 2px solid #000;
+    outline-offset: 2px;
+  }
+
+  .demo-double-outline:focus,
+  .demo-double-outline:hover {
+    outline: 2px solid #fff;
+    box-shadow: 0 0 0 4px #000;
+    outline-offset: 1px;
+  }
+
+  .demo-color-change:focus,
+  .demo-color-change:hover {
+    background-color: #f0f0f0;
+    color: var(--color-text);
+    outline: none;
+  }
+
+  .demo-thin-outline:focus,
+  .demo-thin-outline:hover {
+    outline: 1px dashed #ccc;
+  }
+
+  /* Case demo elements */
+  .case-btn {
+    background-color: var(--color-primary);
+    color: white;
+    border: none;
+    padding: var(--spacing-sm) var(--spacing-md);
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 500;
+    margin-bottom: var(--spacing-xs);
+  }
+
+  .case-input {
+    padding: var(--spacing-sm) var(--spacing-md);
+    border: 1px solid var(--color-border);
+    border-radius: 6px;
+    font-size: 0.875rem;
+    margin-bottom: var(--spacing-xs);
+  }
+
+  .mobile-focus:focus,
+  .mobile-focus:hover,
+  .mobile-focus:active {
+    outline: 2px solid #000;
+    outline-offset: 2px;
+  }
+
+  /* Custom dropdown */
+  .custom-dropdown {
+    position: relative;
+    display: inline-block;
+  }
+
+  .dropdown-trigger {
+    background-color: var(--color-primary);
+    color: white;
+    border: none;
+    padding: var(--spacing-sm) var(--spacing-md);
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 500;
+  }
+
+  .dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 6px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    z-index: 10;
+    min-width: 150px;
+    margin-top: var(--spacing-xs);
+  }
+
+  .dropdown-item {
+    display: block;
+    padding: var(--spacing-sm) var(--spacing-md);
+    color: var(--color-text);
+    text-decoration: none;
+    border-radius: 4px;
+    margin: var(--spacing-xs);
+  }
+
+  .dropdown-item:hover {
+    background-color: var(--color-background);
+  }
+
+  .custom-focus:focus,
+  .custom-focus:hover {
+    outline: 2px solid #000;
+    outline-offset: 1px;
+  }
+
+  /* Dark theme demo */
+  .dark-theme {
+    background-color: #1e293b;
+    color: #e2e8f0;
+    padding: var(--spacing-md);
+    border-radius: 6px;
+  }
+
+  .dark-focus:focus,
+  .dark-focus:hover {
+    outline: 2px solid #fff;
+    outline-offset: 2px;
+  }
+
+  .dark-theme .case-btn {
+    background-color: #3b82f6;
+  }
+
+  .dark-theme .case-input {
+    background-color: #374151;
+    border-color: #6b7280;
+    color: #e2e8f0;
+  }
+
+  .dark-theme .case-input::placeholder {
+    color: #9ca3af;
+  }
+
+  /* Navigation tip */
+  .navigation-tip {
+    background-color: #fef3c7;
+    border: 1px solid #f59e0b;
+    border-radius: 8px;
+    padding: var(--spacing-md);
+    margin-bottom: var(--spacing-xl);
+  }
+
+  .navigation-tip kbd {
+    background-color: #374151;
+    color: white;
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-family: monospace;
+    font-size: 0.875rem;
+  }
+
+  .demo-note {
+    font-style: italic;
+    color: var(--color-text-light);
+    margin-bottom: var(--spacing-md);
+  }
+
+  .demo-explanation {
+    background-color: var(--color-background);
+    padding: var(--spacing-md);
+    border-radius: 6px;
+  }
+
+  .demo-explanation ul {
+    margin: var(--spacing-sm) 0 0 0;
+    padding-left: var(--spacing-lg);
+  }
+
+  .demo-explanation li {
+    margin-bottom: var(--spacing-xs);
+    font-size: 0.875rem;
+  }
+
+  .strategies-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--spacing-lg);
+    margin: var(--spacing-xl) 0;
+  }
+
+  .strategy-card {
+    padding: var(--spacing-lg);
+    border-radius: 8px;
+    border: 2px solid;
+  }
+
+  .strategy-card.recommended {
+    border-color: #16a34a;
+    background-color: #f0fdf4;
+  }
+
+  .strategy-card.avoid {
+    border-color: #dc2626;
+    background-color: #fef2f2;
+  }
+
+  .strategy-card h4 {
+    margin: 0 0 var(--spacing-md) 0;
+    font-size: 1rem;
+  }
+
+  .strategy-demo {
+    margin-bottom: var(--spacing-md);
+  }
+
+  .special-cases {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--spacing-lg);
+    margin: var(--spacing-xl) 0;
+  }
+
+  .case-card {
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    padding: var(--spacing-lg);
+    border-left: 4px solid var(--color-primary);
+  }
+
+  .case-card h4 {
+    color: var(--color-primary);
+    margin: 0 0 var(--spacing-md) 0;
+    font-size: 1rem;
+  }
+
+  .case-demo {
+    margin-bottom: var(--spacing-md);
+  }
+
+  .checklist {
+    background-color: var(--color-surface);
+    border-radius: 8px;
+    padding: var(--spacing-xl);
+    margin: var(--spacing-xl) 0;
+  }
+
+  .checklist h3 {
+    color: var(--color-primary);
+    margin-top: 0;
+  }
+
+  .checklist-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-lg);
+  }
+
+  .checklist-item {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--spacing-sm);
+    cursor: pointer;
+    padding: var(--spacing-sm);
+    border-radius: 4px;
+    transition: background-color 0.2s;
+  }
+
+  .checklist-item:hover {
+    background-color: var(--color-background);
+  }
+
+  .checklist-item input[type="checkbox"] {
+    margin-top: 2px;
+    flex-shrink: 0;
+  }
+
+  .checklist-item span {
+    font-size: 0.9rem;
+    line-height: 1.4;
+  }
+
+  .tools {
+    background-color: var(--color-surface);
+    border-radius: 8px;
+    padding: var(--spacing-lg);
+    margin: var(--spacing-lg) 0;
+  }
+
+  .tools-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--spacing-lg);
+    margin: var(--spacing-lg) 0;
+  }
+
+  .tool-card {
+    background-color: var(--color-background);
+    padding: var(--spacing-md);
+    border-radius: 6px;
+    border-left: 3px solid var(--color-primary);
+  }
+
+  .tool-card h4 {
+    color: var(--color-primary);
+    margin: 0 0 var(--spacing-sm) 0;
+    font-size: 1rem;
+  }
+
+  .tool-card ul {
+    margin: 0;
+    padding-left: var(--spacing-lg);
+  }
+
+  .tool-card li {
+    margin-bottom: var(--spacing-xs);
+    font-size: 0.9rem;
+  }
+
+  .tools-note {
+    margin-top: var(--spacing-md);
+    padding-top: var(--spacing-md);
+    border-top: 1px solid var(--color-border);
+    font-size: 0.9rem;
+  }
+
+  .tools-note a {
+    color: var(--color-primary);
+    font-weight: 600;
+  }
+
+  @media (max-width: 768px) {
+    h1 {
+      font-size: 2rem;
+    }
+
+    .lead {
+      font-size: 1.125rem;
+    }
+
+    h2 {
+      font-size: 1.5rem;
+    }
+
+    .rules-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .demo-container {
+      grid-template-columns: 1fr;
+      gap: var(--spacing-lg);
+    }
+
+    .strategies-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .special-cases {
+      grid-template-columns: 1fr;
+    }
+
+    .checklist-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .tools-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style> 
