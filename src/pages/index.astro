@@ -1,11 +1,261 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
 
-<Layout>
-	<Welcome />
+<Layout title="a11yado - Accesibilidad accesible">
+  <article>
+    <header>
+      <h1>¿Por qué a11yado?</h1>
+      <p class="lead">
+        Accesibilidad accesible: aprende los conceptos fundamentales de accesibilidad web 
+        de forma simple, práctica y sin complicaciones.
+      </p>
+    </header>
+
+    <section>
+      <h2>El problema</h2>
+      <p>
+        La documentación oficial de accesibilidad como WCAG es extensa y compleja. 
+        Para muchos desarrolladores, esto se convierte en una barrera que impide 
+        crear sitios web verdaderamente accesibles.
+      </p>
+      
+      <p>
+        <strong>a11yado</strong> es un proyecto personal que busca simplificar 
+        el aprendizaje de conceptos básicos de accesibilidad web, sin pretender 
+        sustituir las especificaciones oficiales.
+      </p>
+    </section>
+
+    <section>
+      <h2>Enfoque</h2>
+      <ul class="philosophy-list">
+        <li>
+          <strong>Directo al grano:</strong> Sin introducciones largas ni teoría excesiva. 
+          Conceptos claros con ejemplos prácticos.
+        </li>
+        <li>
+          <strong>Accesible por diseño:</strong> Esta página practica lo que enseña. 
+          Cada elemento está pensado para ser accesible.
+        </li>
+        <li>
+          <strong>Fácil de implementar:</strong> Guías paso a paso que puedes aplicar 
+          inmediatamente en tus proyectos.
+        </li>
+                  <li>
+            <strong>Complementario:</strong> Los conceptos aquí simplificados siempre 
+            deben contrastarse con la <a href="/documentation">documentación oficial</a>.
+          </li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>¿Qué encontrarás aquí?</h2>
+      <nav aria-label="Secciones disponibles">
+        <ul class="topics-list">
+          <li>
+            <a href="/documentation" class="topic-link">
+              <h3>Documentación Oficial</h3>
+              <p>
+                Enlaces a las especificaciones oficiales de WCAG, ADA, Section 508 
+                y otras normativas de accesibilidad.
+              </p>
+            </a>
+          </li>
+          <li>
+            <a href="/guides" class="topic-link">
+              <h3>Guías Prácticas</h3>
+              <p>
+                Conceptos de accesibilidad explicados de forma simple con ejemplos 
+                que puedes aplicar inmediatamente.
+              </p>
+            </a>
+          </li>
+          <li>
+            <a href="/tools" class="topic-link">
+              <h3>Herramientas</h3>
+              <p>
+                Extensiones, aplicaciones y recursos para evaluar y mejorar 
+                la accesibilidad de tus sitios web.
+              </p>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </section>
+
+    <section>
+      <h2>Importante</h2>
+      <div class="disclaimer">
+        <p>
+          Este sitio es un proyecto educativo personal que simplifica conceptos de 
+          accesibilidad web. <strong>No sustituye la documentación oficial</strong> 
+          como WCAG, que debe ser siempre tu referencia principal para implementaciones 
+          profesionales. 
+        </p>
+        <p>
+          Consulta siempre la <a href="/documentation">documentación oficial</a> 
+          para validar y profundizar en los conceptos presentados aquí.
+        </p>
+      </div>
+      
+      <h2>Empezar es fácil</h2>
+      <p>
+        Elige un tema del menú superior o comienza por las 
+        <a href="/guides">Guías Prácticas</a>, donde encontrarás conceptos 
+        fundamentales explicados de forma simple y directa.
+      </p>
+    </section>
+  </article>
 </Layout>
+
+<style>
+  article {
+    max-width: 65ch;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    margin-bottom: var(--spacing-md);
+    line-height: 1.2;
+  }
+
+  .lead {
+    font-size: 1.25rem;
+    color: var(--color-text-light);
+    margin-bottom: var(--spacing-2xl);
+    line-height: 1.5;
+  }
+
+  h2 {
+    font-size: 1.875rem;
+    font-weight: 600;
+    margin-top: var(--spacing-2xl);
+    margin-bottom: var(--spacing-lg);
+    color: var(--color-text);
+  }
+
+  h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin: 0 0 var(--spacing-xs) 0;
+    color: var(--color-text);
+  }
+
+  p {
+    margin-bottom: var(--spacing-lg);
+    max-width: 65ch;
+  }
+
+  .philosophy-list {
+    list-style: none;
+    padding: 0;
+    margin: var(--spacing-lg) 0;
+  }
+
+  .philosophy-list li {
+    background-color: var(--color-surface);
+    padding: var(--spacing-lg);
+    margin-bottom: var(--spacing-md);
+    border-radius: 8px;
+    border-left: 4px solid var(--color-primary);
+  }
+
+  .philosophy-list strong {
+    color: var(--color-primary);
+  }
+
+  .topics-list {
+    list-style: none;
+    padding: 0;
+    margin: var(--spacing-lg) 0;
+    display: grid;
+    gap: var(--spacing-lg);
+  }
+
+  .topic-link {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    background-color: var(--color-surface);
+    padding: var(--spacing-lg);
+    border-radius: 8px;
+    border: 2px solid transparent;
+    transition: all 0.2s ease;
+  }
+
+  .topic-link:hover {
+    border-color: var(--color-primary);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.1);
+  }
+
+  .topic-link:focus {
+    border-color: var(--color-primary);
+    outline: none;
+  }
+
+  .topic-link h3 {
+    color: var(--color-primary);
+  }
+
+  .topic-link p {
+    margin: 0;
+    color: var(--color-text-light);
+  }
+
+  .coming-soon {
+    background-color: var(--color-surface);
+    padding: var(--spacing-lg);
+    border-radius: 8px;
+    border: 2px dashed var(--color-border);
+    opacity: 0.7;
+  }
+
+  .coming-soon h3 {
+    color: var(--color-text-light);
+  }
+
+  .coming-soon p {
+    margin: 0;
+    color: var(--color-text-light);
+  }
+
+  .disclaimer {
+    background-color: #fef3c7;
+    border: 2px solid #f59e0b;
+    border-radius: 8px;
+    padding: var(--spacing-lg);
+    margin: var(--spacing-lg) 0 var(--spacing-2xl) 0;
+  }
+
+  .disclaimer p {
+    margin-bottom: var(--spacing-md);
+    color: #92400e;
+  }
+
+  .disclaimer p:last-child {
+    margin-bottom: 0;
+  }
+
+  .disclaimer a {
+    color: #d97706;
+    font-weight: 600;
+  }
+
+  @media (max-width: 768px) {
+    h1 {
+      font-size: 2rem;
+    }
+
+    .lead {
+      font-size: 1.125rem;
+    }
+
+    h2 {
+      font-size: 1.5rem;
+    }
+  }
+</style>

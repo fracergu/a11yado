@@ -1,0 +1,420 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout title="Guías Prácticas - a11yado">
+  <article>
+    <header>
+      <h1>Guías Prácticas</h1>
+      <p class="lead">
+        Conceptos de accesibilidad web explicados de forma simple y práctica, 
+        con ejemplos que puedes aplicar inmediatamente a tus proyectos.
+      </p>
+    </header>
+
+    <section>
+      <h2>Fundamentos Visuales</h2>
+      <p>Aspectos básicos de accesibilidad que afectan la percepción visual del contenido.</p>
+      
+      <div class="guides-grid">
+        <div class="guide-card available">
+          <div class="guide-header">
+            <h3>Colores y Contraste</h3>
+            <span class="status available">Disponible</span>
+          </div>
+          <p>
+            Aprende a usar colores con contraste adecuado para que todos 
+            puedan leer tu contenido. Incluye ejemplos prácticos y herramientas.
+          </p>
+          <div class="guide-topics">
+            <span class="topic">Requisitos de contraste</span>
+            <span class="topic">Combinaciones problemáticas</span>
+            <span class="topic">Herramientas de verificación</span>
+          </div>
+          <a href="/guides/colors" class="guide-link">
+            Ir a la guía →
+          </a>
+        </div>
+
+        <div class="guide-card coming-soon">
+          <div class="guide-header">
+            <h3>Tipografía Accesible</h3>
+            <span class="status coming-soon">Próximamente</span>
+          </div>
+          <p>
+            Tamaños de fuente, espaciado, legibilidad y cómo elegir 
+            tipografías que funcionen para todos los usuarios.
+          </p>
+          <div class="guide-topics">
+            <span class="topic">Tamaños mínimos</span>
+            <span class="topic">Espaciado de líneas</span>
+            <span class="topic">Fuentes legibles</span>
+          </div>
+        </div>
+
+        <div class="guide-card coming-soon">
+          <div class="guide-header">
+            <h3>Diseño Responsivo Accesible</h3>
+            <span class="status coming-soon">Próximamente</span>
+          </div>
+          <p>
+            Cómo crear diseños que funcionen en todos los dispositivos 
+            y tamaños de pantalla de forma accesible.
+          </p>
+          <div class="guide-topics">
+            <span class="topic">Breakpoints accesibles</span>
+            <span class="topic">Áreas de toque</span>
+            <span class="topic">Orientación de pantalla</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Interacción y Navegación</h2>
+      <p>Cómo hacer tu sitio navegable y usable para todos los usuarios.</p>
+      
+      <div class="guides-grid">
+        <div class="guide-card coming-soon">
+          <div class="guide-header">
+            <h3>Navegación por Teclado</h3>
+            <span class="status coming-soon">Próximamente</span>
+          </div>
+          <p>
+            Asegura que tu sitio sea completamente navegable usando 
+            solo el teclado. Estados de foco, orden de tabulación y atajos.
+          </p>
+          <div class="guide-topics">
+            <span class="topic">Orden lógico de tabulación</span>
+            <span class="topic">Estados de foco visibles</span>
+            <span class="topic">Enlaces de salto</span>
+          </div>
+        </div>
+
+        <div class="guide-card coming-soon">
+          <div class="guide-header">
+            <h3>Botones y Enlaces</h3>
+            <span class="status coming-soon">Próximamente</span>
+          </div>
+          <p>
+            Cuándo usar botones vs enlaces, cómo hacerlos accesibles 
+            y mejores prácticas para elementos interactivos.
+          </p>
+          <div class="guide-topics">
+            <span class="topic">Semántica correcta</span>
+            <span class="topic">Estados de interacción</span>
+            <span class="topic">Textos descriptivos</span>
+          </div>
+        </div>
+
+        <div class="guide-card coming-soon">
+          <div class="guide-header">
+            <h3>Menús y Navegación</h3>
+            <span class="status coming-soon">Próximamente</span>
+          </div>
+          <p>
+            Crear menús de navegación accesibles, migas de pan, 
+            y sistemas de navegación complejos.
+          </p>
+          <div class="guide-topics">
+            <span class="topic">Menús desplegables</span>
+            <span class="topic">Navegación móvil</span>
+            <span class="topic">Migas de pan</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Formularios e Entrada de Datos</h2>
+      <p>Cómo crear formularios que sean fáciles de usar y accesibles para todos.</p>
+      
+      <div class="guides-grid">
+        <div class="guide-card coming-soon">
+          <div class="guide-header">
+            <h3>Formularios Accesibles</h3>
+            <span class="status coming-soon">Próximamente</span>
+          </div>
+          <p>
+            Etiquetas, validación, mensajes de error y cómo estructurar 
+            formularios para que sean accesibles.
+          </p>
+          <div class="guide-topics">
+            <span class="topic">Etiquetas apropiadas</span>
+            <span class="topic">Validación accesible</span>
+            <span class="topic">Mensajes de error</span>
+          </div>
+        </div>
+
+        <div class="guide-card coming-soon">
+          <div class="guide-header">
+            <h3>Componentes de Entrada</h3>
+            <span class="status coming-soon">Próximamente</span>
+          </div>
+          <p>
+            Checkboxes, botones de radio, selects, selectores de fecha y otros 
+            componentes accesibles de entrada de datos.
+          </p>
+          <div class="guide-topics">
+            <span class="topic">Inputs personalizados</span>
+            <span class="topic">Retroalimentación visual</span>
+            <span class="topic">Estados de validación</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Contenido y Estructura</h2>
+      <p>Cómo organizar y presentar contenido de forma accesible.</p>
+      
+      <div class="guides-grid">
+        <div class="guide-card coming-soon">
+          <div class="guide-header">
+            <h3>Estructura Semántica</h3>
+            <span class="status coming-soon">Próximamente</span>
+          </div>
+          <p>
+            Usar HTML semántico correctamente: encabezados, landmarks, 
+            listas y otros elementos estructurales.
+          </p>
+          <div class="guide-topics">
+            <span class="topic">Jerarquía de encabezados</span>
+            <span class="topic">Landmarks ARIA</span>
+            <span class="topic">Elementos semánticos</span>
+          </div>
+        </div>
+
+        <div class="guide-card coming-soon">
+          <div class="guide-header">
+            <h3>Imágenes y Multimedia</h3>
+            <span class="status coming-soon">Próximamente</span>
+          </div>
+          <p>
+            Texto alternativo, imágenes decorativas, videos accesibles, 
+            transcripciones y subtítulos.
+          </p>
+          <div class="guide-topics">
+            <span class="topic">Texto alt efectivo</span>
+            <span class="topic">Imágenes decorativas</span>
+            <span class="topic">Multimedia accesible</span>
+          </div>
+        </div>
+
+        <div class="guide-card coming-soon">
+          <div class="guide-header">
+            <h3>Tablas de Datos</h3>
+            <span class="status coming-soon">Próximamente</span>
+          </div>
+          <p>
+            Crear tablas accesibles con encabezados apropiados, 
+            título descriptivo y estructura clara para lectores de pantalla.
+          </p>
+          <div class="guide-topics">
+            <span class="topic">Encabezados de tabla</span>
+            <span class="topic">Título descriptivo</span>
+            <span class="topic">Tablas complejas</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="progress-info">
+      <h2>📚 Acerca de estas guías</h2>
+      <p>
+        Cada guía está diseñada para ser práctica y directa. Incluyen ejemplos de código, 
+        demostraciones visuales y listas de verificación que puedes 
+        usar en tus proyectos.
+      </p>
+      <p>
+        <strong>Recuerda:</strong> Estas guías simplifican conceptos complejos. 
+        Consulta siempre la <a href="/documentation">documentación oficial</a> 
+        para implementaciones profesionales.
+      </p>
+    </div>
+  </article>
+</Layout>
+
+<style>
+  article {
+    max-width: 80ch;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    margin-bottom: var(--spacing-md);
+    line-height: 1.2;
+  }
+
+  .lead {
+    font-size: 1.25rem;
+    color: var(--color-text-light);
+    margin-bottom: var(--spacing-2xl);
+    line-height: 1.5;
+  }
+
+  h2 {
+    font-size: 1.875rem;
+    font-weight: 600;
+    margin-top: var(--spacing-2xl);
+    margin-bottom: var(--spacing-md);
+    color: var(--color-text);
+  }
+
+  h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin: 0 0 var(--spacing-sm) 0;
+    color: var(--color-text);
+  }
+
+  .guides-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: var(--spacing-lg);
+    margin: var(--spacing-lg) 0 var(--spacing-2xl) 0;
+  }
+
+  .guide-card {
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    padding: var(--spacing-lg);
+    transition: transform 0.2s, box-shadow 0.2s;
+    position: relative;
+  }
+
+  .guide-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+
+  .guide-card.available {
+    border-color: var(--color-primary);
+    border-width: 2px;
+  }
+
+  .guide-card.coming-soon {
+    opacity: 0.7;
+  }
+
+  .guide-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-md);
+  }
+
+  .guide-header h3 {
+    color: var(--color-primary);
+    flex: 1;
+  }
+
+  .status {
+    font-size: 0.75rem;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-weight: 600;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  .status.available {
+    background-color: #16a34a;
+    color: white;
+  }
+
+  .status.coming-soon {
+    background-color: #f59e0b;
+    color: white;
+  }
+
+  .guide-card p {
+    color: var(--color-text-light);
+    margin-bottom: var(--spacing-md);
+    line-height: 1.5;
+  }
+
+  .guide-topics {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-xs);
+    margin-bottom: var(--spacing-lg);
+  }
+
+  .topic {
+    background-color: var(--color-border);
+    color: var(--color-text);
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-size: 0.75rem;
+    font-weight: 500;
+  }
+
+  .guide-link {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    color: var(--color-primary);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.2s;
+  }
+
+  .guide-link:hover {
+    color: var(--color-primary-dark);
+  }
+
+  .progress-info {
+    background-color: var(--color-surface);
+    border-radius: 8px;
+    padding: var(--spacing-xl);
+    margin: var(--spacing-2xl) 0;
+    border-left: 4px solid var(--color-primary);
+  }
+
+  .progress-info h2 {
+    margin-top: 0;
+    color: var(--color-primary);
+  }
+
+  .progress-info p {
+    margin-bottom: var(--spacing-md);
+    color: var(--color-text-light);
+  }
+
+  .progress-info p:last-child {
+    margin-bottom: 0;
+  }
+
+  .progress-info a {
+    color: var(--color-primary);
+    font-weight: 600;
+  }
+
+  @media (max-width: 768px) {
+    h1 {
+      font-size: 2rem;
+    }
+
+    .lead {
+      font-size: 1.125rem;
+    }
+
+    h2 {
+      font-size: 1.5rem;
+    }
+
+    .guides-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .guide-header {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+</style> 
