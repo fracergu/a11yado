@@ -11,25 +11,6 @@ a11yado es un proyecto personal que busca hacer la accesibilidad web más compre
 - **Demostraciones interactivas** que muestran por qué importa la accesibilidad
 - **Enlaces a documentación oficial** cuando necesites profundizar
 
-## 🚀 Estructura del proyecto
-
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src/
-│   ├── layouts/
-│   │   └── Layout.astro          # Layout principal con navegación
-│   └── pages/
-│       ├── index.astro           # Página de inicio
-│       ├── documentation.astro   # Documentación oficial (WCAG, ADA, etc.)
-│       ├── tools.astro          # Herramientas de accesibilidad
-│       └── guides/
-│           ├── index.astro       # Índice de guías prácticas
-│           └── colors.astro      # Guía de colores y contraste
-└── package.json
-```
-
 ## 🛠️ Tecnología
 
 - **Astro** - Generador de sitios estáticos

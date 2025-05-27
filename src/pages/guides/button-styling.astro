@@ -1,0 +1,1104 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout title="Estilizado de Botones - a11yado">
+  <article>
+    <header>
+      <h1>Estilizado de Botones</h1>
+      <p class="lead">
+        Los usuarios deben poder identificar qué elementos son interactivos 
+        simplemente mirando la interfaz, sin tener que explorar con el cursor.
+      </p>
+    </header>
+
+    <section>
+      <h2>¿Por qué importa el estilizado?</h2>
+      <p>
+        Cuanto más esfuerzo requiera una interfaz para descubrir qué es interactivo, 
+        menos se usará. Los botones necesitan <strong>señalizadores visuales claros</strong> 
+        que comuniquen su función de forma inmediata.
+      </p>
+
+      <div class="principle-box">
+        <h3>Principio fundamental</h3>
+        <p>
+          <strong>La claridad siempre gana sobre la consistencia.</strong> 
+          Si necesitas sacrificar consistencia para mejorar la usabilidad, hazlo.
+        </p>
+      </div>
+    </section>
+
+    <section>
+      <h2>Las 7 técnicas clave</h2>
+      
+      <div class="technique-section">
+        <h3>1. Técnica de Forma</h3>
+        <p>La forma puede indicar si algo es un botón. Los rectángulos son la opción más segura.</p>
+        
+        <div class="shape-examples">
+          <div class="shape-demo">
+            <h4>✅ Formas seguras</h4>
+            <div class="button-group">
+              <button class="demo-btn rectangular">Rectangular</button>
+              <button class="demo-btn rounded">Redondeado</button>
+              <button class="demo-btn pill">Píldora</button>
+            </div>
+            <p class="demo-desc">Formas reconocibles como botones</p>
+          </div>
+          
+          <div class="shape-demo">
+            <h4>⚠️ Formas creativas</h4>
+            <div class="button-group">
+              <button class="demo-btn hexagon">Hexágono</button>
+              <button class="demo-btn circle">Círculo</button>
+              <button class="demo-btn diamond">Rombo</button>
+            </div>
+            <p class="demo-desc">Requieren señalizadores adicionales</p>
+          </div>
+        </div>
+
+        <div class="consistency-example">
+          <h4>Importancia de la consistencia</h4>
+          <div class="consistency-comparison">
+            <div class="inconsistent">
+              <h5>❌ Inconsistente</h5>
+              <div class="button-group">
+                <button class="demo-btn rectangular">Copiar</button>
+                <button class="demo-btn circle">+</button>
+                <button class="demo-btn pill">Eliminar</button>
+              </div>
+            </div>
+            <div class="consistent">
+              <h5>✅ Consistente</h5>
+              <div class="button-group">
+                <button class="demo-btn rectangular">Copiar</button>
+                <button class="demo-btn rectangular">Agregar</button>
+                <button class="demo-btn rectangular">Eliminar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="technique-section">
+        <h3>2. Técnica de Radio de Borde</h3>
+        <p>El radio de borde cambia la "personalidad" del botón: de más serio a más divertido.</p>
+        
+        <div class="radius-examples">
+          <div class="radius-demo">
+            <button class="demo-btn serious">Serio (0px)</button>
+            <span class="personality-label">Formal, profesional</span>
+          </div>
+          <div class="radius-demo">
+            <button class="demo-btn moderate">Moderado (4px)</button>
+            <span class="personality-label">Equilibrado, amigable</span>
+          </div>
+          <div class="radius-demo">
+            <button class="demo-btn playful">Juguetón (100%)</button>
+            <span class="personality-label">Casual, divertido</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="technique-section">
+        <h3>3. Técnica de Relleno y Color</h3>
+        <p>Usa cambios estructurales (no solo color) para crear jerarquía visual.</p>
+        
+        <div class="hierarchy-examples">
+          <div class="hierarchy-demo">
+            <h4>Jerarquía de botones</h4>
+            <div class="button-hierarchy">
+              <button class="demo-btn primary">Primario (Sólido)</button>
+              <button class="demo-btn secondary">Secundario (Borde)</button>
+              <button class="demo-btn tertiary">Terciario (Sin borde)</button>
+            </div>
+            <div class="hierarchy-explanation">
+              <div class="hierarchy-item">
+                <span class="hierarchy-dot primary-dot"></span>
+                <span>Acciones principales - Relleno sólido</span>
+              </div>
+              <div class="hierarchy-item">
+                <span class="hierarchy-dot secondary-dot"></span>
+                <span>Acciones secundarias - Solo borde</span>
+              </div>
+              <div class="hierarchy-item">
+                <span class="hierarchy-dot tertiary-dot"></span>
+                <span>Acciones terciarias - Sin borde</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="context-example">
+            <h4>Ejemplo en contexto</h4>
+            <div class="form-example">
+              <div class="form-field">
+                <label>Nombre de usuario:</label>
+                <input type="text" placeholder="Ingresa tu nombre">
+              </div>
+              <div class="form-actions">
+                <button class="demo-btn tertiary">Cancelar</button>
+                <button class="demo-btn primary">Siguiente</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="technique-section">
+        <h3>4. Técnica de Sombra y Elevación</h3>
+        <p>Las sombras comunican elevación e importancia visual.</p>
+        
+        <div class="shadow-examples">
+          <div class="shadow-demo">
+            <button class="demo-btn no-shadow">Sin sombra</button>
+            <span class="shadow-label">Color "pesado" para dominio visual</span>
+          </div>
+          <div class="shadow-demo">
+            <button class="demo-btn small-shadow">Sombra pequeña</button>
+            <span class="shadow-label">Elevación ligera, importancia</span>
+          </div>
+          <div class="shadow-demo">
+            <button class="demo-btn long-shadow">Sombra larga</button>
+            <span class="shadow-label">Alta elevación, llama atención</span>
+          </div>
+        </div>
+
+        <div class="shadow-states">
+          <h4>Estados interactivos con sombras</h4>
+          <div class="state-examples">
+            <button class="demo-btn interactive-shadow">Pasa el cursor aquí</button>
+            <p class="demo-desc">La sombra aumenta al hacer hover</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="technique-section">
+        <h3>5. Técnica de Competencia</h3>
+        <p>Elementos con estilos similares compiten entre sí. Los CTAs deben destacar claramente.</p>
+        
+        <div class="competition-examples">
+          <div class="competition-demo bad">
+            <h4>❌ Demasiada competencia</h4>
+            <div class="competing-interface">
+              <div class="fake-header">Tecnologías Frontend</div>
+              <div class="fake-header">Aprende las Mejores Herramientas</div>
+              <div class="button-grid">
+                <button class="demo-btn competing">React</button>
+                <button class="demo-btn competing">Vue.js</button>
+                <button class="demo-btn competing">Angular</button>
+              </div>
+              <input type="text" class="competing-input" placeholder="Buscar frameworks...">
+              <button class="demo-btn competing">Buscar</button>
+            </div>
+            <p class="demo-desc">Todo compite por atención</p>
+          </div>
+
+          <div class="competition-demo good">
+            <h4>✅ CTA claro</h4>
+            <div class="clear-interface">
+              <h5>Tecnologías Frontend</h5>
+              <p>Aprende las mejores herramientas</p>
+              <div class="product-grid">
+                <span class="product-tag">React</span>
+                <span class="product-tag">Vue.js</span>
+                <span class="product-tag">Angular</span>
+              </div>
+              <input type="text" class="clean-input" placeholder="Buscar frameworks...">
+              <button class="demo-btn primary prominent">Explorar Tecnologías</button>
+            </div>
+            <p class="demo-desc">Un CTA principal claro</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="technique-section">
+        <h3>6. Técnica de Proximidad</h3>
+        <p>El espacio adecuado permite que los elementos interactivos respiren y destaquen.</p>
+        
+        <div class="proximity-examples">
+          <div class="proximity-demo bad">
+            <h4>❌ Muy apretado</h4>
+            <div class="cramped-interface">
+              <button class="demo-btn small">Guardar</button><button class="demo-btn small">Cancelar</button><button class="demo-btn small">Eliminar</button>
+            </div>
+            <p class="demo-desc">Difícil de usar, errores accidentales</p>
+          </div>
+
+          <div class="proximity-demo good">
+            <h4>✅ Bien espaciado</h4>
+            <div class="spaced-interface">
+              <button class="demo-btn comfortable">Guardar</button>
+              <button class="demo-btn comfortable">Cancelar</button>
+              <button class="demo-btn comfortable">Eliminar</button>
+            </div>
+            <p class="demo-desc">Fácil de usar, targets grandes</p>
+          </div>
+        </div>
+
+        <div class="touch-targets">
+          <h4>Tamaños de área táctil</h4>
+          <div class="target-examples">
+            <button class="demo-btn tiny">Muy pequeño</button>
+            <button class="demo-btn small-target">Pequeño</button>
+            <button class="demo-btn good-target">Tamaño ideal</button>
+          </div>
+          <p class="demo-desc">Mínimo recomendado: 44px × 44px</p>
+        </div>
+      </div>
+
+      <div class="technique-section">
+        <h3>7. Técnica de Capitalización</h3>
+        <p>El tipo de capitalización transmite diferentes tonos de voz.</p>
+        
+        <div class="capitalization-examples">
+          <div class="cap-demo">
+            <button class="demo-btn cap-sentence">Enviar mensaje</button>
+            <span class="cap-label">Sentence case - Amigable, conversacional ✅</span>
+          </div>
+          <div class="cap-demo">
+            <button class="demo-btn cap-title">Enviar Mensaje</button>
+            <span class="cap-label">Title Case - Uniforme, autoritario</span>
+          </div>
+          <div class="cap-demo">
+            <button class="demo-btn cap-upper">ENVIAR MENSAJE</button>
+            <span class="cap-label">ALL CAPS - Formal, impersonal</span>
+          </div>
+          <div class="cap-demo">
+            <button class="demo-btn cap-lower">enviar mensaje</button>
+            <span class="cap-label">lower case - Casual, poco esfuerzo</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Mejores prácticas adicionales</h2>
+      
+      <div class="additional-practices">
+        <div class="practice-card">
+          <h4>🎯 Reserva señalizadores para botones</h4>
+          <p>
+            No uses formas rectangulares, sombras o colores de botón 
+            para elementos no interactivos.
+          </p>
+          <div class="practice-example">
+            <div class="bad-signifiers">
+              <div class="fake-button">No soy un botón</div>
+              <button class="demo-btn primary">Soy un botón real</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="practice-card">
+          <h4>⚖️ Consistencia vs. Claridad</h4>
+          <p>
+            Mantén consistencia, pero prioriza siempre la claridad 
+            y usabilidad del usuario.
+          </p>
+          <div class="balance-example">
+            <div class="consistency-benefit">
+              <strong>Consistencia ayuda con:</strong>
+              <ul>
+                <li>Transferencia de conocimiento</li>
+                <li>Eficiencia del usuario</li>
+                <li>Percepción de confiabilidad</li>
+              </ul>
+            </div>
+            <div class="distinctness-benefit">
+              <strong>Distinción se usa para:</strong>
+              <ul>
+                <li>Diferenciar elementos</li>
+                <li>Llamar atención específica</li>
+                <li>Mejorar objetivos de UX</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Lista de verificación</h2>
+      <div class="checklist">
+        <div class="checklist-group">
+          <h4>Antes de publicar, verifica:</h4>
+          <ul class="checklist-items">
+            <li>✅ Los botones usan formas consistentes</li>
+            <li>✅ La jerarquía visual es clara (primario/secundario/terciario)</li>
+            <li>✅ Hay suficiente espacio entre elementos interactivos</li>
+            <li>✅ Los targets táctiles son de al menos 44px</li>
+            <li>✅ Solo hay un CTA principal por sección</li>
+            <li>✅ Los elementos no interactivos no parecen botones</li>
+            <li>✅ La capitalización es consistente</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Herramientas útiles</h2>
+      <div class="tools">
+        <p>Para verificar la efectividad de tus botones:</p>
+        <ul class="tools-list">
+          <li><strong>Prueba de 5 segundos:</strong> ¿Los usuarios identifican rápidamente qué es interactivo?</li>
+          <li><strong>Prueba de accesibilidad:</strong> ¿Los botones son navegables por teclado?</li>
+          <li><strong>Prueba en dispositivos:</strong> ¿Los targets táctiles son cómodos?</li>
+          <li><strong>Prueba de contraste:</strong> ¿Los botones tienen suficiente contraste?</li>
+        </ul>
+        <p class="tools-note">
+          💡 <strong>Consejo:</strong> Consulta la página de <a href="/tools">Herramientas</a> para recursos específicos de testing.
+        </p>
+      </div>
+    </section>
+  </article>
+</Layout>
+
+<style>
+  article {
+    max-width: 90ch;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    margin-bottom: var(--spacing-md);
+    line-height: 1.2;
+  }
+
+  .lead {
+    font-size: 1.25rem;
+    color: var(--color-text-light);
+    margin-bottom: var(--spacing-2xl);
+    line-height: 1.5;
+    padding: var(--spacing-lg);
+    background-color: var(--color-surface);
+    border-radius: 8px;
+    border-left: 4px solid var(--color-primary);
+  }
+
+  h2 {
+    font-size: 1.875rem;
+    font-weight: 600;
+    margin-top: var(--spacing-2xl);
+    margin-bottom: var(--spacing-lg);
+    color: var(--color-text);
+  }
+
+  h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin: var(--spacing-xl) 0 var(--spacing-md) 0;
+    color: var(--color-text);
+  }
+
+  .principle-box {
+    background-color: #f0f9ff;
+    border: 2px solid #0891b2;
+    border-radius: 8px;
+    padding: var(--spacing-lg);
+    margin: var(--spacing-xl) 0;
+  }
+
+  .principle-box h3 {
+    color: #0891b2;
+    margin-top: 0;
+  }
+
+  .technique-section {
+    margin: var(--spacing-2xl) 0;
+    padding: var(--spacing-xl);
+    background-color: var(--color-surface);
+    border-radius: 8px;
+    border-left: 4px solid var(--color-primary);
+  }
+
+  .technique-section h3 {
+    color: var(--color-primary);
+    margin-top: 0;
+  }
+
+  /* Botones demo base */
+  .demo-btn {
+    padding: var(--spacing-sm) var(--spacing-md);
+    border: none;
+    font-size: 0.875rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-family: inherit;
+    display: inline-block;
+    text-decoration: none;
+    background-color: var(--color-primary);
+    color: white;
+  }
+
+  .demo-btn:hover {
+    background-color: #1e40af;
+  }
+
+  /* Técnica 1: Formas */
+  .shape-examples {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--spacing-lg);
+    margin: var(--spacing-lg) 0;
+  }
+
+  .shape-demo {
+    background-color: var(--color-background);
+    padding: var(--spacing-lg);
+    border-radius: 6px;
+    border: 1px solid var(--color-border);
+  }
+
+  .button-group {
+    display: flex;
+    gap: var(--spacing-sm);
+    margin: var(--spacing-md) 0;
+    flex-wrap: wrap;
+  }
+
+  .rectangular { border-radius: 4px; }
+  .rounded { border-radius: 8px; }
+  .pill { border-radius: 50px; }
+  
+  .hexagon {
+    border-radius: 0;
+    clip-path: polygon(20% 0%, 80% 0%, 100% 50%, 80% 100%, 20% 100%, 0% 50%);
+    padding: var(--spacing-sm) var(--spacing-lg);
+  }
+  
+  .circle {
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .diamond {
+    border-radius: 0;
+    transform: rotate(45deg);
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .consistency-example {
+    margin: var(--spacing-xl) 0;
+  }
+
+  .consistency-comparison {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--spacing-lg);
+    margin: var(--spacing-md) 0;
+  }
+
+  .inconsistent, .consistent {
+    background-color: var(--color-background);
+    padding: var(--spacing-md);
+    border-radius: 6px;
+    border: 1px solid var(--color-border);
+  }
+
+  .inconsistent {
+    border-left: 4px solid #dc2626;
+  }
+
+  .consistent {
+    border-left: 4px solid #16a34a;
+  }
+
+  /* Técnica 2: Radio de borde */
+  .radius-examples {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--spacing-lg);
+    margin: var(--spacing-lg) 0;
+  }
+
+  .radius-demo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-md);
+    background-color: var(--color-background);
+    border-radius: 6px;
+  }
+
+  .serious { border-radius: 0; }
+  .moderate { border-radius: 4px; }
+  .playful { border-radius: 50px; }
+
+  .personality-label {
+    font-size: 0.75rem;
+    color: var(--color-text-light);
+    text-align: center;
+  }
+
+  /* Técnica 3: Jerarquía */
+  .hierarchy-examples {
+    margin: var(--spacing-lg) 0;
+  }
+
+  .hierarchy-demo {
+    background-color: var(--color-background);
+    padding: var(--spacing-lg);
+    border-radius: 6px;
+    margin-bottom: var(--spacing-lg);
+  }
+
+  .button-hierarchy {
+    display: flex;
+    gap: var(--spacing-md);
+    margin: var(--spacing-md) 0;
+    flex-wrap: wrap;
+  }
+
+  .primary {
+    background-color: var(--color-primary);
+    color: white;
+    border: 2px solid var(--color-primary);
+  }
+
+  .primary:hover {
+    background-color: #1e40af;
+    border-color: #1e40af;
+  }
+
+  .secondary {
+    background-color: transparent;
+    color: var(--color-primary);
+    border: 2px solid var(--color-primary);
+  }
+
+  .secondary:hover {
+    background-color: var(--color-primary);
+    color: white;
+  }
+
+  .tertiary {
+    background-color: transparent;
+    color: var(--color-primary);
+    border: 2px solid transparent;
+  }
+
+  .tertiary:hover {
+    background-color: #f3f4f6;
+  }
+
+  .hierarchy-explanation {
+    margin-top: var(--spacing-md);
+  }
+
+  .hierarchy-item {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-xs);
+    font-size: 0.875rem;
+  }
+
+  .hierarchy-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+  }
+
+  .primary-dot { background-color: var(--color-primary); }
+  .secondary-dot { border: 2px solid var(--color-primary); background-color: transparent; }
+  .tertiary-dot { background-color: var(--color-text-light); }
+
+  .context-example {
+    background-color: var(--color-background);
+    padding: var(--spacing-lg);
+    border-radius: 6px;
+  }
+
+  .form-example {
+    max-width: 300px;
+  }
+
+  .form-field {
+    margin-bottom: var(--spacing-md);
+  }
+
+  .form-field label {
+    display: block;
+    margin-bottom: var(--spacing-xs);
+    font-weight: 500;
+  }
+
+  .form-field input {
+    width: 100%;
+    padding: var(--spacing-sm);
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+  }
+
+  .form-actions {
+    display: flex;
+    gap: var(--spacing-sm);
+    justify-content: flex-end;
+  }
+
+  /* Técnica 4: Sombras */
+  .shadow-examples {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--spacing-lg);
+    margin: var(--spacing-lg) 0;
+  }
+
+  .shadow-demo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-md);
+    background-color: var(--color-background);
+    border-radius: 6px;
+  }
+
+  .no-shadow {
+    box-shadow: none;
+    background-color: #1e40af;
+  }
+
+  .no-shadow:hover {
+    background-color: #1e3a8a;
+  }
+
+  .small-shadow {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+  }
+
+  .long-shadow {
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+  }
+
+  .shadow-label {
+    font-size: 0.75rem;
+    color: var(--color-text-light);
+    text-align: center;
+  }
+
+  .shadow-states {
+    margin: var(--spacing-lg) 0;
+  }
+
+  .state-examples {
+    background-color: var(--color-background);
+    padding: var(--spacing-lg);
+    border-radius: 6px;
+    text-align: center;
+  }
+
+  .interactive-shadow {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
+  }
+
+  .interactive-shadow:hover {
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    transform: translateY(-3px);
+  }
+
+  /* Técnica 5: Competencia */
+  .competition-examples {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: var(--spacing-xl);
+    margin: var(--spacing-lg) 0;
+  }
+
+  .competition-demo {
+    border-radius: 8px;
+    padding: var(--spacing-lg);
+  }
+
+  .competition-demo.bad {
+    border: 2px solid #dc2626;
+    background-color: #fef2f2;
+  }
+
+  .competition-demo.good {
+    border: 2px solid #16a34a;
+    background-color: #f0fdf4;
+  }
+
+  .competing-interface, .clear-interface {
+    background-color: var(--color-background);
+    padding: var(--spacing-md);
+    border-radius: 6px;
+    margin: var(--spacing-md) 0;
+  }
+
+  .fake-header {
+    background-color: #e5e7eb;
+    padding: var(--spacing-sm);
+    margin-bottom: var(--spacing-sm);
+    border-radius: 4px;
+    font-weight: 600;
+    text-align: center;
+  }
+
+  .button-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-xs);
+    margin: var(--spacing-sm) 0;
+  }
+
+  .competing {
+    background-color: #6b7280;
+    color: white;
+    padding: var(--spacing-xs);
+    font-size: 0.75rem;
+  }
+
+  .competing:hover {
+    background-color: #4b5563;
+  }
+
+  .competing-input {
+    width: 100%;
+    padding: var(--spacing-sm);
+    margin: var(--spacing-sm) 0;
+    border: 2px solid #6b7280;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+
+  .clear-interface h5 {
+    margin: 0 0 var(--spacing-xs) 0;
+    color: var(--color-text);
+  }
+
+  .clear-interface p {
+    margin: 0 0 var(--spacing-md) 0;
+    color: var(--color-text-light);
+    font-size: 0.875rem;
+  }
+
+  .product-grid {
+    display: flex;
+    gap: var(--spacing-xs);
+    margin: var(--spacing-md) 0;
+    flex-wrap: wrap;
+  }
+
+  .product-tag {
+    background-color: var(--color-border);
+    color: var(--color-text);
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-size: 0.75rem;
+  }
+
+  .clean-input {
+    width: 100%;
+    padding: var(--spacing-sm);
+    margin: var(--spacing-md) 0;
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+
+  .prominent {
+    font-weight: 600;
+    padding: var(--spacing-md) var(--spacing-lg);
+  }
+
+  /* Técnica 6: Proximidad */
+  .proximity-examples {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--spacing-xl);
+    margin: var(--spacing-lg) 0;
+  }
+
+  .proximity-demo {
+    border-radius: 8px;
+    padding: var(--spacing-lg);
+  }
+
+  .proximity-demo.bad {
+    border: 2px solid #dc2626;
+    background-color: #fef2f2;
+  }
+
+  .proximity-demo.good {
+    border: 2px solid #16a34a;
+    background-color: #f0fdf4;
+  }
+
+  .cramped-interface {
+    background-color: var(--color-background);
+    padding: var(--spacing-md);
+    border-radius: 6px;
+    margin: var(--spacing-md) 0;
+  }
+
+  .spaced-interface {
+    background-color: var(--color-background);
+    padding: var(--spacing-md);
+    border-radius: 6px;
+    margin: var(--spacing-md) 0;
+    display: flex;
+    gap: var(--spacing-md);
+    flex-wrap: wrap;
+  }
+
+  .small {
+    padding: 4px 8px;
+    font-size: 0.75rem;
+  }
+
+  .comfortable {
+    padding: var(--spacing-sm) var(--spacing-md);
+    min-height: 44px;
+    min-width: 80px;
+  }
+
+  .touch-targets {
+    margin: var(--spacing-lg) 0;
+  }
+
+  .target-examples {
+    display: flex;
+    gap: var(--spacing-md);
+    align-items: center;
+    background-color: var(--color-background);
+    padding: var(--spacing-lg);
+    border-radius: 6px;
+    margin: var(--spacing-md) 0;
+  }
+
+  .tiny {
+    padding: 2px 4px;
+    font-size: 0.625rem;
+    min-height: 20px;
+  }
+
+  .small-target {
+    padding: 4px 8px;
+    font-size: 0.75rem;
+    min-height: 32px;
+  }
+
+  .good-target {
+    padding: var(--spacing-sm) var(--spacing-md);
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  /* Técnica 7: Capitalización */
+  .capitalization-examples {
+    margin: var(--spacing-lg) 0;
+  }
+
+  .cap-demo {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-md);
+    padding: var(--spacing-md);
+    background-color: var(--color-background);
+    border-radius: 6px;
+  }
+
+  .cap-label {
+    font-size: 0.875rem;
+    color: var(--color-text-light);
+  }
+
+  .cap-sentence { text-transform: none; }
+  .cap-title { text-transform: capitalize; }
+  .cap-upper { text-transform: uppercase; }
+  .cap-lower { text-transform: lowercase; }
+
+  /* Prácticas adicionales */
+  .additional-practices {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: var(--spacing-lg);
+    margin: var(--spacing-lg) 0;
+  }
+
+  .practice-card {
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    padding: var(--spacing-lg);
+    border-left: 4px solid var(--color-primary);
+  }
+
+  .practice-card h4 {
+    color: var(--color-primary);
+    margin: 0 0 var(--spacing-md) 0;
+    font-size: 1rem;
+  }
+
+  .practice-example {
+    margin: var(--spacing-md) 0;
+  }
+
+  .bad-signifiers {
+    display: flex;
+    gap: var(--spacing-md);
+    align-items: center;
+    background-color: var(--color-background);
+    padding: var(--spacing-md);
+    border-radius: 6px;
+  }
+
+  .fake-button {
+    background-color: var(--color-primary);
+    color: white;
+    padding: var(--spacing-sm) var(--spacing-md);
+    border-radius: 4px;
+    cursor: default;
+  }
+
+  .balance-example {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--spacing-md);
+    margin: var(--spacing-md) 0;
+  }
+
+  .consistency-benefit, .distinctness-benefit {
+    background-color: var(--color-background);
+    padding: var(--spacing-md);
+    border-radius: 6px;
+  }
+
+  .consistency-benefit ul, .distinctness-benefit ul {
+    margin: var(--spacing-sm) 0 0 var(--spacing-lg);
+    font-size: 0.875rem;
+  }
+
+  /* Lista de verificación */
+  .checklist {
+    background-color: var(--color-surface);
+    border-radius: 8px;
+    padding: var(--spacing-lg);
+    margin: var(--spacing-lg) 0;
+  }
+
+  .checklist-group h4 {
+    color: var(--color-primary);
+    margin: 0 0 var(--spacing-md) 0;
+  }
+
+  .checklist-items {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .checklist-items li {
+    margin-bottom: var(--spacing-sm);
+    padding-left: var(--spacing-md);
+    position: relative;
+  }
+
+  .checklist-items li:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.2em;
+    width: 8px;
+    height: 8px;
+    background-color: var(--color-primary);
+    border-radius: 50%;
+  }
+
+  /* Herramientas */
+  .tools {
+    background-color: var(--color-surface);
+    border-radius: 8px;
+    padding: var(--spacing-lg);
+    margin: var(--spacing-lg) 0;
+  }
+
+  .tools-list {
+    margin-top: var(--spacing-md);
+  }
+
+  .tools-list li {
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .tools-note {
+    margin-top: var(--spacing-md);
+    padding-top: var(--spacing-md);
+    border-top: 1px solid var(--color-border);
+    font-size: 0.9rem;
+  }
+
+  .tools-note a {
+    color: var(--color-primary);
+    font-weight: 600;
+  }
+
+  .demo-desc {
+    font-size: 0.875rem;
+    color: var(--color-text-light);
+    margin: var(--spacing-sm) 0 0 0;
+    font-style: italic;
+  }
+
+  @media (max-width: 768px) {
+    h1 {
+      font-size: 2rem;
+    }
+
+    .lead {
+      font-size: 1.125rem;
+    }
+
+    h2 {
+      font-size: 1.5rem;
+    }
+
+    .shape-examples,
+    .competition-examples,
+    .proximity-examples,
+    .additional-practices {
+      grid-template-columns: 1fr;
+    }
+
+    .radius-examples,
+    .shadow-examples {
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    }
+
+    .button-group,
+    .button-hierarchy,
+    .spaced-interface {
+      flex-direction: column;
+      align-items: stretch;
+    }
+
+    .cap-demo {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: var(--spacing-sm);
+    }
+
+    .balance-example {
+      grid-template-columns: 1fr;
+    }
+  }
+</style> 
