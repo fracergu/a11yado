@@ -1,0 +1,723 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout title="Botones y Enlaces - a11yado">
+  <article>
+    <header>
+      <h1>Botones y Enlaces</h1>
+      <p class="lead">
+        El texto de botones y enlaces debe comunicar claramente qué acción se realizará 
+        o a dónde llevará al usuario.
+      </p>
+    </header>
+
+    <section>
+      <h2>¿Qué son los señalizadores?</h2>
+      <p>
+        Los <strong>señalizadores</strong> son las pistas visuales, auditivas o textuales 
+        que indican cómo se puede interactuar con un elemento. En botones y enlaces, el texto es 
+        el señalizador más importante.
+      </p>
+
+      <div class="concept-box">
+        <h3>Señalizadores efectivos deben ser:</h3>
+        <ul>
+          <li><strong>Apropiados:</strong> Que correspondan con la acción o destino</li>
+          <li><strong>Claros:</strong> Fáciles de interpretar por tu audiencia</li>
+          <li><strong>Específicos:</strong> Únicos y descriptivos</li>
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <h2>Botones: Palabras de acción</h2>
+      <p>Los botones deben usar verbos que describan claramente la acción que se realizará.</p>
+
+      <div class="examples-grid">
+        <div class="example-card bad">
+          <h4>❌ Ambiguo</h4>
+          <div class="button-demo">
+            <button class="demo-button">Sí</button>
+            <button class="demo-button">No</button>
+          </div>
+          <p class="example-desc">¿Sí a qué? ¿No a qué?</p>
+        </div>
+
+        <div class="example-card good">
+          <h4>✅ Específico</h4>
+          <div class="button-demo">
+            <button class="demo-button">Guardar cambios</button>
+            <button class="demo-button">Descartar</button>
+          </div>
+          <p class="example-desc">Acción clara y específica</p>
+        </div>
+      </div>
+
+      <div class="examples-grid">
+        <div class="example-card bad">
+          <h4>❌ Genérico</h4>
+          <div class="button-demo">
+            <button class="demo-button">Continuar</button>
+          </div>
+          <p class="example-desc">¿Continuar con qué?</p>
+        </div>
+
+        <div class="example-card good">
+          <h4>✅ Descriptivo</h4>
+          <div class="button-demo">
+            <button class="demo-button">Descargar actualización</button>
+          </div>
+          <p class="example-desc">Acción y objeto claros</p>
+        </div>
+      </div>
+
+      <div class="tip-box">
+        <h4>💡 Fórmula para buenos botones</h4>
+        <p><strong>Verbo + Objeto = Claridad</strong></p>
+        <ul>
+          <li>Guardar → Guardar documento</li>
+          <li>Enviar → Enviar mensaje</li>
+          <li>Comprar → Comprar ahora</li>
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <h2>Enlaces: Evita "Leer más"</h2>
+      <p>
+        Los enlaces ambiguos como "leer más", "clic aquí" o "detalles" crean problemas 
+        de usabilidad, accesibilidad y SEO.
+      </p>
+
+      <div class="blog-comparison">
+        <div class="blog-example bad">
+          <h4>❌ Enlaces ambiguos</h4>
+          <div class="blog-posts">
+            <article class="blog-post">
+              <h5>Optimización de Bases de Datos</h5>
+              <p>Técnicas avanzadas para mejorar el rendimiento de consultas SQL...</p>
+              <a href="#" class="read-more-link">leer más</a>
+              <div class="post-meta">Francisco C. Backend 2 comentarios</div>
+            </article>
+            
+            <article class="blog-post">
+              <h5>Componentes Reutilizables</h5>
+              <p>Cómo crear componentes modulares que mejoren la mantenibilidad...</p>
+              <a href="#" class="read-more-link">leer más</a>
+              <div class="post-meta">Francisco C. Frontend 1 comentario</div>
+            </article>
+            
+            <article class="blog-post">
+              <h5>Testing Automatizado</h5>
+              <p>Estrategias para implementar pruebas efectivas en tu aplicación...</p>
+              <a href="#" class="read-more-link">leer más</a>
+              <div class="post-meta">Francisco C. Backend 3 comentarios</div>
+            </article>
+          </div>
+          <p class="example-desc">Todos los enlaces dicen lo mismo</p>
+        </div>
+
+        <div class="blog-example good">
+          <h4>✅ Enlaces descriptivos</h4>
+          <div class="blog-posts">
+            <article class="blog-post">
+              <h5><a href="#" class="title-link accessible-link">Optimización de Bases de Datos</a></h5>
+              <p>Técnicas avanzadas para mejorar el rendimiento de consultas SQL...</p>
+              <div class="post-meta">Francisco C. Backend 2 comentarios</div>
+            </article>
+            
+            <article class="blog-post">
+              <h5><a href="#" class="title-link accessible-link">Componentes Reutilizables</a></h5>
+              <p>Cómo crear componentes modulares que mejoren la mantenibilidad...</p>
+              <div class="post-meta">Francisco C. Frontend 1 comentario</div>
+            </article>
+            
+            <article class="blog-post">
+              <h5><a href="#" class="title-link accessible-link">Testing Automatizado</a></h5>
+              <p>Estrategias para implementar pruebas efectivas en tu aplicación...</p>
+              <div class="post-meta">Francisco C. Backend 3 comentarios</div>
+            </article>
+          </div>
+          <p class="example-desc">Cada enlace es único y descriptivo</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Problemas con "Clic aquí"</h2>
+      <p>Evita "clic aquí" por tres razones principales:</p>
+
+      <div class="problems-grid">
+        <div class="problem-card">
+          <h4>🖱️ Asume dispositivo</h4>
+          <p>No todos usan ratón. Algunos usan teclado, pantalla táctil o tecnologías asistivas.</p>
+        </div>
+        
+        <div class="problem-card">
+          <h4>🧠 Subestima al usuario</h4>
+          <p>Los usuarios saben cómo hacer clic. No necesitan que se lo digas.</p>
+        </div>
+        
+        <div class="problem-card">
+          <h4>🎭 Oculta la acción</h4>
+          <p>No dice qué pasará al hacer clic. Es una promesa vacía.</p>
+        </div>
+      </div>
+
+      <div class="examples-grid">
+        <div class="example-card bad">
+          <h4>❌ Oculta información</h4>
+          <div class="link-demo">
+            <p>Para más consejos de programación <a href="#" class="demo-link">clic aquí</a></p>
+            <p>Para ver nuestros proyectos <a href="#" class="demo-link">clic aquí</a></p>
+          </div>
+        </div>
+
+        <div class="example-card good">
+          <h4>✅ Revela información</h4>
+          <div class="link-demo">
+            <p><a href="#" class="demo-link">Suscríbete a nuestro newsletter</a> para más consejos de programación</p>
+            <p><a href="#" class="demo-link">Ve nuestro portafolio de proyectos</a></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Frontloading: Lo importante primero</h2>
+      <p>
+        Coloca las palabras más importantes al inicio del texto del enlace o botón. 
+        Los usuarios escanean de izquierda a derecha.
+      </p>
+
+      <div class="frontload-examples">
+        <div class="frontload-example">
+          <h4>Estrategia: Liderar con la ACCIÓN (verbo)</h4>
+          <div class="comparison">
+            <div class="before">
+              <span class="label">❌ Antes:</span>
+              <button class="demo-button">Clic aquí para suscribirte</button>
+            </div>
+            <div class="after">
+              <span class="label">✅ Después:</span>
+              <button class="demo-button">Suscríbete a nuestro newsletter</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="frontload-example">
+          <h4>Estrategia: Liderar con el TEMA (sustantivo)</h4>
+          <div class="comparison">
+            <div class="before">
+              <span class="label">❌ Antes:</span>
+              <a href="#" class="demo-link">Leer más sobre optimización de código</a>
+            </div>
+            <div class="after">
+              <span class="label">✅ Después:</span>
+              <a href="#" class="demo-link">Técnicas de optimización de código</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Enlaces externos y archivos</h2>
+      <p>Indica cuando un enlace abre en nueva pestaña o descarga un archivo.</p>
+
+      <div class="external-examples">
+        <div class="external-example">
+          <h4>✅ Enlaces externos</h4>
+          <div class="link-demo">
+            <div class="link-item">
+              <a href="#" class="demo-link external">Documentación de React <span class="external-icon">↗</span></a>
+            </div>
+            <div class="link-item">
+              <a href="#" class="demo-link external">Guía de JavaScript (PDF) <span class="file-icon">📄</span></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="external-example">
+          <h4>❌ URLs desnudas</h4>
+          <div class="link-demo">
+            <p>Consulta la documentación en: <span class="naked-url">http://www.ejemplo.com/api-documentation.pdf</span></p>
+          </div>
+          <p class="example-desc">Difícil de leer y no describe el contenido</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Mejores prácticas resumidas</h2>
+      
+      <div class="best-practices-grid">
+        <div class="practice-card">
+          <h4>🎯 Para botones</h4>
+          <ul>
+            <li>Usa verbos de acción</li>
+            <li>Sé específico sobre la tarea</li>
+            <li>Mantén el texto conciso</li>
+            <li>Frontload palabras importantes</li>
+          </ul>
+        </div>
+
+        <div class="practice-card">
+          <h4>🔗 Para enlaces</h4>
+          <ul>
+            <li>Evita "leer más" y "clic aquí"</li>
+            <li>Haz cada enlace único</li>
+            <li>Describe el destino claramente</li>
+            <li>Indica enlaces externos</li>
+          </ul>
+        </div>
+
+        <div class="practice-card">
+          <h4>📝 Para ambos</h4>
+          <ul>
+            <li>El propósito debe ser claro</li>
+            <li>Funciona fuera de contexto</li>
+            <li>No asumas dispositivo específico</li>
+            <li>Sé transparente sobre la acción</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Herramientas útiles</h2>
+      <div class="tools">
+        <p>Para verificar la claridad de tus botones y enlaces:</p>
+        <ul class="tools-list">
+          <li><strong>Prueba de contexto:</strong> ¿El texto tiene sentido por sí solo?</li>
+          <li><strong>Prueba de escaneo:</strong> ¿Las palabras importantes están al inicio?</li>
+          <li><strong>Prueba de unicidad:</strong> ¿Cada enlace es diferente en la página?</li>
+          <li><strong>Lectores de pantalla:</strong> Escucha cómo suenan tus enlaces</li>
+        </ul>
+        <p class="tools-note">
+          💡 <strong>Consejo:</strong> Consulta la página de <a href="/tools">Herramientas</a> para recursos específicos de testing.
+        </p>
+      </div>
+    </section>
+  </article>
+</Layout>
+
+<style>
+  article {
+    max-width: 90ch;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    margin-bottom: var(--spacing-md);
+    line-height: 1.2;
+  }
+
+  .lead {
+    font-size: 1.25rem;
+    color: var(--color-text-light);
+    margin-bottom: var(--spacing-2xl);
+    line-height: 1.5;
+    padding: var(--spacing-lg);
+    background-color: var(--color-surface);
+    border-radius: 8px;
+    border-left: 4px solid var(--color-primary);
+  }
+
+  h2 {
+    font-size: 1.875rem;
+    font-weight: 600;
+    margin-top: var(--spacing-2xl);
+    margin-bottom: var(--spacing-lg);
+    color: var(--color-text);
+  }
+
+  h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin: var(--spacing-xl) 0 var(--spacing-md) 0;
+    color: var(--color-text);
+  }
+
+  .concept-box {
+    background-color: #e0f2fe;
+    border: 1px solid #0891b2;
+    border-radius: 8px;
+    padding: var(--spacing-lg);
+    margin: var(--spacing-xl) 0;
+  }
+
+  .concept-box h3 {
+    color: #0891b2;
+    margin-top: 0;
+  }
+
+  .examples-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--spacing-lg);
+    margin: var(--spacing-xl) 0;
+  }
+
+  .example-card {
+    border-radius: 8px;
+    padding: var(--spacing-lg);
+    position: relative;
+  }
+
+  .example-card.bad {
+    border: 2px solid #dc2626;
+    background-color: #fef2f2;
+  }
+
+  .example-card.good {
+    border: 2px solid #16a34a;
+    background-color: #f0fdf4;
+  }
+
+  .example-card h4 {
+    margin: 0 0 var(--spacing-md) 0;
+    font-size: 1rem;
+  }
+
+  .button-demo {
+    display: flex;
+    gap: var(--spacing-sm);
+    margin: var(--spacing-md) 0;
+    flex-wrap: wrap;
+  }
+
+  .demo-button {
+    background-color: var(--color-primary);
+    color: white;
+    border: none;
+    padding: var(--spacing-sm) var(--spacing-md);
+    border-radius: 6px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+
+  .demo-button:hover {
+    background-color: var(--color-primary-dark);
+  }
+
+  .example-desc {
+    font-size: 0.875rem;
+    color: var(--color-text-light);
+    margin: var(--spacing-sm) 0 0 0;
+    font-style: italic;
+  }
+
+  .tip-box {
+    background-color: #fef3c7;
+    border: 1px solid #f59e0b;
+    border-radius: 8px;
+    padding: var(--spacing-lg);
+    margin: var(--spacing-xl) 0;
+  }
+
+  .tip-box h4 {
+    color: #d97706;
+    margin-top: 0;
+  }
+
+  .blog-comparison {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: var(--spacing-xl);
+    margin: var(--spacing-xl) 0;
+  }
+
+  .blog-example {
+    border-radius: 8px;
+    padding: var(--spacing-lg);
+  }
+
+  .blog-example.bad {
+    border: 2px solid #dc2626;
+    background-color: #fef2f2;
+  }
+
+  .blog-example.good {
+    border: 2px solid #16a34a;
+    background-color: #f0fdf4;
+  }
+
+  .blog-posts {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+  }
+
+  .blog-post {
+    background-color: var(--color-background);
+    padding: var(--spacing-md);
+    border-radius: 6px;
+    border: 1px solid var(--color-border);
+  }
+
+  .blog-post h5 {
+    margin: 0 0 var(--spacing-sm) 0;
+    font-size: 1rem;
+    font-weight: 600;
+  }
+
+  .blog-post p {
+    margin: 0 0 var(--spacing-sm) 0;
+    font-size: 0.875rem;
+    color: var(--color-text-light);
+  }
+
+  .read-more-link {
+    color: var(--color-primary);
+    text-decoration: none;
+    font-size: 0.875rem;
+  }
+
+  .read-more-link:hover {
+    text-decoration: underline;
+  }
+
+  .title-link {
+    color: var(--color-text);
+    text-decoration: none;
+    font-weight: 600;
+  }
+
+  .title-link:hover {
+    color: var(--color-primary);
+    text-decoration: underline;
+  }
+
+  .accessible-link {
+    color: var(--color-primary) !important;
+    text-decoration: underline;
+  }
+
+  .accessible-link:hover {
+    color: var(--color-primary-dark) !important;
+    text-decoration: none;
+  }
+
+  .post-meta {
+    font-size: 0.75rem;
+    color: var(--color-text-light);
+    margin-top: var(--spacing-sm);
+  }
+
+  .problems-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--spacing-lg);
+    margin: var(--spacing-xl) 0;
+  }
+
+  .problem-card {
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    padding: var(--spacing-lg);
+    border-left: 4px solid #dc2626;
+  }
+
+  .problem-card h4 {
+    color: #dc2626;
+    margin: 0 0 var(--spacing-sm) 0;
+    font-size: 1rem;
+  }
+
+  .problem-card p {
+    margin: 0;
+    font-size: 0.875rem;
+    color: var(--color-text-light);
+  }
+
+  .link-demo {
+    margin: var(--spacing-md) 0;
+  }
+
+  .link-item {
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .link-item:last-child {
+    margin-bottom: 0;
+  }
+
+  .demo-link {
+    color: var(--color-primary);
+    text-decoration: underline;
+  }
+
+  .demo-link:hover {
+    color: var(--color-primary-dark);
+  }
+
+  .frontload-examples {
+    margin: var(--spacing-xl) 0;
+  }
+
+  .frontload-example {
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    padding: var(--spacing-lg);
+    margin-bottom: var(--spacing-lg);
+  }
+
+  .frontload-example h4 {
+    color: var(--color-primary);
+    margin: 0 0 var(--spacing-md) 0;
+    font-size: 1rem;
+  }
+
+  .comparison {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+  }
+
+  .before, .after {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+  }
+
+  .label {
+    font-size: 0.875rem;
+    font-weight: 600;
+    min-width: 80px;
+  }
+
+  .external-examples {
+    margin: var(--spacing-xl) 0;
+  }
+
+  .external-example {
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    padding: var(--spacing-lg);
+    margin-bottom: var(--spacing-lg);
+  }
+
+  .external-example h4 {
+    color: var(--color-primary);
+    margin: 0 0 var(--spacing-md) 0;
+    font-size: 1rem;
+  }
+
+  .external-icon, .file-icon {
+    font-size: 0.875rem;
+    margin-left: var(--spacing-xs);
+  }
+
+  .naked-url {
+    color: var(--color-text-light);
+    font-family: monospace;
+    font-size: 0.875rem;
+    word-break: break-all;
+  }
+
+  .best-practices-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--spacing-lg);
+    margin: var(--spacing-xl) 0;
+  }
+
+  .practice-card {
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    padding: var(--spacing-lg);
+    border-left: 4px solid var(--color-primary);
+  }
+
+  .practice-card h4 {
+    color: var(--color-primary);
+    margin: 0 0 var(--spacing-md) 0;
+    font-size: 1rem;
+  }
+
+  .practice-card ul {
+    margin: 0;
+    padding-left: var(--spacing-lg);
+  }
+
+  .practice-card li {
+    margin-bottom: var(--spacing-xs);
+    font-size: 0.9rem;
+  }
+
+  .tools {
+    background-color: var(--color-surface);
+    border-radius: 8px;
+    padding: var(--spacing-lg);
+    margin: var(--spacing-lg) 0;
+  }
+
+  .tools-list {
+    margin-top: var(--spacing-md);
+  }
+
+  .tools-list li {
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .tools-note {
+    margin-top: var(--spacing-md);
+    padding-top: var(--spacing-md);
+    border-top: 1px solid var(--color-border);
+    font-size: 0.9rem;
+  }
+
+  .tools-note a {
+    color: var(--color-primary);
+    font-weight: 600;
+  }
+
+  @media (max-width: 768px) {
+    h1 {
+      font-size: 2rem;
+    }
+
+    .lead {
+      font-size: 1.125rem;
+    }
+
+    h2 {
+      font-size: 1.5rem;
+    }
+
+    .examples-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .blog-comparison {
+      grid-template-columns: 1fr;
+    }
+
+    .problems-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .best-practices-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .comparison {
+      gap: var(--spacing-md);
+    }
+
+    .before, .after {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+</style> 
