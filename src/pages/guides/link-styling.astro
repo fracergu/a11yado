@@ -1,0 +1,788 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout title="Estilizado de Enlaces - a11yado">
+  <article>
+    <header>
+      <h1>Estilizado de Enlaces</h1>
+      <p class="lead">
+        Haz que los enlaces sean visualmente distinguibles del texto normal y consistentes 
+        entre sí, para que las personas puedan identificar qué es interactivo sin tener 
+        que explorar con el cursor.
+      </p>
+    </header>
+
+    <section>
+      <h2>¿Por qué es importante el estilizado de enlaces?</h2>
+      <p>
+        Los usuarios necesitan poder identificar qué elementos son interactivos simplemente 
+        mirando la interfaz. Si los enlaces se ven igual que el texto normal, las personas 
+        tendrán que "barrer" la página con el cursor para encontrar qué es clickeable.
+      </p>
+
+      <div class="concept-box">
+        <h3>Un buen estilizado de enlaces debe ser:</h3>
+        <ul>
+          <li><strong>Distinguible:</strong> Claramente diferente del texto normal</li>
+          <li><strong>Consistente:</strong> Igual en toda la aplicación</li>
+          <li><strong>Accesible:</strong> Funciona para personas con daltonismo</li>
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <h2>Técnica recomendada: Subrayado + Color</h2>
+      <p>La forma más accesible de estilizar enlaces es combinar subrayado con color azul.</p>
+
+      <div class="examples-grid">
+        <div class="example-card good">
+          <h4>✅ Enlaces accesibles</h4>
+          <div class="text-demo">
+            <p>
+              Para mejorar tu código JavaScript, consulta la 
+              <a href="#" class="accessible-link">guía de ES6+ y módulos</a> 
+              que explica las características modernas del lenguaje.
+            </p>
+            <p>
+              También puedes revisar nuestros 
+              <a href="#" class="accessible-link">patrones de diseño en TypeScript</a> 
+              y <a href="#" class="accessible-link">mejores prácticas de testing</a>.
+            </p>
+          </div>
+          <p class="example-desc">Subrayado + color azul = máxima accesibilidad</p>
+        </div>
+
+        <div class="example-card bad">
+          <h4>❌ Enlaces problemáticos</h4>
+          <div class="text-demo">
+            <p>
+              Para mejorar tu código JavaScript, consulta la 
+              <a href="#" class="problematic-link">guía de ES6+ y módulos</a> 
+              que explica las características modernas del lenguaje.
+            </p>
+            <p>
+              También puedes revisar nuestros 
+              <a href="#" class="problematic-link">patrones de diseño en TypeScript</a> 
+              y <a href="#" class="problematic-link">mejores prácticas de testing</a>.
+            </p>
+          </div>
+          <p class="example-desc">Solo color = invisible para personas con daltonismo</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Estrategias de estilizado</h2>
+      <p>Si no quieres usar subrayado, aquí tienes 3 alternativas accesibles:</p>
+
+      <div class="strategies-grid">
+        <div class="strategy-card">
+          <h4>Estrategia 1: Otros estilos de texto</h4>
+          <div class="strategy-demo">
+            <p>
+              Consulta nuestros <a href="#" class="bold-link">tutoriales de React</a> 
+              para ver técnicas avanzadas de componentes.
+            </p>
+          </div>
+          <div class="strategy-details">
+            <p><strong>Opciones:</strong> Negrita, cursiva, tamaño de fuente, tipografía diferente, borde</p>
+            <p><strong>Importante:</strong> Solo usa ese estilo para enlaces, nunca para texto normal</p>
+          </div>
+        </div>
+
+        <div class="strategy-card">
+          <h4>Estrategia 2: Color luminoso + efectos hover/focus</h4>
+          <div class="strategy-demo">
+            <p>
+              Revisa la <a href="#" class="luminous-link">documentación de APIs REST</a> 
+              para más información sobre integración.
+            </p>
+          </div>
+          <div class="strategy-details">
+            <p><strong>Requisitos:</strong> Contraste 3:1 con texto + 4.5:1 con fondo</p>
+            <p><strong>Efectos:</strong> Subrayado al hacer hover, borde al enfocar</p>
+            <p><strong>Nota:</strong> Menos accesible que el subrayado permanente</p>
+          </div>
+        </div>
+
+        <div class="strategy-card">
+          <h4>Estrategia 3: Ubicación independiente</h4>
+          <div class="strategy-demo">
+            <div class="standalone-links">
+              <a href="#" class="standalone-link">DOCUMENTACIÓN</a>
+              <a href="#" class="standalone-link">EJEMPLOS</a>
+              <a href="#" class="standalone-link">GITHUB</a>
+            </div>
+          </div>
+          <div class="strategy-details">
+            <p><strong>Ubicación:</strong> Separado del texto, no dentro de párrafos</p>
+            <p><strong>Estilo:</strong> Negrita o mayúsculas pequeñas</p>
+            <p><strong>Contexto:</strong> Su posición indica que es interactivo</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Comparación visual de estrategias</h2>
+      <p>Aquí puedes ver las diferentes estrategias aplicadas al mismo contenido:</p>
+
+      <div class="comparison-grid">
+        <div class="comparison-card">
+          <h4>Subrayado tradicional</h4>
+          <div class="blog-card">
+            <h5><a href="#" class="underlined-link">Arquitectura de Microservicios</a></h5>
+            <p>Cómo diseñar y implementar una arquitectura escalable con Node.js y Docker...</p>
+            <div class="meta">
+              Francisco Cerdán • Backend • 5 comentarios
+            </div>
+          </div>
+        </div>
+
+        <div class="comparison-card">
+          <h4>Color luminoso + hover</h4>
+          <div class="blog-card">
+            <h5><a href="#" class="luminous-hover-link">Arquitectura de Microservicios</a></h5>
+            <p>Cómo diseñar y implementar una arquitectura escalable con Node.js y Docker...</p>
+            <div class="meta">
+              Francisco Cerdán • Backend • 5 comentarios
+            </div>
+          </div>
+        </div>
+
+        <div class="comparison-card">
+          <h4>Ubicación independiente</h4>
+          <div class="blog-card">
+            <h5>Arquitectura de Microservicios</h5>
+            <p>Cómo diseñar y implementar una arquitectura escalable con Node.js y Docker...</p>
+            <div class="meta">Francisco Cerdán • Backend • 5 comentarios</div>
+            <div class="standalone-actions">
+              <a href="#" class="standalone-action">VER TUTORIAL</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="comparison-card">
+          <h4>Estilo alternativo (negrita)</h4>
+          <div class="blog-card">
+            <h5><a href="#" class="bold-style-link">Arquitectura de Microservicios</a></h5>
+            <p>Cómo diseñar y implementar una arquitectura escalable con Node.js y Docker...</p>
+            <div class="meta">
+              Francisco Cerdán • Backend • 5 comentarios
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Reglas de consistencia</h2>
+      <p>Una vez que elijas un estilo, manténlo en toda tu aplicación.</p>
+
+      <div class="rules-grid">
+        <div class="rule-card important">
+          <h4>🔒 Reserva estos elementos SOLO para enlaces</h4>
+          <ul>
+            <li>Subrayado</li>
+            <li>Texto azul</li>
+            <li>Subrayado + texto azul</li>
+          </ul>
+          <p class="rule-note">
+            Usar estos estilos en texto no-clickeable confundirá a los usuarios
+          </p>
+        </div>
+
+        <div class="rule-card">
+          <h4>🎨 Elige un color para elementos interactivos</h4>
+          <p>
+            Reserva un color específico para todos los elementos clickeables 
+            (enlaces, botones) y evita usarlo en elementos no-interactivos.
+          </p>
+        </div>
+
+        <div class="rule-card">
+          <h4>📐 Mantén consistencia visual</h4>
+          <p>
+            Si eliges negrita para enlaces, úsala siempre. Si eliges subrayado, 
+            úsalo siempre. La consistencia ayuda a los usuarios a aprender tu interfaz.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Errores comunes a evitar</h2>
+      
+      <div class="mistakes-grid">
+        <div class="mistake-card">
+          <h4>❌ Usar azul para texto no-clickeable</h4>
+          <div class="mistake-demo">
+            <p>
+              <span class="fake-link">Nota importante:</span> 
+              Recuerda validar todas las entradas del usuario antes de procesarlas.
+            </p>
+          </div>
+          <p class="mistake-desc">El texto azul parece un enlace pero no lo es</p>
+        </div>
+
+        <div class="mistake-card">
+          <h4>❌ Subrayar texto decorativo</h4>
+          <div class="mistake-demo">
+            <p>
+              <span class="fake-underline">Configuración del Proyecto</span>
+            </p>
+            <p>Aquí están los pasos para configurar tu entorno de desarrollo...</p>
+          </div>
+          <p class="mistake-desc">El subrayado sugiere que es clickeable</p>
+        </div>
+
+        <div class="mistake-card">
+          <h4>❌ Enlaces inconsistentes</h4>
+          <div class="mistake-demo">
+            <p>
+              Ve nuestros <a href="#" class="inconsistent-1">repositorios</a> y 
+              <a href="#" class="inconsistent-2">tutoriales</a> para más información.
+            </p>
+          </div>
+          <p class="mistake-desc">Diferentes estilos confunden al usuario</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Lista de verificación</h2>
+      
+      <div class="checklist">
+        <h4>✅ Antes de publicar, verifica que:</h4>
+        <ul class="checklist-items">
+          <li>Los enlaces son visualmente diferentes del texto normal</li>
+          <li>Todos los enlaces usan el mismo estilo en toda la aplicación</li>
+          <li>No usas azul o subrayado para texto no-clickeable</li>
+          <li>Los enlaces son identificables sin depender solo del color</li>
+          <li>Los efectos hover/focus proporcionan retroalimentación clara</li>
+          <li>El contraste de color cumple con los requisitos WCAG</li>
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <h2>Herramientas útiles</h2>
+      <div class="tools">
+        <p>Para verificar la accesibilidad de tus enlaces:</p>
+        <ul class="tools-list">
+          <li><strong>Contraste de color:</strong> WebAIM Color Contrast Checker</li>
+          <li><strong>Colores luminosos WCAG:</strong> w3.org/WAI/WCAG22/working-examples/link-contrast</li>
+          <li><strong>Simulador de daltonismo:</strong> Colorblinding.com</li>
+          <li><strong>Test de navegación:</strong> Navega solo con teclado (Tab)</li>
+        </ul>
+        <p class="tools-note">
+          💡 <strong>Consejo:</strong> Consulta la página de <a href="/tools">Herramientas</a> para más recursos de testing.
+        </p>
+      </div>
+    </section>
+  </article>
+</Layout>
+
+<style>
+  article {
+    max-width: 90ch;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    margin-bottom: var(--spacing-md);
+    line-height: 1.2;
+  }
+
+  .lead {
+    font-size: 1.25rem;
+    color: var(--color-text-light);
+    margin-bottom: var(--spacing-2xl);
+    line-height: 1.5;
+    padding: var(--spacing-lg);
+    background-color: var(--color-surface);
+    border-radius: 8px;
+    border-left: 4px solid var(--color-primary);
+  }
+
+  h2 {
+    font-size: 1.875rem;
+    font-weight: 600;
+    margin-top: var(--spacing-2xl);
+    margin-bottom: var(--spacing-lg);
+    color: var(--color-text);
+  }
+
+  h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin: var(--spacing-xl) 0 var(--spacing-md) 0;
+    color: var(--color-text);
+  }
+
+  .concept-box {
+    background-color: #e0f2fe;
+    border: 1px solid #0891b2;
+    border-radius: 8px;
+    padding: var(--spacing-lg);
+    margin: var(--spacing-xl) 0;
+  }
+
+  .concept-box h3 {
+    color: #0891b2;
+    margin-top: 0;
+  }
+
+  .examples-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: var(--spacing-lg);
+    margin: var(--spacing-xl) 0;
+  }
+
+  .example-card {
+    border-radius: 8px;
+    padding: var(--spacing-lg);
+    position: relative;
+  }
+
+  .example-card.bad {
+    border: 2px solid #dc2626;
+    background-color: #fef2f2;
+  }
+
+  .example-card.good {
+    border: 2px solid #16a34a;
+    background-color: #f0fdf4;
+  }
+
+  .example-card h4 {
+    margin: 0 0 var(--spacing-md) 0;
+    font-size: 1rem;
+  }
+
+  .text-demo {
+    background-color: var(--color-background);
+    padding: var(--spacing-md);
+    border-radius: 6px;
+    margin: var(--spacing-md) 0;
+    border: 1px solid var(--color-border);
+  }
+
+  .text-demo p {
+    margin: 0 0 var(--spacing-sm) 0;
+    line-height: 1.6;
+  }
+
+  .text-demo p:last-child {
+    margin-bottom: 0;
+  }
+
+  .accessible-link {
+    color: #0066cc;
+    text-decoration: underline;
+  }
+
+  .accessible-link:hover {
+    color: #004499;
+  }
+
+  .problematic-link {
+    color: #0066cc;
+    text-decoration: none;
+  }
+
+  .problematic-link:hover {
+    color: #004499;
+  }
+
+  .example-desc {
+    font-size: 0.875rem;
+    color: var(--color-text-light);
+    margin: var(--spacing-sm) 0 0 0;
+    font-style: italic;
+  }
+
+  .strategies-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--spacing-lg);
+    margin: var(--spacing-xl) 0;
+  }
+
+  .strategy-card {
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    padding: var(--spacing-lg);
+    border-left: 4px solid var(--color-primary);
+  }
+
+  .strategy-card h4 {
+    color: var(--color-primary);
+    margin: 0 0 var(--spacing-md) 0;
+    font-size: 1rem;
+  }
+
+  .strategy-demo {
+    background-color: var(--color-background);
+    padding: var(--spacing-md);
+    border-radius: 6px;
+    margin: var(--spacing-md) 0;
+    border: 1px solid var(--color-border);
+  }
+
+  .strategy-demo p {
+    margin: 0;
+    line-height: 1.6;
+  }
+
+  .bold-link {
+    color: var(--color-text);
+    text-decoration: none;
+    font-weight: 700;
+  }
+
+  .bold-link:hover {
+    color: var(--color-primary);
+  }
+
+  .luminous-link {
+    color: #0066cc;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+
+  .luminous-link:hover {
+    text-decoration: underline;
+    color: #004499;
+  }
+
+  .luminous-link:focus {
+    outline: 2px solid #0066cc;
+    outline-offset: 2px;
+  }
+
+  .standalone-links {
+    display: flex;
+    gap: var(--spacing-md);
+    flex-wrap: wrap;
+  }
+
+  .standalone-link {
+    color: var(--color-text);
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.875rem;
+    letter-spacing: 0.5px;
+  }
+
+  .standalone-link:hover {
+    color: var(--color-primary);
+  }
+
+  .strategy-details {
+    margin-top: var(--spacing-md);
+  }
+
+  .strategy-details p {
+    margin: var(--spacing-xs) 0;
+    font-size: 0.875rem;
+    color: var(--color-text-light);
+  }
+
+  .comparison-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--spacing-lg);
+    margin: var(--spacing-xl) 0;
+  }
+
+  .comparison-card {
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    padding: var(--spacing-lg);
+  }
+
+  .comparison-card h4 {
+    color: var(--color-primary);
+    margin: 0 0 var(--spacing-md) 0;
+    font-size: 1rem;
+  }
+
+  .blog-card {
+    background-color: var(--color-background);
+    padding: var(--spacing-md);
+    border-radius: 6px;
+    border: 1px solid var(--color-border);
+  }
+
+  .blog-card h5 {
+    margin: 0 0 var(--spacing-sm) 0;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--color-text);
+  }
+
+  .blog-card p {
+    margin: 0 0 var(--spacing-sm) 0;
+    font-size: 0.875rem;
+    color: var(--color-text-light);
+    line-height: 1.5;
+  }
+
+  .meta {
+    font-size: 0.75rem;
+    color: var(--color-text-light);
+  }
+
+  .underlined-link {
+    color: #0066cc;
+    text-decoration: underline;
+  }
+
+  .underlined-link:hover {
+    color: #004499;
+  }
+
+  .luminous-hover-link {
+    color: #0066cc;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+
+  .luminous-hover-link:hover {
+    text-decoration: underline;
+    color: #004499;
+  }
+
+  .standalone-actions {
+    margin-top: var(--spacing-sm);
+    padding-top: var(--spacing-sm);
+    border-top: 1px solid var(--color-border);
+  }
+
+  .standalone-action {
+    color: var(--color-text);
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.75rem;
+    letter-spacing: 0.5px;
+  }
+
+  .standalone-action:hover {
+    color: var(--color-primary);
+  }
+
+  .bold-style-link {
+    color: var(--color-text);
+    text-decoration: none;
+    font-weight: 700;
+  }
+
+  .bold-style-link:hover {
+    color: var(--color-primary);
+  }
+
+  .rules-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--spacing-lg);
+    margin: var(--spacing-xl) 0;
+  }
+
+  .rule-card {
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    padding: var(--spacing-lg);
+    border-left: 4px solid var(--color-primary);
+  }
+
+  .rule-card.important {
+    border-left-color: #dc2626;
+    background-color: #fef2f2;
+  }
+
+  .rule-card h4 {
+    color: var(--color-primary);
+    margin: 0 0 var(--spacing-md) 0;
+    font-size: 1rem;
+  }
+
+  .rule-card.important h4 {
+    color: #dc2626;
+  }
+
+  .rule-card ul {
+    margin: var(--spacing-sm) 0;
+    padding-left: var(--spacing-lg);
+  }
+
+  .rule-card li {
+    margin-bottom: var(--spacing-xs);
+    font-size: 0.9rem;
+  }
+
+  .rule-note {
+    font-size: 0.875rem;
+    color: var(--color-text-light);
+    font-style: italic;
+    margin-top: var(--spacing-sm);
+  }
+
+  .mistakes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--spacing-lg);
+    margin: var(--spacing-xl) 0;
+  }
+
+  .mistake-card {
+    border: 2px solid #dc2626;
+    background-color: #fef2f2;
+    border-radius: 8px;
+    padding: var(--spacing-lg);
+  }
+
+  .mistake-card h4 {
+    margin: 0 0 var(--spacing-md) 0;
+    font-size: 1rem;
+    color: #dc2626;
+  }
+
+  .mistake-demo {
+    background-color: var(--color-background);
+    padding: var(--spacing-md);
+    border-radius: 6px;
+    margin: var(--spacing-md) 0;
+    border: 1px solid var(--color-border);
+  }
+
+  .mistake-demo p {
+    margin: 0;
+    line-height: 1.6;
+  }
+
+  .fake-link {
+    color: #0066cc;
+    cursor: default;
+  }
+
+  .fake-underline {
+    text-decoration: underline;
+    cursor: default;
+  }
+
+  .inconsistent-1 {
+    color: #0066cc;
+    text-decoration: underline;
+  }
+
+  .inconsistent-2 {
+    color: #16a34a;
+    text-decoration: none;
+    font-weight: 700;
+  }
+
+  .mistake-desc {
+    font-size: 0.875rem;
+    color: var(--color-text-light);
+    margin: var(--spacing-sm) 0 0 0;
+    font-style: italic;
+  }
+
+  .checklist {
+    background-color: var(--color-surface);
+    border-radius: 8px;
+    padding: var(--spacing-lg);
+    margin: var(--spacing-lg) 0;
+    border-left: 4px solid #16a34a;
+  }
+
+  .checklist h4 {
+    color: #16a34a;
+    margin: 0 0 var(--spacing-md) 0;
+    font-size: 1rem;
+  }
+
+  .checklist-items {
+    margin: 0;
+    padding-left: var(--spacing-lg);
+  }
+
+  .checklist-items li {
+    margin-bottom: var(--spacing-sm);
+    font-size: 0.9rem;
+  }
+
+  .tools {
+    background-color: var(--color-surface);
+    border-radius: 8px;
+    padding: var(--spacing-lg);
+    margin: var(--spacing-lg) 0;
+  }
+
+  .tools-list {
+    margin-top: var(--spacing-md);
+  }
+
+  .tools-list li {
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .tools-note {
+    margin-top: var(--spacing-md);
+    padding-top: var(--spacing-md);
+    border-top: 1px solid var(--color-border);
+    font-size: 0.9rem;
+  }
+
+  .tools-note a {
+    color: var(--color-primary);
+    font-weight: 600;
+  }
+
+  @media (max-width: 768px) {
+    h1 {
+      font-size: 2rem;
+    }
+
+    .lead {
+      font-size: 1.125rem;
+    }
+
+    h2 {
+      font-size: 1.5rem;
+    }
+
+    .examples-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .strategies-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .comparison-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .rules-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .mistakes-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .standalone-links {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+</style> 
