@@ -1,16 +1,17 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import GuideHeader from '../components/GuideHeader.astro';
+import Banner from '../components/Banner.astro';
+import Card from '../components/Card.astro';
+import CardGrid from '../components/CardGrid.astro';
 ---
 
 <Layout title="Herramientas de Accesibilidad - a11yado">
   <article>
-    <header>
-      <h1>Herramientas de Accesibilidad</h1>
-      <p class="lead">
-        Extensiones, aplicaciones y servicios para evaluar, probar y mejorar 
-        la accesibilidad de tus sitios web.
-      </p>
-    </header>
+    <GuideHeader 
+      title="Herramientas de Accesibilidad"
+      description="Extensiones, aplicaciones y servicios para evaluar, probar y mejorar la accesibilidad de tus sitios web."
+    />
 
     <section>
       <h2>Para Diseñadores</h2>
@@ -159,59 +160,26 @@ import Layout from '../layouts/Layout.astro';
       </div>
     </section>
 
-    <div class="recommendations">
-      <h2>💡 Recomendaciones de uso</h2>
-      <div class="recommendation-grid">
-        <div class="recommendation">
-          <h3>Para empezar</h3>
+    <Banner title="💡 Recomendaciones de uso" variant="info">
+      <CardGrid columns="3" minWidth="280px">
+        <Card title="Para empezar" >
           <p>Comienza con <strong>WAVE</strong> para una visión general y <strong>NoCoffee</strong> para probar colores.</p>
-        </div>
-        <div class="recommendation">
-          <h3>Para desarrollo</h3>
+        </Card>
+        <Card title="Para desarrollo" >
+
           <p>Usa <strong>axe</strong> en tu flujo de trabajo de desarrollo y <strong>Lighthouse</strong> para auditorías regulares.</p>
-        </div>
-        <div class="recommendation">
-          <h3>Para pruebas completas</h3>
+        </Card>
+          <Card title="Para pruebas completas" >
           <p>Combina herramientas automatizadas con pruebas manuales usando <strong>NVDA</strong> o <strong>VoiceOver</strong>.</p>
-        </div>
-      </div>
-    </div>
+        </Card>
+      </CardGrid>
+    </Banner>
   </article>
 </Layout>
 
 <style>
   article {
     max-width: 80ch;
-  }
-
-  h1 {
-    font-size: 2.5rem;
-    font-weight: 700;
-    color: var(--color-primary);
-    margin-bottom: var(--spacing-md);
-    line-height: 1.2;
-  }
-
-  .lead {
-    font-size: 1.25rem;
-    color: var(--color-text-light);
-    margin-bottom: var(--spacing-2xl);
-    line-height: 1.5;
-  }
-
-  h2 {
-    font-size: 1.875rem;
-    font-weight: 600;
-    margin-top: var(--spacing-2xl);
-    margin-bottom: var(--spacing-md);
-    color: var(--color-text);
-  }
-
-  h3 {
-    font-size: 1.25rem;
-    font-weight: 600;
-    margin: 0 0 var(--spacing-sm) 0;
-    color: var(--color-text);
   }
 
   .tool-grid {
@@ -384,18 +352,6 @@ import Layout from '../layouts/Layout.astro';
   }
 
   @media (max-width: 768px) {
-    h1 {
-      font-size: 2rem;
-    }
-
-    .lead {
-      font-size: 1.125rem;
-    }
-
-    h2 {
-      font-size: 1.5rem;
-    }
-
     .tool-grid {
       grid-template-columns: 1fr;
     }

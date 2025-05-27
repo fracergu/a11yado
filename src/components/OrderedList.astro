@@ -1,0 +1,24 @@
+---
+export interface Props {
+  class?: string;
+}
+
+const { 
+  class: className = '' 
+} = Astro.props;
+---
+
+<ol class={`ordered-list ${className}`}>
+  <slot />
+</ol>
+
+<style>
+  .ordered-list {
+    counter-reset: practices;
+    list-style: none;
+    padding: 0;
+    margin: var(--spacing-lg) 0;
+    display: grid;
+    gap: var(--spacing-lg);
+  }
+</style> 

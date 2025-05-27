@@ -1,0 +1,220 @@
+---
+export interface Props {
+  title?: string;
+  subtitle?: string;
+  variant?: 'good' | 'bad' | 'info' | 'tip' | 'concept' | 'warning' | 'neutral';
+  class?: string;
+}
+
+const { 
+  title, 
+  subtitle,
+  variant = 'neutral',
+  class: className = '' 
+} = Astro.props;
+
+const variantClasses = {
+  good: 'border-green-600 bg-green-50',
+  bad: 'border-red-600 bg-red-50',
+  info: 'border-blue-600 bg-blue-50',
+  tip: 'border-yellow-500 bg-yellow-50',
+  concept: 'border-cyan-600 bg-cyan-50',
+  warning: 'border-orange-500 bg-orange-50',
+  neutral: 'border-gray-300 bg-gray-50'
+};
+
+const titleColors = {
+  good: 'text-green-800',
+  bad: 'text-red-800',
+  info: 'text-blue-800',
+  tip: 'text-yellow-800',
+  concept: 'text-cyan-800',
+  warning: 'text-orange-800',
+  neutral: 'text-gray-800'
+};
+
+const borderWidths = {
+  good: 'border-2',
+  bad: 'border-2',
+  info: 'border-1',
+  tip: 'border-1',
+  concept: 'border-1',
+  warning: 'border-1',
+  neutral: 'border-1'
+};
+---
+
+<div class={`banner ${variantClasses[variant]} ${borderWidths[variant]} ${className}`}>
+  {title && (
+    <h4 class={`banner-title ${titleColors[variant]}`}>
+      {title}
+    </h4>
+  )}
+  <div class="banner-content">
+    <slot />
+  </div>
+  {subtitle && (
+    <p class="banner-subtitle">
+      {subtitle}
+    </p>
+  )}
+</div>
+
+<style>
+  .banner {
+    border-radius: 8px;
+    padding: var(--spacing-lg);
+    margin: var(--spacing-xl) 0;
+    position: relative;
+  }
+
+  /* Variantes de color */
+  .banner.border-green-600 {
+    border-color: #16a34a;
+  }
+
+  .banner.bg-green-50 {
+    background-color: #f0fdf4;
+  }
+
+  .banner.border-red-600 {
+    border-color: #dc2626;
+  }
+
+  .banner.bg-red-50 {
+    background-color: #fef2f2;
+  }
+
+  .banner.border-blue-600 {
+    border-color: #0891b2;
+  }
+
+  .banner.bg-blue-50 {
+    background-color: #e0f2fe;
+  }
+
+  .banner.border-yellow-500 {
+    border-color: #f59e0b;
+  }
+
+  .banner.bg-yellow-50 {
+    background-color: #fef3c7;
+  }
+
+  .banner.border-cyan-600 {
+    border-color: #0891b2;
+  }
+
+  .banner.bg-cyan-50 {
+    background-color: #e0f2fe;
+  }
+
+  .banner.border-orange-500 {
+    border-color: #f97316;
+  }
+
+  .banner.bg-orange-50 {
+    background-color: #fff7ed;
+  }
+
+  .banner.border-gray-300 {
+    border-color: #d1d5db;
+  }
+
+  .banner.bg-gray-50 {
+    background-color: #f9fafb;
+  }
+
+  /* Anchos de borde */
+  .banner.border-1 {
+    border-width: 1px;
+    border-style: solid;
+  }
+
+  .banner.border-2 {
+    border-width: 2px;
+    border-style: solid;
+  }
+
+  .banner-title {
+    margin: 0 0 var(--spacing-md) 0;
+    font-size: 1rem;
+    font-weight: 600;
+  }
+
+  .banner-title.text-green-800 {
+    color: #166534;
+  }
+
+  .banner-title.text-red-800 {
+    color: #991b1b;
+  }
+
+  .banner-title.text-blue-800 {
+    color: #075985;
+  }
+
+  .banner-title.text-yellow-800 {
+    color: #92400e;
+  }
+
+  .banner-title.text-cyan-800 {
+    color: #075985;
+  }
+
+  .banner-title.text-orange-800 {
+    color: #9a3412;
+  }
+
+  .banner-title.text-gray-800 {
+    color: #374151;
+  }
+
+  .banner-content {
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+
+  .banner-content :global(ul) {
+    margin: 0;
+    padding-left: var(--spacing-lg);
+  }
+
+  .banner-content :global(li) {
+    margin-bottom: var(--spacing-xs);
+  }
+
+  .banner-content :global(p) {
+    margin: 0 0 var(--spacing-sm) 0;
+  }
+
+  .banner-content :global(p:last-child) {
+    margin-bottom: 0;
+  }
+
+  .banner-content :global(strong) {
+    font-weight: 600;
+  }
+
+  .banner-subtitle {
+    font-size: 0.875rem;
+    color: var(--color-text-light);
+    margin: var(--spacing-sm) 0 0 0;
+    font-style: italic;
+  }
+
+  /* Estilos especiales para variantes específicas */
+  .banner.border-cyan-600 .banner-title {
+    margin-top: 0;
+  }
+
+  .banner.border-yellow-500 .banner-title {
+    margin-top: 0;
+  }
+
+  @media (max-width: 768px) {
+    .banner {
+      padding: var(--spacing-md);
+    }
+  }
+</style> 

@@ -1,0 +1,55 @@
+---
+export interface Props {
+  title: string;
+  description: string;
+  class?: string;
+}
+
+const { 
+  title, 
+  description,
+  class: className = '' 
+} = Astro.props;
+---
+
+<header class={`guide-header ${className}`}>
+  <h1>{title}</h1>
+  <p class="lead">
+    {description}
+  </p>
+</header>
+
+<style>
+  .guide-header {
+    margin-bottom: var(--spacing-2xl);
+  }
+
+  h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    margin-bottom: var(--spacing-md);
+    line-height: 1.2;
+  }
+
+  .lead {
+    font-size: 1.25rem;
+    color: var(--color-text-light);
+    margin-bottom: 0;
+    line-height: 1.5;
+    padding: var(--spacing-lg);
+    background-color: var(--color-surface);
+    border-radius: 8px;
+    border-left: 4px solid var(--color-primary);
+  }
+
+  @media (max-width: 768px) {
+    h1 {
+      font-size: 2rem;
+    }
+
+    .lead {
+      font-size: 1.125rem;
+    }
+  }
+</style> 

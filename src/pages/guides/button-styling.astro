@@ -1,16 +1,28 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import Checklist from '../../components/Checklist.astro';
+import GuideHeader from '../../components/GuideHeader.astro';
+import Banner from '../../components/Banner.astro';
+import OrderedList from '../../components/OrderedList.astro';
+import OrderedListItem from '../../components/OrderedListItem.astro';
+import CardGrid from '../../components/CardGrid.astro';
+import Card from '../../components/Card.astro';
+import Label from '../../components/Label.astro';
+
+const checklistItems = [
+  "Los botones usan formas consistentes",
+  "La jerarquía visual es clara (primario/secundario/terciario)",
+  "Hay suficiente espacio entre elementos interactivos",
+  "Los targets táctiles son de al menos 44px",
+  "Solo hay un CTA principal por sección",
+  "Los elementos no interactivos no parecen botones",
+  "La capitalización es consistente"
+];
 ---
 
 <Layout title="Estilizado de Botones - a11yado">
   <article>
-    <header>
-      <h1>Estilizado de Botones</h1>
-      <p class="lead">
-        Los usuarios deben poder identificar qué elementos son interactivos 
-        simplemente mirando la interfaz, sin tener que explorar con el cursor.
-      </p>
-    </header>
+    <GuideHeader title="Estilizado de Botones" description="Los usuarios deben poder identificar qué elementos son interactivos simplemente mirando la interfaz, sin tener que explorar con el cursor." />
 
     <section>
       <h2>¿Por qué importa el estilizado?</h2>
@@ -20,256 +32,249 @@ import Layout from '../../layouts/Layout.astro';
         que comuniquen su función de forma inmediata.
       </p>
 
-      <div class="principle-box">
-        <h3>Principio fundamental</h3>
-        <p>
-          <strong>La claridad siempre gana sobre la consistencia.</strong> 
-          Si necesitas sacrificar consistencia para mejorar la usabilidad, hazlo.
-        </p>
-      </div>
+      <Banner title="Principio fundamental" variant="info">
+          <p>
+            <strong>La claridad siempre gana sobre la consistencia.</strong> 
+            Si necesitas sacrificar consistencia para mejorar la usabilidad, hazlo.
+          </p>
+        </div>
+      </Banner>
     </section>
 
     <section>
       <h2>Las 7 técnicas clave</h2>
       
-      <div class="technique-section">
-        <h3>1. Técnica de Forma</h3>
-        <p>La forma puede indicar si algo es un botón. Los rectángulos son la opción más segura.</p>
-        
-        <div class="shape-examples">
-          <div class="shape-demo">
-            <h4>✅ Formas seguras</h4>
-            <div class="button-group">
-              <button class="demo-btn rectangular">Rectangular</button>
-              <button class="demo-btn rounded">Redondeado</button>
-              <button class="demo-btn pill">Píldora</button>
-            </div>
-            <p class="demo-desc">Formas reconocibles como botones</p>
-          </div>
+      <OrderedList>
+        <OrderedListItem number={1} title="Técnica de Forma">
+          <p>La forma puede indicar si algo es un botón. Los rectángulos son la opción más segura.</p>
           
-          <div class="shape-demo">
-            <h4>⚠️ Formas creativas</h4>
+          <CardGrid columns="2" gap="lg">
+            <Card title="✅ Formas seguras" variant="success" borderAccent>
+              <div class="button-group">
+                <button class="demo-btn rectangular">Rectangular</button>
+                <button class="demo-btn rounded">Redondeado</button>
+                <button class="demo-btn pill">Píldora</button>
+              </div>
+              <p class="demo-desc">Formas reconocibles como botones</p>
+            </Card>
+            
+            <Card title="⚠️ Formas creativas" variant="warning" borderAccent>
+              <div class="button-group">
+                <button class="demo-btn hexagon">Hexágono</button>
+                <button class="demo-btn circle">Círculo</button>
+                <button class="demo-btn diamond">Rombo</button>
+              </div>
+              <p class="demo-desc">Requieren señalizadores adicionales</p>
+            </Card>
+          </CardGrid>
+
+        <CardGrid columns="2" gap="lg">
+          <Card title="Inconsistente" variant="danger" borderAccent>
             <div class="button-group">
-              <button class="demo-btn hexagon">Hexágono</button>
-              <button class="demo-btn circle">Círculo</button>
-              <button class="demo-btn diamond">Rombo</button>
+              <button class="demo-btn rectangular">Copiar</button>
+              <button class="demo-btn circle">+</button>
+              <button class="demo-btn pill">Eliminar</button>
             </div>
-            <p class="demo-desc">Requieren señalizadores adicionales</p>
-          </div>
-        </div>
+          </Card>
 
-        <div class="consistency-example">
-          <h4>Importancia de la consistencia</h4>
-          <div class="consistency-comparison">
-            <div class="inconsistent">
-              <h5>❌ Inconsistente</h5>
-              <div class="button-group">
-                <button class="demo-btn rectangular">Copiar</button>
-                <button class="demo-btn circle">+</button>
-                <button class="demo-btn pill">Eliminar</button>
+          <Card title="Consistente" variant="success" borderAccent>
+            <div class="button-group">
+              <button class="demo-btn rectangular">Copiar</button>
+              <button class="demo-btn rectangular">Agregar</button>
+              <button class="demo-btn rectangular">Eliminar</button>
+            </div>
+          </Card>
+        </CardGrid>
+
+        </OrderedListItem>
+
+        <OrderedListItem number={2} title="Técnica de Radio de Borde">
+          <p>El radio de borde cambia la "personalidad" del botón: de más serio a más divertido.</p>
+          
+            <CardGrid columns="3" gap="lg">
+              <Card variant="default">
+                <div style="display: flex; flex-direction: column; align-items: center">
+                  <button class="demo-btn serious">Serio (0px)</button>
+                  <Label text="Formal, profesional" variant="small" />
+                </div>
+              </Card>
+              <Card variant="default">
+                <div style="display: flex; flex-direction: column; align-items: center">
+                  <button class="demo-btn moderate">Moderado (4px)</button>
+                  <Label text="Equilibrado, amigable" variant="small" />
+                </div>
+              </Card>
+              <Card variant="default">
+                <div style="display: flex; flex-direction: column; align-items: center">
+                  <button class="demo-btn playful">Juguetón (100%)</button>
+                  <Label text="Casual, divertido" variant="small" />
+                </div>
+              </Card>
+            </CardGrid>
+        </OrderedListItem>
+
+        <OrderedListItem number={3} title="Técnica de Relleno y Color">
+          <p>Usa cambios estructurales (no solo color) para crear jerarquía visual.</p>
+          
+          <CardGrid columns="2" gap="lg">
+            <Card title="Jerarquía de botones" >
+              <div class="button-hierarchy">
+                <button class="demo-btn primary">Primario (Sólido)</button>
+                <button class="demo-btn secondary">Secundario (Borde)</button>
+                <button class="demo-btn tertiary">Terciario (Sin borde)</button>
+              </div>
+              <div class="hierarchy-explanation">
+                <div class="hierarchy-item">
+                  <span class="hierarchy-dot primary-dot"></span>
+                  <span>Acciones principales - Relleno sólido</span>
+                </div>
+                <div class="hierarchy-item">
+                  <span class="hierarchy-dot secondary-dot"></span>
+                  <span>Acciones secundarias - Solo borde</span>
+                </div>
+                <div class="hierarchy-item">
+                  <span class="hierarchy-dot tertiary-dot"></span>
+                  <span>Acciones terciarias - Sin borde</span>
+                </div>
+              </div>
+            </Card>
+
+            <Card title="Ejemplo en contexto" variant="default">
+              <div class="form-example">
+                <div class="form-field">
+                  <label>Nombre de usuario:</label>
+                  <input type="text" placeholder="Ingresa tu nombre">
+                </div>
+                <div class="form-actions">
+                  <button class="demo-btn tertiary">Cancelar</button>
+                  <button class="demo-btn primary">Siguiente</button>
+                </div>
+              </div>
+            </Card>
+          </CardGrid>
+        </OrderedListItem>
+
+        <OrderedListItem number={4} title="Técnica de Sombra y Elevación">
+          <p>Las sombras comunican elevación e importancia visual.</p>
+          <CardGrid columns="1" gap="lg">
+            <Card title="Niveles de elevación" variant="default">
+              <div class="shadow-examples">
+                <div class="shadow-demo">
+                  <button class="demo-btn no-shadow">Sin sombra</button>
+                  <span class="shadow-label">Color "pesado" para dominio visual</span>
+                </div>
+                <div class="shadow-demo">
+                  <button class="demo-btn small-shadow">Sombra pequeña</button>
+                  <span class="shadow-label">Elevación ligera, importancia</span>
+                </div>
+                <div class="shadow-demo">
+                  <button class="demo-btn long-shadow">Sombra larga</button>
+                  <span class="shadow-label">Alta elevación, llama atención</span>
+                </div>
+              </div>
+            </Card>
+
+            <Card title="🔍 Estados interactivos con sombras" variant="info">
+              <div class="state-examples">
+                <button class="demo-btn interactive-shadow">Pasa el cursor aquí</button>
+                <p class="demo-desc" style="margin-top: 1rem;">La sombra aumenta al hacer hover</p>
+              </div>
+            </Card>
+          </CardGrid>
+        </OrderedListItem>
+
+        <OrderedListItem number={5} title="Técnica de Competencia">
+          <p>Elementos con estilos similares compiten entre sí. Los CTAs deben destacar claramente.</p>
+          
+          <CardGrid columns="2" gap="lg">
+            <Card title="❌ Demasiada competencia" variant="danger" borderAccent>
+              <div class="competing-interface">
+                <div class="fake-header">Tecnologías Frontend</div>
+                <div class="fake-header">Aprende las Mejores Herramientas</div>
+                <div class="button-grid">
+                  <button class="demo-btn competing">React</button>
+                  <button class="demo-btn competing">Vue.js</button>
+                  <button class="demo-btn competing">Angular</button>
+                </div>
+                <input type="text" class="competing-input" placeholder="Buscar frameworks...">
+                <button class="demo-btn competing">Buscar</button>
+              </div>
+              <p class="demo-desc">Todo compite por atención</p>
+            </Card>
+
+            <Card title="✅ CTA claro" variant="success" borderAccent>
+              <div class="clear-interface">
+                <h5>Tecnologías Frontend</h5>
+                <p>Aprende las mejores herramientas</p>
+                <div class="product-grid">
+                  <span class="product-tag">React</span>
+                  <span class="product-tag">Vue.js</span>
+                  <span class="product-tag">Angular</span>
+                </div>
+                <input type="text" class="clean-input" placeholder="Buscar frameworks...">
+                <button class="demo-btn primary prominent">Explorar Tecnologías</button>
+              </div>
+              <p class="demo-desc">Un CTA principal claro</p>
+            </Card>
+          </CardGrid>
+        </OrderedListItem>
+
+        <OrderedListItem number={6} title="Técnica de Proximidad">
+          <p>El espacio adecuado permite que los elementos interactivos respiren y destaquen.</p>
+          
+          <CardGrid columns="2" gap="lg">
+            <Card title="❌ Muy apretado" variant="danger" borderAccent>
+              <div class="cramped-interface">
+                <button class="demo-btn small">Guardar</button><button class="demo-btn small">Cancelar</button><button class="demo-btn small">Eliminar</button>
+              </div>
+              <p class="demo-desc">Difícil de usar, errores accidentales</p>
+            </Card>
+
+            <Card title="✅ Bien espaciado" variant="success" borderAccent>
+              <div class="spaced-interface">
+                <button class="demo-btn comfortable">Guardar</button>
+                <button class="demo-btn comfortable">Cancelar</button>
+                <button class="demo-btn comfortable">Eliminar</button>
+              </div>
+              <p class="demo-desc">Fácil de usar, targets grandes</p>
+            </Card>
+          </CardGrid>
+
+          <Card title="🔍 Tamaños de área táctil" variant="info">
+            <div class="target-examples">
+              <button class="demo-btn tiny">Muy pequeño</button>
+              <button class="demo-btn small-target">Pequeño</button>
+              <button class="demo-btn good-target">Tamaño ideal</button>
+            </div>
+            <p class="demo-desc">Mínimo recomendado: 44px × 44px</p>
+          </Card>
+        </OrderedListItem>
+
+        <OrderedListItem number={7} title="Técnica de Capitalización">
+          <p>El tipo de capitalización transmite diferentes tonos de voz.</p>
+          
+          <Card variant="default">
+            <div class="capitalization-examples">
+              <div class="cap-demo">
+                <button class="demo-btn cap-sentence">Enviar mensaje</button>
+                <span class="cap-label">Sentence case - Amigable, conversacional ✅</span>
+              </div>
+              <div class="cap-demo">
+                <button class="demo-btn cap-title">Enviar Mensaje</button>
+                <span class="cap-label">Title Case - Uniforme, autoritario</span>
+              </div>
+              <div class="cap-demo">
+                <button class="demo-btn cap-upper">ENVIAR MENSAJE</button>
+                <span class="cap-label">ALL CAPS - Formal, impersonal</span>
+              </div>
+              <div class="cap-demo">
+                <button class="demo-btn cap-lower">enviar mensaje</button>
+                <span class="cap-label">lower case - Casual, poco esfuerzo</span>
               </div>
             </div>
-            <div class="consistent">
-              <h5>✅ Consistente</h5>
-              <div class="button-group">
-                <button class="demo-btn rectangular">Copiar</button>
-                <button class="demo-btn rectangular">Agregar</button>
-                <button class="demo-btn rectangular">Eliminar</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="technique-section">
-        <h3>2. Técnica de Radio de Borde</h3>
-        <p>El radio de borde cambia la "personalidad" del botón: de más serio a más divertido.</p>
-        
-        <div class="radius-examples">
-          <div class="radius-demo">
-            <button class="demo-btn serious">Serio (0px)</button>
-            <span class="personality-label">Formal, profesional</span>
-          </div>
-          <div class="radius-demo">
-            <button class="demo-btn moderate">Moderado (4px)</button>
-            <span class="personality-label">Equilibrado, amigable</span>
-          </div>
-          <div class="radius-demo">
-            <button class="demo-btn playful">Juguetón (100%)</button>
-            <span class="personality-label">Casual, divertido</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="technique-section">
-        <h3>3. Técnica de Relleno y Color</h3>
-        <p>Usa cambios estructurales (no solo color) para crear jerarquía visual.</p>
-        
-        <div class="hierarchy-examples">
-          <div class="hierarchy-demo">
-            <h4>Jerarquía de botones</h4>
-            <div class="button-hierarchy">
-              <button class="demo-btn primary">Primario (Sólido)</button>
-              <button class="demo-btn secondary">Secundario (Borde)</button>
-              <button class="demo-btn tertiary">Terciario (Sin borde)</button>
-            </div>
-            <div class="hierarchy-explanation">
-              <div class="hierarchy-item">
-                <span class="hierarchy-dot primary-dot"></span>
-                <span>Acciones principales - Relleno sólido</span>
-              </div>
-              <div class="hierarchy-item">
-                <span class="hierarchy-dot secondary-dot"></span>
-                <span>Acciones secundarias - Solo borde</span>
-              </div>
-              <div class="hierarchy-item">
-                <span class="hierarchy-dot tertiary-dot"></span>
-                <span>Acciones terciarias - Sin borde</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="context-example">
-            <h4>Ejemplo en contexto</h4>
-            <div class="form-example">
-              <div class="form-field">
-                <label>Nombre de usuario:</label>
-                <input type="text" placeholder="Ingresa tu nombre">
-              </div>
-              <div class="form-actions">
-                <button class="demo-btn tertiary">Cancelar</button>
-                <button class="demo-btn primary">Siguiente</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="technique-section">
-        <h3>4. Técnica de Sombra y Elevación</h3>
-        <p>Las sombras comunican elevación e importancia visual.</p>
-        
-        <div class="shadow-examples">
-          <div class="shadow-demo">
-            <button class="demo-btn no-shadow">Sin sombra</button>
-            <span class="shadow-label">Color "pesado" para dominio visual</span>
-          </div>
-          <div class="shadow-demo">
-            <button class="demo-btn small-shadow">Sombra pequeña</button>
-            <span class="shadow-label">Elevación ligera, importancia</span>
-          </div>
-          <div class="shadow-demo">
-            <button class="demo-btn long-shadow">Sombra larga</button>
-            <span class="shadow-label">Alta elevación, llama atención</span>
-          </div>
-        </div>
-
-        <div class="shadow-states">
-          <h4>Estados interactivos con sombras</h4>
-          <div class="state-examples">
-            <button class="demo-btn interactive-shadow">Pasa el cursor aquí</button>
-            <p class="demo-desc">La sombra aumenta al hacer hover</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="technique-section">
-        <h3>5. Técnica de Competencia</h3>
-        <p>Elementos con estilos similares compiten entre sí. Los CTAs deben destacar claramente.</p>
-        
-        <div class="competition-examples">
-          <div class="competition-demo bad">
-            <h4>❌ Demasiada competencia</h4>
-            <div class="competing-interface">
-              <div class="fake-header">Tecnologías Frontend</div>
-              <div class="fake-header">Aprende las Mejores Herramientas</div>
-              <div class="button-grid">
-                <button class="demo-btn competing">React</button>
-                <button class="demo-btn competing">Vue.js</button>
-                <button class="demo-btn competing">Angular</button>
-              </div>
-              <input type="text" class="competing-input" placeholder="Buscar frameworks...">
-              <button class="demo-btn competing">Buscar</button>
-            </div>
-            <p class="demo-desc">Todo compite por atención</p>
-          </div>
-
-          <div class="competition-demo good">
-            <h4>✅ CTA claro</h4>
-            <div class="clear-interface">
-              <h5>Tecnologías Frontend</h5>
-              <p>Aprende las mejores herramientas</p>
-              <div class="product-grid">
-                <span class="product-tag">React</span>
-                <span class="product-tag">Vue.js</span>
-                <span class="product-tag">Angular</span>
-              </div>
-              <input type="text" class="clean-input" placeholder="Buscar frameworks...">
-              <button class="demo-btn primary prominent">Explorar Tecnologías</button>
-            </div>
-            <p class="demo-desc">Un CTA principal claro</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="technique-section">
-        <h3>6. Técnica de Proximidad</h3>
-        <p>El espacio adecuado permite que los elementos interactivos respiren y destaquen.</p>
-        
-        <div class="proximity-examples">
-          <div class="proximity-demo bad">
-            <h4>❌ Muy apretado</h4>
-            <div class="cramped-interface">
-              <button class="demo-btn small">Guardar</button><button class="demo-btn small">Cancelar</button><button class="demo-btn small">Eliminar</button>
-            </div>
-            <p class="demo-desc">Difícil de usar, errores accidentales</p>
-          </div>
-
-          <div class="proximity-demo good">
-            <h4>✅ Bien espaciado</h4>
-            <div class="spaced-interface">
-              <button class="demo-btn comfortable">Guardar</button>
-              <button class="demo-btn comfortable">Cancelar</button>
-              <button class="demo-btn comfortable">Eliminar</button>
-            </div>
-            <p class="demo-desc">Fácil de usar, targets grandes</p>
-          </div>
-        </div>
-
-        <div class="touch-targets">
-          <h4>Tamaños de área táctil</h4>
-          <div class="target-examples">
-            <button class="demo-btn tiny">Muy pequeño</button>
-            <button class="demo-btn small-target">Pequeño</button>
-            <button class="demo-btn good-target">Tamaño ideal</button>
-          </div>
-          <p class="demo-desc">Mínimo recomendado: 44px × 44px</p>
-        </div>
-      </div>
-
-      <div class="technique-section">
-        <h3>7. Técnica de Capitalización</h3>
-        <p>El tipo de capitalización transmite diferentes tonos de voz.</p>
-        
-        <div class="capitalization-examples">
-          <div class="cap-demo">
-            <button class="demo-btn cap-sentence">Enviar mensaje</button>
-            <span class="cap-label">Sentence case - Amigable, conversacional ✅</span>
-          </div>
-          <div class="cap-demo">
-            <button class="demo-btn cap-title">Enviar Mensaje</button>
-            <span class="cap-label">Title Case - Uniforme, autoritario</span>
-          </div>
-          <div class="cap-demo">
-            <button class="demo-btn cap-upper">ENVIAR MENSAJE</button>
-            <span class="cap-label">ALL CAPS - Formal, impersonal</span>
-          </div>
-          <div class="cap-demo">
-            <button class="demo-btn cap-lower">enviar mensaje</button>
-            <span class="cap-label">lower case - Casual, poco esfuerzo</span>
-          </div>
-        </div>
-      </div>
+          </Card>
+        </OrderedListItem>
+      </OrderedList>
     </section>
 
     <section>
@@ -320,20 +325,11 @@ import Layout from '../../layouts/Layout.astro';
 
     <section>
       <h2>Lista de verificación</h2>
-      <div class="checklist">
-        <div class="checklist-group">
-          <h4>Antes de publicar, verifica:</h4>
-          <ul class="checklist-items">
-            <li>✅ Los botones usan formas consistentes</li>
-            <li>✅ La jerarquía visual es clara (primario/secundario/terciario)</li>
-            <li>✅ Hay suficiente espacio entre elementos interactivos</li>
-            <li>✅ Los targets táctiles son de al menos 44px</li>
-            <li>✅ Solo hay un CTA principal por sección</li>
-            <li>✅ Los elementos no interactivos no parecen botones</li>
-            <li>✅ La capitalización es consistente</li>
-          </ul>
-        </div>
-      </div>
+      <Checklist 
+        title="✅ Antes de publicar, verifica:"
+        items={checklistItems}
+        variant="success"
+      />
     </section>
 
     <section>
@@ -359,66 +355,6 @@ import Layout from '../../layouts/Layout.astro';
     max-width: 90ch;
   }
 
-  h1 {
-    font-size: 2.5rem;
-    font-weight: 700;
-    color: var(--color-primary);
-    margin-bottom: var(--spacing-md);
-    line-height: 1.2;
-  }
-
-  .lead {
-    font-size: 1.25rem;
-    color: var(--color-text-light);
-    margin-bottom: var(--spacing-2xl);
-    line-height: 1.5;
-    padding: var(--spacing-lg);
-    background-color: var(--color-surface);
-    border-radius: 8px;
-    border-left: 4px solid var(--color-primary);
-  }
-
-  h2 {
-    font-size: 1.875rem;
-    font-weight: 600;
-    margin-top: var(--spacing-2xl);
-    margin-bottom: var(--spacing-lg);
-    color: var(--color-text);
-  }
-
-  h3 {
-    font-size: 1.25rem;
-    font-weight: 600;
-    margin: var(--spacing-xl) 0 var(--spacing-md) 0;
-    color: var(--color-text);
-  }
-
-  .principle-box {
-    background-color: #f0f9ff;
-    border: 2px solid #0891b2;
-    border-radius: 8px;
-    padding: var(--spacing-lg);
-    margin: var(--spacing-xl) 0;
-  }
-
-  .principle-box h3 {
-    color: #0891b2;
-    margin-top: 0;
-  }
-
-  .technique-section {
-    margin: var(--spacing-2xl) 0;
-    padding: var(--spacing-xl);
-    background-color: var(--color-surface);
-    border-radius: 8px;
-    border-left: 4px solid var(--color-primary);
-  }
-
-  .technique-section h3 {
-    color: var(--color-primary);
-    margin-top: 0;
-  }
-
   /* Botones demo base */
   .demo-btn {
     padding: var(--spacing-sm) var(--spacing-md);
@@ -436,21 +372,6 @@ import Layout from '../../layouts/Layout.astro';
 
   .demo-btn:hover {
     background-color: #1e40af;
-  }
-
-  /* Técnica 1: Formas */
-  .shape-examples {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: var(--spacing-lg);
-    margin: var(--spacing-lg) 0;
-  }
-
-  .shape-demo {
-    background-color: var(--color-background);
-    padding: var(--spacing-lg);
-    border-radius: 6px;
-    border: 1px solid var(--color-border);
   }
 
   .button-group {
@@ -491,71 +412,9 @@ import Layout from '../../layouts/Layout.astro';
     justify-content: center;
   }
 
-  .consistency-example {
-    margin: var(--spacing-xl) 0;
-  }
-
-  .consistency-comparison {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: var(--spacing-lg);
-    margin: var(--spacing-md) 0;
-  }
-
-  .inconsistent, .consistent {
-    background-color: var(--color-background);
-    padding: var(--spacing-md);
-    border-radius: 6px;
-    border: 1px solid var(--color-border);
-  }
-
-  .inconsistent {
-    border-left: 4px solid #dc2626;
-  }
-
-  .consistent {
-    border-left: 4px solid #16a34a;
-  }
-
-  /* Técnica 2: Radio de borde */
-  .radius-examples {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: var(--spacing-lg);
-    margin: var(--spacing-lg) 0;
-  }
-
-  .radius-demo {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: var(--spacing-sm);
-    padding: var(--spacing-md);
-    background-color: var(--color-background);
-    border-radius: 6px;
-  }
-
   .serious { border-radius: 0; }
   .moderate { border-radius: 4px; }
   .playful { border-radius: 50px; }
-
-  .personality-label {
-    font-size: 0.75rem;
-    color: var(--color-text-light);
-    text-align: center;
-  }
-
-  /* Técnica 3: Jerarquía */
-  .hierarchy-examples {
-    margin: var(--spacing-lg) 0;
-  }
-
-  .hierarchy-demo {
-    background-color: var(--color-background);
-    padding: var(--spacing-lg);
-    border-radius: 6px;
-    margin-bottom: var(--spacing-lg);
-  }
 
   .button-hierarchy {
     display: flex;
@@ -618,12 +477,6 @@ import Layout from '../../layouts/Layout.astro';
   .secondary-dot { border: 2px solid var(--color-primary); background-color: transparent; }
   .tertiary-dot { background-color: var(--color-text-light); }
 
-  .context-example {
-    background-color: var(--color-background);
-    padding: var(--spacing-lg);
-    border-radius: 6px;
-  }
-
   .form-example {
     max-width: 300px;
   }
@@ -651,7 +504,6 @@ import Layout from '../../layouts/Layout.astro';
     justify-content: flex-end;
   }
 
-  /* Técnica 4: Sombras */
   .shadow-examples {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -692,10 +544,6 @@ import Layout from '../../layouts/Layout.astro';
     text-align: center;
   }
 
-  .shadow-states {
-    margin: var(--spacing-lg) 0;
-  }
-
   .state-examples {
     background-color: var(--color-background);
     padding: var(--spacing-lg);
@@ -711,29 +559,6 @@ import Layout from '../../layouts/Layout.astro';
   .interactive-shadow:hover {
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
     transform: translateY(-3px);
-  }
-
-  /* Técnica 5: Competencia */
-  .competition-examples {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: var(--spacing-xl);
-    margin: var(--spacing-lg) 0;
-  }
-
-  .competition-demo {
-    border-radius: 8px;
-    padding: var(--spacing-lg);
-  }
-
-  .competition-demo.bad {
-    border: 2px solid #dc2626;
-    background-color: #fef2f2;
-  }
-
-  .competition-demo.good {
-    border: 2px solid #16a34a;
-    background-color: #f0fdf4;
   }
 
   .competing-interface, .clear-interface {
@@ -819,29 +644,6 @@ import Layout from '../../layouts/Layout.astro';
     padding: var(--spacing-md) var(--spacing-lg);
   }
 
-  /* Técnica 6: Proximidad */
-  .proximity-examples {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: var(--spacing-xl);
-    margin: var(--spacing-lg) 0;
-  }
-
-  .proximity-demo {
-    border-radius: 8px;
-    padding: var(--spacing-lg);
-  }
-
-  .proximity-demo.bad {
-    border: 2px solid #dc2626;
-    background-color: #fef2f2;
-  }
-
-  .proximity-demo.good {
-    border: 2px solid #16a34a;
-    background-color: #f0fdf4;
-  }
-
   .cramped-interface {
     background-color: var(--color-background);
     padding: var(--spacing-md);
@@ -860,40 +662,32 @@ import Layout from '../../layouts/Layout.astro';
   }
 
   .small {
-    padding: 4px 8px;
+    padding: var(--spacing-xs);
     font-size: 0.75rem;
   }
 
   .comfortable {
     padding: var(--spacing-sm) var(--spacing-md);
     min-height: 44px;
-    min-width: 80px;
-  }
-
-  .touch-targets {
-    margin: var(--spacing-lg) 0;
+    min-width: 44px;
   }
 
   .target-examples {
     display: flex;
     gap: var(--spacing-md);
-    align-items: center;
-    background-color: var(--color-background);
-    padding: var(--spacing-lg);
-    border-radius: 6px;
     margin: var(--spacing-md) 0;
+    align-items: center;
+    flex-wrap: wrap;
   }
 
   .tiny {
     padding: 2px 4px;
     font-size: 0.625rem;
-    min-height: 20px;
   }
 
   .small-target {
-    padding: 4px 8px;
+    padding: var(--spacing-xs) var(--spacing-sm);
     font-size: 0.75rem;
-    min-height: 32px;
   }
 
   .good-target {
@@ -902,8 +696,10 @@ import Layout from '../../layouts/Layout.astro';
     min-width: 44px;
   }
 
-  /* Técnica 7: Capitalización */
   .capitalization-examples {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spacing-md);
     margin: var(--spacing-lg) 0;
   }
 
@@ -911,15 +707,9 @@ import Layout from '../../layouts/Layout.astro';
     display: flex;
     align-items: center;
     gap: var(--spacing-md);
-    margin-bottom: var(--spacing-md);
     padding: var(--spacing-md);
     background-color: var(--color-background);
     border-radius: 6px;
-  }
-
-  .cap-label {
-    font-size: 0.875rem;
-    color: var(--color-text-light);
   }
 
   .cap-sentence { text-transform: none; }
@@ -927,10 +717,15 @@ import Layout from '../../layouts/Layout.astro';
   .cap-upper { text-transform: uppercase; }
   .cap-lower { text-transform: lowercase; }
 
+  .cap-label {
+    font-size: 0.875rem;
+    color: var(--color-text-light);
+  }
+
   /* Prácticas adicionales */
   .additional-practices {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    grid-template-columns: 1fr;
     gap: var(--spacing-lg);
     margin: var(--spacing-lg) 0;
   }
@@ -988,42 +783,6 @@ import Layout from '../../layouts/Layout.astro';
     font-size: 0.875rem;
   }
 
-  /* Lista de verificación */
-  .checklist {
-    background-color: var(--color-surface);
-    border-radius: 8px;
-    padding: var(--spacing-lg);
-    margin: var(--spacing-lg) 0;
-  }
-
-  .checklist-group h4 {
-    color: var(--color-primary);
-    margin: 0 0 var(--spacing-md) 0;
-  }
-
-  .checklist-items {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-
-  .checklist-items li {
-    margin-bottom: var(--spacing-sm);
-    padding-left: var(--spacing-md);
-    position: relative;
-  }
-
-  .checklist-items li:before {
-    content: "";
-    position: absolute;
-    left: 0;
-    top: 0.2em;
-    width: 8px;
-    height: 8px;
-    background-color: var(--color-primary);
-    border-radius: 50%;
-  }
-
   /* Herramientas */
   .tools {
     background-color: var(--color-surface);
@@ -1060,26 +819,10 @@ import Layout from '../../layouts/Layout.astro';
   }
 
   @media (max-width: 768px) {
-    h1 {
-      font-size: 2rem;
-    }
-
-    .lead {
-      font-size: 1.125rem;
-    }
-
-    h2 {
-      font-size: 1.5rem;
-    }
-
-    .shape-examples,
-    .competition-examples,
-    .proximity-examples,
     .additional-practices {
       grid-template-columns: 1fr;
     }
 
-    .radius-examples,
     .shadow-examples {
       grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
     }

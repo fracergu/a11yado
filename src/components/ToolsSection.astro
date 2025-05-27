@@ -1,0 +1,102 @@
+---
+export interface Props {
+  title?: string;
+  tools?: Array<{
+    name: string;
+    description: string;
+    url?: string;
+  }>;
+  showToolsPageLink?: boolean;
+  class?: string;
+}
+
+const { 
+  title = "Herramientas útiles",
+  tools = [],
+  showToolsPageLink = true,
+  class: className = '' 
+} = Astro.props;
+---
+
+<section class={`tools-section ${className}`}>
+  <h2>{title}</h2>
+  <div class="tools">
+    {tools.length > 0 && (
+      <>
+        <p>Para verificar y mejorar la accesibilidad:</p>
+        <ul class="tools-list">
+          {tools.map((tool) => (
+            <li>
+              <strong>{tool.name}:</strong> 
+              {tool.url ? (
+                <a href={tool.url} target="_blank" rel="noopener">{tool.description}</a>
+              ) : (
+                tool.description
+              )}
+            </li>
+          ))}
+        </ul>
+      </>
+    )}
+    
+    <slot />
+    
+    {showToolsPageLink && (
+      <p class="tools-note">
+        💡 <strong>Consejo:</strong> Consulta la página de <a href="/tools">Herramientas</a> para una lista completa de recursos de accesibilidad.
+      </p>
+    )}
+  </div>
+</section>
+
+<style>
+  .tools-section h2 {
+    font-size: 1.875rem;
+    font-weight: 600;
+    margin-top: var(--spacing-2xl);
+    margin-bottom: var(--spacing-lg);
+    color: var(--color-text);
+  }
+
+  .tools {
+    background-color: var(--color-surface);
+    border-radius: 8px;
+    padding: var(--spacing-lg);
+    margin: var(--spacing-lg) 0;
+  }
+
+  .tools-list {
+    margin-top: var(--spacing-md);
+  }
+
+  .tools-list li {
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .tools-list a {
+    color: var(--color-primary);
+    text-decoration: none;
+  }
+
+  .tools-list a:hover {
+    text-decoration: underline;
+  }
+
+  .tools-note {
+    margin-top: var(--spacing-md);
+    padding-top: var(--spacing-md);
+    border-top: 1px solid var(--color-border);
+    font-size: 0.9rem;
+  }
+
+  .tools-note a {
+    color: var(--color-primary);
+    font-weight: 600;
+  }
+
+  @media (max-width: 768px) {
+    .tools-section h2 {
+      font-size: 1.5rem;
+    }
+  }
+</style> 

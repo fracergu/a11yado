@@ -1,0 +1,53 @@
+---
+export interface Props {
+  columns?: 'auto' | '1' | '2' | '3' | '4';
+  minWidth?: string;
+  gap?: 'sm' | 'md' | 'lg' | 'xl';
+  class?: string;
+}
+
+const { 
+  columns = 'auto',
+  minWidth = '280px',
+  gap = 'lg',
+  class: className = '' 
+} = Astro.props;
+
+const columnClasses = {
+  auto: `repeat(auto-fit, minmax(${minWidth}, 1fr))`,
+  '1': '1fr',
+  '2': 'repeat(2, 1fr)',
+  '3': 'repeat(3, 1fr)',
+  '4': 'repeat(4, 1fr)'
+};
+
+const gapSizes = {
+  sm: 'var(--spacing-sm)',
+  md: 'var(--spacing-md)',
+  lg: 'var(--spacing-lg)',
+  xl: 'var(--spacing-xl)'
+};
+---
+
+<div 
+  class={`card-grid ${className}`}
+  style={`
+    grid-template-columns: ${columnClasses[columns]};
+    gap: ${gapSizes[gap]};
+  `}
+>
+  <slot />
+</div>
+
+<style>
+  .card-grid {
+    display: grid;
+    margin: var(--spacing-xl) 0;
+  }
+
+  @media (max-width: 768px) {
+    .card-grid {
+      grid-template-columns: 1fr !important;
+    }
+  }
+</style> 

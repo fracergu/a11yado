@@ -1,0 +1,173 @@
+---
+export interface Props {
+  number: number;
+  title: string;
+  variant?: 'primary' | 'info' | 'neutral';
+  class?: string;
+}
+
+const { 
+  number,
+  title,
+  variant = 'primary',
+  class: className = '' 
+} = Astro.props;
+
+const variantClasses = {
+  primary: 'border-l-color-primary bg-color-surface',
+  info: 'border-l-blue-600 bg-blue-50',
+  neutral: 'border-l-gray-400 bg-gray-50'
+};
+
+const numberColors = {
+  primary: 'bg-color-primary text-white',
+  info: 'bg-blue-600 text-white',
+  neutral: 'bg-gray-600 text-white'
+};
+
+const titleColors = {
+  primary: 'text-color-primary',
+  info: 'text-blue-800',
+  neutral: 'text-gray-800'
+};
+---
+
+<li class={`ordered-item ${variantClasses[variant]} ${className}`}>
+  <div class={`item-number ${numberColors[variant]}`}>
+    {number}
+  </div>
+  <div class="item-content">
+    <h4 class={`item-title ${titleColors[variant]}`}>
+      {title}
+    </h4>
+    <div class="item-body">
+      <slot />
+    </div>
+  </div>
+</li>
+
+<style>
+  .ordered-item {
+    padding: var(--spacing-lg) var(--spacing-lg) var(--spacing-lg) 4rem;
+    background-color: var(--color-surface);
+    border-radius: 8px;
+    border-left: 4px solid;
+    position: relative;
+    list-style: none;
+  }
+
+
+
+  /* Variantes de color para bordes */
+  .ordered-item.border-l-color-primary {
+    border-left-color: var(--color-primary);
+  }
+
+  .ordered-item.bg-color-surface {
+    background-color: var(--color-surface);
+  }
+
+  .ordered-item.border-l-blue-600 {
+    border-left-color: #0891b2;
+  }
+
+  .ordered-item.bg-blue-50 {
+    background-color: #e0f2fe;
+  }
+
+  .ordered-item.border-l-gray-400 {
+    border-left-color: #9ca3af;
+  }
+
+  .ordered-item.bg-gray-50 {
+    background-color: #f9fafb;
+  }
+
+  .item-number {
+    position: absolute;
+    left: var(--spacing-lg);
+    top: var(--spacing-lg);
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.125rem;
+    font-weight: 700;
+    line-height: 1;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Variantes de color para números */
+  .item-number.bg-color-primary {
+    background-color: var(--color-primary);
+  }
+
+  .item-number.text-white {
+    color: white;
+  }
+
+  .item-number.bg-blue-600 {
+    background-color: #0891b2;
+  }
+
+  .item-number.bg-gray-600 {
+    background-color: #6b7280;
+  }
+
+  .item-content {
+    margin-top: 0;
+  }
+
+  .item-title {
+    margin: 0 0 var(--spacing-md) 0;
+    font-size: 1.125rem;
+    font-weight: 600;
+    line-height: 1.3;
+  }
+
+  /* Variantes de color para títulos */
+  .item-title.text-color-primary {
+    color: var(--color-primary);
+  }
+
+  .item-title.text-blue-800 {
+    color: #075985;
+  }
+
+  .item-title.text-gray-800 {
+    color: #374151;
+  }
+
+  .item-body {
+    color: var(--color-text-light);
+    line-height: 1.6;
+  }
+
+  .item-body :global(p) {
+    margin: 0 0 var(--spacing-md) 0;
+  }
+
+  .item-body :global(p:last-child) {
+    margin-bottom: 0;
+  }
+
+  @media (max-width: 768px) {
+    .ordered-item {
+      padding: var(--spacing-md) var(--spacing-md) var(--spacing-md) 3rem;
+    }
+
+    .item-number {
+      left: var(--spacing-md);
+      top: var(--spacing-md);
+      width: 28px;
+      height: 28px;
+      font-size: 1rem;
+    }
+
+    .item-title {
+      font-size: 1rem;
+    }
+  }
+</style> 

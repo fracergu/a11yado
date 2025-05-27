@@ -1,17 +1,63 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import Card from '../../components/Card.astro';
+import CardGrid from '../../components/CardGrid.astro';
+import Checklist from '../../components/Checklist.astro';
+import ToolsSection from '../../components/ToolsSection.astro';
+import Banner from '../../components/Banner.astro';
+import OrderedList from '../../components/OrderedList.astro';
+import OrderedListItem from '../../components/OrderedListItem.astro';
+import GuideHeader from '../../components/GuideHeader.astro';
+
+const wcagRules = [
+  {
+    title: "Tamaño del Indicador",
+    content: "El indicador de foco debe ser al menos tan grande como un perímetro de 2px CSS alrededor del componente. Solución simple: Usa un outline sólido de 2px o más grueso."
+  },
+  {
+    title: "Contraste de Color", 
+    content: "Debe haber contraste 3:1 o mayor entre los estados enfocado y no enfocado. Ejemplo: Fondo blanco → outline azul = cambio de blanco a azul."
+  },
+  {
+    title: "Contraste Adyacente",
+    content: "El indicador debe tener contraste 3:1 o mayor contra los colores adyacentes (fondo y componente). Tip: Usa un gap entre el outline y el elemento para simplificar."
+  },
+  {
+    title: "No Oculto",
+    content: "El componente enfocado no debe estar oculto por contenido como headers pegajosos o modales. Cuidado con: Sticky headers, footers y overlays."
+  }
+];
+
+const checklistItems = [
+  "¿El outline es de al menos 2px de grosor?",
+  "¿Hay contraste 3:1+ entre estados enfocado/no enfocado?",
+  "¿El indicador contrasta 3:1+ con colores adyacentes?",
+  "¿Los elementos enfocados no se ocultan tras otros contenidos?",
+  "¿El estilo comunica claramente \"enfocado\"?",
+  "¿Funciona en modo claro y oscuro?",
+  "¿Todos los elementos interactivos tienen estado de foco?",
+  "¿El orden de tabulación es lógico?"
+];
+
+const focusTools = [
+  {
+    name: "Navegación por teclado",
+    description: "Usa solo Tab, Shift+Tab, Enter, Space"
+  },
+  {
+    name: "Herramientas de contraste",
+    description: "WebAIM, Colour Contrast Analyser"
+  },
+  {
+    name: "DevTools",
+    description: "Inspecciona estados :focus en el navegador"
+  }
+];
 ---
 
 <Layout title="Estados de Foco - a11yado">
   <article>
-    <header>
-      <h1>Estados de Foco</h1>
-      <p class="lead">
-        Los estados de foco son indicadores visuales que muestran qué elemento 
-        está actualmente seleccionado para interacción por teclado. Son esenciales 
-        para la navegación accesible.
-      </p>
-    </header>
+    <GuideHeader title="Estados de Foco" description="Los estados de foco son indicadores visuales que muestran qué elemento está actualmente seleccionado para interacción por teclado. Son esenciales para la navegación accesible." />
 
     <section>
       <h2>¿Por qué son importantes?</h2>
@@ -20,15 +66,14 @@ import Layout from '../../layouts/Layout.astro';
         Sin indicadores claros, es imposible saber dónde estás en la página.
       </p>
 
-      <div class="concept-box">
-        <h3>Usuarios que dependen de estados de foco:</h3>
+      <Banner title="Usuarios que dependen de estados de foco:" variant="concept">
         <ul>
           <li><strong>Usuarios de teclado:</strong> Personas con discapacidades motoras</li>
           <li><strong>Usuarios de lectores de pantalla:</strong> Personas con discapacidades visuales</li>
           <li><strong>Usuarios de switch control:</strong> Personas con movilidad limitada</li>
           <li><strong>Usuarios avanzados:</strong> Desarrolladores y power users que prefieren el teclado</li>
         </ul>
-      </div>
+      </Banner>
     </section>
 
     <section>
@@ -38,55 +83,25 @@ import Layout from '../../layouts/Layout.astro';
         más 1 regla bonus de usabilidad.
       </p>
 
-      <div class="rules-grid">
-        <div class="rule-card">
-          <div class="rule-number">1</div>
-          <h3>Tamaño del Indicador</h3>
-          <p>
-            El indicador de foco debe ser <strong>al menos tan grande como un perímetro 
-            de 2px CSS</strong> alrededor del componente.
-          </p>
-          <div class="rule-detail">
-            <strong>Solución simple:</strong> Usa un outline sólido de 2px o más grueso.
-          </div>
-        </div>
+      <OrderedList>
+        <OrderedListItem number={1} title="Tamaño del Indicador">
+          <p>El indicador de foco debe ser al menos tan grande como un perímetro de 2px CSS alrededor del componente. Solución simple: Usa un outline sólido de 2px o más grueso.</p>
+        </OrderedListItem>
 
-        <div class="rule-card">
-          <div class="rule-number">2</div>
-          <h3>Contraste de Color</h3>
-          <p>
-            Debe haber <strong>contraste 3:1 o mayor</strong> entre los estados 
-            enfocado y no enfocado.
-          </p>
-          <div class="rule-detail">
-            <strong>Ejemplo:</strong> Fondo blanco → outline azul = cambio de blanco a azul.
-          </div>
-        </div>
+        <OrderedListItem number={2} title="Contraste de Color">
+          <p>Debe haber contraste 3:1 o mayor entre los estados enfocado y no enfocado. Ejemplo: Fondo blanco → outline azul = cambio de blanco a azul.</p>
+        </OrderedListItem>
 
-        <div class="rule-card">
-          <div class="rule-number">3</div>
-          <h3>Contraste Adyacente</h3>
-          <p>
-            El indicador debe tener <strong>contraste 3:1 o mayor</strong> contra 
-            los colores adyacentes (fondo y componente).
-          </p>
-          <div class="rule-detail">
-            <strong>Tip:</strong> Usa un gap entre el outline y el elemento para simplificar.
-          </div>
-        </div>
+        <OrderedListItem number={3} title="Contraste Adyacente">
+          <p>El indicador debe tener contraste 3:1 o mayor contra los colores adyacentes (fondo y componente). Tip: Usa un gap entre el outline y el elemento para simplificar.</p>
+        </OrderedListItem>
 
-        <div class="rule-card">
-          <div class="rule-number">4</div>
-          <h3>No Oculto</h3>
-          <p>
-            El componente enfocado <strong>no debe estar oculto</strong> por contenido 
-            como headers pegajosos o modales.
-          </p>
-          <div class="rule-detail">
-            <strong>Cuidado con:</strong> Sticky headers, footers y overlays.
-          </div>
-        </div>
+        <OrderedListItem number={4} title="No Oculto">
+          <p>El componente enfocado no debe estar oculto por contenido como headers pegajosos o modales. Cuidado con: Sticky headers, footers y overlays.</p>
+        </OrderedListItem>
+      </OrderedList>
 
+      <div class="bonus-rule">
         <div class="rule-card bonus">
           <div class="rule-number">+</div>
           <h3>Señalizadores Apropiados</h3>
@@ -103,160 +118,138 @@ import Layout from '../../layouts/Layout.astro';
 
     <section>
       <h2>Ejemplos prácticos</h2>
-      <p class="navigation-tip">
-        💡 <strong>Tip:</strong> Usa la tecla <kbd>Tab</kbd> para navegar entre los elementos o pasa el ratón por encima para ver sus estados de foco en acción.
-      </p>
+      <Banner title="💡 Tip:" variant="tip">
+        Usa la tecla <kbd>Tab</kbd> para navegar entre los elementos o pasa el ratón por encima para ver sus estados de foco en acción.
+      </Banner>
       
-      <div class="example-section">
-        <h3>✅ Outline sólido negro (Pasa todas las reglas)</h3>
-        <div class="demo-container">
-          <div class="demo-buttons">
-            <button class="demo-btn solid-black-focus">Enviar formulario</button>
-            <button class="demo-btn solid-black-focus secondary">Cancelar</button>
-            <input type="text" class="demo-input solid-black-focus" placeholder="Buscar componentes...">
-            <a href="#" class="demo-link solid-black-focus">Documentación de React</a>
-          </div>
-          <div class="demo-explanation">
-            <p><strong>Por qué funciona:</strong></p>
-            <ul>
-              <li>Outline de 3px cumple el tamaño mínimo</li>
-              <li>Cambio de blanco a negro: contraste 21:1</li>
-              <li>Negro contra cualquier color: excelente contraste</li>
-              <li>Outline clásico = señalizador reconocible</li>
-            </ul>
+      <Banner title="✅ Outline sólido negro (Pasa todas las reglas)" variant="good">
+        <div class="demo-container-white">
+          <div class="demo-container">
+            <div class="demo-buttons">
+              <button class="demo-btn solid-black-focus">Enviar formulario</button>
+              <button class="demo-btn solid-black-focus secondary">Cancelar</button>
+              <input type="text" class="demo-input solid-black-focus" placeholder="Buscar componentes...">
+              <a href="#" class="demo-link solid-black-focus">Documentación de React</a>
+            </div>
+            <div class="demo-explanation">
+              <p><strong>Por qué funciona:</strong></p>
+              <ul>
+                <li>Outline de 3px cumple el tamaño mínimo</li>
+                <li>Cambio de blanco a negro: contraste 21:1</li>
+                <li>Negro contra cualquier color: excelente contraste</li>
+                <li>Outline clásico = señalizador reconocible</li>
+              </ul>
+            </div>
           </div>
         </div>
-      </div>
+      </Banner>
 
-      <div class="example-section">
-        <h3>❌ Outline azul claro (Falla contraste)</h3>
-        <div class="demo-container">
-          <div class="demo-buttons">
-            <button class="demo-btn light-blue-focus">Instalar React</button>
-            <button class="demo-btn light-blue-focus secondary">Documentación</button>
-            <input type="text" class="demo-input light-blue-focus" placeholder="npm install...">
-            <a href="#" class="demo-link light-blue-focus">Guía de TypeScript</a>
-          </div>
-          <div class="demo-explanation">
-            <p><strong>Por qué falla:</strong></p>
-            <ul>
-              <li>Azul claro contra blanco: solo 1.92:1 (necesita 3:1)</li>
-              <li>Azul claro contra azul oscuro: solo 2.54:1</li>
-              <li>Aunque se ve familiar, no es accesible</li>
-            </ul>
+      <Banner title="❌ Outline azul claro (Falla contraste)" variant="bad">
+        <div class="demo-container-white">
+          <div class="demo-container">
+            <div class="demo-buttons">
+              <button class="demo-btn light-blue-focus">Instalar React</button>
+              <button class="demo-btn light-blue-focus secondary">Documentación</button>
+              <input type="text" class="demo-input light-blue-focus" placeholder="npm install...">
+              <a href="#" class="demo-link light-blue-focus">Guía de TypeScript</a>
+            </div>
+            <div class="demo-explanation">
+              <p><strong>Por qué falla:</strong></p>
+              <ul>
+                <li>Azul claro contra blanco: solo 1.92:1 (necesita 3:1)</li>
+                <li>Azul claro contra azul oscuro: solo 2.54:1</li>
+                <li>Aunque se ve familiar, no es accesible</li>
+              </ul>
+            </div>
           </div>
         </div>
-      </div>
+      </Banner>
 
-      <div class="example-section">
-        <h3>✅ Outline con gap (Estrategia inteligente)</h3>
-        <div class="demo-container">
-          <div class="demo-buttons">
-            <button class="demo-btn gap-focus">Compilar TypeScript</button>
-            <button class="demo-btn gap-focus secondary">Ver errores</button>
-            <input type="text" class="demo-input gap-focus" placeholder="Buscar en VSCode...">
-            <a href="#" class="demo-link gap-focus">Manual de Astro</a>
-          </div>
-          <div class="demo-explanation">
-            <p><strong>Por qué es inteligente:</strong></p>
-            <ul>
-              <li>El gap simplifica el contraste adyacente</li>
-              <li>Solo necesitas contrastar contra el fondo</li>
-              <li>Funciona en elementos de cualquier color</li>
-              <li>Más fácil de mantener en todo el sitio</li>
-            </ul>
+      <Banner title="✅ Outline con gap (Estrategia inteligente)" variant="good">
+        <div class="demo-container-white">
+          <div class="demo-container">
+            <div class="demo-buttons">
+              <button class="demo-btn gap-focus">Compilar TypeScript</button>
+              <button class="demo-btn gap-focus secondary">Ver errores</button>
+              <input type="text" class="demo-input gap-focus" placeholder="Buscar en VSCode...">
+              <a href="#" class="demo-link gap-focus">Manual de Astro</a>
+            </div>
+            <div class="demo-explanation">
+              <p><strong>Por qué es inteligente:</strong></p>
+              <ul>
+                <li>El gap simplifica el contraste adyacente</li>
+                <li>Solo necesitas contrastar contra el fondo</li>
+                <li>Funciona en elementos de cualquier color</li>
+                <li>Más fácil de mantener en todo el sitio</li>
+              </ul>
+            </div>
           </div>
         </div>
-      </div>
+      </Banner>
 
-      <div class="example-section">
-        <h3>❌ Cambio de fondo (Confunde señalizadores)</h3>
-        <div class="demo-container">
-          <div class="demo-buttons">
-            <button class="demo-btn background-change-focus">Deploy a Vercel</button>
-            <button class="demo-btn background-change-focus secondary">Configurar</button>
-            <input type="text" class="demo-input background-change-focus" placeholder="Nombre del proyecto...">
-            <a href="#" class="demo-link background-change-focus">Configurar Netlify</a>
-          </div>
-          <div class="demo-explanation">
-            <p><strong>Por qué confunde:</strong></p>
-            <ul>
-              <li>El botón primario enfocado parece secundario</li>
-              <li>El input enfocado no parece editable</li>
-              <li>Cambia la identidad visual del elemento</li>
-              <li>Los usuarios no reconocen el estado</li>
-            </ul>
+      <Banner title="❌ Cambio de fondo (Confunde señalizadores)" variant="bad">
+        <div class="demo-container-white">
+          <div class="demo-container">
+            <div class="demo-buttons">
+              <button class="demo-btn background-change-focus">Deploy a Vercel</button>
+              <button class="demo-btn background-change-focus secondary">Configurar</button>
+              <input type="text" class="demo-input background-change-focus" placeholder="Nombre del proyecto...">
+              <a href="#" class="demo-link background-change-focus">Configurar Netlify</a>
+            </div>
+            <div class="demo-explanation">
+              <p><strong>Por qué confunde:</strong></p>
+              <ul>
+                <li>El botón primario enfocado parece secundario</li>
+                <li>El input enfocado no parece editable</li>
+                <li>Cambia la identidad visual del elemento</li>
+                <li>Los usuarios no reconocen el estado</li>
+              </ul>
+            </div>
           </div>
         </div>
-      </div>
+      </Banner>
 
-      <div class="example-section">
-        <h3>✅ Estados de foco siempre visibles (Para demostración)</h3>
-        <p class="demo-note">Estos elementos muestran cómo se ven los estados de foco sin necesidad de navegar:</p>
-        <div class="demo-container">
-          <div class="demo-buttons">
-            <button class="demo-btn forced-focus-black">Estado enfocado permanente</button>
-            <button class="demo-btn forced-focus-gap secondary">Con gap siempre visible</button>
-            <input type="text" class="demo-input forced-focus-black" placeholder="Input siempre enfocado" value="Francisco Cerdán">
-            <a href="#" class="demo-link forced-focus-gap">Enlace con foco visible</a>
-          </div>
-          <div class="demo-explanation">
-            <p><strong>Observa cómo:</strong></p>
-            <ul>
-              <li>El outline negro es claramente visible</li>
-              <li>El gap separa el outline del elemento</li>
-              <li>Cada elemento mantiene su identidad visual</li>
-              <li>Es fácil distinguir qué está enfocado</li>
-            </ul>
-          </div>
-        </div>
-      </div>
     </section>
 
     <section>
       <h2>Estrategias recomendadas</h2>
       
-      <div class="strategies-grid">
-        <div class="strategy-card recommended">
-          <h4>🎯 Outline sólido con gap</h4>
+      <CardGrid columns="auto" minWidth="300px">
+        <Card title="🎯 Outline sólido con gap" variant="success" borderAccent>
           <div class="strategy-demo">
             <button class="strategy-btn demo-outline-gap">Ejemplo interactivo</button>
           </div>
           <p><strong>Ventajas:</strong> Simple, funciona en todo, fácil de mantener</p>
-        </div>
+        </Card>
 
-        <div class="strategy-card recommended">
-          <h4>🎯 Doble outline</h4>
+        <Card title="🎯 Doble outline" variant="success" borderAccent>
           <div class="strategy-demo">
             <button class="strategy-btn demo-double-outline">Ejemplo interactivo</button>
           </div>
           <p><strong>Ventajas:</strong> Funciona en fondos claros y oscuros</p>
-        </div>
+        </Card>
 
-        <div class="strategy-card avoid">
-          <h4>❌ Solo cambio de color</h4>
+        <Card title="❌ Solo cambio de color" variant="danger" borderAccent>
           <div class="strategy-demo">
             <button class="strategy-btn demo-color-change">Ejemplo problemático</button>
           </div>
           <p><strong>Problema:</strong> Puede confundir la función del elemento</p>
-        </div>
+        </Card>
 
-        <div class="strategy-card avoid">
-          <h4>❌ Outline muy delgado</h4>
+        <Card title="❌ Outline muy delgado" variant="danger" borderAccent>
           <div class="strategy-demo">
             <button class="strategy-btn demo-thin-outline">Ejemplo problemático</button>
           </div>
           <p><strong>Problema:</strong> No cumple requisitos de tamaño y contraste</p>
-        </div>
-      </div>
+        </Card>
+      </CardGrid>
     </section>
 
     <section>
       <h2>Casos especiales</h2>
       
-      <div class="special-cases">
-        <div class="case-card">
-          <h4>📱 Elementos táctiles</h4>
+      <CardGrid columns="auto" minWidth="300px">
+        <Card title="📱 Elementos táctiles" variant="primary" borderAccent>
           <p>
             En dispositivos táctiles, los estados de foco pueden no ser visibles. 
             Asegúrate de que también funcionen con :hover y :active.
@@ -264,10 +257,9 @@ import Layout from '../../layouts/Layout.astro';
           <div class="case-demo">
             <button class="case-btn mobile-focus">Botón táctil</button>
           </div>
-        </div>
+        </Card>
 
-        <div class="case-card">
-          <h4>🎨 Elementos personalizados</h4>
+        <Card title="🎨 Elementos personalizados" variant="primary" borderAccent>
           <p>
             Para componentes como dropdowns o modales, asegúrate de que el foco 
             sea visible en todos los elementos interactivos internos.
@@ -282,10 +274,9 @@ import Layout from '../../layouts/Layout.astro';
               </div>
             </div>
           </div>
-        </div>
+        </Card>
 
-        <div class="case-card">
-          <h4>🌙 Modo oscuro</h4>
+        <Card title="🌙 Modo oscuro" variant="primary" borderAccent>
           <p>
             En temas oscuros, usa outlines claros. El doble outline es especialmente 
             útil para funcionar en ambos modos.
@@ -294,80 +285,27 @@ import Layout from '../../layouts/Layout.astro';
             <button class="case-btn dark-focus">Botón modo oscuro</button>
             <input type="text" class="case-input dark-focus" placeholder="Input modo oscuro">
           </div>
-        </div>
-      </div>
+        </Card>
+      </CardGrid>
     </section>
 
-    <section>
-      <h2>Lista de verificación</h2>
-      
-      <div class="checklist">
-        <h3>✅ Antes de publicar, verifica:</h3>
-        <div class="checklist-grid">
-          <label class="checklist-item">
-            <input type="checkbox" disabled>
-            <span>¿El outline es de al menos 2px de grosor?</span>
-          </label>
-          <label class="checklist-item">
-            <input type="checkbox" disabled>
-            <span>¿Hay contraste 3:1+ entre estados enfocado/no enfocado?</span>
-          </label>
-          <label class="checklist-item">
-            <input type="checkbox" disabled>
-            <span>¿El indicador contrasta 3:1+ con colores adyacentes?</span>
-          </label>
-          <label class="checklist-item">
-            <input type="checkbox" disabled>
-            <span>¿Los elementos enfocados no se ocultan tras otros contenidos?</span>
-          </label>
-          <label class="checklist-item">
-            <input type="checkbox" disabled>
-            <span>¿El estilo comunica claramente "enfocado"?</span>
-          </label>
-          <label class="checklist-item">
-            <input type="checkbox" disabled>
-            <span>¿Funciona en modo claro y oscuro?</span>
-          </label>
-          <label class="checklist-item">
-            <input type="checkbox" disabled>
-            <span>¿Todos los elementos interactivos tienen estado de foco?</span>
-          </label>
-          <label class="checklist-item">
-            <input type="checkbox" disabled>
-            <span>¿El orden de tabulación es lógico?</span>
-          </label>
-        </div>
-      </div>
-    </section>
+    <Checklist 
+      title="✅ Antes de publicar, verifica:"
+      items={checklistItems}
+      variant="success"
+    />
 
-    <section>
-      <h2>Herramientas útiles</h2>
-      <div class="tools">
-        <div class="tools-grid">
-          <div class="tool-card">
-            <h4>🔍 Para testing</h4>
-            <ul>
-              <li><strong>Navegación por teclado:</strong> Usa solo Tab, Shift+Tab, Enter, Space</li>
-              <li><strong>Herramientas de contraste:</strong> WebAIM, Colour Contrast Analyser</li>
-              <li><strong>DevTools:</strong> Inspecciona estados :focus en el navegador</li>
-            </ul>
-          </div>
-          
-          <div class="tool-card">
-            <h4>📐 Para medir contraste</h4>
-            <ul>
-              <li><strong>Regla 3:1:</strong> Para elementos no-texto (outlines, iconos)</li>
-              <li><strong>Regla 4.5:1:</strong> Para texto normal</li>
-              <li><strong>Regla 7:1:</strong> Para texto pequeño (AAA)</li>
-            </ul>
-          </div>
-        </div>
-        
-        <p class="tools-note">
-          💡 <strong>Consejo:</strong> Consulta la página de <a href="/tools">Herramientas</a> para recursos específicos de testing de accesibilidad.
-        </p>
+    <ToolsSection tools={focusTools}>
+      <div class="tools-grid">
+        <Card title="📐 Para medir contraste" variant="info" borderAccent>
+          <ul>
+            <li><strong>Regla 3:1:</strong> Para elementos no-texto (outlines, iconos)</li>
+            <li><strong>Regla 4.5:1:</strong> Para texto normal</li>
+            <li><strong>Regla 7:1:</strong> Para texto pequeño (AAA)</li>
+          </ul>
+        </Card>
       </div>
-    </section>
+    </ToolsSection>
   </article>
 </Layout>
 
@@ -376,78 +314,23 @@ import Layout from '../../layouts/Layout.astro';
     max-width: 90ch;
   }
 
-  h1 {
-    font-size: 2.5rem;
-    font-weight: 700;
-    color: var(--color-primary);
-    margin-bottom: var(--spacing-md);
-    line-height: 1.2;
-  }
-
-  .lead {
-    font-size: 1.25rem;
-    color: var(--color-text-light);
-    margin-bottom: var(--spacing-2xl);
-    line-height: 1.5;
-    padding: var(--spacing-lg);
-    background-color: var(--color-surface);
-    border-radius: 8px;
-    border-left: 4px solid var(--color-primary);
-  }
-
-  h2 {
-    font-size: 1.875rem;
-    font-weight: 600;
-    margin-top: var(--spacing-2xl);
-    margin-bottom: var(--spacing-lg);
-    color: var(--color-text);
-  }
-
-  h3 {
-    font-size: 1.25rem;
-    font-weight: 600;
-    margin: var(--spacing-xl) 0 var(--spacing-md) 0;
-    color: var(--color-text);
-  }
-
-  .concept-box {
-    background-color: #e0f2fe;
-    border: 1px solid #0891b2;
-    border-radius: 8px;
-    padding: var(--spacing-lg);
-    margin: var(--spacing-xl) 0;
-  }
-
-  .concept-box h3 {
-    color: #0891b2;
-    margin-top: 0;
-  }
-
-  .rules-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: var(--spacing-lg);
-    margin: var(--spacing-xl) 0;
-  }
-
-  .rule-card {
-    background-color: var(--color-surface);
-    border: 2px solid var(--color-primary);
-    border-radius: 8px;
-    padding: var(--spacing-lg);
-    position: relative;
+  .bonus-rule {
+    margin: var(--spacing-lg) 0;
   }
 
   .rule-card.bonus {
-    border-color: #f59e0b;
     background-color: #fef3c7;
+    border: 2px solid #f59e0b;
+    border-radius: 8px;
+    padding: var(--spacing-lg);
+    position: relative;
   }
 
   .rule-number {
     position: absolute;
     top: -12px;
     left: var(--spacing-lg);
-    background-color: var(--color-primary);
+    background-color: #f59e0b;
     color: white;
     width: 24px;
     height: 24px;
@@ -459,16 +342,8 @@ import Layout from '../../layouts/Layout.astro';
     font-size: 0.875rem;
   }
 
-  .rule-card.bonus .rule-number {
-    background-color: #f59e0b;
-  }
-
-  .rule-card h3 {
-    margin-top: var(--spacing-sm);
-    color: var(--color-primary);
-  }
-
   .rule-card.bonus h3 {
+    margin-top: var(--spacing-sm);
     color: #d97706;
   }
 
@@ -478,23 +353,14 @@ import Layout from '../../layouts/Layout.astro';
     border-radius: 4px;
     margin-top: var(--spacing-md);
     font-size: 0.875rem;
-    border-left: 3px solid var(--color-primary);
+    border-left: 3px solid #f59e0b;
   }
 
-  .rule-card.bonus .rule-detail {
-    border-left-color: #f59e0b;
-  }
-
-  .example-section {
-    margin: var(--spacing-2xl) 0;
+  .demo-container-white {
+    background-color: white;
     padding: var(--spacing-lg);
-    border-radius: 8px;
+    border-radius: 6px;
     border: 1px solid var(--color-border);
-  }
-
-  .example-section h3 {
-    margin-top: 0;
-    margin-bottom: var(--spacing-lg);
   }
 
   .demo-container {
@@ -724,28 +590,20 @@ import Layout from '../../layouts/Layout.astro';
     color: #9ca3af;
   }
 
-  /* Navigation tip */
-  .navigation-tip {
-    background-color: #fef3c7;
-    border: 1px solid #f59e0b;
-    border-radius: 8px;
-    padding: var(--spacing-md);
-    margin-bottom: var(--spacing-xl);
+  .demo-note {
+    font-style: italic;
+    color: var(--color-text-light);
+    margin-bottom: var(--spacing-md);
   }
 
-  .navigation-tip kbd {
+  /* Estilo para elementos kbd dentro de Banner */
+  :global(.banner kbd) {
     background-color: #374151;
     color: white;
     padding: 2px 6px;
     border-radius: 3px;
     font-family: monospace;
     font-size: 0.875rem;
-  }
-
-  .demo-note {
-    font-style: italic;
-    color: var(--color-text-light);
-    margin-bottom: var(--spacing-md);
   }
 
   .demo-explanation {
@@ -764,111 +622,12 @@ import Layout from '../../layouts/Layout.astro';
     font-size: 0.875rem;
   }
 
-  .strategies-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: var(--spacing-lg);
-    margin: var(--spacing-xl) 0;
-  }
-
-  .strategy-card {
-    padding: var(--spacing-lg);
-    border-radius: 8px;
-    border: 2px solid;
-  }
-
-  .strategy-card.recommended {
-    border-color: #16a34a;
-    background-color: #f0fdf4;
-  }
-
-  .strategy-card.avoid {
-    border-color: #dc2626;
-    background-color: #fef2f2;
-  }
-
-  .strategy-card h4 {
-    margin: 0 0 var(--spacing-md) 0;
-    font-size: 1rem;
-  }
-
   .strategy-demo {
     margin-bottom: var(--spacing-md);
   }
 
-  .special-cases {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: var(--spacing-lg);
-    margin: var(--spacing-xl) 0;
-  }
-
-  .case-card {
-    background-color: var(--color-surface);
-    border: 1px solid var(--color-border);
-    border-radius: 8px;
-    padding: var(--spacing-lg);
-    border-left: 4px solid var(--color-primary);
-  }
-
-  .case-card h4 {
-    color: var(--color-primary);
-    margin: 0 0 var(--spacing-md) 0;
-    font-size: 1rem;
-  }
-
   .case-demo {
     margin-bottom: var(--spacing-md);
-  }
-
-  .checklist {
-    background-color: var(--color-surface);
-    border-radius: 8px;
-    padding: var(--spacing-xl);
-    margin: var(--spacing-xl) 0;
-  }
-
-  .checklist h3 {
-    color: var(--color-primary);
-    margin-top: 0;
-  }
-
-  .checklist-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: var(--spacing-md);
-    margin-top: var(--spacing-lg);
-  }
-
-  .checklist-item {
-    display: flex;
-    align-items: flex-start;
-    gap: var(--spacing-sm);
-    cursor: pointer;
-    padding: var(--spacing-sm);
-    border-radius: 4px;
-    transition: background-color 0.2s;
-  }
-
-  .checklist-item:hover {
-    background-color: var(--color-background);
-  }
-
-  .checklist-item input[type="checkbox"] {
-    margin-top: 2px;
-    flex-shrink: 0;
-  }
-
-  .checklist-item span {
-    font-size: 0.9rem;
-    line-height: 1.4;
-  }
-
-  .tools {
-    background-color: var(--color-surface);
-    border-radius: 8px;
-    padding: var(--spacing-lg);
-    margin: var(--spacing-lg) 0;
   }
 
   .tools-grid {
@@ -878,73 +637,10 @@ import Layout from '../../layouts/Layout.astro';
     margin: var(--spacing-lg) 0;
   }
 
-  .tool-card {
-    background-color: var(--color-background);
-    padding: var(--spacing-md);
-    border-radius: 6px;
-    border-left: 3px solid var(--color-primary);
-  }
-
-  .tool-card h4 {
-    color: var(--color-primary);
-    margin: 0 0 var(--spacing-sm) 0;
-    font-size: 1rem;
-  }
-
-  .tool-card ul {
-    margin: 0;
-    padding-left: var(--spacing-lg);
-  }
-
-  .tool-card li {
-    margin-bottom: var(--spacing-xs);
-    font-size: 0.9rem;
-  }
-
-  .tools-note {
-    margin-top: var(--spacing-md);
-    padding-top: var(--spacing-md);
-    border-top: 1px solid var(--color-border);
-    font-size: 0.9rem;
-  }
-
-  .tools-note a {
-    color: var(--color-primary);
-    font-weight: 600;
-  }
-
   @media (max-width: 768px) {
-    h1 {
-      font-size: 2rem;
-    }
-
-    .lead {
-      font-size: 1.125rem;
-    }
-
-    h2 {
-      font-size: 1.5rem;
-    }
-
-    .rules-grid {
-      grid-template-columns: 1fr;
-    }
-
     .demo-container {
       grid-template-columns: 1fr;
       gap: var(--spacing-lg);
-    }
-
-    .strategies-grid {
-      grid-template-columns: 1fr;
-    }
-
-    .special-cases {
-      grid-template-columns: 1fr;
-    }
-
-    .checklist-grid {
-      grid-template-columns: 1fr;
     }
 
     .tools-grid {

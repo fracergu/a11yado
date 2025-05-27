@@ -1,17 +1,47 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import GuideHeader from '../../components/GuideHeader.astro';
+import Banner from '../../components/Banner.astro';
+import Card from '../../components/Card.astro';
+import CardGrid from '../../components/CardGrid.astro';
+import Checklist from '../../components/Checklist.astro';
+import ToolsSection from '../../components/ToolsSection.astro';
+
+const checklistItems = [
+  "Los enlaces son visualmente diferentes del texto normal",
+  "Todos los enlaces usan el mismo estilo en toda la aplicación",
+  "No usas azul o subrayado para texto no-clickeable",
+  "Los enlaces son identificables sin depender solo del color",
+  "Los efectos hover/focus proporcionan retroalimentación clara",
+  "El contraste de color cumple con los requisitos WCAG"
+];
+
+const linkTools = [
+  {
+    name: "Contraste de color",
+    description: "WebAIM Color Contrast Checker"
+  },
+  {
+    name: "Colores luminosos WCAG",
+    description: "w3.org/WAI/WCAG22/working-examples/link-contrast"
+  },
+  {
+    name: "Simulador de daltonismo",
+    description: "Colorblinding.com"
+  },
+  {
+    name: "Test de navegación",
+    description: "Navega solo con teclado (Tab)"
+  }
+];
 ---
 
 <Layout title="Estilizado de Enlaces - a11yado">
   <article>
-    <header>
-      <h1>Estilizado de Enlaces</h1>
-      <p class="lead">
-        Haz que los enlaces sean visualmente distinguibles del texto normal y consistentes 
-        entre sí, para que las personas puedan identificar qué es interactivo sin tener 
-        que explorar con el cursor.
-      </p>
-    </header>
+    <GuideHeader 
+      title="Estilizado de Enlaces"
+      description="Haz que los enlaces sean visualmente distinguibles del texto normal y consistentes entre sí, para que las personas puedan identificar qué es interactivo sin tener que explorar con el cursor."
+    />
 
     <section>
       <h2>¿Por qué es importante el estilizado de enlaces?</h2>
@@ -21,14 +51,13 @@ import Layout from '../../layouts/Layout.astro';
         tendrán que "barrer" la página con el cursor para encontrar qué es clickeable.
       </p>
 
-      <div class="concept-box">
-        <h3>Un buen estilizado de enlaces debe ser:</h3>
+      <Banner title="Un buen estilizado de enlaces debe ser:" variant="concept">
         <ul>
           <li><strong>Distinguible:</strong> Claramente diferente del texto normal</li>
           <li><strong>Consistente:</strong> Igual en toda la aplicación</li>
           <li><strong>Accesible:</strong> Funciona para personas con daltonismo</li>
         </ul>
-      </div>
+      </Banner>
     </section>
 
     <section>
@@ -36,8 +65,7 @@ import Layout from '../../layouts/Layout.astro';
       <p>La forma más accesible de estilizar enlaces es combinar subrayado con color azul.</p>
 
       <div class="examples-grid">
-        <div class="example-card good">
-          <h4>✅ Enlaces accesibles</h4>
+        <Banner title="✅ Enlaces accesibles" variant="good">
           <div class="text-demo">
             <p>
               Para mejorar tu código JavaScript, consulta la 
@@ -51,10 +79,9 @@ import Layout from '../../layouts/Layout.astro';
             </p>
           </div>
           <p class="example-desc">Subrayado + color azul = máxima accesibilidad</p>
-        </div>
+        </Banner>
 
-        <div class="example-card bad">
-          <h4>❌ Enlaces problemáticos</h4>
+        <Banner title="❌ Enlaces problemáticos" variant="bad">
           <div class="text-demo">
             <p>
               Para mejorar tu código JavaScript, consulta la 
@@ -68,7 +95,7 @@ import Layout from '../../layouts/Layout.astro';
             </p>
           </div>
           <p class="example-desc">Solo color = invisible para personas con daltonismo</p>
-        </div>
+        </Banner>
       </div>
     </section>
 
@@ -76,9 +103,8 @@ import Layout from '../../layouts/Layout.astro';
       <h2>Estrategias de estilizado</h2>
       <p>Si no quieres usar subrayado, aquí tienes 3 alternativas accesibles:</p>
 
-      <div class="strategies-grid">
-        <div class="strategy-card">
-          <h4>Estrategia 1: Otros estilos de texto</h4>
+      <CardGrid columns="auto" minWidth="300px">
+        <Card title="Estrategia 1: Otros estilos de texto" variant="primary" borderAccent>
           <div class="strategy-demo">
             <p>
               Consulta nuestros <a href="#" class="bold-link">tutoriales de React</a> 
@@ -89,10 +115,9 @@ import Layout from '../../layouts/Layout.astro';
             <p><strong>Opciones:</strong> Negrita, cursiva, tamaño de fuente, tipografía diferente, borde</p>
             <p><strong>Importante:</strong> Solo usa ese estilo para enlaces, nunca para texto normal</p>
           </div>
-        </div>
+        </Card>
 
-        <div class="strategy-card">
-          <h4>Estrategia 2: Color luminoso + efectos hover/focus</h4>
+        <Card title="Estrategia 2: Color luminoso + efectos hover/focus" variant="primary" borderAccent>
           <div class="strategy-demo">
             <p>
               Revisa la <a href="#" class="luminous-link">documentación de APIs REST</a> 
@@ -104,10 +129,9 @@ import Layout from '../../layouts/Layout.astro';
             <p><strong>Efectos:</strong> Subrayado al hacer hover, borde al enfocar</p>
             <p><strong>Nota:</strong> Menos accesible que el subrayado permanente</p>
           </div>
-        </div>
+        </Card>
 
-        <div class="strategy-card">
-          <h4>Estrategia 3: Ubicación independiente</h4>
+        <Card title="Estrategia 3: Ubicación independiente" variant="primary" borderAccent>
           <div class="strategy-demo">
             <div class="standalone-links">
               <a href="#" class="standalone-link">DOCUMENTACIÓN</a>
@@ -120,17 +144,16 @@ import Layout from '../../layouts/Layout.astro';
             <p><strong>Estilo:</strong> Negrita o mayúsculas pequeñas</p>
             <p><strong>Contexto:</strong> Su posición indica que es interactivo</p>
           </div>
-        </div>
-      </div>
+        </Card>
+      </CardGrid>
     </section>
 
     <section>
       <h2>Comparación visual de estrategias</h2>
       <p>Aquí puedes ver las diferentes estrategias aplicadas al mismo contenido:</p>
 
-      <div class="comparison-grid">
-        <div class="comparison-card">
-          <h4>Subrayado tradicional</h4>
+      <CardGrid columns="2" minWidth="280px">
+        <Card title="Subrayado tradicional" variant="primary" borderAccent>
           <div class="blog-card">
             <h5><a href="#" class="underlined-link">Arquitectura de Microservicios</a></h5>
             <p>Cómo diseñar y implementar una arquitectura escalable con Node.js y Docker...</p>
@@ -138,10 +161,9 @@ import Layout from '../../layouts/Layout.astro';
               Francisco Cerdán • Backend • 5 comentarios
             </div>
           </div>
-        </div>
+        </Card>
 
-        <div class="comparison-card">
-          <h4>Color luminoso + hover</h4>
+        <Card title="Color luminoso + hover" variant="primary" borderAccent>
           <div class="blog-card">
             <h5><a href="#" class="luminous-hover-link">Arquitectura de Microservicios</a></h5>
             <p>Cómo diseñar y implementar una arquitectura escalable con Node.js y Docker...</p>
@@ -149,10 +171,9 @@ import Layout from '../../layouts/Layout.astro';
               Francisco Cerdán • Backend • 5 comentarios
             </div>
           </div>
-        </div>
+        </Card>
 
-        <div class="comparison-card">
-          <h4>Ubicación independiente</h4>
+        <Card title="Ubicación independiente" variant="primary" borderAccent>
           <div class="blog-card">
             <h5>Arquitectura de Microservicios</h5>
             <p>Cómo diseñar y implementar una arquitectura escalable con Node.js y Docker...</p>
@@ -161,10 +182,9 @@ import Layout from '../../layouts/Layout.astro';
               <a href="#" class="standalone-action">VER TUTORIAL</a>
             </div>
           </div>
-        </div>
+        </Card>
 
-        <div class="comparison-card">
-          <h4>Estilo alternativo (negrita)</h4>
+        <Card title="Estilo alternativo (negrita)" variant="primary" borderAccent>
           <div class="blog-card">
             <h5><a href="#" class="bold-style-link">Arquitectura de Microservicios</a></h5>
             <p>Cómo diseñar y implementar una arquitectura escalable con Node.js y Docker...</p>
@@ -172,17 +192,16 @@ import Layout from '../../layouts/Layout.astro';
               Francisco Cerdán • Backend • 5 comentarios
             </div>
           </div>
-        </div>
-      </div>
+        </Card>
+      </CardGrid>
     </section>
 
     <section>
       <h2>Reglas de consistencia</h2>
       <p>Una vez que elijas un estilo, manténlo en toda tu aplicación.</p>
 
-      <div class="rules-grid">
-        <div class="rule-card important">
-          <h4>🔒 Reserva estos elementos SOLO para enlaces</h4>
+      <CardGrid columns="auto" minWidth="280px">
+        <Card title="🔒 Reserva estos elementos SOLO para enlaces" variant="danger" borderAccent>
           <ul>
             <li>Subrayado</li>
             <li>Texto azul</li>
@@ -191,32 +210,29 @@ import Layout from '../../layouts/Layout.astro';
           <p class="rule-note">
             Usar estos estilos en texto no-clickeable confundirá a los usuarios
           </p>
-        </div>
+        </Card>
 
-        <div class="rule-card">
-          <h4>🎨 Elige un color para elementos interactivos</h4>
+        <Card title="🎨 Elige un color para elementos interactivos" variant="primary" borderAccent>
           <p>
             Reserva un color específico para todos los elementos clickeables 
             (enlaces, botones) y evita usarlo en elementos no-interactivos.
           </p>
-        </div>
+        </Card>
 
-        <div class="rule-card">
-          <h4>📐 Mantén consistencia visual</h4>
+        <Card title="📐 Mantén consistencia visual" variant="primary" borderAccent>
           <p>
             Si eliges negrita para enlaces, úsala siempre. Si eliges subrayado, 
             úsalo siempre. La consistencia ayuda a los usuarios a aprender tu interfaz.
           </p>
-        </div>
-      </div>
+        </Card>
+      </CardGrid>
     </section>
 
     <section>
       <h2>Errores comunes a evitar</h2>
       
-      <div class="mistakes-grid">
-        <div class="mistake-card">
-          <h4>❌ Usar azul para texto no-clickeable</h4>
+      <CardGrid columns="auto" minWidth="300px">
+        <Banner title="❌ Usar azul para texto no-clickeable" variant="bad">
           <div class="mistake-demo">
             <p>
               <span class="fake-link">Nota importante:</span> 
@@ -224,10 +240,9 @@ import Layout from '../../layouts/Layout.astro';
             </p>
           </div>
           <p class="mistake-desc">El texto azul parece un enlace pero no lo es</p>
-        </div>
+        </Banner>
 
-        <div class="mistake-card">
-          <h4>❌ Subrayar texto decorativo</h4>
+        <Banner title="❌ Subrayar texto decorativo" variant="bad">
           <div class="mistake-demo">
             <p>
               <span class="fake-underline">Configuración del Proyecto</span>
@@ -235,10 +250,9 @@ import Layout from '../../layouts/Layout.astro';
             <p>Aquí están los pasos para configurar tu entorno de desarrollo...</p>
           </div>
           <p class="mistake-desc">El subrayado sugiere que es clickeable</p>
-        </div>
+        </Banner>
 
-        <div class="mistake-card">
-          <h4>❌ Enlaces inconsistentes</h4>
+        <Banner title="❌ Enlaces inconsistentes" variant="bad">
           <div class="mistake-demo">
             <p>
               Ve nuestros <a href="#" class="inconsistent-1">repositorios</a> y 
@@ -246,40 +260,28 @@ import Layout from '../../layouts/Layout.astro';
             </p>
           </div>
           <p class="mistake-desc">Diferentes estilos confunden al usuario</p>
-        </div>
-      </div>
+        </Banner>
+      </CardGrid>
     </section>
 
     <section>
       <h2>Lista de verificación</h2>
       
-      <div class="checklist">
-        <h4>✅ Antes de publicar, verifica que:</h4>
-        <ul class="checklist-items">
-          <li>Los enlaces son visualmente diferentes del texto normal</li>
-          <li>Todos los enlaces usan el mismo estilo en toda la aplicación</li>
-          <li>No usas azul o subrayado para texto no-clickeable</li>
-          <li>Los enlaces son identificables sin depender solo del color</li>
-          <li>Los efectos hover/focus proporcionan retroalimentación clara</li>
-          <li>El contraste de color cumple con los requisitos WCAG</li>
-        </ul>
-      </div>
+      <Checklist 
+        title="✅ Antes de publicar, verifica que:"
+        items={checklistItems}
+        variant="success"
+      />
     </section>
 
     <section>
       <h2>Herramientas útiles</h2>
-      <div class="tools">
+      <ToolsSection 
+        title="Herramientas útiles"
+        tools={linkTools}
+      >
         <p>Para verificar la accesibilidad de tus enlaces:</p>
-        <ul class="tools-list">
-          <li><strong>Contraste de color:</strong> WebAIM Color Contrast Checker</li>
-          <li><strong>Colores luminosos WCAG:</strong> w3.org/WAI/WCAG22/working-examples/link-contrast</li>
-          <li><strong>Simulador de daltonismo:</strong> Colorblinding.com</li>
-          <li><strong>Test de navegación:</strong> Navega solo con teclado (Tab)</li>
-        </ul>
-        <p class="tools-note">
-          💡 <strong>Consejo:</strong> Consulta la página de <a href="/tools">Herramientas</a> para más recursos de testing.
-        </p>
-      </div>
+      </ToolsSection>
     </section>
   </article>
 </Layout>
@@ -289,79 +291,11 @@ import Layout from '../../layouts/Layout.astro';
     max-width: 90ch;
   }
 
-  h1 {
-    font-size: 2.5rem;
-    font-weight: 700;
-    color: var(--color-primary);
-    margin-bottom: var(--spacing-md);
-    line-height: 1.2;
-  }
-
-  .lead {
-    font-size: 1.25rem;
-    color: var(--color-text-light);
-    margin-bottom: var(--spacing-2xl);
-    line-height: 1.5;
-    padding: var(--spacing-lg);
-    background-color: var(--color-surface);
-    border-radius: 8px;
-    border-left: 4px solid var(--color-primary);
-  }
-
-  h2 {
-    font-size: 1.875rem;
-    font-weight: 600;
-    margin-top: var(--spacing-2xl);
-    margin-bottom: var(--spacing-lg);
-    color: var(--color-text);
-  }
-
-  h3 {
-    font-size: 1.25rem;
-    font-weight: 600;
-    margin: var(--spacing-xl) 0 var(--spacing-md) 0;
-    color: var(--color-text);
-  }
-
-  .concept-box {
-    background-color: #e0f2fe;
-    border: 1px solid #0891b2;
-    border-radius: 8px;
-    padding: var(--spacing-lg);
-    margin: var(--spacing-xl) 0;
-  }
-
-  .concept-box h3 {
-    color: #0891b2;
-    margin-top: 0;
-  }
-
   .examples-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
     gap: var(--spacing-lg);
     margin: var(--spacing-xl) 0;
-  }
-
-  .example-card {
-    border-radius: 8px;
-    padding: var(--spacing-lg);
-    position: relative;
-  }
-
-  .example-card.bad {
-    border: 2px solid #dc2626;
-    background-color: #fef2f2;
-  }
-
-  .example-card.good {
-    border: 2px solid #16a34a;
-    background-color: #f0fdf4;
-  }
-
-  .example-card h4 {
-    margin: 0 0 var(--spacing-md) 0;
-    font-size: 1rem;
   }
 
   .text-demo {
@@ -404,27 +338,6 @@ import Layout from '../../layouts/Layout.astro';
     color: var(--color-text-light);
     margin: var(--spacing-sm) 0 0 0;
     font-style: italic;
-  }
-
-  .strategies-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: var(--spacing-lg);
-    margin: var(--spacing-xl) 0;
-  }
-
-  .strategy-card {
-    background-color: var(--color-surface);
-    border: 1px solid var(--color-border);
-    border-radius: 8px;
-    padding: var(--spacing-lg);
-    border-left: 4px solid var(--color-primary);
-  }
-
-  .strategy-card h4 {
-    color: var(--color-primary);
-    margin: 0 0 var(--spacing-md) 0;
-    font-size: 1rem;
   }
 
   .strategy-demo {
@@ -492,26 +405,6 @@ import Layout from '../../layouts/Layout.astro';
     margin: var(--spacing-xs) 0;
     font-size: 0.875rem;
     color: var(--color-text-light);
-  }
-
-  .comparison-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: var(--spacing-lg);
-    margin: var(--spacing-xl) 0;
-  }
-
-  .comparison-card {
-    background-color: var(--color-surface);
-    border: 1px solid var(--color-border);
-    border-radius: 8px;
-    padding: var(--spacing-lg);
-  }
-
-  .comparison-card h4 {
-    color: var(--color-primary);
-    margin: 0 0 var(--spacing-md) 0;
-    font-size: 1rem;
   }
 
   .blog-card {
@@ -588,71 +481,11 @@ import Layout from '../../layouts/Layout.astro';
     color: var(--color-primary);
   }
 
-  .rules-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: var(--spacing-lg);
-    margin: var(--spacing-xl) 0;
-  }
-
-  .rule-card {
-    background-color: var(--color-surface);
-    border: 1px solid var(--color-border);
-    border-radius: 8px;
-    padding: var(--spacing-lg);
-    border-left: 4px solid var(--color-primary);
-  }
-
-  .rule-card.important {
-    border-left-color: #dc2626;
-    background-color: #fef2f2;
-  }
-
-  .rule-card h4 {
-    color: var(--color-primary);
-    margin: 0 0 var(--spacing-md) 0;
-    font-size: 1rem;
-  }
-
-  .rule-card.important h4 {
-    color: #dc2626;
-  }
-
-  .rule-card ul {
-    margin: var(--spacing-sm) 0;
-    padding-left: var(--spacing-lg);
-  }
-
-  .rule-card li {
-    margin-bottom: var(--spacing-xs);
-    font-size: 0.9rem;
-  }
-
   .rule-note {
     font-size: 0.875rem;
     color: var(--color-text-light);
     font-style: italic;
     margin-top: var(--spacing-sm);
-  }
-
-  .mistakes-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: var(--spacing-lg);
-    margin: var(--spacing-xl) 0;
-  }
-
-  .mistake-card {
-    border: 2px solid #dc2626;
-    background-color: #fef2f2;
-    border-radius: 8px;
-    padding: var(--spacing-lg);
-  }
-
-  .mistake-card h4 {
-    margin: 0 0 var(--spacing-md) 0;
-    font-size: 1rem;
-    color: #dc2626;
   }
 
   .mistake-demo {
@@ -696,87 +529,9 @@ import Layout from '../../layouts/Layout.astro';
     font-style: italic;
   }
 
-  .checklist {
-    background-color: var(--color-surface);
-    border-radius: 8px;
-    padding: var(--spacing-lg);
-    margin: var(--spacing-lg) 0;
-    border-left: 4px solid #16a34a;
-  }
-
-  .checklist h4 {
-    color: #16a34a;
-    margin: 0 0 var(--spacing-md) 0;
-    font-size: 1rem;
-  }
-
-  .checklist-items {
-    margin: 0;
-    padding-left: var(--spacing-lg);
-  }
-
-  .checklist-items li {
-    margin-bottom: var(--spacing-sm);
-    font-size: 0.9rem;
-  }
-
-  .tools {
-    background-color: var(--color-surface);
-    border-radius: 8px;
-    padding: var(--spacing-lg);
-    margin: var(--spacing-lg) 0;
-  }
-
-  .tools-list {
-    margin-top: var(--spacing-md);
-  }
-
-  .tools-list li {
-    margin-bottom: var(--spacing-sm);
-  }
-
-  .tools-note {
-    margin-top: var(--spacing-md);
-    padding-top: var(--spacing-md);
-    border-top: 1px solid var(--color-border);
-    font-size: 0.9rem;
-  }
-
-  .tools-note a {
-    color: var(--color-primary);
-    font-weight: 600;
-  }
 
   @media (max-width: 768px) {
-    h1 {
-      font-size: 2rem;
-    }
-
-    .lead {
-      font-size: 1.125rem;
-    }
-
-    h2 {
-      font-size: 1.5rem;
-    }
-
     .examples-grid {
-      grid-template-columns: 1fr;
-    }
-
-    .strategies-grid {
-      grid-template-columns: 1fr;
-    }
-
-    .comparison-grid {
-      grid-template-columns: 1fr;
-    }
-
-    .rules-grid {
-      grid-template-columns: 1fr;
-    }
-
-    .mistakes-grid {
       grid-template-columns: 1fr;
     }
 

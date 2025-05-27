@@ -1,16 +1,14 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import GuideHeader from '../../components/GuideHeader.astro';
 ---
 
 <Layout title="Guías Prácticas - a11yado">
   <article>
-    <header>
-      <h1>Guías Prácticas</h1>  
-      <p class="lead">
-        Conceptos de accesibilidad web explicados de forma simple y práctica, 
-        con ejemplos que puedes aplicar inmediatamente a tus proyectos.
-      </p>
-    </header>
+    <GuideHeader 
+      title="Guías Prácticas"
+      description="Conceptos de accesibilidad web explicados de forma simple y práctica, con ejemplos que puedes aplicar inmediatamente a tus proyectos."
+    />
 
     <section>
       <h2>Fundamentos Visuales</h2>
@@ -300,36 +298,6 @@ import Layout from '../../layouts/Layout.astro';
     max-width: 80ch;
   }
 
-  h1 {
-    font-size: 2.5rem;
-    font-weight: 700;
-    color: var(--color-primary);
-    margin-bottom: var(--spacing-md);
-    line-height: 1.2;
-  }
-
-  .lead {
-    font-size: 1.25rem;
-    color: var(--color-text-light);
-    margin-bottom: var(--spacing-2xl);
-    line-height: 1.5;
-  }
-
-  h2 {
-    font-size: 1.875rem;
-    font-weight: 600;
-    margin-top: var(--spacing-2xl);
-    margin-bottom: var(--spacing-md);
-    color: var(--color-text);
-  }
-
-  h3 {
-    font-size: 1.25rem;
-    font-weight: 600;
-    margin: 0 0 var(--spacing-sm) 0;
-    color: var(--color-text);
-  }
-
   .guides-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -455,18 +423,6 @@ import Layout from '../../layouts/Layout.astro';
   }
 
   @media (max-width: 768px) {
-    h1 {
-      font-size: 2rem;
-    }
-
-    .lead {
-      font-size: 1.125rem;
-    }
-
-    h2 {
-      font-size: 1.5rem;
-    }
-
     .guides-grid {
       grid-template-columns: 1fr;
     }

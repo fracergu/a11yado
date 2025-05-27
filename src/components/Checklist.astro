@@ -1,0 +1,211 @@
+---
+export interface Props {
+  title?: string;
+  items: string[];
+  variant?: 'success' | 'primary' | 'warning';
+  class?: string;
+}
+
+const { 
+  title = "✅ Lista de verificación", 
+  items,
+  variant = 'success',
+  class: className = '' 
+} = Astro.props;
+
+const variantClasses = {
+  success: 'border-l-green-500 bg-green-50',
+  primary: 'border-l-color-primary bg-color-surface',
+  warning: 'border-l-yellow-500 bg-yellow-50'
+};
+
+const titleColors = {
+  success: 'text-green-700',
+  primary: 'text-color-primary', 
+  warning: 'text-yellow-700'
+};
+---
+
+<div class={`checklist ${variantClasses[variant]} ${className}`}>
+  <h4 class={`checklist-title ${titleColors[variant]}`}>
+    {title}
+  </h4>
+  <div class="checklist-grid">
+    {items.map((item) => (
+      <label class="checklist-item">
+        <div class="checkbox-container">
+          <input type="checkbox" class="checkbox-input" />
+          <div class="checkbox-custom">
+            <svg class="checkbox-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+              <polyline points="20,6 9,17 4,12"></polyline>
+            </svg>
+          </div>
+        </div>
+        <span class="checklist-text">{item}</span>
+      </label>
+    ))}
+  </div>
+</div>
+
+<style>
+  .checklist {
+    border-radius: 8px;
+    padding: var(--spacing-xl);
+    margin: var(--spacing-xl) 0;
+    border-left: 4px solid;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  }
+
+  .checklist.border-l-green-500 {
+    border-left-color: #16a34a;
+  }
+
+  .checklist.bg-green-50 {
+    background-color: #f0fdf4;
+  }
+
+  .checklist.border-l-color-primary {
+    border-left-color: var(--color-primary);
+  }
+
+  .checklist.bg-color-surface {
+    background-color: var(--color-surface);
+  }
+
+  .checklist.border-l-yellow-500 {
+    border-left-color: #f59e0b;
+  }
+
+  .checklist.bg-yellow-50 {
+    background-color: #fef3c7;
+  }
+
+  .checklist-title {
+    margin-top: 0;
+    margin-bottom: var(--spacing-lg);
+    font-size: 1.125rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+  }
+
+  .checklist-title.text-green-700 {
+    color: #15803d;
+  }
+
+  .checklist-title.text-color-primary {
+    color: var(--color-primary);
+  }
+
+  .checklist-title.text-yellow-700 {
+    color: #d97706;
+  }
+
+  .checklist-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--spacing-md);
+  }
+
+  .checklist-item {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--spacing-sm);
+    cursor: pointer;
+    padding: var(--spacing-sm);
+    border-radius: 6px;
+    transition: all 0.2s ease;
+    background-color: rgba(255, 255, 255, 0.5);
+    border: 1px solid transparent;
+  }
+
+  .checklist-item:hover {
+    background-color: rgba(255, 255, 255, 0.8);
+    border-color: rgba(0, 0, 0, 0.1);
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .checkbox-container {
+    position: relative;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .checkbox-input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    width: 20px;
+    height: 20px;
+    margin: 0;
+  }
+
+  .checkbox-custom {
+    width: 20px;
+    height: 20px;
+    border: 2px solid #d1d5db;
+    border-radius: 4px;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    position: relative;
+  }
+
+  .checkbox-icon {
+    width: 12px;
+    height: 12px;
+    color: white;
+    opacity: 0;
+    transform: scale(0.8);
+    transition: all 0.2s ease;
+  }
+
+  .checkbox-input:checked + .checkbox-custom {
+    background-color: #16a34a;
+    border-color: #16a34a;
+  }
+
+  .checkbox-input:checked + .checkbox-custom .checkbox-icon {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  .checkbox-input:focus + .checkbox-custom {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+  }
+
+  .checklist-item:hover .checkbox-custom {
+    border-color: #16a34a;
+  }
+
+  .checklist-text {
+    font-size: 0.9rem;
+    line-height: 1.5;
+    color: var(--color-text);
+    flex: 1;
+  }
+
+  .checkbox-input:checked ~ .checklist-text {
+    color: var(--color-text-light);
+    text-decoration: line-through;
+  }
+
+  @media (max-width: 768px) {
+    .checklist {
+      padding: var(--spacing-lg);
+    }
+    
+    .checklist-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .checklist-title {
+      font-size: 1rem;
+    }
+  }
+</style> 
