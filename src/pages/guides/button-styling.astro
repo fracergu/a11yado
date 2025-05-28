@@ -7,7 +7,7 @@ import OrderedList from '../../components/OrderedList.astro'
 import OrderedListItem from '../../components/OrderedListItem.astro'
 import CardGrid from '../../components/CardGrid.astro'
 import Card from '../../components/Card.astro'
-import Label from '../../components/Label.astro'
+import ToolsSection from '../../components/ToolsSection.astro'
 
 const checklistItems = [
   'Los botones usan formas consistentes',
@@ -17,6 +17,25 @@ const checklistItems = [
   'Solo hay un CTA principal por sección',
   'Los elementos no interactivos no parecen botones',
   'La capitalización es consistente',
+]
+
+const buttonTools = [
+  {
+    name: 'Prueba de 5 segundos',
+    description: '¿Los usuarios identifican rápidamente qué es interactivo?',
+  },
+  {
+    name: 'Prueba de accesibilidad',
+    description: '¿Los botones son navegables por teclado?',
+  },
+  {
+    name: 'Prueba en dispositivos',
+    description: '¿Los targets táctiles son cómodos?',
+  },
+  {
+    name: 'Prueba de contraste',
+    description: '¿Los botones tienen suficiente contraste?',
+  },
 ]
 ---
 
@@ -400,34 +419,7 @@ const checklistItems = [
       />
     </section>
 
-    <section>
-      <h2>Herramientas útiles</h2>
-      <div class="tools">
-        <p>Para verificar la efectividad de tus botones:</p>
-        <ul class="tools-list">
-          <li>
-            <strong>Prueba de 5 segundos:</strong> ¿Los usuarios identifican rápidamente
-            qué es interactivo?
-          </li>
-          <li>
-            <strong>Prueba de accesibilidad:</strong> ¿Los botones son navegables
-            por teclado?
-          </li>
-          <li>
-            <strong>Prueba en dispositivos:</strong> ¿Los targets táctiles son cómodos?
-          </li>
-          <li>
-            <strong>Prueba de contraste:</strong> ¿Los botones tienen suficiente
-            contraste?
-          </li>
-        </ul>
-        <p class="tools-note">
-          💡 <strong>Consejo:</strong> Consulta la página de <a href="/tools"
-            >Herramientas</a
-          > para recursos específicos de testing.
-        </p>
-      </div>
-    </section>
+    <ToolsSection title="Herramientas útiles" tools={buttonTools} />
   </article>
 </Layout>
 
@@ -876,34 +868,6 @@ const checklistItems = [
     ul {
       margin: var(--spacing-sm) 0 0 var(--spacing-lg);
       font-size: 0.875rem;
-    }
-  }
-
-  /* Herramientas */
-  .tools {
-    background-color: var(--color-surface);
-    border-radius: 8px;
-    padding: var(--spacing-lg);
-    margin: var(--spacing-lg) 0;
-  }
-
-  .tools-list {
-    margin-top: var(--spacing-md);
-
-    li {
-      margin-bottom: var(--spacing-sm);
-    }
-  }
-
-  .tools-note {
-    margin-top: var(--spacing-md);
-    padding-top: var(--spacing-md);
-    border-top: 1px solid var(--color-border);
-    font-size: 0.9rem;
-
-    a {
-      color: var(--color-primary);
-      font-weight: 600;
     }
   }
 

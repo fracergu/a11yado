@@ -3,7 +3,7 @@ export interface Props {
   title?: string
   tools?: Array<{
     name: string
-    description: string
+    description?: string
     url?: string
   }>
   showToolsPageLink?: boolean
@@ -28,14 +28,14 @@ const {
           <ul class="tools-list">
             {tools.map((tool) => (
               <li>
-                <strong>{tool.name}:</strong>
                 {tool.url ? (
                   <a href={tool.url} target="_blank" rel="noopener">
-                    {tool.description}
+                    <strong>{tool.name}</strong>
                   </a>
                 ) : (
-                  tool.description
+                  <strong>{tool.name}</strong>
                 )}
+                {tool.description && <>: {tool.description}</>}
               </li>
             ))}
           </ul>
@@ -49,8 +49,8 @@ const {
       showToolsPageLink && (
         <p class="tools-note">
           💡 <strong>Consejo:</strong> Consulta la página de{' '}
-          <a href="/tools">Herramientas</a> para una lista completa de recursos
-          de accesibilidad.
+          <a href="/a11yado/tools">Herramientas</a> para una lista completa de
+          recursos de accesibilidad.
         </p>
       )
     }

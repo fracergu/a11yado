@@ -7,6 +7,24 @@ import CardGrid from '../../components/CardGrid.astro'
 import Banner from '../../components/Banner.astro'
 import BannerGrid from '../../components/BannerGrid.astro'
 import Header from '../../components/Header.astro'
+import ToolsSection from '../../components/ToolsSection.astro'
+
+const colorTools = [
+  {
+    name: 'Verificador de contraste WebAIM',
+    url: 'https://webaim.org/resources/contrastchecker/',
+  },
+  {
+    name: 'Analizador de Contraste de Color',
+    url: 'https://www.colour-contrast-analyser.org/',
+  },
+  {
+    name: 'Herramientas del desarrollador del navegador',
+  },
+  {
+    name: 'Extensiones de navegador',
+  },
+]
 ---
 
 <Layout title="Colores y Contraste - a11yado">
@@ -1142,35 +1160,7 @@ import Header from '../../components/Header.astro'
       </div>
     </section>
 
-    <section>
-      <h2>Herramientas útiles</h2>
-      <div class="tools">
-        <p>Para verificar el contraste de tus colores, puedes usar:</p>
-        <ul class="tools-list">
-          <li>
-            <a
-              href="https://webaim.org/resources/contrastchecker/"
-              target="_blank"
-              rel="noopener">Verificador de Contraste WebAIM</a
-            >
-          </li>
-          <li>
-            <a
-              href="https://www.colour-contrast-analyser.org/"
-              target="_blank"
-              rel="noopener">Analizador de Contraste de Color</a
-            >
-          </li>
-          <li>Herramientas de desarrollador del navegador</li>
-          <li>Extensiones del navegador para verificar contraste</li>
-        </ul>
-        <p class="tools-note">
-          💡 <strong>Consejo:</strong> Consulta la página de <a href="/tools"
-            >Herramientas</a
-          > para una lista completa de recursos de accesibilidad.
-        </p>
-      </div>
-    </section>
+    <ToolsSection title="Herramientas útiles" tools={colorTools} />
   </article>
 </Layout>
 
@@ -1259,31 +1249,6 @@ import Header from '../../components/Header.astro'
     border-radius: 8px;
     padding: var(--spacing-lg);
     margin: var(--spacing-lg) 0;
-  }
-
-  .tools-list {
-    margin-top: var(--spacing-md);
-
-    a {
-      color: var(--color-primary);
-      text-decoration: none;
-
-      &:hover {
-        text-decoration: underline;
-      }
-    }
-  }
-
-  .tools-note {
-    margin-top: var(--spacing-md);
-    padding-top: var(--spacing-md);
-    border-top: 1px solid var(--color-border);
-    font-size: 0.9rem;
-
-    a {
-      color: var(--color-primary);
-      font-weight: 600;
-    }
   }
 
   .independence-examples {
