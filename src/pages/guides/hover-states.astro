@@ -162,95 +162,90 @@ const hoverTools = [
         si ambos estados se ven similares y apropiados.
       </Banner>
 
-      <Banner title="✅ Estado hover consistente con foco" variant="good">
-        <div class="demo-container-white">
-          <div class="demo-container">
-            <div class="demo-buttons">
-              <button class="demo-btn consistent-state"
-                >Botón consistente</button
-              >
-              <input
-                type="text"
-                class="demo-input consistent-state"
-                placeholder="Input consistente..."
-              />
-              <a href="#" class="demo-link consistent-state"
-                >Enlace consistente</a
-              >
-            </div>
-            <div class="demo-explanation">
-              <p><strong>Por qué funciona:</strong></p>
-              <ul>
-                <li>Hover y focus usan el mismo outline negro de 2px</li>
-                <li>Ambos estados son independientes del color</li>
-                <li>El contraste es excelente en ambos casos</li>
-                <li>Experiencia unificada para todos los usuarios</li>
-              </ul>
-            </div>
+      <Banner
+        title="✅ Estado hover consistente con foco"
+        variant="good"
+        highContrast
+      >
+        <div class="demo-container">
+          <div class="demo-buttons">
+            <button class="demo-btn consistent-state">Botón consistente</button>
+            <input
+              type="text"
+              class="demo-input consistent-state"
+              placeholder="Input consistente..."
+            />
+            <a href="#" class="demo-link consistent-state">Enlace consistente</a
+            >
+          </div>
+          <div class="demo-explanation">
+            <p><strong>Por qué funciona:</strong></p>
+            <ul>
+              <li>Hover y focus usan el mismo outline negro de 2px</li>
+              <li>Ambos estados son independientes del color</li>
+              <li>El contraste es excelente en ambos casos</li>
+              <li>Experiencia unificada para todos los usuarios</li>
+            </ul>
           </div>
         </div>
       </Banner>
 
-      <Banner title="❌ Estados inconsistentes" variant="bad">
-        <div class="demo-container-white">
-          <div class="demo-container">
-            <div class="demo-buttons">
-              <button class="demo-btn inconsistent-hover"
-                >Hover inconsistente</button
-              >
-              <input
-                type="text"
-                class="demo-input inconsistent-hover"
-                placeholder="Input inconsistente..."
-              />
-              <a href="#" class="demo-link inconsistent-hover"
-                >Enlace inconsistente</a
-              >
-            </div>
-            <div class="demo-explanation">
-              <p><strong>Por qué confunde:</strong></p>
-              <ul>
-                <li>Hover cambia color, focus usa outline</li>
-                <li>Experiencias completamente diferentes</li>
-                <li>Usuarios de teclado ven algo distinto</li>
-                <li>Inconsistencia genera confusión</li>
-              </ul>
-            </div>
+      <Banner title="❌ Estados inconsistentes" variant="bad" highContrast>
+        <div class="demo-container">
+          <div class="demo-buttons">
+            <button class="demo-btn inconsistent-hover"
+              >Hover inconsistente</button
+            >
+            <input
+              type="text"
+              class="demo-input inconsistent-hover"
+              placeholder="Input inconsistente..."
+            />
+            <a href="#" class="demo-link inconsistent-hover"
+              >Enlace inconsistente</a
+            >
           </div>
-        </div>
-      </Banner>
-
-      <Banner title="❌ Solo cambio de color" variant="bad">
-        <div class="demo-container-white">
-          <div class="demo-container">
-            <div class="demo-buttons">
-              <button class="demo-btn color-only-hover">Solo color</button>
-              <input
-                type="text"
-                class="demo-input color-only-hover"
-                placeholder="Solo cambio de color..."
-              />
-              <a href="#" class="demo-link color-only-hover">Solo color</a>
-            </div>
-            <div class="demo-explanation">
-              <p><strong>Por qué falla:</strong></p>
-              <ul>
-                <li>Depende únicamente del color para comunicar el estado</li>
-                <li>Personas con daltonismo pueden no percibir el cambio</li>
-                <li>
-                  No cumple con <a
-                    href="https://www.w3.org/WAI/WCAG22/Understanding/use-of-color.html"
-                    target="_blank"
-                    rel="noopener">WCAG 1.4.1 (Uso del Color)</a
-                  >
-                </li>
-                <li>Falta señalizador estructural adicional</li>
-              </ul>
-            </div>
+          <div class="demo-explanation">
+            <p><strong>Por qué confunde:</strong></p>
+            <ul>
+              <li>Hover cambia color, focus usa outline</li>
+              <li>Experiencias completamente diferentes</li>
+              <li>Usuarios de teclado ven algo distinto</li>
+              <li>Inconsistencia genera confusión</li>
+            </ul>
           </div>
         </div>
       </Banner>
     </section>
+
+    <Banner title="❌ Solo cambio de color" variant="bad" highContrast>
+      <div class="demo-container">
+        <div class="demo-buttons">
+          <button class="demo-btn color-only-hover">Solo color</button>
+          <input
+            type="text"
+            class="demo-input color-only-hover"
+            placeholder="Solo cambio de color..."
+          />
+          <a href="#" class="demo-link color-only-hover">Solo color</a>
+        </div>
+        <div class="demo-explanation">
+          <p><strong>Por qué falla:</strong></p>
+          <ul>
+            <li>Depende únicamente del color para comunicar el estado</li>
+            <li>Personas con daltonismo pueden no percibir el cambio</li>
+            <li>
+              No cumple con <a
+                href="https://www.w3.org/WAI/WCAG22/Understanding/use-of-color.html"
+                target="_blank"
+                rel="noopener">WCAG 1.4.1 (Uso del Color)</a
+              >
+            </li>
+            <li>Falta señalizador estructural adicional</li>
+          </ul>
+        </div>
+      </div>
+    </Banner>
 
     <section>
       <h2>Contenido adicional en hover</h2>
@@ -320,14 +315,12 @@ const hoverTools = [
           <p>
             Usa ambos pseudo-selectores para crear experiencias consistentes.
           </p>
-          <div class="code-example">
-            <pre><code>{`.button:hover, 
+          <pre><code>{`.button:hover, 
 .button:focus {
   outline: 2px solid #000;
   outline-offset: 2px;
 }`}
 </code></pre>
-          </div>
         </Card>
 
         <Card
@@ -396,13 +389,6 @@ const hoverTools = [
 <style lang="scss">
   article {
     max-width: 90ch;
-  }
-
-  .demo-container-white {
-    background-color: white;
-    padding: var(--spacing-lg);
-    border-radius: 6px;
-    border: 1px solid var(--color-border);
   }
 
   .demo-container {
@@ -568,25 +554,6 @@ const hoverTools = [
 
     &:hover {
       background-color: #1e40af;
-    }
-  }
-
-  /* Code example */
-  .code-example {
-    margin-top: var(--spacing-sm);
-
-    pre {
-      background-color: #f1f5f9;
-      padding: var(--spacing-sm);
-      border-radius: 4px;
-      overflow-x: auto;
-      font-size: 0.875rem;
-      margin: 0;
-
-      code {
-        color: #374151;
-        font-family: 'Courier New', monospace;
-      }
     }
   }
 

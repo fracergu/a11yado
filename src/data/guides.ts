@@ -33,7 +33,7 @@ export const guidesData: GuideSection[] = [
           "Herramientas de verificación",
         ],
         status: "available",
-        href: "/guides/colors",
+        href: "/a11yado/guides/colors",
         category: "visual",
       },
       {
@@ -42,7 +42,8 @@ export const guidesData: GuideSection[] = [
         description:
           "Tamaños de fuente, espaciado, legibilidad y cómo elegir tipografías que funcionen para todos los usuarios.",
         topics: ["Tamaños mínimos", "Espaciado de líneas", "Fuentes legibles"],
-        status: "coming-soon",
+        status: "available",
+        href: "/a11yado/guides/typography",
         category: "visual",
       },
       {
@@ -77,7 +78,7 @@ export const guidesData: GuideSection[] = [
           "Estrategias recomendadas",
         ],
         status: "available",
-        href: "/guides/focus-states",
+        href: "/a11yado/guides/focus-states",
         category: "interaction",
       },
       {
@@ -91,7 +92,7 @@ export const guidesData: GuideSection[] = [
           "WCAG 1.4.13",
         ],
         status: "available",
-        href: "/guides/hover-states",
+        href: "/a11yado/guides/hover-states",
         category: "interaction",
       },
       {
@@ -118,7 +119,7 @@ export const guidesData: GuideSection[] = [
           "Frontloading",
         ],
         status: "available",
-        href: "/guides/buttons-links",
+        href: "/a11yado/guides/buttons-links",
         category: "interaction",
       },
       {
@@ -132,7 +133,7 @@ export const guidesData: GuideSection[] = [
           "Targets táctiles",
         ],
         status: "available",
-        href: "/guides/button-styling",
+        href: "/a11yado/guides/button-styling",
         category: "interaction",
       },
       {
@@ -146,7 +147,7 @@ export const guidesData: GuideSection[] = [
           "Colores luminosos",
         ],
         status: "available",
-        href: "/guides/link-styling",
+        href: "/a11yado/guides/link-styling",
         category: "interaction",
       },
       {

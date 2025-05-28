@@ -1,25 +1,29 @@
 ---
 export interface Props {
   title?: string
+  subtitle?: string
   variant?: 'default' | 'primary' | 'success' | 'warning' | 'danger' | 'info'
   borderAccent?: boolean
+  highContrast?: boolean
   class?: string
 }
 
 const {
   title,
+  subtitle,
   variant = 'default',
   borderAccent = false,
+  highContrast = false,
   class: className = '',
 } = Astro.props
 
 const variantClasses = {
-  default: 'border-color-border bg-white',
-  primary: 'border-color-primary bg-white border-l-color-primary',
+  default: 'border-color-border bg-background',
+  primary: 'border-color-primary bg-primary-50 border-l-color-primary',
   success: 'border-green-500 bg-green-50 border-l-green-500',
   warning: 'border-yellow-500 bg-yellow-50 border-l-yellow-500',
   danger: 'border-red-500 bg-red-50 border-l-red-500',
-  info: 'border-blue-500 bg-white border-l-blue-500',
+  info: 'border-blue-500 bg-blue-50 border-l-blue-500',
 }
 
 const titleColors = {
@@ -33,142 +37,174 @@ const titleColors = {
 ---
 
 <div
-  class={`card ${variantClasses[variant]} ${borderAccent ? 'border-l-4' : ''} ${className}`}
+  class={`card ${variantClasses[variant]} ${borderAccent ? 'border-l-4' : ''} ${highContrast ? 'high-contrast' : ''} ${className}`}
 >
   {title && <h4 class={`card-title ${titleColors[variant]}`}>{title}</h4>}
   <div class="card-content">
     <slot />
   </div>
+  {subtitle && <p class="card-subtitle">{subtitle}</p>}
 </div>
 
-<style>
+<style lang="scss">
   .card {
     border: 1px solid;
     border-radius: 8px;
     padding: var(--spacing-lg);
     background-color: var(--color-surface);
-  }
 
-  .card.bg-white {
-    background-color: white;
-  }
+    &.bg-white {
+      background-color: white;
+    }
 
-  .card.border-color-border {
-    border-color: var(--color-border);
-  }
+    &.border-color-border {
+      border-color: var(--color-border);
+    }
 
-  .card.bg-color-surface {
-    background-color: var(--color-surface);
-  }
+    &.border-color-primary {
+      border-color: var(--color-primary);
+    }
 
-  .card.border-color-primary {
-    border-color: var(--color-primary);
-  }
+    &.border-l-color-primary {
+      border-left-color: var(--color-primary);
+    }
 
-  .card.border-l-color-primary {
-    border-left-color: var(--color-primary);
-  }
+    &.bg-primary-50 {
+      background-color: #e0f2fe;
+    }
 
-  .card.border-green-500 {
-    border-color: #16a34a;
-  }
+    &.border-green-500 {
+      border-color: #16a34a;
+    }
 
-  .card.bg-green-50 {
-    background-color: #f0fdf4;
-  }
+    &.bg-green-50 {
+      background-color: #f0fdf4;
+    }
 
-  .card.border-l-green-500 {
-    border-left-color: #16a34a;
-  }
+    &.border-l-green-500 {
+      border-left-color: #16a34a;
+    }
 
-  .card.border-yellow-500 {
-    border-color: #f59e0b;
-  }
+    &.border-yellow-500 {
+      border-color: #f59e0b;
+    }
 
-  .card.bg-yellow-50 {
-    background-color: #fef3c7;
-  }
+    &.bg-yellow-50 {
+      background-color: #fef3c7;
+    }
 
-  .card.border-l-yellow-500 {
-    border-left-color: #f59e0b;
-  }
+    &.border-l-yellow-500 {
+      border-left-color: #f59e0b;
+    }
 
-  .card.border-red-500 {
-    border-color: #dc2626;
-  }
+    &.border-red-500 {
+      border-color: #dc2626;
+    }
 
-  .card.bg-red-50 {
-    background-color: #fef2f2;
-  }
+    &.bg-red-50 {
+      background-color: #fef2f2;
+    }
 
-  .card.border-l-red-500 {
-    border-left-color: #dc2626;
-  }
+    &.border-l-red-500 {
+      border-left-color: #dc2626;
+    }
 
-  .card.border-blue-500 {
-    border-color: #0891b2;
-  }
+    &.border-blue-500 {
+      border-color: #0891b2;
+    }
 
-  .card.bg-blue-50 {
-    background-color: #e0f2fe;
-  }
+    &.border-l-blue-500 {
+      border-left-color: #0891b2;
+    }
 
-  .card.border-l-blue-500 {
-    border-left-color: #0891b2;
-  }
+    &.bg-blue-50 {
+      background-color: #e0f2fe;
+    }
 
-  .card.border-l-4 {
-    border-left-width: 4px;
+    &.border-l-4 {
+      border-left-width: 4px;
+    }
+
+    /* Modo alto contraste - solo para el contenido del slot */
+    &.high-contrast .card-content {
+      background-color: #ffffff;
+      color: #1f2937;
+      border-radius: 6px;
+      padding: var(--spacing-md);
+      margin-top: var(--spacing-xs);
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+
+      :global(strong) {
+        color: #000;
+        font-weight: 600;
+      }
+
+      :global(a) {
+        color: #1d4ed8;
+        text-decoration: underline;
+
+        &:hover {
+          color: #1e40af;
+        }
+      }
+    }
   }
 
   .card-title {
     margin: 0 0 var(--spacing-md) 0;
     font-size: 1rem;
     font-weight: 600;
-  }
 
-  .card-title.text-color-text {
-    color: var(--color-text);
-  }
+    &.text-color-text {
+      color: var(--color-text);
+    }
 
-  .card-title.text-color-primary {
-    color: var(--color-primary);
-  }
+    &.text-color-primary {
+      color: var(--color-primary);
+    }
 
-  .card-title.text-green-700 {
-    color: #15803d;
-  }
+    &.text-green-700 {
+      color: #15803d;
+    }
 
-  .card-title.text-yellow-700 {
-    color: #d97706;
-  }
+    &.text-yellow-700 {
+      color: #d97706;
+    }
 
-  .card-title.text-red-700 {
-    color: #b91c1c;
-  }
+    &.text-red-700 {
+      color: #b91c1c;
+    }
 
-  .card-title.text-blue-700 {
-    color: #0891b2;
+    &.text-blue-700 {
+      color: #0891b2;
+    }
   }
 
   .card-content {
     font-size: 0.9rem;
+
+    :global(ul) {
+      margin: 0;
+      padding-left: var(--spacing-lg);
+    }
+
+    :global(li) {
+      margin-bottom: var(--spacing-xs);
+    }
+
+    :global(p) {
+      margin: 0 0 var(--spacing-sm) 0;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
   }
 
-  .card-content :global(ul) {
-    margin: 0;
-    padding-left: var(--spacing-lg);
-  }
-
-  .card-content :global(li) {
-    margin-bottom: var(--spacing-xs);
-  }
-
-  .card-content :global(p) {
-    margin: 0 0 var(--spacing-sm) 0;
-  }
-
-  .card-content :global(p:last-child) {
-    margin-bottom: 0;
+  p.card-subtitle {
+    font-size: 0.875rem;
+    color: var(--color-text-light);
+    margin: var(--spacing-md) 0 0 0;
+    font-style: italic;
   }
 </style>

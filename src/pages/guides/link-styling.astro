@@ -83,47 +83,47 @@ const linkTools = [
       </p>
 
       <BannerGrid columns="2" gap="lg">
-        <Banner title="✅ Enlaces accesibles" variant="good">
-          <div class="text-demo">
-            <p>
-              Para mejorar tu código JavaScript, consulta la
-              <a href="#" class="accessible-link">guía de ES6+ y módulos</a>
-              que explica las características modernas del lenguaje.
-            </p>
-            <p>
-              También puedes revisar nuestros
-              <a href="#" class="accessible-link"
-                >patrones de diseño en TypeScript</a
-              >
-              y <a href="#" class="accessible-link"
-                >mejores prácticas de testing</a
-              >.
-            </p>
-          </div>
-          <p class="example-desc">
-            Subrayado + color azul = máxima accesibilidad
+        <Banner
+          title="✅ Enlaces accesibles"
+          variant="good"
+          highContrast
+          subtitle="Subrayado + color azul = máxima accesibilidad"
+        >
+          <p>
+            Para mejorar tu código JavaScript, consulta la
+            <a href="#" class="accessible-link">guía de ES6+ y módulos</a>
+            que explica las características modernas del lenguaje.
+          </p>
+          <p>
+            También puedes revisar nuestros
+            <a href="#" class="accessible-link"
+              >patrones de diseño en TypeScript</a
+            >
+            y <a href="#" class="accessible-link"
+              >mejores prácticas de testing</a
+            >.
           </p>
         </Banner>
 
-        <Banner title="❌ Enlaces problemáticos" variant="bad">
-          <div class="text-demo">
-            <p>
-              Para mejorar tu código JavaScript, consulta la
-              <a href="#" class="problematic-link">guía de ES6+ y módulos</a>
-              que explica las características modernas del lenguaje.
-            </p>
-            <p>
-              También puedes revisar nuestros
-              <a href="#" class="problematic-link"
-                >patrones de diseño en TypeScript</a
-              >
-              y <a href="#" class="problematic-link"
-                >mejores prácticas de testing</a
-              >.
-            </p>
-          </div>
-          <p class="example-desc">
-            Solo color = invisible para personas con daltonismo
+        <Banner
+          title="❌ Enlaces problemáticos"
+          variant="bad"
+          highContrast
+          subtitle="Solo color = invisible para personas con daltonismo"
+        >
+          <p>
+            Para mejorar tu código JavaScript, consulta la
+            <a href="#" class="problematic-link">guía de ES6+ y módulos</a>
+            que explica las características modernas del lenguaje.
+          </p>
+          <p>
+            También puedes revisar nuestros
+            <a href="#" class="problematic-link"
+              >patrones de diseño en TypeScript</a
+            >
+            y <a href="#" class="problematic-link"
+              >mejores prácticas de testing</a
+            >.
           </p>
         </Banner>
       </BannerGrid>
@@ -299,15 +299,13 @@ const linkTools = [
           title="🔒 Reserva estos elementos SOLO para enlaces"
           variant="danger"
           borderAccent
+          subtitle="Usar estos estilos en texto no-clickeable confundirá a los usuarios"
         >
           <ul>
             <li>Subrayado</li>
             <li>Texto azul</li>
             <li>Subrayado + texto azul</li>
           </ul>
-          <p class="rule-note">
-            Usar estos estilos en texto no-clickeable confundirá a los usuarios
-          </p>
         </Card>
 
         <Card
@@ -339,38 +337,42 @@ const linkTools = [
       <h2>Errores comunes a evitar</h2>
 
       <BannerGrid columns="2" gap="lg">
-        <Banner title="❌ Usar azul para texto no-clickeable" variant="bad">
-          <div class="mistake-demo">
-            <p>
-              <span class="fake-link">Nota importante:</span>
-              Recuerda validar todas las entradas del usuario antes de procesarlas.
-            </p>
-          </div>
-          <p class="mistake-desc">
-            El texto azul parece un enlace pero no lo es
+        <Banner
+          title="❌ Usar azul para texto no-clickeable"
+          variant="bad"
+          highContrast
+          subtitle="El texto azul parece un enlace pero no lo es"
+        >
+          <p>
+            <span class="fake-link">Nota importante:</span>
+            Recuerda validar todas las entradas del usuario antes de procesarlas.
           </p>
         </Banner>
 
-        <Banner title="❌ Subrayar texto decorativo" variant="bad">
-          <div class="mistake-demo">
-            <p>
-              <span class="fake-underline">Configuración del Proyecto</span>
-            </p>
-            <p>
-              Aquí están los pasos para configurar tu entorno de desarrollo...
-            </p>
-          </div>
-          <p class="mistake-desc">El subrayado sugiere que es clickeable</p>
+        <Banner
+          title="❌ Subrayar texto decorativo"
+          variant="bad"
+          highContrast
+          subtitle="El subrayado sugiere que es clickeable"
+        >
+          <p>
+            <span class="fake-underline">Configuración del Proyecto</span>
+          </p>
+          <p>
+            Aquí están los pasos para configurar tu entorno de desarrollo...
+          </p>
         </Banner>
 
-        <Banner title="❌ Enlaces inconsistentes" variant="bad">
-          <div class="mistake-demo">
-            <p>
-              Ve nuestros <a href="#" class="inconsistent-1">repositorios</a> y
-              <a href="#" class="inconsistent-2">tutoriales</a> para más información.
-            </p>
-          </div>
-          <p class="mistake-desc">Diferentes estilos confunden al usuario</p>
+        <Banner
+          title="❌ Enlaces inconsistentes"
+          variant="bad"
+          highContrast
+          subtitle="Diferentes estilos confunden al usuario"
+        >
+          <p>
+            Ve nuestros <a href="#" class="inconsistent-1">repositorios</a> y
+            <a href="#" class="inconsistent-2">tutoriales</a> para más información.
+          </p>
         </Banner>
       </BannerGrid>
     </section>
@@ -399,23 +401,6 @@ const linkTools = [
     max-width: 90ch;
   }
 
-  .text-demo {
-    background-color: var(--color-background);
-    padding: var(--spacing-md);
-    border-radius: 6px;
-    margin: var(--spacing-md) 0;
-    border: 1px solid var(--color-border);
-
-    p {
-      margin: 0 0 var(--spacing-sm) 0;
-      line-height: 1.6;
-
-      &:last-child {
-        margin-bottom: 0;
-      }
-    }
-  }
-
   .accessible-link {
     color: #0066cc;
     text-decoration: underline;
@@ -426,11 +411,11 @@ const linkTools = [
   }
 
   .problematic-link {
-    color: #0066cc;
-    text-decoration: none;
+    color: #0066cc !important;
+    text-decoration: none !important;
 
     &:hover {
-      color: #004499;
+      color: #004499 !important;
     }
   }
 
@@ -566,45 +551,23 @@ const linkTools = [
     }
   }
 
-  .rule-note {
-    font-size: 0.875rem;
-    color: var(--color-text-light);
-    font-style: italic;
-    margin-top: var(--spacing-sm);
-  }
-
-  .mistake-demo {
-    background-color: var(--color-background);
-    padding: var(--spacing-md);
-    border-radius: 6px;
-    margin: var(--spacing-md) 0;
-    border: 1px solid var(--color-border);
-
-    p {
-      margin: 0;
-      line-height: 1.6;
-    }
-  }
-
   .fake-link {
-    color: #0066cc;
-    cursor: default;
+    color: #0066cc !important;
   }
 
   .fake-underline {
-    text-decoration: underline;
-    cursor: default;
+    text-decoration: underline !important;
   }
 
   .inconsistent-1 {
-    color: #0066cc;
-    text-decoration: underline;
+    color: #0066cc !important;
+    text-decoration: underline !important;
   }
 
   .inconsistent-2 {
-    color: #16a34a;
-    text-decoration: none;
-    font-weight: 700;
+    color: #16a34a !important;
+    text-decoration: none !important;
+    font-weight: 700 !important;
   }
 
   .mistake-desc {

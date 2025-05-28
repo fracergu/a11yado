@@ -5,6 +5,7 @@ import OrderedListItem from '../../components/OrderedListItem.astro'
 import Card from '../../components/Card.astro'
 import CardGrid from '../../components/CardGrid.astro'
 import Banner from '../../components/Banner.astro'
+import BannerGrid from '../../components/BannerGrid.astro'
 import Header from '../../components/Header.astro'
 ---
 
@@ -281,43 +282,51 @@ import Header from '../../components/Header.astro'
 
       <div class="independence-examples">
         <h3>Ejemplos prácticos de independencia de color</h3>
-        <div class="example-grid">
-          <Banner title="❌ Incorrecto: Solo color" variant="bad">
-            <div class="demo-bad">
-              <span class="demo-text">Texto normal</span>
-              <span class="demo-text error-color">Texto con error</span>
-            </div>
-            <p class="example-desc">Solo el color rojo indica el error</p>
+        <BannerGrid>
+          <Banner
+            title="❌ Incorrecto: Solo color"
+            variant="bad"
+            highContrast
+            subtitle="Solo el color rojo indica el error"
+          >
+            <span class="demo-text">Texto normal</span>
+            <span class="demo-text error-color">Texto con error</span>
           </Banner>
 
-          <Banner title="✅ Correcto: Color + estructura" variant="good">
-            <div class="demo-good">
-              <span class="demo-text">Texto normal</span>
-              <span class="demo-text error-full">⚠️ Texto con error</span>
-            </div>
-            <p class="example-desc">Icono + color + borde más grueso</p>
-          </Banner>
-        </div>
-
-        <div class="example-grid">
-          <Banner title="❌ Enlaces solo por color" variant="bad">
-            <div class="demo-bad">
-              <p>
-                Este párrafo tiene un <span class="link-color">enlace</span> que
-                solo se diferencia por color.
-              </p>
-            </div>
+          <Banner
+            title="✅ Correcto: Color + estructura"
+            variant="good"
+            highContrast
+            subtitle="Icono + color + borde más grueso"
+          >
+            <span class="demo-text">Texto normal</span>
+            <span class="demo-text error-full">⚠️ Texto con error</span>
           </Banner>
 
-          <Banner title="✅ Enlaces con subrayado" variant="good">
-            <div class="demo-good">
-              <p>
-                Este párrafo tiene un <a href="#" class="proper-link">enlace</a>
-                con subrayado y color.
-              </p>
-            </div>
+          <Banner
+            title="❌ Enlaces solo por color"
+            variant="bad"
+            highContrast
+            subtitle="Solo el color azul indica el enlace"
+          >
+            <p>
+              Este párrafo tiene un <span class="link-color">enlace</span> que solo
+              se diferencia por color.
+            </p>
           </Banner>
-        </div>
+
+          <Banner
+            title="✅ Enlaces con subrayado"
+            variant="good"
+            highContrast
+            subtitle="Subrayado + color"
+          >
+            <p>
+              Este párrafo tiene un <a href="#" class="proper-link">enlace</a>
+              con subrayado y color.
+            </p>
+          </Banner>
+        </BannerGrid>
       </div>
 
       <div class="independence-tips">
@@ -381,9 +390,13 @@ import Header from '../../components/Header.astro'
 
       <div class="charts-section">
         <h3>Gráfico de barras</h3>
-        <div class="chart-comparison-grid">
-          <div class="chart-example">
-            <h4>❌ Solo color</h4>
+        <BannerGrid>
+          <Banner
+            title="❌ Solo color"
+            variant="bad"
+            highContrast
+            subtitle="Barras únicamente distinguibles por color"
+          >
             <div class="bar-chart">
               <div class="bar-container">
                 <div
@@ -413,11 +426,14 @@ import Header from '../../components/Header.astro'
                 <span class="bar-label">Soporte</span>
               </div>
             </div>
-            <p class="chart-desc">Difícil de distinguir en escala de grises</p>
-          </div>
+          </Banner>
 
-          <div class="chart-example">
-            <h4>🔍 En escala de grises</h4>
+          <Banner
+            title="🔍 En escala de grises"
+            variant="info"
+            highContrast
+            subtitle="¡Imposible distinguir las barras!"
+          >
             <div class="bar-chart grayscale">
               <div class="bar-container">
                 <div
@@ -447,11 +463,14 @@ import Header from '../../components/Header.astro'
                 <span class="bar-label">Soporte</span>
               </div>
             </div>
-            <p class="chart-desc">¡Imposible distinguir las barras!</p>
-          </div>
+          </Banner>
 
-          <div class="chart-example">
-            <h4>✅ Color + patrones</h4>
+          <Banner
+            title="✅ Color + patrones"
+            variant="good"
+            highContrast
+            subtitle="Patrones + valores + color"
+          >
             <div class="bar-chart">
               <div class="bar-container">
                 <div
@@ -481,11 +500,14 @@ import Header from '../../components/Header.astro'
                 <span class="bar-label">Soporte (45%)</span>
               </div>
             </div>
-            <p class="chart-desc">Patrones + valores + color</p>
-          </div>
+          </Banner>
 
-          <div class="chart-example">
-            <h4>🔍 Patrones en escala de grises</h4>
+          <Banner
+            title="🔍 Patrones en escala de grises"
+            variant="info"
+            highContrast
+            subtitle="¡Perfectamente distinguible!"
+          >
             <div class="bar-chart grayscale">
               <div class="bar-container">
                 <div
@@ -515,14 +537,17 @@ import Header from '../../components/Header.astro'
                 <span class="bar-label">Soporte (45%)</span>
               </div>
             </div>
-            <p class="chart-desc">¡Perfectamente distinguible!</p>
-          </div>
-        </div>
+          </Banner>
+        </BannerGrid>
 
         <h3>Gráfico de líneas</h3>
-        <div class="chart-comparison-grid">
-          <div class="chart-example">
-            <h4>❌ Solo colores</h4>
+        <BannerGrid>
+          <Banner
+            title="❌ Solo colores"
+            variant="bad"
+            highContrast
+            subtitle="Líneas únicamente distinguibles por color"
+          >
             <div class="line-chart">
               <svg viewBox="0 0 300 150" class="chart-svg">
                 <!-- Línea 1 -->
@@ -559,11 +584,14 @@ import Header from '../../components/Header.astro'
                 >
               </div>
             </div>
-            <p class="chart-desc">Las líneas se confunden sin color</p>
-          </div>
+          </Banner>
 
-          <div class="chart-example">
-            <h4>🔍 En escala de grises</h4>
+          <Banner
+            title="🔍 En escala de grises"
+            variant="info"
+            highContrast
+            subtitle="¡Líneas indistinguibles!"
+          >
             <div class="line-chart grayscale">
               <svg viewBox="0 0 300 150" class="chart-svg">
                 <!-- Línea 1 -->
@@ -600,11 +628,14 @@ import Header from '../../components/Header.astro'
                 >
               </div>
             </div>
-            <p class="chart-desc">¡Líneas indistinguibles!</p>
-          </div>
+          </Banner>
 
-          <div class="chart-example">
-            <h4>✅ Líneas diferenciadas</h4>
+          <Banner
+            title="✅ Líneas diferenciadas"
+            variant="good"
+            highContrast
+            subtitle="Líneas diferenciadas"
+          >
             <div class="line-chart">
               <svg viewBox="0 0 300 150" class="chart-svg">
                 <!-- Línea 1: sólida -->
@@ -643,11 +674,14 @@ import Header from '../../components/Header.astro'
                 </span>
               </div>
             </div>
-            <p class="chart-desc">Diferentes estilos de línea + grosor</p>
-          </div>
+          </Banner>
 
-          <div class="chart-example">
-            <h4>🔍 Estilos en escala de grises</h4>
+          <Banner
+            title="🔍 Estilos en escala de grises"
+            variant="info"
+            highContrast
+            subtitle="¡Líneas indistinguibles!"
+          >
             <div class="line-chart grayscale">
               <svg viewBox="0 0 300 150" class="chart-svg">
                 <!-- Línea 1: sólida -->
@@ -686,14 +720,17 @@ import Header from '../../components/Header.astro'
                 </span>
               </div>
             </div>
-            <p class="chart-desc">¡Perfectamente distinguible!</p>
-          </div>
-        </div>
+          </Banner>
+        </BannerGrid>
 
         <h3>Gráfico circular</h3>
-        <div class="chart-comparison-grid">
-          <div class="chart-example">
-            <h4>❌ Solo colores</h4>
+        <BannerGrid>
+          <Banner
+            title="❌ Solo colores"
+            variant="bad"
+            highContrast
+            subtitle="Secciones únicamente distinguibles por color"
+          >
             <div class="pie-chart">
               <svg viewBox="0 0 200 200" class="pie-svg">
                 <!-- Fondo blanco -->
@@ -735,11 +772,14 @@ import Header from '../../components/Header.astro'
                 >
               </div>
             </div>
-            <p class="chart-desc">Imposible distinguir secciones sin color</p>
-          </div>
+          </Banner>
 
-          <div class="chart-example">
-            <h4>🔍 En escala de grises</h4>
+          <Banner
+            title="🔍 En escala de grises"
+            variant="info"
+            highContrast
+            subtitle="¡Imposible distinguir secciones!"
+          >
             <div class="pie-chart grayscale">
               <svg viewBox="0 0 200 200" class="pie-svg">
                 <!-- Fondo blanco -->
@@ -781,11 +821,14 @@ import Header from '../../components/Header.astro'
                 >
               </div>
             </div>
-            <p class="chart-desc">¡Círculo completamente gris!</p>
-          </div>
+          </Banner>
 
-          <div class="chart-example">
-            <h4>✅ Con etiquetas directas</h4>
+          <Banner
+            title="✅ Con etiquetas directas"
+            variant="good"
+            highContrast
+            subtitle="Etiquetas directas eliminan dependencia de color"
+          >
             <div class="pie-chart">
               <svg viewBox="0 0 200 200" class="pie-svg">
                 <!-- Fondo blanco -->
@@ -829,13 +872,14 @@ import Header from '../../components/Header.astro'
                 <text x="70" y="85" class="pie-label">30%</text>
               </svg>
             </div>
-            <p class="chart-desc">
-              Etiquetas directas eliminan dependencia de color
-            </p>
-          </div>
+          </Banner>
 
-          <div class="chart-example">
-            <h4>🔍 Etiquetas en escala de grises</h4>
+          <Banner
+            title="🔍 Etiquetas en escala de grises"
+            variant="info"
+            highContrast
+            subtitle="¡Círculo completamente gris!"
+          >
             <div class="pie-chart grayscale">
               <svg viewBox="0 0 200 200" class="pie-svg">
                 <!-- Fondo blanco -->
@@ -879,14 +923,17 @@ import Header from '../../components/Header.astro'
                 <text x="70" y="85" class="pie-label">30%</text>
               </svg>
             </div>
-            <p class="chart-desc">¡Información clara sin color!</p>
-          </div>
-        </div>
+          </Banner>
+        </BannerGrid>
 
         <h3>Progress Tracker (Seguimiento de progreso)</h3>
-        <div class="progress-comparison-grid">
-          <div class="chart-example">
-            <h4>❌ Solo colores</h4>
+        <BannerGrid columns="1" minWidth="300px">
+          <Banner
+            title="❌ Solo colores"
+            variant="bad"
+            highContrast
+            subtitle="Estados de progreso únicamente distinguibles por color"
+          >
             <div class="progress-tracker">
               <div class="step completed-color">
                 <div class="step-circle">
@@ -916,13 +963,14 @@ import Header from '../../components/Header.astro'
                 <span class="step-label">Confirmación</span>
               </div>
             </div>
-            <p class="chart-desc">
-              Aún con números, difícil distinguir estados
-            </p>
-          </div>
+          </Banner>
 
-          <div class="chart-example">
-            <h4>🔍 En escala de grises</h4>
+          <Banner
+            title="🔍 En escala de grises"
+            variant="info"
+            highContrast
+            subtitle="¡Estados de progreso indistinguibles!"
+          >
             <div class="progress-tracker grayscale">
               <div class="step completed-color">
                 <div class="step-circle">
@@ -952,13 +1000,14 @@ import Header from '../../components/Header.astro'
                 <span class="step-label">Confirmación</span>
               </div>
             </div>
-            <p class="chart-desc">
-              ¡Los números ayudan, pero sigue siendo confuso!
-            </p>
-          </div>
+          </Banner>
 
-          <div class="chart-example">
-            <h4>✅ Con indicadores visuales</h4>
+          <Banner
+            title="✅ Con indicadores visuales"
+            variant="good"
+            highContrast
+            subtitle="Indicadores visuales claros"
+          >
             <div class="progress-tracker">
               <div class="step completed">
                 <div class="step-circle">
@@ -1004,11 +1053,14 @@ import Header from '../../components/Header.astro'
                 <span class="step-label">Confirmación</span>
               </div>
             </div>
-            <p class="chart-desc">Iconos + bordes + números = claridad total</p>
-          </div>
+          </Banner>
 
-          <div class="chart-example">
-            <h4>🔍 Indicadores en escala de grises</h4>
+          <Banner
+            title="🔍 Indicadores en escala de grises"
+            variant="info"
+            highContrast
+            subtitle="Mucho más claro!"
+          >
             <div class="progress-tracker grayscale">
               <div class="step completed">
                 <div class="step-circle">
@@ -1054,9 +1106,8 @@ import Header from '../../components/Header.astro'
                 <span class="step-label">Confirmación</span>
               </div>
             </div>
-            <p class="chart-desc">¡Perfectamente distinguible sin color!</p>
-          </div>
-        </div>
+          </Banner>
+        </BannerGrid>
 
         <div class="chart-tips">
           <h3>💡 Consejos para gráficos accesibles</h3>
@@ -1355,9 +1406,7 @@ import Header from '../../components/Header.astro'
     align-items: end;
     gap: var(--spacing-md);
     height: 200px;
-    padding: var(--spacing-md);
     background-color: var(--color-background);
-    border: 1px solid var(--color-border);
     border-radius: 4px;
     margin: var(--spacing-md) 0;
   }
@@ -1502,7 +1551,6 @@ import Header from '../../components/Header.astro'
     width: 200px;
     height: 200px;
     background-color: var(--color-background);
-    border: 1px solid var(--color-border);
     border-radius: 50%;
   }
 
@@ -1528,39 +1576,12 @@ import Header from '../../components/Header.astro'
     }
   }
 
-  .tips-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: var(--spacing-lg);
-  }
-
-  .tip-card {
-    background-color: white;
-    border: 1px solid #0891b2;
-    border-radius: 6px;
-    padding: var(--spacing-md);
-
-    h4 {
-      color: #0891b2;
-      margin: 0 0 var(--spacing-xs) 0;
-      font-size: 0.9rem;
-    }
-
-    p {
-      margin: 0;
-      font-size: 0.875rem;
-      color: var(--color-text-light);
-      line-height: 1.4;
-    }
-  }
-
   .progress-tracker {
     display: flex;
     align-items: center;
     justify-content: center;
     padding: var(--spacing-lg);
     background-color: var(--color-background);
-    border: 1px solid var(--color-border);
     border-radius: 4px;
     margin: var(--spacing-md) 0;
     gap: 0;
@@ -1677,10 +1698,6 @@ import Header from '../../components/Header.astro'
       .chart-example:nth-child(2)::after {
         display: none;
       }
-    }
-
-    .tips-grid {
-      grid-template-columns: 1fr;
     }
 
     .bar-chart {

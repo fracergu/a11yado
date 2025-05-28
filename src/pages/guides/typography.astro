@@ -1,0 +1,607 @@
+---
+import Layout from '../../layouts/Layout.astro'
+import Checklist from '../../components/Checklist.astro'
+import Header from '../../components/Header.astro'
+import Banner from '../../components/Banner.astro'
+import OrderedList from '../../components/OrderedList.astro'
+import OrderedListItem from '../../components/OrderedListItem.astro'
+import CardGrid from '../../components/CardGrid.astro'
+import Card from '../../components/Card.astro'
+import Label from '../../components/Label.astro'
+
+const checklistItems = [
+  'Tamaño mínimo de 16px para texto de contenido',
+  'Interlineado de al menos 1.5 veces el tamaño de la fuente',
+  'Tipografías sans-serif para texto principal',
+  'Alineación a la izquierda (evitar justificado)',
+  'Contraste adecuado entre texto y fondo',
+  'Espaciado entre párrafos suficiente',
+  'Longitud de línea entre 45-75 caracteres',
+]
+---
+
+<Layout title="Tipografía Accesible - a11yado">
+  <article>
+    <Header
+      title="Tipografía Accesible"
+      description="La tipografía es la base de la comunicación digital. Una buena tipografía hace que el contenido sea legible para todos, especialmente para usuarios con dislexia y problemas visuales."
+    />
+
+    <section>
+      <h2>¿Por qué la tipografía accesible es crucial?</h2>
+      <p>
+        La tipografía afecta directamente la capacidad de las personas para leer
+        y comprender el contenido. Para usuarios con <strong
+          >dislexia, problemas visuales o fatiga ocular</strong
+        >, una mala elección tipográfica puede convertir la navegación en una
+        barrera imposible de superar.
+      </p>
+
+      <Banner title="📖 Dato importante" variant="info">
+        <p>
+          <strong>1 de cada 10 personas tiene dislexia.</strong>
+          Una tipografía accesible no solo ayuda a estos usuarios, sino que mejora
+          la experiencia de lectura para todos.
+        </p>
+      </Banner>
+    </section>
+
+    <section>
+      <h2>Las 6 decisiones tipográficas clave</h2>
+
+      <OrderedList>
+        <OrderedListItem number={1} title="Tamaño de fuente adecuado">
+          <p>
+            El tamaño mínimo según
+            <a
+              href="https://www.w3.org/WAI/WCAG22/Understanding/resize-text.html"
+              target="_blank"
+              rel="noopener">WCAG 1.4.4: Resize Text</a
+            >
+            es que el texto debe poder ampliarse hasta 200% sin perder funcionalidad.
+            En la práctica, esto significa usar <strong>16px como mínimo</strong
+            > para texto de contenido.
+          </p>
+
+          <CardGrid columns="2" gap="lg">
+            <Card
+              title="❌ Muy pequeño"
+              variant="danger"
+              subtitle="12px - Demasiado pequeño"
+              borderAccent
+              highContrast
+            >
+              <div class="small-text">
+                <p>
+                  Este texto es de 12px. Es muy difícil de leer, especialmente
+                  para usuarios con problemas visuales o que están usando
+                  dispositivos móviles.
+                </p>
+              </div>
+            </Card>
+
+            <Card
+              title="✅ Tamaño adecuado"
+              variant="success"
+              borderAccent
+              highContrast
+              subtitle="16px - Tamaño mínimo recomendado"
+            >
+              <div class="normal-text">
+                <p>
+                  Este texto es de 16px. Es cómodo de leer para la mayoría de
+                  usuarios y cumple con las pautas de accesibilidad.
+                </p>
+              </div>
+            </Card>
+          </CardGrid>
+
+          <Banner title="📱 Consideración móvil" variant="warning">
+            <p>
+              En dispositivos móviles, considera usar <strong>18px o más</strong
+              >
+              para mejorar la legibilidad en pantallas pequeñas.
+            </p>
+          </Banner>
+        </OrderedListItem>
+
+        <OrderedListItem number={2} title="Espaciado de líneas (interlineado)">
+          <p>
+            Según <a
+              href="https://www.w3.org/WAI/WCAG22/Understanding/text-spacing.html"
+              target="_blank"
+              rel="noopener">WCAG 1.4.12: Text Spacing</a
+            >, el interlineado debe ser de <strong
+              >al menos 1.5 veces el tamaño de la fuente</strong
+            >. Esto ayuda especialmente a usuarios con dislexia y problemas de
+            seguimiento visual.
+          </p>
+
+          <CardGrid columns="2" gap="lg">
+            <Card
+              title="❌ Muy compacto"
+              variant="danger"
+              borderAccent
+              highContrast
+              subtitle="line-height: 0.5"
+            >
+              <div class="tight-spacing">
+                <p>Las líneas están muy juntas (line-height: 0.5).</p>
+                <p>Esto hace que sea difícil seguir la lectura.</p>
+                <p>Especialmente problemático para dislexia.</p>
+                <p>Los ojos se cansan rápidamente.</p>
+              </div>
+            </Card>
+
+            <Card
+              title="✅ Espaciado adecuado"
+              subtitle="line-height: 1.5"
+              variant="success"
+              borderAccent
+              highContrast
+            >
+              <div class="proper-spacing">
+                <p>
+                  El espaciado correcto (line-height: 1.5) facilita la lectura.
+                </p>
+                <p>Cada línea tiene espacio suficiente para respirar.</p>
+                <p>Ayuda a usuarios con dislexia a seguir el texto.</p>
+                <p>Reduce la fatiga ocular significativamente.</p>
+              </div>
+            </Card>
+          </CardGrid>
+        </OrderedListItem>
+
+        <OrderedListItem number={3} title="Elección de tipografía">
+          <p>
+            Las tipografías <strong>sans-serif</strong> son generalmente más legibles
+            en pantalla. Para usuarios con dislexia, son especialmente importantes
+            las tipografías que eviten la confusión entre caracteres similares como
+            "b", "d", "p", "q".
+          </p>
+
+          <CardGrid columns="2" gap="lg">
+            <Card
+              title="✅ Tipografías recomendadas"
+              variant="success"
+              borderAccent
+              highContrast
+            >
+              <div class="font-sample atkinson">
+                <strong>Atkinson Hyperlegible</strong>
+                <p>
+                  Diseñada específicamente para baja visión por el Braille
+                  Institute.
+                </p>
+                <div class="confusing-chars">bpqd Il1 oO0</div>
+              </div>
+
+              <div class="font-sample opensans">
+                <strong>Open Sans</strong>
+                <p>Tipografía versátil y legible para uso general.</p>
+                <div class="confusing-chars">bpqd Il1 oO0</div>
+              </div>
+            </Card>
+
+            <Card
+              title="⚠️ Usar con cuidado"
+              variant="warning"
+              borderAccent
+              highContrast
+            >
+              <div class="font-sample times">
+                <strong>Times New Roman</strong>
+                <p>Los remates pueden dificultar la lectura en pantalla.</p>
+                <div class="confusing-chars">bpqd Il1 oO0</div>
+              </div>
+
+              <div class="font-sample arial">
+                <strong>Arial</strong>
+                <p>Algunas letras pueden ser ambiguas (I, l, 1).</p>
+                <div class="confusing-chars">bpqd Il1 oO0</div>
+              </div>
+            </Card>
+          </CardGrid>
+        </OrderedListItem>
+
+        <Banner title="🧠 Para dislexia específicamente" variant="info">
+          <p>
+            Considera usar <strong>Atkinson Hyperlegible</strong>, <strong
+              >OpenDyslexic</strong
+            >
+            o <strong>Comic Neue</strong> para audiencias con dislexia. Estas tipografías
+            tienen características específicas que reducen la confusión entre letras.
+          </p>
+        </Banner>
+
+        <OrderedListItem number={4} title="Alineación del texto">
+          <p>
+            La alineación afecta directamente la legibilidad. El texto
+            justificado puede crear "ríos de espacios" que dificultan la
+            lectura, especialmente para usuarios con dislexia.
+          </p>
+
+          <CardGrid columns="2" gap="lg">
+            <Card
+              title="❌ Texto justificado"
+              variant="danger"
+              subtitle="text-align: justify"
+              borderAccent
+              highContrast
+            >
+              <div class="justified-text">
+                <p>
+                  Este párrafo está justificado, lo que significa que tanto el
+                  margen izquierdo como el derecho están alineados. Esto puede
+                  crear espacios irregulares entre palabras que forman "ríos"
+                  visuales que distraen la lectura.
+                </p>
+              </div>
+            </Card>
+
+            <Card
+              title="✅ Alineación izquierda"
+              variant="success"
+              subtitle="text-align: left"
+              borderAccent
+              highContrast
+            >
+              <div class="left-aligned">
+                <p>
+                  Este párrafo está alineado a la izquierda, lo que crea un
+                  ritmo de lectura más natural. Los espacios entre palabras son
+                  consistentes y no se forman "ríos" que dificulten la
+                  comprensión del texto.
+                </p>
+              </div>
+            </Card>
+          </CardGrid>
+        </OrderedListItem>
+
+        <OrderedListItem number={5} title="Contraste y color">
+          <p>
+            Según <a
+              href="https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html"
+              target="_blank"
+              rel="noopener">WCAG 1.4.3: Contrast (Minimum)</a
+            >, el texto normal debe tener una relación de contraste de al menos
+            4.5:1. Para usuarios con dislexia, el contraste extremo (negro puro
+            sobre blanco puro) puede ser problemático.
+          </p>
+
+          <CardGrid columns="3" gap="lg">
+            <Card
+              title="❌ Contraste bajo"
+              variant="danger"
+              borderAccent
+              highContrast
+              subtitle="Ratio: 2.3:1"
+            >
+              <div class="low-contrast">
+                <p>
+                  Este texto gris claro sobre blanco no tiene suficiente
+                  contraste.
+                </p>
+              </div>
+            </Card>
+
+            <Card
+              title="✅ Contraste óptimo"
+              variant="success"
+              borderAccent
+              highContrast
+              subtitle="Ratio: 7.2:1"
+            >
+              <div class="optimal-contrast">
+                <p>
+                  Este texto gris oscuro sobre blanco suave es fácil de leer.
+                </p>
+              </div>
+            </Card>
+
+            <Card
+              title="⚠️ Contraste extremo"
+              variant="warning"
+              borderAccent
+              highContrast
+              subtitle="Ratio: 21:1"
+            >
+              <div class="extreme-contrast">
+                <p>Negro puro sobre blanco puro puede causar fatiga visual.</p>
+              </div>
+            </Card>
+          </CardGrid>
+        </OrderedListItem>
+
+        <OrderedListItem number={6} title="Longitud de línea">
+          <p>
+            Una línea demasiado larga o corta dificulta la lectura. La longitud
+            óptima está entre <strong>45-75 caracteres por línea</strong>, con
+            66 caracteres considerado el ideal.
+          </p>
+
+          <CardGrid columns="2" gap="lg">
+            <Card
+              title="❌ Línea muy larga"
+              variant="danger"
+              borderAccent
+              highContrast
+              subtitle=">100 caracteres"
+            >
+              <div class="line-too-long">
+                <p>
+                  Esta línea es demasiado larga y hace que sea difícil para los
+                  ojos seguir desde el final de una línea hasta el comienzo de
+                  la siguiente, especialmente problemático para usuarios con
+                  dislexia o problemas de seguimiento visual que pueden perderse
+                  fácilmente.
+                </p>
+              </div>
+            </Card>
+
+            <Card
+              title="✅ Longitud óptima"
+              variant="success"
+              borderAccent
+              highContrast
+              subtitle="66 caracteres"
+            >
+              <div class="line-optimal">
+                <p>
+                  Esta longitud de línea es perfecta para la lectura cómoda.
+                  Permite que los ojos descansen naturalmente al final de cada
+                  línea.
+                </p>
+                <p>
+                  Facilita el seguimiento visual y reduce la fatiga ocular
+                  durante la lectura prolongada.
+                </p>
+              </div>
+            </Card>
+          </CardGrid>
+        </OrderedListItem>
+      </OrderedList>
+    </section>
+
+    <section>
+      <h2>Consideraciones especiales</h2>
+
+      <CardGrid columns="2" gap="lg">
+        <Card title="🧠 Para usuarios con dislexia" variant="info" borderAccent>
+          <ul>
+            <li>
+              Evita tipografías donde "b", "d", "p", "q" se vean idénticas
+            </li>
+            <li>
+              Prefiere mayor espaciado entre letras (letter-spacing: 0.05em)
+            </li>
+            <li>Usa párrafos cortos (máximo 3-4 líneas)</li>
+            <li>Considera permitir que el usuario cambie la tipografía</li>
+          </ul>
+        </Card>
+
+        <Card
+          title="👀 Para usuarios con baja visión"
+          variant="info"
+          borderAccent
+        >
+          <ul>
+            <li>
+              Asegúrate de que el texto se amplíe hasta 200% sin problemas
+            </li>
+            <li>Usa tipografías con formas de letras distintas</li>
+            <li>Evita itálicas en bloques largos de texto</li>
+            <li>Proporciona modo alto contraste</li>
+          </ul>
+        </Card>
+      </CardGrid>
+    </section>
+
+    <section>
+      <h2>Implementación en CSS</h2>
+
+      <Card title="💻 Ejemplo de CSS accesible" variant="default" highContrast>
+        <pre><code>{`/* Tipografía base accesible */
+body {
+  font-family: 'Atkinson Hyperlegible', 'Inter', 'Open Sans', sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #2d3748; /* En lugar de negro puro */
+  background-color: #fdfdfd; /* En lugar de blanco puro */
+}
+
+/* Texto de contenido */
+p, li {
+  max-width: 65ch; /* Longitud de línea óptima */
+  margin-bottom: 1.5em; /* Espaciado entre párrafos */
+}
+
+/* Encabezados */
+h1, h2, h3 {
+  line-height: 1.2;
+  margin-top: 2em;
+  margin-bottom: 0.5em;
+}
+
+/* Para usuarios que prefieren reducir movimiento */
+@media (prefers-reduced-motion: no-preference) {
+  * {
+    scroll-behavior: smooth;
+  }
+}
+
+/* Modo alto contraste */
+@media (prefers-contrast: high) {
+  body {
+    color: #000;
+    background: #fff;
+  }
+}`}</code></pre>
+      </Card>
+    </section>
+
+    <section>
+      <h2>Recursos adicionales</h2>
+
+      <CardGrid columns="2" gap="lg">
+        <Card title="🔗 Enlaces útiles" variant="default">
+          <ul>
+            <li>
+              <a
+                href="https://brailleinstitute.org/freefont"
+                target="_blank"
+                rel="noopener">Atkinson Hyperlegible Font (gratis)</a
+              >
+            </li>
+            <li>
+              <a
+                href="https://fonts.google.com/specimen/Inter"
+                target="_blank"
+                rel="noopener">Inter en Google Fonts</a
+              >
+            </li>
+            <li>
+              <a
+                href="https://webaim.org/resources/contrastchecker/"
+                target="_blank"
+                rel="noopener">WebAIM Contrast Checker</a
+              >
+            </li>
+          </ul>
+        </Card>
+
+        <Card title="📚 Especificaciones WCAG" variant="default">
+          <ul>
+            <li>
+              <a
+                href="https://www.w3.org/WAI/WCAG22/Understanding/resize-text.html"
+                target="_blank"
+                rel="noopener">WCAG 1.4.4: Resize Text</a
+              >
+            </li>
+            <li>
+              <a
+                href="https://www.w3.org/WAI/WCAG22/Understanding/text-spacing.html"
+                target="_blank"
+                rel="noopener">WCAG 1.4.12: Text Spacing</a
+              >
+            </li>
+            <li>
+              <a
+                href="https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html"
+                target="_blank"
+                rel="noopener">WCAG 1.4.3: Contrast (Minimum)</a
+              >
+            </li>
+          </ul>
+        </Card>
+      </CardGrid>
+    </section>
+
+    <Checklist title="Lista de verificación" items={checklistItems} />
+  </article>
+</Layout>
+
+<style lang="scss">
+  @import url('https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&display=swap');
+
+  article {
+    max-width: 90ch;
+  }
+
+  .small-text {
+    font-size: 12px;
+  }
+
+  .normal-text {
+    font-size: 16px;
+  }
+
+  .tight-spacing {
+    line-height: 0.5;
+  }
+
+  .proper-spacing {
+    line-height: 1.5;
+  }
+
+  /* Muestras de tipografías */
+  .font-sample {
+    margin-bottom: 1.5rem;
+    padding: 1rem;
+    border-left: 3px solid #e2e8f0;
+
+    strong {
+      display: block;
+      margin-bottom: 0.5rem;
+      color: #2d3748;
+    }
+  }
+
+  .confusing-chars {
+    font-size: 1.2em;
+    background: #fff;
+    padding: 0.5rem;
+    border-radius: 4px;
+    margin-top: 0.5rem;
+    letter-spacing: 0.2em;
+  }
+
+  .atkinson {
+    font-family: 'Atkinson Hyperlegible', sans-serif;
+  }
+
+  .opensans {
+    font-family: 'Open Sans', sans-serif;
+  }
+
+  .times {
+    font-family: 'Times New Roman', serif;
+  }
+
+  .arial {
+    font-family: 'Arial', sans-serif;
+  }
+
+  /* Demos de alineación */
+  .justified-text {
+    text-align: justify;
+    hyphens: auto;
+  }
+
+  .left-aligned {
+    text-align: left;
+  }
+
+  /* Demos de contraste */
+  .contrast-demo {
+    padding: 1rem;
+    border-radius: 4px;
+  }
+
+  .low-contrast {
+    color: #999;
+    background: #fff;
+  }
+
+  .optimal-contrast {
+    color: #2d3748;
+    background: #fdfdfd;
+  }
+
+  .extreme-contrast {
+    color: #000;
+    background: #fff;
+  }
+
+  /* Demos de longitud de línea */
+  .line-too-long {
+    max-width: none;
+  }
+
+  .line-optimal {
+    max-width: 65ch;
+  }
+</style>

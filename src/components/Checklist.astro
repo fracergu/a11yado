@@ -55,37 +55,37 @@ const titleColors = {
   </div>
 </div>
 
-<style>
+<style lang="scss">
   .checklist {
     border-radius: 8px;
     padding: var(--spacing-xl);
     margin: var(--spacing-xl) 0;
     border-left: 4px solid;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  }
 
-  .checklist.border-l-green-500 {
-    border-left-color: #16a34a;
-  }
+    &.border-l-green-500 {
+      border-left-color: #16a34a;
+    }
 
-  .checklist.bg-green-50 {
-    background-color: #f0fdf4;
-  }
+    &.bg-green-50 {
+      background-color: #f0fdf4;
+    }
 
-  .checklist.border-l-color-primary {
-    border-left-color: var(--color-primary);
-  }
+    &.border-l-color-primary {
+      border-left-color: var(--color-primary);
+    }
 
-  .checklist.bg-color-surface {
-    background-color: var(--color-surface);
-  }
+    &.bg-color-surface {
+      background-color: var(--color-surface);
+    }
 
-  .checklist.border-l-yellow-500 {
-    border-left-color: #f59e0b;
-  }
+    &.border-l-yellow-500 {
+      border-left-color: #f59e0b;
+    }
 
-  .checklist.bg-yellow-50 {
-    background-color: #fef3c7;
+    &.bg-yellow-50 {
+      background-color: #fef3c7;
+    }
   }
 
   .checklist-title {
@@ -96,18 +96,18 @@ const titleColors = {
     display: flex;
     align-items: center;
     gap: var(--spacing-sm);
-  }
 
-  .checklist-title.text-green-700 {
-    color: #15803d;
-  }
+    &.text-green-700 {
+      color: #15803d;
+    }
 
-  .checklist-title.text-color-primary {
-    color: var(--color-primary);
-  }
+    &.text-color-primary {
+      color: var(--color-primary);
+    }
 
-  .checklist-title.text-yellow-700 {
-    color: #d97706;
+    &.text-yellow-700 {
+      color: #d97706;
+    }
   }
 
   .checklist-grid {
@@ -126,13 +126,17 @@ const titleColors = {
     transition: all 0.2s ease;
     background-color: rgba(255, 255, 255, 0.5);
     border: 1px solid transparent;
-  }
 
-  .checklist-item:hover {
-    background-color: rgba(255, 255, 255, 0.8);
-    border-color: rgba(0, 0, 0, 0.1);
-    transform: translateY(-1px);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.8);
+      border-color: rgba(0, 0, 0, 0.1);
+      transform: translateY(-1px);
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+      .checkbox-custom {
+        border-color: #16a34a;
+      }
+    }
   }
 
   .checkbox-container {
@@ -148,6 +152,26 @@ const titleColors = {
     width: 20px;
     height: 20px;
     margin: 0;
+
+    &:checked + .checkbox-custom {
+      background-color: #16a34a;
+      border-color: #16a34a;
+
+      .checkbox-icon {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    &:focus + .checkbox-custom {
+      outline: 2px solid var(--color-primary);
+      outline-offset: 2px;
+    }
+
+    &:checked ~ .checklist-text {
+      color: var(--color-text-light);
+      text-decoration: line-through;
+    }
   }
 
   .checkbox-custom {
@@ -172,35 +196,11 @@ const titleColors = {
     transition: all 0.2s ease;
   }
 
-  .checkbox-input:checked + .checkbox-custom {
-    background-color: #16a34a;
-    border-color: #16a34a;
-  }
-
-  .checkbox-input:checked + .checkbox-custom .checkbox-icon {
-    opacity: 1;
-    transform: scale(1);
-  }
-
-  .checkbox-input:focus + .checkbox-custom {
-    outline: 2px solid var(--color-primary);
-    outline-offset: 2px;
-  }
-
-  .checklist-item:hover .checkbox-custom {
-    border-color: #16a34a;
-  }
-
   .checklist-text {
     font-size: 0.9rem;
     line-height: 1.5;
     color: var(--color-text);
     flex: 1;
-  }
-
-  .checkbox-input:checked ~ .checklist-text {
-    color: var(--color-text-light);
-    text-decoration: line-through;
   }
 
   @media (max-width: 768px) {

@@ -23,15 +23,15 @@ const { title = 'a11yado - Accesibilidad accesible' } = Astro.props
     <header>
       <nav aria-label="Navegación principal">
         <div class="nav-container">
-          <a href="/" class="logo">
+          <a href="/a11yado/" class="logo">
             <span class="logo-text">a11yado</span>
             <span class="tagline">Accesibilidad accesible</span>
           </a>
           <ul class="nav-links">
-            <li><a href="/">Inicio</a></li>
-            <li><a href="/guides">Guías Prácticas</a></li>
-            <li><a href="/documentation">Documentación Oficial</a></li>
-            <li><a href="/tools">Herramientas</a></li>
+            <li><a href="/a11yado/">Inicio</a></li>
+            <li><a href="/a11yado/guides">Guías Prácticas</a></li>
+            <li><a href="/a11yado/documentation">Documentación Oficial</a></li>
+            <li><a href="/a11yado/tools">Herramientas</a></li>
             <li>
               <a
                 href="https://github.com/fracergu/a11yado"
@@ -65,19 +65,18 @@ const { title = 'a11yado - Accesibilidad accesible' } = Astro.props
     <footer>
       <div class="footer-content">
         <p>
-          a11yado por <a
+          <a
             href="https://github.com/fracergu"
             target="_blank"
             rel="noopener noreferrer"
             class="author-link"><strong>Francisco Cerdán</strong></a
-          >
+          > - 2025
         </p>
       </div>
     </footer>
   </body>
 </html>
-
-<style>
+<style lang="scss">
   * {
     box-sizing: border-box;
   }
@@ -120,16 +119,16 @@ const { title = 'a11yado - Accesibilidad accesible' } = Astro.props
     display: flex;
     flex-direction: column;
     gap: 0.25rem;
-  }
 
-  .logo:hover {
-    text-decoration: none;
-  }
+    &:hover {
+      text-decoration: none;
+    }
 
-  .logo:focus {
-    outline: 2px solid var(--color-primary);
-    outline-offset: 2px;
-    border-radius: 4px;
+    &:focus {
+      outline: 2px solid var(--color-primary);
+      outline-offset: 2px;
+      border-radius: 4px;
+    }
   }
 
   .logo-text {
@@ -150,32 +149,32 @@ const { title = 'a11yado - Accesibilidad accesible' } = Astro.props
     padding: 0;
     display: flex;
     gap: var(--spacing-lg);
-  }
 
-  .nav-links li {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
+    li {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
 
-  .nav-links a {
-    color: var(--color-text);
-    text-decoration: none;
-    padding: var(--spacing-xs) var(--spacing-sm);
-    border-radius: 4px;
-    transition:
-      background-color 0.2s,
-      color 0.2s;
-  }
+    a {
+      color: var(--color-text);
+      text-decoration: none;
+      padding: var(--spacing-xs) var(--spacing-sm);
+      border-radius: 4px;
+      transition:
+        background-color 0.2s,
+        color 0.2s;
 
-  .nav-links a:hover {
-    background-color: var(--color-surface);
-    color: var(--color-primary);
-  }
+      &:hover {
+        background-color: var(--color-surface);
+        color: var(--color-primary);
+      }
 
-  .nav-links a:focus {
-    outline: 2px solid var(--color-primary);
-    outline-offset: 2px;
+      &:focus {
+        outline: 2px solid var(--color-primary);
+        outline-offset: 2px;
+      }
+    }
   }
 
   .github-link {
@@ -184,14 +183,14 @@ const { title = 'a11yado - Accesibilidad accesible' } = Astro.props
     justify-content: center;
     min-width: 20px;
     min-height: 20px;
-  }
 
-  .github-link svg {
-    transition: transform 0.2s;
-  }
+    svg {
+      transition: transform 0.2s;
+    }
 
-  .github-link:hover svg {
-    transform: scale(1.1);
+    &:hover svg {
+      transform: scale(1.1);
+    }
   }
 
   main {
@@ -214,31 +213,31 @@ const { title = 'a11yado - Accesibilidad accesible' } = Astro.props
   .footer-content {
     max-width: var(--max-width);
     margin: 0 auto;
-  }
 
-  .footer-content p {
-    margin: 0;
-  }
+    p {
+      margin: 0;
+    }
 
-  .footer-content strong {
-    color: var(--color-text);
+    strong {
+      color: var(--color-text);
+    }
   }
 
   .author-link {
     color: inherit;
     text-decoration: none;
     transition: color 0.2s;
-  }
 
-  .author-link:hover {
-    color: var(--color-primary);
-    text-decoration: underline;
-  }
+    &:hover {
+      color: var(--color-primary);
+      text-decoration: underline;
+    }
 
-  .author-link:focus {
-    outline: 2px solid var(--color-primary);
-    outline-offset: 2px;
-    border-radius: 2px;
+    &:focus {
+      outline: 2px solid var(--color-primary);
+      outline-offset: 2px;
+      border-radius: 2px;
+    }
   }
 
   @media (max-width: 768px) {
@@ -275,14 +274,14 @@ const { title = 'a11yado - Accesibilidad accesible' } = Astro.props
     text-decoration: none;
     border-radius: 4px;
     z-index: 1000;
-  }
 
-  .skip-link:focus {
-    top: 6px;
+    &:focus {
+      top: 6px;
+    }
   }
 </style>
 
-<style is:global>
+<style is:global lang="scss">
   :root {
     --color-primary: #2563eb;
     --color-primary-dark: #1d4ed8;
@@ -319,6 +318,20 @@ const { title = 'a11yado - Accesibilidad accesible' } = Astro.props
     font-weight: 600;
     color: var(--color-text);
     margin-top: 0;
+  }
+
+  pre {
+    background: #1e293b;
+    color: #e2e8f0;
+    padding: 1.5rem;
+    border-radius: 8px;
+    overflow-x: auto;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  code {
+    font-family: 'Fira Code', 'Monaco', 'Cascadia Code', monospace;
   }
 
   @media (max-width: 768px) {

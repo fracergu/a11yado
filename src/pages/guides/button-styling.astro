@@ -56,27 +56,40 @@ const checklistItems = [
           </p>
 
           <CardGrid columns="2" gap="lg">
-            <Card title="✅ Formas seguras" variant="success" borderAccent>
+            <Card
+              title="✅ Formas seguras"
+              variant="success"
+              borderAccent
+              subtitle="Formas reconocibles como botones"
+            >
               <div class="button-group">
                 <button class="demo-btn rectangular">Rectangular</button>
                 <button class="demo-btn rounded">Redondeado</button>
                 <button class="demo-btn pill">Píldora</button>
               </div>
-              <p class="demo-desc">Formas reconocibles como botones</p>
             </Card>
 
-            <Card title="⚠️ Formas creativas" variant="warning" borderAccent>
+            <Card
+              title="⚠️ Formas creativas"
+              variant="warning"
+              borderAccent
+              subtitle="Requieren señalizadores adicionales"
+            >
               <div class="button-group">
                 <button class="demo-btn hexagon">Hexágono</button>
                 <button class="demo-btn circle">Círculo</button>
                 <button class="demo-btn diamond">Rombo</button>
               </div>
-              <p class="demo-desc">Requieren señalizadores adicionales</p>
             </Card>
           </CardGrid>
 
           <CardGrid columns="2" gap="lg">
-            <Card title="❌ Inconsistente" variant="danger" borderAccent>
+            <Card
+              title="❌ Inconsistente"
+              variant="danger"
+              borderAccent
+              subtitle="Diferentes formas en el mismo grupo"
+            >
               <div class="button-group">
                 <button class="demo-btn rectangular">Copiar</button>
                 <button class="demo-btn circle">+</button>
@@ -84,7 +97,12 @@ const checklistItems = [
               </div>
             </Card>
 
-            <Card title="✅ Consistente" variant="success" borderAccent>
+            <Card
+              title="✅ Consistente"
+              variant="success"
+              borderAccent
+              subtitle="Todos los botones son rectangulares"
+            >
               <div class="button-group">
                 <button class="demo-btn rectangular">Copiar</button>
                 <button class="demo-btn rectangular">Agregar</button>
@@ -101,29 +119,14 @@ const checklistItems = [
           </p>
 
           <CardGrid columns="3" gap="lg">
-            <Card variant="default">
-              <div
-                style="display: flex; flex-direction: column; align-items: center"
-              >
-                <button class="demo-btn serious">Serio (0px)</button>
-                <Label text="Formal, profesional" variant="small" />
-              </div>
+            <Card variant="default" subtitle="Formal, profesional">
+              <button class="demo-btn serious">Serio (0px)</button>
             </Card>
-            <Card variant="default">
-              <div
-                style="display: flex; flex-direction: column; align-items: center"
-              >
-                <button class="demo-btn moderate">Moderado (4px)</button>
-                <Label text="Equilibrado, amigable" variant="small" />
-              </div>
+            <Card variant="default" subtitle="Equilibrado, amigable">
+              <button class="demo-btn moderate">Moderado (4px)</button>
             </Card>
-            <Card variant="default">
-              <div
-                style="display: flex; flex-direction: column; align-items: center"
-              >
-                <button class="demo-btn playful">Juguetón (50px)</button>
-                <Label text="Casual, divertido" variant="small" />
-              </div>
+            <Card variant="default" subtitle="Casual, divertido">
+              <button class="demo-btn playful">Juguetón (50px)</button>
             </Card>
           </CardGrid>
         </OrderedListItem>
@@ -179,46 +182,31 @@ const checklistItems = [
         <OrderedListItem number={4} title="Técnica de Sombra y Elevación">
           <p>Las sombras comunican elevación e importancia visual.</p>
 
-          <CardGrid columns="3" gap="lg">
-            <Card variant="default">
-              <div
-                style="display: flex; flex-direction: column; align-items: center"
-              >
-                <button class="demo-btn no-shadow">Sin sombra</button>
-                <Label
-                  text="Color 'pesado' para dominio visual"
-                  variant="small"
-                />
-              </div>
+          <CardGrid columns="2" gap="lg">
+            <Card
+              variant="default"
+              subtitle="Color 'pesado' para dominio visual"
+            >
+              <button class="demo-btn no-shadow">Sin sombra</button>
             </Card>
-            <Card variant="default">
-              <div
-                style="display: flex; flex-direction: column; align-items: center"
-              >
-                <button class="demo-btn small-shadow">Sombra pequeña</button>
-                <Label text="Elevación ligera, importancia" variant="small" />
-              </div>
+            <Card variant="default" subtitle="Elevación ligera, importancia">
+              <button class="demo-btn small-shadow">Sombra pequeña</button>
             </Card>
-            <Card variant="default">
-              <div
-                style="display: flex; flex-direction: column; align-items: center"
-              >
-                <button class="demo-btn long-shadow">Sombra larga</button>
-                <Label text="Alta elevación, llama atención" variant="small" />
+            <Card variant="default" subtitle="Alta elevación, llama atención">
+              <button class="demo-btn long-shadow">Sombra larga</button>
+            </Card>
+            <Card
+              title="💡 Estados interactivos"
+              variant="info"
+              subtitle="La sombra aumenta al hacer hover"
+            >
+              <div class="text-center">
+                <button class="demo-btn interactive-shadow"
+                  >Pasa el cursor aquí</button
+                >
               </div>
             </Card>
           </CardGrid>
-
-          <Banner title="💡 Estados interactivos" variant="tip">
-            <div style="text-align: center;">
-              <button class="demo-btn interactive-shadow"
-                >Pasa el cursor aquí</button
-              >
-              <p style="margin-top: 1rem; margin-bottom: 0;">
-                La sombra aumenta al hacer hover
-              </p>
-            </div>
-          </Banner>
         </OrderedListItem>
 
         <OrderedListItem number={5} title="Técnica de Competencia">
@@ -232,44 +220,46 @@ const checklistItems = [
               title="❌ Demasiada competencia"
               variant="danger"
               borderAccent
+              highContrast
+              subtitle="Todo compite por atención"
             >
-              <div class="competing-interface">
-                <div class="fake-header">Tecnologías Frontend</div>
-                <div class="fake-header">Aprende las Mejores Herramientas</div>
-                <div class="button-grid">
-                  <button class="demo-btn competing">React</button>
-                  <button class="demo-btn competing">Vue.js</button>
-                  <button class="demo-btn competing">Angular</button>
-                </div>
-                <input
-                  type="text"
-                  class="competing-input"
-                  placeholder="Buscar frameworks..."
-                />
-                <button class="demo-btn competing">Buscar</button>
+              <div class="fake-header">Tecnologías Frontend</div>
+              <div class="fake-header">Aprende las Mejores Herramientas</div>
+              <div class="button-grid">
+                <button class="demo-btn competing">React</button>
+                <button class="demo-btn competing">Vue.js</button>
+                <button class="demo-btn competing">Angular</button>
               </div>
-              <p class="demo-desc">Todo compite por atención</p>
+              <input
+                type="text"
+                class="competing-input"
+                placeholder="Buscar frameworks..."
+              />
+              <button class="demo-btn competing">Buscar</button>
             </Card>
 
-            <Card title="✅ CTA claro" variant="success" borderAccent>
-              <div class="clear-interface">
-                <h5>Tecnologías Frontend</h5>
-                <p>Aprende las mejores herramientas</p>
-                <div class="product-grid">
-                  <span class="product-tag">React</span>
-                  <span class="product-tag">Vue.js</span>
-                  <span class="product-tag">Angular</span>
-                </div>
-                <input
-                  type="text"
-                  class="clean-input"
-                  placeholder="Buscar frameworks..."
-                />
-                <button class="demo-btn primary prominent"
-                  >Explorar Tecnologías</button
-                >
+            <Card
+              title="✅ CTA claro"
+              variant="success"
+              borderAccent
+              highContrast
+              subtitle="Un CTA principal claro"
+            >
+              <h5>Tecnologías Frontend</h5>
+              <p>Aprende las mejores herramientas</p>
+              <div class="product-grid">
+                <span class="product-tag">React</span>
+                <span class="product-tag">Vue.js</span>
+                <span class="product-tag">Angular</span>
               </div>
-              <p class="demo-desc">Un CTA principal claro</p>
+              <input
+                type="text"
+                class="clean-input"
+                placeholder="Buscar frameworks..."
+              />
+              <button class="demo-btn primary prominent"
+                >Explorar Tecnologías</button
+              >
             </Card>
           </CardGrid>
         </OrderedListItem>
@@ -281,22 +271,30 @@ const checklistItems = [
           </p>
 
           <CardGrid columns="2" gap="lg">
-            <Card title="❌ Muy apretado" variant="danger" borderAccent>
-              <div class="cramped-interface">
-                <button class="demo-btn small">Guardar</button><button
-                  class="demo-btn small">Cancelar</button
-                ><button class="demo-btn small">Eliminar</button>
-              </div>
-              <p class="demo-desc">Difícil de usar, errores accidentales</p>
+            <Card
+              title="❌ Muy apretado"
+              variant="danger"
+              borderAccent
+              highContrast
+              subtitle="Dificultad para usar, errores accidentales"
+            >
+              <button class="demo-btn small">Guardar</button><button
+                class="demo-btn small">Cancelar</button
+              ><button class="demo-btn small">Eliminar</button>
             </Card>
 
-            <Card title="✅ Bien espaciado" variant="success" borderAccent>
+            <Card
+              title="✅ Bien espaciado"
+              variant="success"
+              borderAccent
+              highContrast
+              subtitle="Fácil de usar, targets grandes"
+            >
               <div class="spaced-interface">
                 <button class="demo-btn comfortable">Guardar</button>
                 <button class="demo-btn comfortable">Cancelar</button>
                 <button class="demo-btn comfortable">Eliminar</button>
               </div>
-              <p class="demo-desc">Fácil de usar, targets grandes</p>
             </Card>
           </CardGrid>
 
@@ -665,14 +663,6 @@ const checklistItems = [
     }
   }
 
-  .competing-interface,
-  .clear-interface {
-    background-color: var(--color-background);
-    padding: var(--spacing-md);
-    border-radius: 6px;
-    margin: var(--spacing-md) 0;
-  }
-
   .fake-header {
     background-color: #e5e7eb;
     padding: var(--spacing-sm);
@@ -751,18 +741,8 @@ const checklistItems = [
     padding: var(--spacing-md) var(--spacing-lg);
   }
 
-  .cramped-interface {
-    background-color: var(--color-background);
-    padding: var(--spacing-md);
-    border-radius: 6px;
-    margin: var(--spacing-md) 0;
-  }
-
   .spaced-interface {
-    background-color: var(--color-background);
-    padding: var(--spacing-md);
     border-radius: 6px;
-    margin: var(--spacing-md) 0;
     display: flex;
     gap: var(--spacing-md);
     flex-wrap: wrap;
