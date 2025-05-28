@@ -4,6 +4,9 @@ export interface Props {
 }
 
 const { title = 'a11yado - Accesibilidad accesible' } = Astro.props
+
+// Importar fuentes locales
+import '../styles/fonts.css'
 ---
 
 <!doctype html>
@@ -146,6 +149,8 @@ const { title = 'a11yado - Accesibilidad accesible' } = Astro.props
   </body>
 </html>
 <style lang="scss">
+  @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&display=swap');
+
   * {
     box-sizing: border-box;
   }
