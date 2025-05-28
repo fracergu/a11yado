@@ -1550,6 +1550,8 @@ const colorTools = [
     border-radius: 4px;
     margin: var(--spacing-md) 0;
     gap: 0;
+    overflow-x: auto;
+    min-width: 0;
   }
 
   .step {
@@ -1558,6 +1560,7 @@ const colorTools = [
     align-items: center;
     gap: var(--spacing-xs);
     position: relative;
+    flex-shrink: 0;
   }
 
   .step-circle {
@@ -1580,6 +1583,7 @@ const colorTools = [
     margin: 0 var(--spacing-sm);
     align-self: flex-start;
     margin-top: 15px;
+    flex-shrink: 0;
   }
 
   .step-label {
@@ -1587,6 +1591,10 @@ const colorTools = [
     text-align: center;
     margin-top: var(--spacing-xs);
     font-weight: 500;
+    white-space: nowrap;
+    max-width: 80px;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   .step-number {
@@ -1685,19 +1693,81 @@ const colorTools = [
 
     .progress-tracker {
       padding: var(--spacing-md);
+      flex-direction: column;
+      align-items: stretch;
+      gap: 0;
+      overflow-x: visible;
+      justify-content: flex-start;
     }
 
-    .step-line {
-      width: 40px;
-    }
+    .step {
+      flex-direction: row;
+      align-items: center;
+      gap: var(--spacing-md);
+      position: relative;
+      width: 100%;
+      padding: var(--spacing-sm) 0;
 
-    .step-label {
-      font-size: 0.8rem;
+      /* Línea vertical que conecta todos los pasos excepto el último */
+      &:not(:last-child)::after {
+        content: '';
+        position: absolute;
+        left: 14px; /* Centro del círculo de 28px */
+        top: 100%;
+        width: 2px;
+        height: var(--spacing-md);
+        background-color: var(--color-border);
+        z-index: 1;
+      }
+
+      /* Extender línea desde el penúltimo hasta el último paso */
+      &:nth-last-child(2)::after {
+        height: calc(
+          var(--spacing-md) + var(--spacing-sm) * 2 + 28px
+        ); /* Llega hasta el centro del último círculo */
+      }
+
+      &.completed:not(:last-child)::after {
+        background-color: #16a34a;
+      }
+
+      &.current:not(:last-child)::after {
+        background-color: #2563eb;
+      }
+
+      /* Líneas punteadas para pasos pendientes */
+      &.pending:not(:last-child)::after {
+        background: repeating-linear-gradient(
+          to bottom,
+          var(--color-border) 0px,
+          var(--color-border) 4px,
+          transparent 4px,
+          transparent 8px
+        );
+      }
     }
 
     .step-circle {
       width: 28px;
       height: 28px;
+      font-size: 0.75rem;
+      flex-shrink: 0;
+      z-index: 2;
+    }
+
+    .step-line {
+      display: none; /* Ocultar líneas horizontales en móvil */
+    }
+
+    .step-label {
+      font-size: 0.875rem;
+      max-width: none;
+      white-space: normal;
+      text-align: left;
+      margin-top: 0;
+      flex: 1;
+      overflow: visible;
+      text-overflow: clip;
     }
   }
 </style>
