@@ -1,0 +1,135 @@
+---
+export interface Props {
+  title: string
+  description: string
+  topics: string[]
+  status: 'available' | 'coming-soon'
+  href?: string
+}
+
+const { title, description, topics, status, href } = Astro.props
+---
+
+<div class={`guide-card ${status}`}>
+  <div class="guide-header">
+    <h3>{title}</h3>
+    <span class={`status ${status}`}>
+      {status === 'available' ? 'Disponible' : 'Próximamente'}
+    </span>
+  </div>
+  <p>{description}</p>
+  <div class="guide-topics">
+    {topics.map((topic) => <span class="topic">{topic}</span>)}
+  </div>
+  {
+    href && status === 'available' && (
+      <a href={href} class="guide-link">
+        {' '}
+        Ir a la guía →{' '}
+      </a>
+    )
+  }
+</div>
+
+<style lang="scss">
+  .guide-card {
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    padding: var(--spacing-lg);
+    transition:
+      transform 0.2s,
+      box-shadow 0.2s;
+    position: relative;
+
+    &:hover {
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    &.available {
+      border-color: var(--color-primary);
+      border-width: 2px;
+    }
+
+    &.coming-soon {
+      opacity: 0.7;
+    }
+
+    p {
+      color: var(--color-text-light);
+      margin-bottom: var(--spacing-md);
+      line-height: 1.5;
+    }
+  }
+
+  .guide-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-md);
+
+    h3 {
+      color: var(--color-primary);
+      flex: 1;
+      margin: 0;
+    }
+  }
+
+  .status {
+    font-size: 0.75rem;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-weight: 600;
+    text-transform: uppercase;
+    white-space: nowrap;
+
+    &.available {
+      background-color: #16a34a;
+      color: white;
+    }
+
+    &.coming-soon {
+      background-color: #f59e0b;
+      color: white;
+    }
+  }
+
+  .guide-topics {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-xs);
+    margin-bottom: var(--spacing-lg);
+  }
+
+  .topic {
+    background-color: var(--color-border);
+    color: var(--color-text);
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-size: 0.75rem;
+    font-weight: 500;
+  }
+
+  .guide-link {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    color: var(--color-primary);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.2s;
+
+    &:hover {
+      color: var(--color-primary-dark);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .guide-header {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+</style>
+
