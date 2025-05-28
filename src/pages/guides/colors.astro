@@ -37,12 +37,8 @@ const colorTools = [
     <section>
       <h2>Conceptos básicos</h2>
 
-      <CardGrid columns="2">
-        <Card
-          title="Elementos que llevan información"
-          variant="primary"
-          borderAccent
-        >
+      <BannerGrid columns="auto" gap="lg">
+        <Banner title="Elementos que llevan información" variant="info">
           <ul>
             <li>Texto</li>
             <li>
@@ -51,8 +47,8 @@ const colorTools = [
             </li>
             <li>Iconos independientes</li>
           </ul>
-        </Card>
-        <Card title="Elementos decorativos" variant="primary" borderAccent>
+        </Banner>
+        <Banner title="Elementos decorativos" variant="info">
           <ul>
             <li>Elementos desactivados (Botones, controles)</li>
             <li>Patrones de fondo</li>
@@ -60,43 +56,36 @@ const colorTools = [
             <li>Fotografías</li>
             <li>Logotipos</li>
           </ul>
-        </Card>
-      </CardGrid>
-
-      <Banner title="¿Por qué es importante?" variant="info">
-        <ul>
-          <li>
-            Las condiciones de iluminación ambiental pueden afectar la
-            visibilidad
-          </li>
-          <li>Con la edad, se reduce la capacidad de percibir el contraste</li>
-          <li>
-            Las personas con discapacidades visuales necesitan mayor contraste
-          </li>
-        </ul>
-      </Banner>
+        </Banner>
+        <Banner title="¿Por qué es importante?" variant="info">
+          <ul>
+            <li>
+              Las condiciones de iluminación ambiental pueden afectar la
+              visibilidad
+            </li>
+            <li>
+              Con la edad, se reduce la capacidad de percibir el contraste
+            </li>
+            <li>
+              Las personas con discapacidades visuales necesitan mayor contraste
+            </li>
+          </ul>
+        </Banner>
+      </BannerGrid>
     </section>
 
     <section>
       <h2>Requisitos de contraste</h2>
 
-      <CardGrid columns="auto" minWidth="280px">
-        <Card
-          title="Elementos decorativos y deshabilitados"
-          variant="primary"
-          borderAccent
-        >
+      <BannerGrid columns="auto" gap="lg">
+        <Banner title="Elementos decorativos y deshabilitados" variant="info">
           <p><strong>Sin requisito de contraste</strong></p>
           <p class="small-text">
             Aunque no sea obligatorio, se recomienda mantener buen contraste
           </p>
-        </Card>
+        </Banner>
 
-        <Card
-          title="Elementos que llevan información"
-          variant="primary"
-          borderAccent
-        >
+        <Banner title="Elementos que llevan información" variant="info">
           <p><strong>Mínimo 4.5:1</strong></p>
           <p class="small-text">
             Según <a
@@ -105,8 +94,8 @@ const colorTools = [
               rel="noopener">WCAG 1.4.3: Contrast (Minimum)</a
             >
           </p>
-        </Card>
-        <Card title="Excepciones con 3:1" variant="primary" borderAccent>
+        </Banner>
+        <Banner title="Excepciones con 3:1" variant="info">
           <ul>
             <li>
               <strong>Texto grande:</strong> 14pt negrita+ o 18pt regular+ según
@@ -128,8 +117,8 @@ const colorTools = [
               <strong>Objetos gráficos:</strong> partes necesarias según WCAG 1.4.11
             </li>
           </ul>
-        </Card>
-      </CardGrid>
+        </Banner>
+      </BannerGrid>
 
       <Banner title="💡 Consejo" variant="warning">
         <p>No busques los mínimos, intenta superarlos.</p>
@@ -193,42 +182,42 @@ const colorTools = [
       <h2>Ejemplos prácticos</h2>
 
       <h3>Contraste insuficiente</h3>
-      <CardGrid columns="2" gap="lg">
-        <Card variant="danger" borderAccent title="Ratio: 2.8:1 ❌">
+      <BannerGrid columns="2" gap="lg">
+        <Banner title="❌ Ratio: 2.8:1 " variant="bad" highContrast>
           <p
             style="color: #999; background: #fff; padding: 1rem; border-radius: 4px;"
           >
             Este texto tiene contraste insuficiente (2.8:1)
           </p>
-        </Card>
+        </Banner>
 
-        <Card variant="danger" borderAccent title="Ratio: 1.5:1 ❌">
+        <Banner title="❌ Ratio: 1.5:1 " variant="bad" highContrast>
           <p
             style="color: #ffcc00; background: #fff; padding: 1rem; border-radius: 4px;"
           >
             Amarillo sobre blanco es difícil de leer (1.5:1)
           </p>
-        </Card>
-      </CardGrid>
+        </Banner>
+      </BannerGrid>
 
       <h3>Contraste adecuado</h3>
-      <CardGrid columns="2" gap="lg">
-        <Card variant="success" borderAccent title="Ratio: 12.6:1 ✅">
+      <BannerGrid columns="2" gap="lg">
+        <Banner title="✅ Ratio: 12.6:1 " variant="good" highContrast>
           <p
             style="color: #333; background: #fff; padding: 1rem; border-radius: 4px;"
           >
             Este texto tiene buen contraste (12.6:1)
           </p>
-        </Card>
+        </Banner>
 
-        <Card variant="success" borderAccent title="Ratio: 4.5:1 ✅">
+        <Banner title="✅ Ratio: 4.5:1 " variant="good" highContrast>
           <p
             style="color: #fff; background: #2563eb; padding: 1rem; border-radius: 4px;"
           >
             Blanco sobre azul oscuro (4.5:1)
           </p>
-        </Card>
-      </CardGrid>
+        </Banner>
+      </BannerGrid>
     </section>
 
     <section>
@@ -349,8 +338,8 @@ const colorTools = [
 
       <div class="independence-tips">
         <h3>Técnicas para lograr independencia de color</h3>
-        <CardGrid columns="auto" minWidth="250px">
-          <Card title="🔗 Enlaces" variant="primary" borderAccent>
+        <BannerGrid>
+          <Banner title="🔗 Enlaces" variant="info">
             <ul>
               <li><strong>En texto:</strong> Subrayado + color</li>
               <li><strong>Botones:</strong> Negrita + contraste alto</li>
@@ -358,44 +347,44 @@ const colorTools = [
                 <strong>Al pasar el cursor:</strong> Cambios estructurales adicionales
               </li>
             </ul>
-          </Card>
+          </Banner>
 
-          <Card title="⚠️ Estados de error" variant="primary" borderAccent>
+          <Banner title="⚠️ Estados de error" variant="info">
             <ul>
               <li>Icono de advertencia</li>
               <li>Borde más grueso</li>
               <li>Cambio en la posición (sangría)</li>
               <li>Mensaje de texto explicativo</li>
             </ul>
-          </Card>
+          </Banner>
 
-          <Card title="📊 Gráficos" variant="primary" borderAccent>
+          <Banner title="📊 Gráficos" variant="info">
             <ul>
               <li>Patrones o texturas diferentes</li>
               <li>Formas variadas</li>
               <li>Etiquetas directas</li>
               <li>Líneas punteadas/discontinuas</li>
             </ul>
-          </Card>
+          </Banner>
 
-          <Card title="🎯 Estados seleccionados" variant="primary" borderAccent>
+          <Banner title="🎯 Estados seleccionados" variant="info">
             <ul>
               <li>Indicadores de forma (→ ● ◆)</li>
               <li>Cambios de tamaño</li>
               <li>Bordes adicionales</li>
               <li>Cambios tipográficos (negrita)</li>
             </ul>
-          </Card>
+          </Banner>
 
-          <Card title="📋 Progress trackers" variant="primary" borderAccent>
+          <Banner title="📋 Progress trackers" variant="info">
             <ul>
               <li>✅ Iconos para pasos completados</li>
               <li>🔵 Borde grueso + sombra para paso actual</li>
               <li>⚪ Bordes punteados para pasos futuros</li>
               <li>📊 Líneas sólidas vs punteadas</li>
             </ul>
-          </Card>
-        </CardGrid>
+          </Banner>
+        </BannerGrid>
       </div>
     </section>
 

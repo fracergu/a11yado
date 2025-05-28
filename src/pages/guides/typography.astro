@@ -7,7 +7,8 @@ import OrderedList from '../../components/OrderedList.astro'
 import OrderedListItem from '../../components/OrderedListItem.astro'
 import CardGrid from '../../components/CardGrid.astro'
 import Card from '../../components/Card.astro'
-import Label from '../../components/Label.astro'
+import BannerGrid from '../../components/BannerGrid.astro'
+import ToolsSection from '../../components/ToolsSection.astro'
 
 const checklistItems = [
   'Tamaño mínimo de 16px para texto de contenido',
@@ -17,6 +18,39 @@ const checklistItems = [
   'Contraste adecuado entre texto y fondo',
   'Espaciado entre párrafos suficiente',
   'Longitud de línea entre 45-75 caracteres',
+]
+
+const typographyTools = [
+  {
+    name: 'Atkinson Hyperlegible Font',
+    description: 'Tipografía gratuita diseñada para baja visión',
+    url: 'https://brailleinstitute.org/freefont',
+  },
+  {
+    name: 'Inter en Google Fonts',
+    description: 'Tipografía versátil y legible',
+    url: 'https://fonts.google.com/specimen/Inter',
+  },
+  {
+    name: 'WebAIM Contrast Checker',
+    description: 'Verificador de contraste de colores',
+    url: 'https://webaim.org/resources/contrastchecker/',
+  },
+  {
+    name: 'WCAG 1.4.4: Resize Text',
+    description: 'Especificación para texto redimensionable',
+    url: 'https://www.w3.org/WAI/WCAG22/Understanding/resize-text.html',
+  },
+  {
+    name: 'WCAG 1.4.12: Text Spacing',
+    description: 'Especificación oficial para espaciado de texto',
+    url: 'https://www.w3.org/WAI/WCAG22/Understanding/text-spacing.html',
+  },
+  {
+    name: 'WCAG 1.4.3: Contrast (Minimum)',
+    description: 'Requisitos mínimos de contraste',
+    url: 'https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html',
+  },
 ]
 ---
 
@@ -96,13 +130,13 @@ const checklistItems = [
             </Card>
           </CardGrid>
 
-          <Banner title="📱 Consideración móvil" variant="warning">
+          <Card title="📱 Consideración móvil" variant="info" borderAccent>
             <p>
               En dispositivos móviles, considera usar <strong>18px o más</strong
               >
               para mejorar la legibilidad en pantallas pequeñas.
             </p>
-          </Banner>
+          </Card>
         </OrderedListItem>
 
         <OrderedListItem number={2} title="Espaciado de líneas (interlineado)">
@@ -366,8 +400,8 @@ const checklistItems = [
     <section>
       <h2>Consideraciones especiales</h2>
 
-      <CardGrid columns="2" gap="lg">
-        <Card title="🧠 Para usuarios con dislexia" variant="info" borderAccent>
+      <BannerGrid>
+        <Banner title="🧠 Para usuarios con dislexia" variant="info">
           <ul>
             <li>
               Evita tipografías donde "b", "d", "p", "q" se vean idénticas
@@ -378,13 +412,9 @@ const checklistItems = [
             <li>Usa párrafos cortos (máximo 3-4 líneas)</li>
             <li>Considera permitir que el usuario cambie la tipografía</li>
           </ul>
-        </Card>
+        </Banner>
 
-        <Card
-          title="👀 Para usuarios con baja visión"
-          variant="info"
-          borderAccent
-        >
+        <Banner title="👀 Para usuarios con baja visión" variant="info">
           <ul>
             <li>
               Asegúrate de que el texto se amplíe hasta 200% sin problemas
@@ -393,14 +423,14 @@ const checklistItems = [
             <li>Evita itálicas en bloques largos de texto</li>
             <li>Proporciona modo alto contraste</li>
           </ul>
-        </Card>
-      </CardGrid>
+        </Banner>
+      </BannerGrid>
     </section>
 
     <section>
       <h2>Implementación en CSS</h2>
 
-      <Card title="💻 Ejemplo de CSS accesible" variant="default" highContrast>
+      <Card title="💻 Ejemplo de CSS accesible" variant="default">
         <pre><code>{`/* Tipografía base accesible */
 body {
   font-family: 'Atkinson Hyperlegible', 'Inter', 'Open Sans', sans-serif;
@@ -440,168 +470,112 @@ h1, h2, h3 {
       </Card>
     </section>
 
-    <section>
-      <h2>Recursos adicionales</h2>
-
-      <CardGrid columns="2" gap="lg">
-        <Card title="🔗 Enlaces útiles" variant="default">
-          <ul>
-            <li>
-              <a
-                href="https://brailleinstitute.org/freefont"
-                target="_blank"
-                rel="noopener">Atkinson Hyperlegible Font (gratis)</a
-              >
-            </li>
-            <li>
-              <a
-                href="https://fonts.google.com/specimen/Inter"
-                target="_blank"
-                rel="noopener">Inter en Google Fonts</a
-              >
-            </li>
-            <li>
-              <a
-                href="https://webaim.org/resources/contrastchecker/"
-                target="_blank"
-                rel="noopener">WebAIM Contrast Checker</a
-              >
-            </li>
-          </ul>
-        </Card>
-
-        <Card title="📚 Especificaciones WCAG" variant="default">
-          <ul>
-            <li>
-              <a
-                href="https://www.w3.org/WAI/WCAG22/Understanding/resize-text.html"
-                target="_blank"
-                rel="noopener">WCAG 1.4.4: Resize Text</a
-              >
-            </li>
-            <li>
-              <a
-                href="https://www.w3.org/WAI/WCAG22/Understanding/text-spacing.html"
-                target="_blank"
-                rel="noopener">WCAG 1.4.12: Text Spacing</a
-              >
-            </li>
-            <li>
-              <a
-                href="https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html"
-                target="_blank"
-                rel="noopener">WCAG 1.4.3: Contrast (Minimum)</a
-              >
-            </li>
-          </ul>
-        </Card>
-      </CardGrid>
-    </section>
-
     <Checklist title="Lista de verificación" items={checklistItems} />
+
+    <ToolsSection tools={typographyTools} />
   </article>
-</Layout>
 
-<style lang="scss">
-  @import url('https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&display=swap');
-  @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap');
-  @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&display=swap');
+  <style lang="scss">
+    @import url('https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&display=swap');
 
-  article {
-    max-width: 90ch;
-  }
-
-  .small-text {
-    font-size: 12px;
-  }
-
-  .normal-text {
-    font-size: 16px;
-  }
-
-  .tight-spacing {
-    line-height: 0.5;
-  }
-
-  .proper-spacing {
-    line-height: 1.5;
-  }
-
-  /* Muestras de tipografías */
-  .font-sample {
-    margin-bottom: 1.5rem;
-    padding: 1rem;
-    border-left: 3px solid #e2e8f0;
-
-    strong {
-      display: block;
-      margin-bottom: 0.5rem;
-      color: #2d3748;
+    article {
+      max-width: 90ch;
     }
-  }
 
-  .confusing-chars {
-    font-size: 1.2em;
-    background: #fff;
-    padding: 0.5rem;
-    border-radius: 4px;
-    margin-top: 0.5rem;
-    letter-spacing: 0.2em;
-  }
+    .small-text {
+      font-size: 12px;
+    }
 
-  .atkinson {
-    font-family: 'Atkinson Hyperlegible', sans-serif;
-  }
+    .normal-text {
+      font-size: 16px;
+    }
 
-  .opensans {
-    font-family: 'Open Sans', sans-serif;
-  }
+    .tight-spacing {
+      line-height: 0.5;
+    }
 
-  .times {
-    font-family: 'Times New Roman', serif;
-  }
+    .proper-spacing {
+      line-height: 1.5;
+    }
 
-  .arial {
-    font-family: 'Arial', sans-serif;
-  }
+    /* Muestras de tipografías */
+    .font-sample {
+      margin-bottom: 1.5rem;
+      padding: 1rem;
+      border-left: 3px solid #e2e8f0;
 
-  /* Demos de alineación */
-  .justified-text {
-    text-align: justify;
-    hyphens: auto;
-  }
+      strong {
+        display: block;
+        margin-bottom: 0.5rem;
+        color: #2d3748;
+      }
+    }
 
-  .left-aligned {
-    text-align: left;
-  }
+    .confusing-chars {
+      font-size: 1.2em;
+      background: #fff;
+      padding: 0.5rem;
+      border-radius: 4px;
+      margin-top: 0.5rem;
+      letter-spacing: 0.2em;
+    }
 
-  /* Demos de contraste */
-  .contrast-demo {
-    padding: 1rem;
-    border-radius: 4px;
-  }
+    .atkinson {
+      font-family: 'Atkinson Hyperlegible', sans-serif;
+    }
 
-  .low-contrast {
-    color: #999;
-    background: #fff;
-  }
+    .opensans {
+      font-family: 'Open Sans', sans-serif;
+    }
 
-  .optimal-contrast {
-    color: #2d3748;
-    background: #fdfdfd;
-  }
+    .times {
+      font-family: 'Times New Roman', serif;
+    }
 
-  .extreme-contrast {
-    color: #000;
-    background: #fff;
-  }
+    .arial {
+      font-family: 'Arial', sans-serif;
+    }
 
-  /* Demos de longitud de línea */
-  .line-too-long {
-    max-width: none;
-  }
+    /* Demos de alineación */
+    .justified-text {
+      text-align: justify;
+      hyphens: auto;
+    }
 
-  .line-optimal {
-    max-width: 65ch;
-  }
-</style>
+    .left-aligned {
+      text-align: left;
+    }
+
+    /* Demos de contraste */
+    .contrast-demo {
+      padding: 1rem;
+      border-radius: 4px;
+    }
+
+    .low-contrast {
+      color: #999;
+      background: #fff;
+    }
+
+    .optimal-contrast {
+      color: #2d3748;
+      background: #fdfdfd;
+    }
+
+    .extreme-contrast {
+      color: #000;
+      background: #fff;
+    }
+
+    /* Demos de longitud de línea */
+    .line-too-long {
+      max-width: none;
+    }
+
+    .line-optimal {
+      max-width: 65ch;
+    }
+  </style>
+</Layout>

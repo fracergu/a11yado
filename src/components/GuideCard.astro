@@ -13,9 +13,11 @@ const { title, description, topics, status, href } = Astro.props
 <div class={`guide-card ${status}`}>
   <div class="guide-header">
     <h3>{title}</h3>
-    <span class={`status ${status}`}>
-      {status === 'available' ? 'Disponible' : 'Próximamente'}
-    </span>
+    {
+      status === 'coming-soon' && (
+        <span class={`status ${status}`}>Próximamente</span>
+      )
+    }
   </div>
   <p>{description}</p>
   <div class="guide-topics">
@@ -84,11 +86,6 @@ const { title, description, topics, status, href } = Astro.props
     text-transform: uppercase;
     white-space: nowrap;
 
-    &.available {
-      background-color: #16a34a;
-      color: white;
-    }
-
     &.coming-soon {
       background-color: #f59e0b;
       color: white;
@@ -129,6 +126,10 @@ const { title, description, topics, status, href } = Astro.props
     .guide-header {
       flex-direction: column;
       align-items: flex-start;
+    }
+
+    .guide-topics {
+      display: none;
     }
   }
 </style>

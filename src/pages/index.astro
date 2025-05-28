@@ -1,9 +1,8 @@
 ---
 import Header from '../components/Header.astro'
 import Layout from '../layouts/Layout.astro'
-import CardGrid from '../components/CardGrid.astro'
-import Card from '../components/Card.astro'
 import Banner from '../components/Banner.astro'
+import BannerGrid from '../components/BannerGrid.astro'
 ---
 
 <Layout title="a11yado - Accesibilidad accesible">
@@ -30,32 +29,32 @@ import Banner from '../components/Banner.astro'
 
     <section>
       <h2>Enfoque</h2>
-      <CardGrid columns="2">
-        <Card title="Directo al grano" variant="primary" borderAccent>
+      <BannerGrid columns="2">
+        <Banner title="🎯 Directo al grano" variant="info">
           <p>
             Sin introducciones largas ni teoría excesiva. Conceptos claros con
             ejemplos prácticos.
           </p>
-        </Card>
-        <Card title="Accesible por diseño" variant="primary" borderAccent>
+        </Banner>
+        <Banner title="♿ Accesible por diseño" variant="info">
           <p>
             Esta página practica lo que enseña. Cada elemento está pensado para
             ser accesible.
           </p>
-        </Card>
-        <Card title="Fácil de implementar" variant="primary" borderAccent>
+        </Banner>
+        <Banner title="⚡ Fácil de implementar" variant="info">
           <p>
             Guías paso a paso que puedes aplicar inmediatamente en tus
             proyectos.
           </p>
-        </Card>
-        <Card title="Complementario" variant="primary" borderAccent>
+        </Banner>
+        <Banner title="📚 Complementario" variant="info">
           <p>
             Los conceptos aquí simplificados siempre deben contrastarse con la
             <a href="/a11yado/documentation">documentación oficial</a>.
           </p>
-        </Card>
-      </CardGrid>
+        </Banner>
+      </BannerGrid>
     </section>
 
     <section>

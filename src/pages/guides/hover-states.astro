@@ -1,7 +1,5 @@
 ---
 import Layout from '../../layouts/Layout.astro'
-import Card from '../../components/Card.astro'
-import CardGrid from '../../components/CardGrid.astro'
 import Checklist from '../../components/Checklist.astro'
 import ToolsSection from '../../components/ToolsSection.astro'
 import Banner from '../../components/Banner.astro'
@@ -57,7 +55,7 @@ const hoverTools = [
         usuarios con ratón cuando se implementan correctamente.
       </p>
 
-      <BannerGrid columns="2" gap="lg">
+      <BannerGrid columns="auto" gap="lg">
         <Banner title="❌ No son obligatorios para WCAG" variant="info">
           <p>
             Si tu sitio no tiene estados hover, aún puede pasar una auditoría
@@ -65,7 +63,7 @@ const hoverTools = [
           </p>
         </Banner>
 
-        <Banner title="✅ Sí son mejores prácticas" variant="good">
+        <Banner title="✅ Sí son mejores prácticas" variant="info">
           <p>
             Mejoran la usabilidad para usuarios con ratón y ayudan a identificar
             elementos interactivos de forma inmediata.
@@ -113,7 +111,7 @@ const hoverTools = [
             cambio. Debe incluir cambios estructurales como borde, subrayado o
             forma.
           </p>
-          <Banner title="💡 Técnicas recomendadas" variant="tip">
+          <Banner title="💡 Técnicas recomendadas" variant="warning">
             <ul>
               <li>Cambio de color + borde adicional</li>
               <li>Cambio de color + subrayado</li>
@@ -258,60 +256,63 @@ const hoverTools = [
         >: ser desechable, hover-able y persistente.
       </p>
 
-      <CardGrid columns="auto" minWidth="300px">
-        <Card title="✅ Tooltip accesible" variant="success" borderAccent>
+      <BannerGrid columns="3" minWidth="300px">
+        <Banner title="✅ Tooltip accesible" variant="good">
           <div class="tooltip-demo">
-            <button class="tooltip-btn accessible-tooltip"
-              >Hover para tooltip accesible</button
+            <button
+              class="tooltip-btn accessible-tooltip"
+              id="accessible-tooltip-btn"
             >
-            <div class="tooltip-content">
-              <p>Este tooltip se puede:</p>
+              Hover o clic para tooltip accesible
+            </button>
+            <div
+              class="tooltip-content accessible-tooltip-content"
+              id="accessible-tooltip"
+              role="tooltip"
+            >
+              <p>Este tooltip cumple WCAG 1.4.13:</p>
               <ul>
-                <li>Desechar con Escape</li>
-                <li>Hacer hover sobre él</li>
-                <li>Permanece visible</li>
+                <li>✅ Permanece al hacer hover sobre él</li>
+                <li>✅ Persistente hasta ser desechado</li>
+                <li>✅ Funciona con clic y hover</li>
               </ul>
             </div>
           </div>
-        </Card>
+        </Banner>
 
-        <Card title="❌ Tooltip problemático" variant="danger" borderAccent>
+        <Banner title="❌ Tooltip problemático" variant="bad">
           <div class="tooltip-demo">
-            <button class="tooltip-btn problematic-tooltip"
-              >Hover para tooltip problemático</button
-            >
-            <div class="tooltip-content">
-              <p>Este tooltip:</p>
+            <button class="tooltip-btn problematic-tooltip">
+              Hover para tooltip problemático
+            </button>
+            <div class="tooltip-content problematic-tooltip-content">
+              <p>Este tooltip falla WCAG 1.4.13:</p>
               <ul>
-                <li>Desaparece al mover el ratón</li>
-                <li>No se puede desechar con teclado</li>
-                <li>No es hover-able</li>
+                <li>❌ Desaparece al mover el ratón</li>
+                <li>❌ No es hover-able (desaparece)</li>
+                <li>❌ Solo funciona con hover</li>
               </ul>
             </div>
           </div>
-        </Card>
+        </Banner>
 
-        <Card title="🎯 Estados de cursor" variant="primary" borderAccent>
-          <p>
-            Los cambios de cursor (flecha → mano) están controlados por el
-            navegador y están exentos de requisitos de contraste WCAG.
-          </p>
+        <Banner
+          title="🎯 Estados de cursor"
+          variant="info"
+          subtitle="Los cambios de cursor (flecha → mano) están controlados por el navegador y están exentos de requisitos de contraste WCAG."
+        >
           <div class="cursor-demo">
             <button class="cursor-btn">Cambio de cursor nativo</button>
           </div>
-        </Card>
-      </CardGrid>
+        </Banner>
+      </BannerGrid>
     </section>
 
     <section>
       <h2>Mejores prácticas técnicas</h2>
 
-      <CardGrid columns="auto" minWidth="300px">
-        <Card
-          title="💻 CSS: :hover y :focus juntos"
-          variant="primary"
-          borderAccent
-        >
+      <BannerGrid columns="3" minWidth="300px">
+        <Banner title="💻 CSS: :hover y :focus juntos" variant="info">
           <p>
             Usa ambos pseudo-selectores para crear experiencias consistentes.
           </p>
@@ -321,13 +322,9 @@ const hoverTools = [
   outline-offset: 2px;
 }`}
 </code></pre>
-        </Card>
+        </Banner>
 
-        <Card
-          title="🎨 Diseño: Señalizadores múltiples"
-          variant="primary"
-          borderAccent
-        >
+        <Banner title="🎨 Diseño: Señalizadores múltiples" variant="info">
           <p>
             Combina cambios de color con cambios estructurales para mejor
             accesibilidad.
@@ -335,13 +332,9 @@ const hoverTools = [
           <div class="signifier-demo">
             <button class="multi-signifier-btn">Color + Borde + Sombra</button>
           </div>
-        </Card>
+        </Banner>
 
-        <Card
-          title="⌨️ Teclado: Funcionalidad equivalente"
-          variant="primary"
-          borderAccent
-        >
+        <Banner title="⌨️ Teclado: Funcionalidad equivalente" variant="info">
           <p>
             Cualquier acción de hover debe tener un equivalente de teclado
             accesible.
@@ -350,8 +343,8 @@ const hoverTools = [
             <button class="keyboard-equivalent">Funciona con Tab y hover</button
             >
           </div>
-        </Card>
-      </CardGrid>
+        </Banner>
+      </BannerGrid>
     </section>
 
     <Checklist
@@ -363,8 +356,8 @@ const hoverTools = [
     <ToolsSection title="Herramientas útiles" tools={hoverTools}>
       <p>Para verificar la accesibilidad de tus estados hover:</p>
 
-      <CardGrid columns="auto" minWidth="300px">
-        <Card title="🔍 Pruebas de contraste" variant="info" borderAccent>
+      <BannerGrid columns="auto" minWidth="300px">
+        <Banner title="🔍 Pruebas de contraste" variant="info">
           <ul>
             <li>
               <strong>Regla 3:1:</strong> Para elementos gráficos (bordes, iconos)
@@ -372,16 +365,16 @@ const hoverTools = [
             <li><strong>Regla 4.5:1:</strong> Para texto en elementos</li>
             <li><strong>Prueba:</strong> Entre estados default y hover</li>
           </ul>
-        </Card>
+        </Banner>
 
-        <Card title="👥 Pruebas de usabilidad" variant="info" borderAccent>
+        <Banner title="👥 Pruebas de usabilidad" variant="info">
           <ul>
             <li><strong>Pregunta:</strong> "¿Qué estado representa esto?"</li>
             <li><strong>Observa:</strong> Si reconocen interactividad</li>
             <li><strong>Valida:</strong> Consistencia entre hover y focus</li>
           </ul>
-        </Card>
-      </CardGrid>
+        </Banner>
+      </BannerGrid>
     </ToolsSection>
   </article>
 </Layout>
@@ -487,6 +480,7 @@ const hoverTools = [
   .tooltip-demo {
     position: relative;
     margin-bottom: var(--spacing-md);
+    display: inline-block; /* Ensure proper positioning context */
   }
 
   .tooltip-btn {
@@ -497,22 +491,60 @@ const hoverTools = [
     border-radius: 6px;
     cursor: pointer;
     font-weight: 500;
+    display: block; /* Ensure button takes full width of container */
   }
 
-  .accessible-tooltip {
-    &:hover + .tooltip-content,
-    &:focus + .tooltip-content {
+  /* Accessible tooltip - compliant with WCAG 1.4.13 */
+  .accessible-tooltip-content {
+    display: none;
+    position: absolute;
+    top: calc(100% - 1px); /* Slight overlap to ensure continuous area */
+    left: 0;
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 6px;
+    padding: var(--spacing-sm);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    z-index: 10;
+    min-width: 250px;
+
+    &.show {
       display: block;
+    }
+
+    /* Important: tooltip content must be hoverable */
+    &:hover {
+      display: block;
+    }
+
+    p {
+      margin: 0 0 var(--spacing-xs) 0;
+      font-size: 0.875rem;
+    }
+
+    ul {
+      margin: 0;
+      padding-left: var(--spacing-lg);
+      font-size: 0.875rem;
+    }
+
+    li {
+      margin-bottom: var(--spacing-xs);
     }
   }
 
-  .problematic-tooltip {
-    &:hover + .tooltip-content {
-      display: block;
-    }
+  /* Create a continuous hover area using the container */
+  .tooltip-demo:hover .accessible-tooltip-content,
+  .accessible-tooltip:focus + .accessible-tooltip-content {
+    display: block;
   }
 
-  .tooltip-content {
+  /* Problematic tooltip - violates WCAG 1.4.13 */
+  .problematic-tooltip:hover + .problematic-tooltip-content {
+    display: block;
+  }
+
+  .problematic-tooltip-content {
     display: none;
     position: absolute;
     top: 100%;
@@ -523,8 +555,11 @@ const hoverTools = [
     padding: var(--spacing-sm);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     z-index: 10;
-    min-width: 200px;
+    min-width: 250px;
     margin-top: var(--spacing-xs);
+
+    /* This tooltip is NOT hoverable - it disappears */
+    /* No hover state on the tooltip content itself */
 
     p {
       margin: 0 0 var(--spacing-xs) 0;
@@ -606,3 +641,59 @@ const hoverTools = [
     }
   }
 </style>
+
+<script>
+  // Accessible tooltip implementation following WCAG 1.4.13
+  document.addEventListener('DOMContentLoaded', function () {
+    const tooltipBtn = document.getElementById('accessible-tooltip-btn')
+    const tooltip = document.getElementById('accessible-tooltip')
+    let isTooltipVisible = false
+
+    if (tooltipBtn && tooltip) {
+      // Toggle tooltip on click
+      tooltipBtn.addEventListener('click', function (e) {
+        e.preventDefault()
+        isTooltipVisible = !isTooltipVisible
+
+        if (isTooltipVisible) {
+          tooltip.classList.add('show')
+          // Set focus to tooltip for keyboard navigation
+          tooltip.setAttribute('tabindex', '-1')
+          tooltip.focus()
+        } else {
+          tooltip.classList.remove('show')
+        }
+      })
+
+      // Handle Escape key to dismiss tooltip (WCAG 1.4.13 requirement)
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && isTooltipVisible) {
+          tooltip.classList.remove('show')
+          isTooltipVisible = false
+          // Return focus to trigger button
+          tooltipBtn.focus()
+        }
+      })
+
+      // Keep tooltip visible when hovering over it (WCAG 1.4.13 requirement)
+      tooltip.addEventListener('mouseenter', function () {
+        if (isTooltipVisible) {
+          tooltip.classList.add('show')
+        }
+      })
+
+      // Optional: Close tooltip when clicking outside
+      document.addEventListener('click', function (e) {
+        const target = e.target as HTMLElement
+        if (
+          isTooltipVisible &&
+          !tooltipBtn.contains(target) &&
+          !tooltip.contains(target)
+        ) {
+          tooltip.classList.remove('show')
+          isTooltipVisible = false
+        }
+      })
+    }
+  })
+</script>

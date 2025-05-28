@@ -96,19 +96,6 @@ export const guidesData: GuideSection[] = [
         category: "interaction",
       },
       {
-        id: "keyboard-navigation",
-        title: "Navegación por Teclado",
-        description:
-          "Orden de tabulación, enlaces de salto y técnicas avanzadas para navegación completa por teclado.",
-        topics: [
-          "Orden lógico de tabulación",
-          "Enlaces de salto",
-          "Atajos de teclado",
-        ],
-        status: "coming-soon",
-        category: "interaction",
-      },
-      {
         id: "buttons-links",
         title: "Botones y Enlaces",
         description:
@@ -148,6 +135,19 @@ export const guidesData: GuideSection[] = [
         ],
         status: "available",
         href: "/a11yado/guides/link-styling",
+        category: "interaction",
+      },
+      {
+        id: "keyboard-navigation",
+        title: "Navegación por Teclado",
+        description:
+          "Orden de tabulación, enlaces de salto y técnicas avanzadas para navegación completa por teclado.",
+        topics: [
+          "Orden lógico de tabulación",
+          "Enlaces de salto",
+          "Atajos de teclado",
+        ],
+        status: "coming-soon",
         category: "interaction",
       },
       {

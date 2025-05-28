@@ -2,8 +2,6 @@
 import Layout from '../../layouts/Layout.astro'
 import Header from '../../components/Header.astro'
 import Banner from '../../components/Banner.astro'
-import Card from '../../components/Card.astro'
-import CardGrid from '../../components/CardGrid.astro'
 import Checklist from '../../components/Checklist.astro'
 import ToolsSection from '../../components/ToolsSection.astro'
 import BannerGrid from '../../components/BannerGrid.astro'
@@ -135,12 +133,8 @@ const linkTools = [
         Si no quieres usar subrayado, aquí tienes 3 alternativas accesibles:
       </p>
 
-      <CardGrid columns="auto" minWidth="300px">
-        <Card
-          title="Estrategia 1: Otros estilos de texto"
-          variant="primary"
-          borderAccent
-        >
+      <BannerGrid columns="auto" minWidth="300px">
+        <Banner title="Estrategia 1: Otros estilos de texto" variant="info">
           <div class="strategy-demo">
             <p>
               Consulta nuestros <a href="#" class="bold-link"
@@ -159,12 +153,11 @@ const linkTools = [
               para texto normal
             </p>
           </div>
-        </Card>
+        </Banner>
 
-        <Card
+        <Banner
           title="Estrategia 2: Color luminoso + efectos hover/focus"
-          variant="primary"
-          borderAccent
+          variant="info"
         >
           <div class="strategy-demo">
             <p>
@@ -191,15 +184,11 @@ const linkTools = [
               <strong>Nota:</strong> Menos accesible que el subrayado permanente
             </p>
           </div>
-        </Card>
+        </Banner>
 
-        <Card
-          title="Estrategia 3: Ubicación independiente"
-          variant="primary"
-          borderAccent
-        >
+        <Banner title="Estrategia 3: Ubicación independiente" variant="info">
           <div class="strategy-demo">
-            <div class="standalone-links">
+            <div style="display: flex; gap: var(--spacing-sm)">
               <a href="#" class="standalone-link">DOCUMENTACIÓN</a>
               <a href="#" class="standalone-link">EJEMPLOS</a>
               <a href="#" class="standalone-link">GITHUB</a>
@@ -214,8 +203,8 @@ const linkTools = [
               <strong>Contexto:</strong> Su posición indica que es interactivo
             </p>
           </div>
-        </Card>
-      </CardGrid>
+        </Banner>
+      </BannerGrid>
     </section>
 
     <section>
@@ -224,8 +213,8 @@ const linkTools = [
         Aquí puedes ver las diferentes estrategias aplicadas al mismo contenido:
       </p>
 
-      <CardGrid columns="2" minWidth="280px">
-        <Card title="Subrayado tradicional" variant="primary" borderAccent>
+      <BannerGrid columns="2" minWidth="280px">
+        <Banner title="Subrayado tradicional" variant="info" highContrast>
           <div class="blog-card">
             <h5>
               <a href="#" class="underlined-link"
@@ -238,9 +227,9 @@ const linkTools = [
             </p>
             <div class="meta">Francisco Cerdán • Backend • 5 comentarios</div>
           </div>
-        </Card>
+        </Banner>
 
-        <Card title="Color luminoso + hover" variant="primary" borderAccent>
+        <Banner title="Color luminoso + hover" variant="info" highContrast>
           <div class="blog-card">
             <h5>
               <a href="#" class="luminous-hover-link"
@@ -253,9 +242,9 @@ const linkTools = [
             </p>
             <div class="meta">Francisco Cerdán • Backend • 5 comentarios</div>
           </div>
-        </Card>
+        </Banner>
 
-        <Card title="Ubicación independiente" variant="primary" borderAccent>
+        <Banner title="Ubicación independiente" variant="info" highContrast>
           <div class="blog-card">
             <h5>Arquitectura de Microservicios</h5>
             <p>
@@ -267,12 +256,12 @@ const linkTools = [
               <a href="#" class="standalone-action">VER TUTORIAL</a>
             </div>
           </div>
-        </Card>
+        </Banner>
 
-        <Card
+        <Banner
           title="Estilo alternativo (negrita)"
-          variant="primary"
-          borderAccent
+          variant="info"
+          highContrast
         >
           <div class="blog-card">
             <h5>
@@ -286,19 +275,18 @@ const linkTools = [
             </p>
             <div class="meta">Francisco Cerdán • Backend • 5 comentarios</div>
           </div>
-        </Card>
-      </CardGrid>
+        </Banner>
+      </BannerGrid>
     </section>
 
     <section>
       <h2>Reglas de consistencia</h2>
       <p>Una vez que elijas un estilo, manténlo en toda tu aplicación.</p>
 
-      <CardGrid columns="auto" minWidth="280px">
-        <Card
+      <BannerGrid columns="auto" minWidth="280px">
+        <Banner
           title="🔒 Reserva estos elementos SOLO para enlaces"
-          variant="danger"
-          borderAccent
+          variant="warning"
           subtitle="Usar estos estilos en texto no-clickeable confundirá a los usuarios"
         >
           <ul>
@@ -306,31 +294,26 @@ const linkTools = [
             <li>Texto azul</li>
             <li>Subrayado + texto azul</li>
           </ul>
-        </Card>
+        </Banner>
 
-        <Card
+        <Banner
           title="🎨 Elige un color para elementos interactivos"
-          variant="primary"
-          borderAccent
+          variant="info"
         >
           <p>
             Reserva un color específico para todos los elementos clickeables
             (enlaces, botones) y evita usarlo en elementos no-interactivos.
           </p>
-        </Card>
+        </Banner>
 
-        <Card
-          title="📐 Mantén consistencia visual"
-          variant="primary"
-          borderAccent
-        >
+        <Banner title="📐 Mantén consistencia visual" variant="info">
           <p>
             Si eliges negrita para enlaces, úsala siempre. Si eliges subrayado,
             úsalo siempre. La consistencia ayuda a los usuarios a aprender tu
             interfaz.
           </p>
-        </Card>
-      </CardGrid>
+        </Banner>
+      </BannerGrid>
     </section>
 
     <section>
@@ -479,9 +462,6 @@ const linkTools = [
 
   .blog-card {
     background-color: var(--color-background);
-    padding: var(--spacing-md);
-    border-radius: 6px;
-    border: 1px solid var(--color-border);
 
     h5 {
       margin: 0 0 var(--spacing-sm) 0;

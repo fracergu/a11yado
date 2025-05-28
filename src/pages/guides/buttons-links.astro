@@ -1,7 +1,5 @@
 ---
 import Layout from '../../layouts/Layout.astro'
-import Card from '../../components/Card.astro'
-import CardGrid from '../../components/CardGrid.astro'
 import ToolsSection from '../../components/ToolsSection.astro'
 import Banner from '../../components/Banner.astro'
 import BannerGrid from '../../components/BannerGrid.astro'
@@ -221,53 +219,47 @@ const buttonsLinksTools = [
       <h2>Problemas con "Clic aquí"</h2>
       <p>Evita "clic aquí" por tres razones principales:</p>
 
-      <CardGrid columns="auto" minWidth="250px">
-        <Card title="🖱️ Asume dispositivo" variant="danger" borderAccent>
+      <BannerGrid columns="auto" minWidth="250px">
+        <Banner title="🖱️ Asume dispositivo" variant="bad">
           <p>
             No todos usan ratón. Algunos usan teclado, pantalla táctil o
             tecnologías asistivas.
           </p>
-        </Card>
+        </Banner>
 
-        <Card title="🧠 Subestima al usuario" variant="danger" borderAccent>
+        <Banner title="🧠 Subestima al usuario" variant="bad">
           <p>
             Los usuarios saben cómo hacer clic. No necesitan que se lo digas.
           </p>
-        </Card>
-
-        <Card title="🎭 Oculta la acción" variant="danger" borderAccent>
-          <p>No dice qué pasará al hacer clic. Es una promesa vacía.</p>
-        </Card>
-      </CardGrid>
-
-      <BannerGrid columns="2" gap="lg">
-        <Banner title="❌ Oculta información" variant="bad">
-          <div class="link-demo">
-            <p>
-              Para más consejos de programación <a href="#" class="demo-link"
-                >clic aquí</a
-              >
-            </p>
-            <p>
-              Para ver nuestros proyectos <a href="#" class="demo-link"
-                >clic aquí</a
-              >
-            </p>
-          </div>
         </Banner>
 
-        <Banner title="✅ Revela información" variant="good">
-          <div class="link-demo">
-            <p>
-              <a href="#" class="demo-link">Suscríbete a nuestro newsletter</a> para
-              más consejos de programación
-            </p>
-            <p>
-              <a href="#" class="demo-link"
-                >Ve nuestro portafolio de proyectos</a
-              >
-            </p>
-          </div>
+        <Banner title="🎭 Oculta la acción" variant="bad">
+          <p>No dice qué pasará al hacer clic. Es una promesa vacía.</p>
+        </Banner>
+      </BannerGrid>
+
+      <BannerGrid columns="2" gap="lg">
+        <Banner title="❌ Oculta información" variant="bad" highContrast>
+          <p>
+            Para más consejos de programación <a href="#" class="demo-link"
+              >clic aquí</a
+            >
+          </p>
+          <p>
+            Para ver nuestros proyectos <a href="#" class="demo-link"
+              >clic aquí</a
+            >
+          </p>
+        </Banner>
+
+        <Banner title="✅ Revela información" variant="good" highContrast>
+          <p>
+            <a href="#" class="demo-link">Suscríbete a nuestro newsletter</a> para
+            más consejos de programación
+          </p>
+          <p>
+            <a href="#" class="demo-link">Ve nuestro portafolio de proyectos</a>
+          </p>
         </Banner>
       </BannerGrid>
     </section>
@@ -279,35 +271,27 @@ const buttonsLinksTools = [
         botón. Los usuarios escanean de izquierda a derecha.
       </p>
       <BannerGrid columns="2" gap="lg">
-        <Banner title="❌ Casos problemáticos" variant="bad">
-          <div class="comparison">
-            <div class="before">
-              <span class="label">Acción:</span>
-              <button class="demo-button">Clic aquí para suscribirte</button>
-            </div>
-            <div class="before">
-              <span class="label">Tema:</span>
-              <a href="#" class="demo-link"
-                >Leer más sobre optimización de código</a
-              >
-            </div>
+        <Banner title="❌ Casos problemáticos" variant="bad" highContrast>
+          <div>
+            <span class="label">Acción:</span>
+            <button class="demo-button">Clic aquí para suscribirte</button>
+          </div>
+          <div style="margin-top: var(--spacing-sm)">
+            <span class="label">Tema:</span>
+            <a href="#" class="demo-link"
+              >Leer más sobre optimización de código</a
+            >
           </div>
         </Banner>
 
-        <Banner title="✅ Casos mejorados" variant="good">
-          <div class="comparison">
-            <div class="after">
-              <span class="label">Acción:</span>
-              <button class="demo-button"
-                >Suscríbete a nuestro newsletter</button
-              >
-            </div>
-            <div class="after">
-              <span class="label">Tema:</span>
-              <a href="#" class="demo-link"
-                >Técnicas de optimización de código</a
-              >
-            </div>
+        <Banner title="✅ Casos mejorados" variant="good" highContrast>
+          <div>
+            <span class="label">Acción:</span>
+            <button class="demo-button">Suscríbete a nuestro newsletter</button>
+          </div>
+          <div style="margin-top: var(--spacing-sm)">
+            <span class="label">Tema:</span>
+            <a href="#" class="demo-link">Técnicas de optimización de código</a>
           </div>
         </Banner>
       </BannerGrid>
@@ -323,63 +307,59 @@ const buttonsLinksTools = [
         title="❌ URLs desnudas"
         variant="bad"
         subtitle="Difícil de leer y no describe el contenido"
+        highContrast
       >
-        <div class="link-demo">
-          <p>
-            Consulta la documentación en: <span class="naked-url"
-              >http://www.ejemplo.com/api-documentation.pdf</span
-            >
-          </p>
-        </div>
+        <p>
+          Consulta la documentación en: <code class="naked-url"
+            >http://www.ejemplo.com/api-documentation.pdf</code
+          >
+        </p>
       </Banner>
 
-      <Banner title="✅ Enlaces externos" variant="good">
-        <div class="link-demo">
-          <div class="link-item">
-            <a href="#" class="demo-link external"
-              >Documentación de React <span class="external-icon">↗</span></a
-            >
-          </div>
-          <div class="link-item">
-            <a href="#" class="demo-link external"
-              >Guía de JavaScript (PDF) <span class="file-icon">📄</span></a
-            >
-          </div>
+      <Banner title="✅ Enlaces externos" variant="good" highContrast>
+        <div
+          style="display: flex; flex-direction: column; gap: var(--spacing-sm)"
+        >
+          <a href="#" class="demo-link external"
+            >Documentación de React <span class="external-icon">↗</span></a
+          >
+          <a href="#" class="demo-link external"
+            >Guía de JavaScript (PDF) <span class="file-icon">📄</span></a
+          >
         </div>
       </Banner>
     </section>
-
     <section>
       <h2>Mejores prácticas resumidas</h2>
 
-      <CardGrid columns="auto" minWidth="250px">
-        <Card title="🎯 Para botones" variant="primary" borderAccent>
+      <BannerGrid columns="auto" minWidth="250px">
+        <Banner title="🎯 Para botones" variant="info">
           <ul>
             <li>Usa verbos de acción</li>
             <li>Sé específico sobre la tarea</li>
             <li>Mantén el texto conciso</li>
             <li>Frontload palabras importantes</li>
           </ul>
-        </Card>
+        </Banner>
 
-        <Card title="🔗 Para enlaces" variant="primary" borderAccent>
+        <Banner title="🔗 Para enlaces" variant="info">
           <ul>
             <li>Evita "leer más" y "clic aquí"</li>
             <li>Haz cada enlace único</li>
             <li>Describe el destino claramente</li>
             <li>Indica enlaces externos</li>
           </ul>
-        </Card>
+        </Banner>
 
-        <Card title="📝 Para ambos" variant="primary" borderAccent>
+        <Banner title="📝 Para ambos" variant="info">
           <ul>
             <li>El propósito debe ser claro</li>
             <li>Funciona fuera de contexto</li>
             <li>No asumas dispositivo específico</li>
             <li>Sé transparente sobre la acción</li>
           </ul>
-        </Card>
-      </CardGrid>
+        </Banner>
+      </BannerGrid>
     </section>
 
     <ToolsSection title="Herramientas útiles" tools={buttonsLinksTools}>

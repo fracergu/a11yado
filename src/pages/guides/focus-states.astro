@@ -5,6 +5,7 @@ import CardGrid from '../../components/CardGrid.astro'
 import Checklist from '../../components/Checklist.astro'
 import ToolsSection from '../../components/ToolsSection.astro'
 import Banner from '../../components/Banner.astro'
+import BannerGrid from '../../components/BannerGrid.astro'
 import OrderedList from '../../components/OrderedList.astro'
 import OrderedListItem from '../../components/OrderedListItem.astro'
 import Header from '../../components/Header.astro'
@@ -145,9 +146,14 @@ const focusTools = [
 
     <section>
       <h2>Ejemplos prácticos</h2>
-      <Banner title="💡 Tip" variant="tip">
-        Usa la tecla <kbd>Tab</kbd> para navegar entre los elementos o pasa el ratón
-        por encima para ver sus estados de foco en acción.
+      <Banner title="💡 Aviso" variant="warning">
+        <p>
+          Los estados de foco en esta página están <strong
+            >forzados como estáticos</strong
+          >
+          para fines de demostración. En un sitio real, solo aparecen cuando navegas
+          con el teclado (Tab) o interactúas con los elementos.
+        </p>
       </Banner>
 
       <Banner
@@ -285,8 +291,8 @@ const focusTools = [
     <section>
       <h2>Estrategias recomendadas</h2>
 
-      <CardGrid columns="auto" minWidth="300px">
-        <Card title="🎯 Outline sólido con gap" variant="success" borderAccent>
+      <BannerGrid columns="2" gap="lg">
+        <Banner title="🎯 Outline sólido con gap" variant="good">
           <div class="strategy-demo">
             <button class="strategy-btn demo-outline-gap"
               >Ejemplo interactivo</button
@@ -295,9 +301,9 @@ const focusTools = [
           <p>
             <strong>Ventajas:</strong> Simple, funciona en todo, fácil de mantener
           </p>
-        </Card>
+        </Banner>
 
-        <Card title="🎯 Doble outline" variant="success" borderAccent>
+        <Banner title="🎯 Doble outline" variant="good">
           <div class="strategy-demo">
             <button class="strategy-btn demo-double-outline"
               >Ejemplo interactivo</button
@@ -306,9 +312,9 @@ const focusTools = [
           <p>
             <strong>Ventajas:</strong> Funciona en fondos claros y oscuros
           </p>
-        </Card>
+        </Banner>
 
-        <Card title="❌ Solo cambio de color" variant="danger" borderAccent>
+        <Banner title="❌ Solo cambio de color" variant="bad">
           <div class="strategy-demo">
             <button class="strategy-btn demo-color-change"
               >Ejemplo problemático</button
@@ -317,9 +323,9 @@ const focusTools = [
           <p>
             <strong>Problema:</strong> Puede confundir la función del elemento
           </p>
-        </Card>
+        </Banner>
 
-        <Card title="❌ Outline muy delgado" variant="danger" borderAccent>
+        <Banner title="❌ Outline muy delgado" variant="bad">
           <div class="strategy-demo">
             <button class="strategy-btn demo-thin-outline"
               >Ejemplo problemático</button
@@ -328,15 +334,15 @@ const focusTools = [
           <p>
             <strong>Problema:</strong> No cumple requisitos de tamaño y contraste
           </p>
-        </Card>
-      </CardGrid>
+        </Banner>
+      </BannerGrid>
     </section>
 
     <section>
       <h2>Casos especiales</h2>
 
-      <CardGrid columns="auto" minWidth="300px">
-        <Card title="📱 Elementos táctiles" variant="primary" borderAccent>
+      <BannerGrid columns="auto" minWidth="300px">
+        <Banner title="📱 Elementos táctiles" variant="info">
           <p>
             En dispositivos táctiles, los estados de foco pueden no ser
             visibles. Asegúrate de que también funcionen con :hover y :active.
@@ -344,13 +350,9 @@ const focusTools = [
           <div class="case-demo">
             <button class="case-btn mobile-focus">Botón táctil</button>
           </div>
-        </Card>
+        </Banner>
 
-        <Card
-          title="🎨 Elementos personalizados"
-          variant="primary"
-          borderAccent
-        >
+        <Banner title="🎨 Elementos personalizados" variant="info">
           <p>
             Para componentes como dropdowns o modales, asegúrate de que el foco
             sea visible en todos los elementos interactivos internos.
@@ -366,9 +368,9 @@ const focusTools = [
               </div>
             </div>
           </div>
-        </Card>
+        </Banner>
 
-        <Card title="🌙 Modo oscuro" variant="primary" borderAccent>
+        <Banner title="🌙 Modo oscuro" variant="info">
           <p>
             En temas oscuros, usa outlines claros. El doble outline es
             especialmente útil para funcionar en ambos modos.
@@ -381,8 +383,8 @@ const focusTools = [
               placeholder="Input modo oscuro"
             />
           </div>
-        </Card>
-      </CardGrid>
+        </Banner>
+      </BannerGrid>
     </section>
 
     <Checklist
@@ -456,54 +458,39 @@ const focusTools = [
     font-size: 0.875rem;
   }
 
-  /* Focus styles for examples */
+  /* Focus styles for examples - Now forced to static state */
   .solid-black-focus {
-    &:focus,
-    &:hover {
-      outline: 3px solid #000;
-      outline-offset: 2px;
-    }
+    outline: 3px solid #000;
+    outline-offset: 2px;
   }
 
   .light-blue-focus {
-    &:focus,
-    &:hover {
-      outline: 2px solid #87ceeb;
-      outline-offset: 1px;
-    }
+    outline: 2px solid #87ceeb;
+    outline-offset: 1px;
   }
 
   .gap-focus {
-    &:focus,
-    &:hover {
-      outline: 2px solid #0891b2;
-      outline-offset: 3px;
-    }
+    outline: 2px solid #0891b2;
+    outline-offset: 3px;
   }
 
   .background-change-focus {
-    &:focus,
-    &:hover {
-      background-color: white !important;
-      color: var(--color-text) !important;
-      outline: none;
-    }
+    background-color: white !important;
+    color: var(--color-text) !important;
+    outline: none;
   }
 
-  /* Demo links */
+  /* Demo links - forced static focus state */
   .demo-link {
     color: var(--color-primary);
     text-decoration: underline;
     padding: var(--spacing-xs) var(--spacing-sm);
     border-radius: 4px;
     display: inline-block;
-
-    &:hover {
-      background-color: var(--color-surface);
-    }
+    background-color: var(--color-surface);
   }
 
-  /* Strategy demo buttons */
+  /* Strategy demo buttons - forced static focus states */
   .strategy-btn {
     background-color: var(--color-primary);
     color: white;
@@ -516,39 +503,27 @@ const focusTools = [
   }
 
   .demo-outline-gap {
-    &:focus,
-    &:hover {
-      outline: 2px solid #000;
-      outline-offset: 2px;
-    }
+    outline: 2px solid #000;
+    outline-offset: 2px;
   }
 
   .demo-double-outline {
-    &:focus,
-    &:hover {
-      outline: 2px solid #fff;
-      box-shadow: 0 0 0 4px #000;
-      outline-offset: 1px;
-    }
+    outline: 2px solid #fff;
+    box-shadow: 0 0 0 4px #000;
+    outline-offset: 1px;
   }
 
   .demo-color-change {
-    &:focus,
-    &:hover {
-      background-color: #f0f0f0;
-      color: var(--color-text);
-      outline: none;
-    }
+    background-color: #f0f0f0;
+    color: var(--color-text);
+    outline: none;
   }
 
   .demo-thin-outline {
-    &:focus,
-    &:hover {
-      outline: 1px dashed #ccc;
-    }
+    outline: 1px dashed #ccc;
   }
 
-  /* Case demo elements */
+  /* Case demo elements - forced static focus states */
   .case-btn {
     background-color: var(--color-primary);
     color: white;
@@ -573,12 +548,8 @@ const focusTools = [
   }
 
   .mobile-focus {
-    &:focus,
-    &:hover,
-    &:active {
-      outline: 2px solid #000;
-      outline-offset: 2px;
-    }
+    outline: 2px solid #000;
+    outline-offset: 2px;
   }
 
   /* Custom dropdown */
@@ -617,18 +588,12 @@ const focusTools = [
     text-decoration: none;
     border-radius: 4px;
     margin: var(--spacing-xs);
-
-    &:hover {
-      background-color: var(--color-background);
-    }
+    background-color: var(--color-background);
   }
 
   .custom-focus {
-    &:focus,
-    &:hover {
-      outline: 2px solid #000;
-      outline-offset: 1px;
-    }
+    outline: 2px solid #000;
+    outline-offset: 1px;
   }
 
   /* Dark theme demo */
@@ -654,11 +619,8 @@ const focusTools = [
   }
 
   .dark-focus {
-    &:focus,
-    &:hover {
-      outline: 2px solid #fff;
-      outline-offset: 2px;
-    }
+    outline: 2px solid #fff;
+    outline-offset: 2px;
   }
 
   .demo-note {
