@@ -80,21 +80,33 @@ import Header from '../../components/Header.astro'
         >
           <p><strong>Mínimo 4.5:1</strong></p>
           <p class="small-text">
-            Este es el estándar general para texto normal
+            Según <a
+              href="https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html"
+              target="_blank"
+              rel="noopener">WCAG 1.4.3: Contrast (Minimum)</a
+            >
           </p>
         </Card>
         <Card title="Excepciones con 3:1" variant="primary" borderAccent>
           <ul>
             <li>
-              <strong>Texto grande:</strong> 14pt negrita+ o 18pt regular+
+              <strong>Texto grande:</strong> 14pt negrita+ o 18pt regular+ según
+              <a
+                href="https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html"
+                target="_blank"
+                rel="noopener">WCAG 1.4.3</a
+              >
             </li>
             <li>
-              <strong>Controles de UI:</strong> información visual necesaria para
-              identificar y operar un control
+              <strong>Controles de UI:</strong> según
+              <a
+                href="https://www.w3.org/WAI/WCAG22/Understanding/non-text-contrast.html"
+                target="_blank"
+                rel="noopener">WCAG 1.4.11: Non-text Contrast</a
+              >
             </li>
             <li>
-              <strong>Objetos gráficos:</strong> partes necesarias para entender
-              el contenido
+              <strong>Objetos gráficos:</strong> partes necesarias según WCAG 1.4.11
             </li>
           </ul>
         </Card>
@@ -240,8 +252,12 @@ import Header from '../../components/Header.astro'
     <section>
       <h2>Independencia de color</h2>
       <p>
-        Asegúrate de que el color no sea el <strong>único</strong> medio visual para
-        transmitir información, indicar una acción o distinguir elementos. Puedes
+        Según <a
+          href="https://www.w3.org/WAI/WCAG22/Understanding/use-of-color.html"
+          target="_blank"
+          rel="noopener">WCAG 1.4.1: Use of Color</a
+        >, asegúrate de que el color no sea el <strong>único</strong> medio visual
+        para transmitir información, indicar una acción o distinguir elementos. Puedes
         usar color, pero no como la única forma de diferenciar.
       </p>
 

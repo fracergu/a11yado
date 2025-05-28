@@ -58,6 +58,11 @@ const focusTools = [
         <ul>
           <li>
             <strong>Usuarios de teclado:</strong> Personas con discapacidades motoras
+            que navegan usando <a
+              href="https://www.w3.org/WAI/WCAG22/Understanding/keyboard.html"
+              target="_blank"
+              rel="noopener">solo el teclado (WCAG 2.1.1)</a
+            >
           </li>
           <li>
             <strong>Usuarios de lectores de pantalla:</strong> Personas con discapacidades
@@ -85,32 +90,44 @@ const focusTools = [
         <OrderedListItem number={1} title="Tamaño del Indicador">
           <p>
             El indicador de foco debe ser al menos tan grande como un perímetro
-            de 2px CSS alrededor del componente. Solución simple: Usa un outline
-            sólido de 2px o más grueso.
+            de 2px CSS alrededor del componente según <a
+              href="https://www.w3.org/WAI/WCAG22/Understanding/focus-appearance.html"
+              target="_blank"
+              rel="noopener">WCAG 2.4.11: Focus Appearance</a
+            >. Solución simple: Usa un outline sólido de 2px o más grueso.
           </p>
         </OrderedListItem>
 
         <OrderedListItem number={2} title="Contraste de Color">
           <p>
             Debe haber contraste 3:1 o mayor entre los estados enfocado y no
-            enfocado. Ejemplo: Fondo blanco → outline azul = cambio de blanco a
-            azul.
+            enfocado según <a
+              href="https://www.w3.org/WAI/WCAG22/Understanding/non-text-contrast.html"
+              target="_blank"
+              rel="noopener">WCAG 1.4.11: Non-text Contrast</a
+            >. Ejemplo: Fondo blanco → outline azul = cambio de blanco a azul.
           </p>
         </OrderedListItem>
 
         <OrderedListItem number={3} title="Contraste Adyacente">
           <p>
             El indicador debe tener contraste 3:1 o mayor contra los colores
-            adyacentes (fondo y componente). Tip: Usa un gap entre el outline y
-            el elemento para simplificar.
+            adyacentes (fondo y componente) según <a
+              href="https://www.w3.org/WAI/WCAG22/Understanding/non-text-contrast.html"
+              target="_blank"
+              rel="noopener">WCAG 1.4.11</a
+            >. Tip: Usa un gap entre el outline y el elemento para simplificar.
           </p>
         </OrderedListItem>
 
         <OrderedListItem number={4} title="No Oculto">
           <p>
             El componente enfocado no debe estar oculto por contenido como
-            headers pegajosos o modales. Cuidado con: Sticky headers, footers y
-            overlays.
+            headers pegajosos o modales según <a
+              href="https://www.w3.org/WAI/WCAG22/Understanding/focus-not-obscured-minimum.html"
+              target="_blank"
+              rel="noopener">WCAG 2.4.12: Focus Not Obscured</a
+            >. Cuidado con: Sticky headers, footers y overlays.
           </p>
         </OrderedListItem>
       </OrderedList>
@@ -188,7 +205,13 @@ const focusTools = [
             <div class="demo-explanation">
               <p><strong>Por qué falla:</strong></p>
               <ul>
-                <li>Azul claro contra blanco: solo 1.92:1 (necesita 3:1)</li>
+                <li>
+                  Azul claro contra blanco: solo 1.92:1 (necesita 3:1 según <a
+                    href="https://www.w3.org/WAI/WCAG22/Understanding/non-text-contrast.html"
+                    target="_blank"
+                    rel="noopener">WCAG 1.4.11</a
+                  >)
+                </li>
                 <li>Azul claro contra azul oscuro: solo 2.54:1</li>
                 <li>Aunque se ve familiar, no es accesible</li>
               </ul>
