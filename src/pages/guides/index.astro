@@ -1,6 +1,5 @@
 ---
 import Layout from '../../layouts/Layout.astro'
-import Header from '../../components/Header.astro'
 import Banner from '../../components/Banner.astro'
 import GuideCard from '../../components/GuideCard.astro'
 import { guidesData } from '../../data/guides'
@@ -10,54 +9,46 @@ import { guidesData } from '../../data/guides'
   title="Guías Prácticas - a11yado"
   description="Guías prácticas de accesibilidad web explicadas de forma simple. Conceptos fundamentales de WCAG, ejemplos con código y técnicas aplicables inmediatamente."
   canonical="/a11yado/guides"
+  headerTitle="Guías Prácticas"
+  headerDescription="Conceptos de accesibilidad web explicados de forma simple y práctica, con ejemplos que puedes aplicar inmediatamente a tus proyectos."
+  articleWidth="medium"
 >
-  <article>
-    <Header
-      title="Guías Prácticas"
-      description="Conceptos de accesibilidad web explicados de forma simple y práctica, con ejemplos que puedes aplicar inmediatamente a tus proyectos."
-    />
+  <Banner title="📚 Acerca de estas guías" variant="info">
+    <p>
+      Cada guía está diseñada para ser práctica y directa. Incluyen ejemplos de
+      código, demostraciones visuales y listas de verificación que puedes usar
+      en tus proyectos.
+    </p>
+    <p>
+      <strong>Recuerda:</strong> Estas guías simplifican conceptos complejos. Consulta
+      siempre la <a href="/a11yado/documentation">documentación oficial</a>
+      para implementaciones profesionales.
+    </p>
+  </Banner>
 
-    <Banner title="📚 Acerca de estas guías" variant="info">
-      <p>
-        Cada guía está diseñada para ser práctica y directa. Incluyen ejemplos
-        de código, demostraciones visuales y listas de verificación que puedes
-        usar en tus proyectos.
-      </p>
-      <p>
-        <strong>Recuerda:</strong> Estas guías simplifican conceptos complejos. Consulta
-        siempre la <a href="/a11yado/documentation">documentación oficial</a>
-        para implementaciones profesionales.
-      </p>
-    </Banner>
+  {
+    guidesData.map((section) => (
+      <section>
+        <h2>{section.title}</h2>
+        <p>{section.description}</p>
 
-    {
-      guidesData.map((section) => (
-        <section>
-          <h2>{section.title}</h2>
-          <p>{section.description}</p>
-
-          <div class="guides-grid">
-            {section.guides.map((guide) => (
-              <GuideCard
-                title={guide.title}
-                description={guide.description}
-                topics={guide.topics}
-                status={guide.status}
-                href={guide.href}
-              />
-            ))}
-          </div>
-        </section>
-      ))
-    }
-  </article>
+        <div class="guides-grid">
+          {section.guides.map((guide) => (
+            <GuideCard
+              title={guide.title}
+              description={guide.description}
+              topics={guide.topics}
+              status={guide.status}
+              href={guide.href}
+            />
+          ))}
+        </div>
+      </section>
+    ))
+  }
 </Layout>
 
 <style lang="scss">
-  article {
-    max-width: 80ch;
-  }
-
   .guides-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));

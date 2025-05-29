@@ -1,14 +1,13 @@
 ---
 import Layout from '../../layouts/Layout.astro'
-import Card from '../../components/Card.astro'
-import CardGrid from '../../components/CardGrid.astro'
-import Checklist from '../../components/Checklist.astro'
-import ToolsSection from '../../components/ToolsSection.astro'
 import Banner from '../../components/Banner.astro'
 import BannerGrid from '../../components/BannerGrid.astro'
+import Card from '../../components/Card.astro'
+import CardGrid from '../../components/CardGrid.astro'
 import OrderedList from '../../components/OrderedList.astro'
 import OrderedListItem from '../../components/OrderedListItem.astro'
-import Header from '../../components/Header.astro'
+import ToolsSection from '../../components/ToolsSection.astro'
+import Checklist from '../../components/Checklist.astro'
 
 const checklistItems = [
   '¿El outline es de al menos 2px de grosor?',
@@ -24,15 +23,17 @@ const checklistItems = [
 const focusTools = [
   {
     name: 'Navegación por teclado',
-    description: 'Usa solo Tab, Shift+Tab, Enter, Space',
+    description: 'Usa solo Tab, Shift+Tab, Enter y flechas',
   },
   {
-    name: 'Herramientas de contraste',
-    description: 'WebAIM, Colour Contrast Analyser',
+    name: 'Verificador de contraste',
+    description:
+      'Asegura que los indicadores de foco tengan suficiente contraste',
   },
   {
-    name: 'DevTools',
-    description: 'Inspecciona estados :focus en el navegador',
+    name: 'Prueba con lectores de pantalla',
+    description:
+      'Verifica que los elementos focusables sean anunciados correctamente',
   },
 ]
 ---
@@ -42,388 +43,370 @@ const focusTools = [
   description="Aprende a crear estados de foco accesibles. Indicadores visibles, diseño inclusivo para navegación por teclado siguiendo WCAG 2.2."
   type="article"
   canonical="/a11yado/guides/focus-states"
+  headerTitle="Estados de Foco"
+  headerDescription="Los estados de foco deben ser claramente visibles para usuarios que navegan con teclado, proporcionando indicadores visuales consistentes y de alto contraste."
+  articleWidth="wide"
 >
-  <article>
-    <Header
-      title="Estados de Foco"
-      description="Los estados de foco son indicadores visuales que muestran qué elemento está actualmente seleccionado para interacción por teclado. Son esenciales para la navegación accesible."
-    />
+  <section>
+    <h2>¿Por qué son importantes?</h2>
+    <p>
+      Los estados de foco permiten a los usuarios navegar tu sitio usando solo
+      el teclado. Sin indicadores claros, es imposible saber dónde estás en la
+      página.
+    </p>
 
-    <section>
-      <h2>¿Por qué son importantes?</h2>
-      <p>
-        Los estados de foco permiten a los usuarios navegar tu sitio usando solo
-        el teclado. Sin indicadores claros, es imposible saber dónde estás en la
-        página.
-      </p>
-
-      <Banner
-        title="👥 Usuarios que dependen de estados de foco"
-        variant="concept"
-      >
-        <ul>
-          <li>
-            <strong>Usuarios de teclado:</strong> Personas con discapacidades motoras
-            que navegan usando <a
-              href="https://www.w3.org/WAI/WCAG22/Understanding/keyboard.html"
-              target="_blank"
-              rel="noopener">solo el teclado (WCAG 2.1.1)</a
-            >
-          </li>
-          <li>
-            <strong>Usuarios de lectores de pantalla:</strong> Personas con discapacidades
-            visuales
-          </li>
-          <li>
-            <strong>Usuarios de switch control:</strong> Personas con movilidad limitada
-          </li>
-          <li>
-            <strong>Usuarios avanzados:</strong> Desarrolladores y power users que
-            prefieren el teclado
-          </li>
-        </ul>
-      </Banner>
-    </section>
-
-    <section>
-      <h2>Las 4 reglas oficiales de WCAG</h2>
-      <p>
-        Para que un estado de foco sea accesible, debe cumplir estos 4 criterios
-        oficiales más 1 regla bonus de usabilidad.
-      </p>
-
-      <OrderedList>
-        <OrderedListItem number={1} title="Tamaño del Indicador">
-          <p>
-            El indicador de foco debe ser al menos tan grande como un perímetro
-            de 2px CSS alrededor del componente según <a
-              href="https://www.w3.org/WAI/WCAG22/Understanding/focus-appearance.html"
-              target="_blank"
-              rel="noopener">WCAG 2.4.11: Focus Appearance</a
-            >. Solución simple: Usa un outline sólido de 2px o más grueso.
-          </p>
-        </OrderedListItem>
-
-        <OrderedListItem number={2} title="Contraste de Color">
-          <p>
-            Debe haber contraste 3:1 o mayor entre los estados enfocado y no
-            enfocado según <a
-              href="https://www.w3.org/WAI/WCAG22/Understanding/non-text-contrast.html"
-              target="_blank"
-              rel="noopener">WCAG 1.4.11: Non-text Contrast</a
-            >. Ejemplo: Fondo blanco → outline azul = cambio de blanco a azul.
-          </p>
-        </OrderedListItem>
-
-        <OrderedListItem number={3} title="Contraste Adyacente">
-          <p>
-            El indicador debe tener contraste 3:1 o mayor contra los colores
-            adyacentes (fondo y componente) según <a
-              href="https://www.w3.org/WAI/WCAG22/Understanding/non-text-contrast.html"
-              target="_blank"
-              rel="noopener">WCAG 1.4.11</a
-            >. Tip: Usa un gap entre el outline y el elemento para simplificar.
-          </p>
-        </OrderedListItem>
-
-        <OrderedListItem number={4} title="No Oculto">
-          <p>
-            El componente enfocado no debe estar oculto por contenido como
-            headers pegajosos o modales según <a
-              href="https://www.w3.org/WAI/WCAG22/Understanding/focus-not-obscured-minimum.html"
-              target="_blank"
-              rel="noopener">WCAG 2.4.12: Focus Not Obscured</a
-            >. Cuidado con: Sticky headers, footers y overlays.
-          </p>
-        </OrderedListItem>
-      </OrderedList>
-
-      <Banner title="🎯 Señalizadores apropiados" variant="concept">
-        <p>
-          El estilo debe <strong>comunicar claramente</strong> que el elemento está
-          enfocado, no confundirse con otros estados.
-        </p>
-        <p>
-          <strong>Pregunta clave:</strong> ¿Se ve realmente enfocado?
-        </p>
-      </Banner>
-    </section>
-
-    <section>
-      <h2>Ejemplos prácticos</h2>
-      <Banner title="💡 Aviso" variant="warning">
-        <p>
-          Los estados de foco en esta página están <strong
-            >forzados como estáticos</strong
+    <Banner
+      title="👥 Usuarios que dependen de estados de foco"
+      variant="concept"
+    >
+      <ul>
+        <li>
+          <strong>Usuarios de teclado:</strong> Personas con discapacidades motoras
+          que navegan usando <a
+            href="https://www.w3.org/WAI/WCAG22/Understanding/keyboard.html"
+            target="_blank"
+            rel="noopener">solo el teclado (WCAG 2.1.1)</a
           >
-          para fines de demostración. En un sitio real, solo aparecen cuando navegas
-          con el teclado (Tab) o interactúas con los elementos.
+        </li>
+        <li>
+          <strong>Usuarios de lectores de pantalla:</strong> Personas con discapacidades
+          visuales
+        </li>
+        <li>
+          <strong>Usuarios de switch control:</strong> Personas con movilidad limitada
+        </li>
+        <li>
+          <strong>Usuarios avanzados:</strong> Desarrolladores y power users que
+          prefieren el teclado
+        </li>
+      </ul>
+    </Banner>
+  </section>
+
+  <section>
+    <h2>Las 4 reglas oficiales de WCAG</h2>
+    <p>
+      Para que un estado de foco sea accesible, debe cumplir estos 4 criterios
+      oficiales más 1 regla bonus de usabilidad.
+    </p>
+
+    <OrderedList>
+      <OrderedListItem number={1} title="Tamaño del Indicador">
+        <p>
+          El indicador de foco debe ser al menos tan grande como un perímetro de
+          2px CSS alrededor del componente según <a
+            href="https://www.w3.org/WAI/WCAG22/Understanding/focus-appearance.html"
+            target="_blank"
+            rel="noopener">WCAG 2.4.11: Focus Appearance</a
+          >. Solución simple: Usa un outline sólido de 2px o más grueso.
         </p>
-      </Banner>
+      </OrderedListItem>
 
-      <Banner
-        title="✅ Outline sólido negro (Pasa todas las reglas)"
-        variant="good"
-      >
-        <div class="demo-container-white">
-          <div class="demo-container">
-            <div class="demo-buttons">
-              <button class="demo-btn solid-black-focus"
-                >Enviar formulario</button
-              >
-              <button class="demo-btn solid-black-focus secondary"
-                >Cancelar</button
-              >
-              <input
-                type="text"
-                class="demo-input solid-black-focus"
-                placeholder="Buscar componentes..."
-              />
-              <a href="#" class="demo-link solid-black-focus"
-                >Documentación de React</a
-              >
-            </div>
-            <div class="demo-explanation">
-              <p><strong>Por qué funciona:</strong></p>
-              <ul>
-                <li>Outline de 3px cumple el tamaño mínimo</li>
-                <li>Cambio de blanco a negro: contraste 21:1</li>
-                <li>Negro contra cualquier color: excelente contraste</li>
-                <li>Outline clásico = señalizador reconocible</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </Banner>
+      <OrderedListItem number={2} title="Contraste de Color">
+        <p>
+          Debe haber contraste 3:1 o mayor entre los estados enfocado y no
+          enfocado según <a
+            href="https://www.w3.org/WAI/WCAG22/Understanding/non-text-contrast.html"
+            target="_blank"
+            rel="noopener">WCAG 1.4.11: Non-text Contrast</a
+          >. Ejemplo: Fondo blanco → outline azul = cambio de blanco a azul.
+        </p>
+      </OrderedListItem>
 
-      <Banner title="❌ Outline azul claro (Falla contraste)" variant="bad">
-        <div class="demo-container-white">
-          <div class="demo-container">
-            <div class="demo-buttons">
-              <button class="demo-btn light-blue-focus">Instalar React</button>
-              <button class="demo-btn light-blue-focus secondary"
-                >Documentación</button
-              >
-              <input
-                type="text"
-                class="demo-input light-blue-focus"
-                placeholder="npm install..."
-              />
-              <a href="#" class="demo-link light-blue-focus"
-                >Guía de TypeScript</a
-              >
-            </div>
-            <div class="demo-explanation">
-              <p><strong>Por qué falla:</strong></p>
-              <ul>
-                <li>
-                  Azul claro contra blanco: solo 1.92:1 (necesita 3:1 según <a
-                    href="https://www.w3.org/WAI/WCAG22/Understanding/non-text-contrast.html"
-                    target="_blank"
-                    rel="noopener">WCAG 1.4.11</a
-                  >)
-                </li>
-                <li>Azul claro contra azul oscuro: solo 2.54:1</li>
-                <li>Aunque se ve familiar, no es accesible</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </Banner>
+      <OrderedListItem number={3} title="Contraste Adyacente">
+        <p>
+          El indicador debe tener contraste 3:1 o mayor contra los colores
+          adyacentes (fondo y componente) según <a
+            href="https://www.w3.org/WAI/WCAG22/Understanding/non-text-contrast.html"
+            target="_blank"
+            rel="noopener">WCAG 1.4.11</a
+          >. Tip: Usa un gap entre el outline y el elemento para simplificar.
+        </p>
+      </OrderedListItem>
 
-      <Banner
-        title="✅ Outline con gap (Estrategia inteligente)"
-        variant="good"
-      >
-        <div class="demo-container-white">
-          <div class="demo-container">
-            <div class="demo-buttons">
-              <button class="demo-btn gap-focus">Compilar TypeScript</button>
-              <button class="demo-btn gap-focus secondary">Ver errores</button>
-              <input
-                type="text"
-                class="demo-input gap-focus"
-                placeholder="Buscar en VSCode..."
-              />
-              <a href="#" class="demo-link gap-focus">Manual de Astro</a>
-            </div>
-            <div class="demo-explanation">
-              <p><strong>Por qué es inteligente:</strong></p>
-              <ul>
-                <li>El gap simplifica el contraste adyacente</li>
-                <li>Solo necesitas contrastar contra el fondo</li>
-                <li>Funciona en elementos de cualquier color</li>
-                <li>Más fácil de mantener en todo el sitio</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </Banner>
+      <OrderedListItem number={4} title="No Oculto">
+        <p>
+          El componente enfocado no debe estar oculto por contenido como headers
+          pegajosos o modales según <a
+            href="https://www.w3.org/WAI/WCAG22/Understanding/focus-not-obscured-minimum.html"
+            target="_blank"
+            rel="noopener">WCAG 2.4.12: Focus Not Obscured</a
+          >. Cuidado con: Sticky headers, footers y overlays.
+        </p>
+      </OrderedListItem>
+    </OrderedList>
 
-      <Banner title="❌ Cambio de fondo (Confunde señalizadores)" variant="bad">
-        <div class="demo-container-white">
-          <div class="demo-container">
-            <div class="demo-buttons">
-              <button class="demo-btn background-change-focus"
-                >Deploy a Vercel</button
-              >
-              <button class="demo-btn background-change-focus secondary"
-                >Configurar</button
-              >
-              <input
-                type="text"
-                class="demo-input background-change-focus"
-                placeholder="Nombre del proyecto..."
-              />
-              <a href="#" class="demo-link background-change-focus"
-                >Configurar Netlify</a
-              >
-            </div>
-            <div class="demo-explanation">
-              <p><strong>Por qué confunde:</strong></p>
-              <ul>
-                <li>El botón primario enfocado parece secundario</li>
-                <li>El input enfocado no parece editable</li>
-                <li>Cambia la identidad visual del elemento</li>
-                <li>Los usuarios no reconocen el estado</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </Banner>
-    </section>
+    <Banner title="🎯 Señalizadores apropiados" variant="concept">
+      <p>
+        El estilo debe <strong>comunicar claramente</strong> que el elemento está
+        enfocado, no confundirse con otros estados.
+      </p>
+      <p>
+        <strong>Pregunta clave:</strong> ¿Se ve realmente enfocado?
+      </p>
+    </Banner>
+  </section>
 
-    <section>
-      <h2>Estrategias recomendadas</h2>
+  <section>
+    <h2>Ejemplos prácticos</h2>
+    <Banner title="💡 Aviso" variant="warning">
+      <p>
+        Los estados de foco en esta página están <strong
+          >forzados como estáticos</strong
+        >
+        para fines de demostración. En un sitio real, solo aparecen cuando navegas
+        con el teclado (Tab) o interactúas con los elementos.
+      </p>
+    </Banner>
 
-      <BannerGrid columns="2" gap="lg">
-        <Banner title="🎯 Outline sólido con gap" variant="good">
-          <div class="strategy-demo">
-            <button class="strategy-btn demo-outline-gap"
-              >Ejemplo interactivo</button
+    <Banner
+      title="✅ Outline sólido negro (Pasa todas las reglas)"
+      variant="good"
+    >
+      <div class="demo-container-white">
+        <div class="demo-container">
+          <div class="demo-buttons">
+            <button class="demo-btn solid-black-focus">Enviar formulario</button
             >
-          </div>
-          <p>
-            <strong>Ventajas:</strong> Simple, funciona en todo, fácil de mantener
-          </p>
-        </Banner>
-
-        <Banner title="🎯 Doble outline" variant="good">
-          <div class="strategy-demo">
-            <button class="strategy-btn demo-double-outline"
-              >Ejemplo interactivo</button
+            <button class="demo-btn solid-black-focus secondary"
+              >Cancelar</button
             >
-          </div>
-          <p>
-            <strong>Ventajas:</strong> Funciona en fondos claros y oscuros
-          </p>
-        </Banner>
-
-        <Banner title="❌ Solo cambio de color" variant="bad">
-          <div class="strategy-demo">
-            <button class="strategy-btn demo-color-change"
-              >Ejemplo problemático</button
-            >
-          </div>
-          <p>
-            <strong>Problema:</strong> Puede confundir la función del elemento
-          </p>
-        </Banner>
-
-        <Banner title="❌ Outline muy delgado" variant="bad">
-          <div class="strategy-demo">
-            <button class="strategy-btn demo-thin-outline"
-              >Ejemplo problemático</button
-            >
-          </div>
-          <p>
-            <strong>Problema:</strong> No cumple requisitos de tamaño y contraste
-          </p>
-        </Banner>
-      </BannerGrid>
-    </section>
-
-    <section>
-      <h2>Casos especiales</h2>
-
-      <BannerGrid columns="auto" minWidth="300px">
-        <Banner title="📱 Elementos táctiles" variant="info">
-          <p>
-            En dispositivos táctiles, los estados de foco pueden no ser
-            visibles. Asegúrate de que también funcionen con :hover y :active.
-          </p>
-          <div class="case-demo">
-            <button class="case-btn mobile-focus">Botón táctil</button>
-          </div>
-        </Banner>
-
-        <Banner title="🎨 Elementos personalizados" variant="info">
-          <p>
-            Para componentes como dropdowns o modales, asegúrate de que el foco
-            sea visible en todos los elementos interactivos internos.
-          </p>
-          <div class="case-demo">
-            <div class="custom-dropdown">
-              <button class="dropdown-trigger custom-focus">Abrir menú ▼</button
-              >
-              <div class="dropdown-menu">
-                <a href="#" class="dropdown-item custom-focus">Opción 1</a>
-                <a href="#" class="dropdown-item custom-focus">Opción 2</a>
-                <a href="#" class="dropdown-item custom-focus">Opción 3</a>
-              </div>
-            </div>
-          </div>
-        </Banner>
-
-        <Banner title="🌙 Modo oscuro" variant="info">
-          <p>
-            En temas oscuros, usa outlines claros. El doble outline es
-            especialmente útil para funcionar en ambos modos.
-          </p>
-          <div class="case-demo dark-theme">
-            <button class="case-btn dark-focus">Botón modo oscuro</button>
             <input
               type="text"
-              class="case-input dark-focus"
-              placeholder="Input modo oscuro"
+              class="demo-input solid-black-focus"
+              placeholder="Buscar componentes..."
             />
+            <a href="#" class="demo-link solid-black-focus"
+              >Documentación de React</a
+            >
           </div>
-        </Banner>
-      </BannerGrid>
-    </section>
-
-    <Checklist
-      title="✅ Antes de publicar, verifica:"
-      items={checklistItems}
-      variant="success"
-    />
-
-    <ToolsSection tools={focusTools}>
-      <div class="tools-grid">
-        <Card title="📐 Para medir contraste" variant="info" borderAccent>
-          <ul>
-            <li>
-              <strong>Regla 3:1:</strong> Para elementos no-texto (outlines, iconos)
-            </li>
-            <li><strong>Regla 4.5:1:</strong> Para texto normal</li>
-            <li><strong>Regla 7:1:</strong> Para texto pequeño (AAA)</li>
-          </ul>
-        </Card>
+          <div class="demo-explanation">
+            <p><strong>Por qué funciona:</strong></p>
+            <ul>
+              <li>Outline de 3px cumple el tamaño mínimo</li>
+              <li>Cambio de blanco a negro: contraste 21:1</li>
+              <li>Negro contra cualquier color: excelente contraste</li>
+              <li>Outline clásico = señalizador reconocible</li>
+            </ul>
+          </div>
+        </div>
       </div>
-    </ToolsSection>
-  </article>
+    </Banner>
+
+    <Banner title="❌ Outline azul claro (Falla contraste)" variant="bad">
+      <div class="demo-container-white">
+        <div class="demo-container">
+          <div class="demo-buttons">
+            <button class="demo-btn light-blue-focus">Instalar React</button>
+            <button class="demo-btn light-blue-focus secondary"
+              >Documentación</button
+            >
+            <input
+              type="text"
+              class="demo-input light-blue-focus"
+              placeholder="npm install..."
+            />
+            <a href="#" class="demo-link light-blue-focus">Guía de TypeScript</a
+            >
+          </div>
+          <div class="demo-explanation">
+            <p><strong>Por qué falla:</strong></p>
+            <ul>
+              <li>
+                Azul claro contra blanco: solo 1.92:1 (necesita 3:1 según <a
+                  href="https://www.w3.org/WAI/WCAG22/Understanding/non-text-contrast.html"
+                  target="_blank"
+                  rel="noopener">WCAG 1.4.11</a
+                >)
+              </li>
+              <li>Azul claro contra azul oscuro: solo 2.54:1</li>
+              <li>Aunque se ve familiar, no es accesible</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </Banner>
+
+    <Banner title="✅ Outline con gap (Estrategia inteligente)" variant="good">
+      <div class="demo-container-white">
+        <div class="demo-container">
+          <div class="demo-buttons">
+            <button class="demo-btn gap-focus">Compilar TypeScript</button>
+            <button class="demo-btn gap-focus secondary">Ver errores</button>
+            <input
+              type="text"
+              class="demo-input gap-focus"
+              placeholder="Buscar en VSCode..."
+            />
+            <a href="#" class="demo-link gap-focus">Manual de Astro</a>
+          </div>
+          <div class="demo-explanation">
+            <p><strong>Por qué es inteligente:</strong></p>
+            <ul>
+              <li>El gap simplifica el contraste adyacente</li>
+              <li>Solo necesitas contrastar contra el fondo</li>
+              <li>Funciona en elementos de cualquier color</li>
+              <li>Más fácil de mantener en todo el sitio</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </Banner>
+
+    <Banner title="❌ Cambio de fondo (Confunde señalizadores)" variant="bad">
+      <div class="demo-container-white">
+        <div class="demo-container">
+          <div class="demo-buttons">
+            <button class="demo-btn background-change-focus"
+              >Deploy a Vercel</button
+            >
+            <button class="demo-btn background-change-focus secondary"
+              >Configurar</button
+            >
+            <input
+              type="text"
+              class="demo-input background-change-focus"
+              placeholder="Nombre del proyecto..."
+            />
+            <a href="#" class="demo-link background-change-focus"
+              >Configurar Netlify</a
+            >
+          </div>
+          <div class="demo-explanation">
+            <p><strong>Por qué confunde:</strong></p>
+            <ul>
+              <li>El botón primario enfocado parece secundario</li>
+              <li>El input enfocado no parece editable</li>
+              <li>Cambia la identidad visual del elemento</li>
+              <li>Los usuarios no reconocen el estado</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </Banner>
+  </section>
+
+  <section>
+    <h2>Estrategias recomendadas</h2>
+
+    <BannerGrid columns="2" gap="lg">
+      <Banner title="🎯 Outline sólido con gap" variant="good">
+        <div class="strategy-demo">
+          <button class="strategy-btn demo-outline-gap"
+            >Ejemplo interactivo</button
+          >
+        </div>
+        <p>
+          <strong>Ventajas:</strong> Simple, funciona en todo, fácil de mantener
+        </p>
+      </Banner>
+
+      <Banner title="🎯 Doble outline" variant="good">
+        <div class="strategy-demo">
+          <button class="strategy-btn demo-double-outline"
+            >Ejemplo interactivo</button
+          >
+        </div>
+        <p>
+          <strong>Ventajas:</strong> Funciona en fondos claros y oscuros
+        </p>
+      </Banner>
+
+      <Banner title="❌ Solo cambio de color" variant="bad">
+        <div class="strategy-demo">
+          <button class="strategy-btn demo-color-change"
+            >Ejemplo problemático</button
+          >
+        </div>
+        <p>
+          <strong>Problema:</strong> Puede confundir la función del elemento
+        </p>
+      </Banner>
+
+      <Banner title="❌ Outline muy delgado" variant="bad">
+        <div class="strategy-demo">
+          <button class="strategy-btn demo-thin-outline"
+            >Ejemplo problemático</button
+          >
+        </div>
+        <p>
+          <strong>Problema:</strong> No cumple requisitos de tamaño y contraste
+        </p>
+      </Banner>
+    </BannerGrid>
+  </section>
+
+  <section>
+    <h2>Casos especiales</h2>
+
+    <BannerGrid columns="auto" minWidth="300px">
+      <Banner title="📱 Elementos táctiles" variant="info">
+        <p>
+          En dispositivos táctiles, los estados de foco pueden no ser visibles.
+          Asegúrate de que también funcionen con :hover y :active.
+        </p>
+        <div class="case-demo">
+          <button class="case-btn mobile-focus">Botón táctil</button>
+        </div>
+      </Banner>
+
+      <Banner title="🎨 Elementos personalizados" variant="info">
+        <p>
+          Para componentes como dropdowns o modales, asegúrate de que el foco
+          sea visible en todos los elementos interactivos internos.
+        </p>
+        <div class="case-demo">
+          <div class="custom-dropdown">
+            <button class="dropdown-trigger custom-focus">Abrir menú ▼</button>
+            <div class="dropdown-menu">
+              <a href="#" class="dropdown-item custom-focus">Opción 1</a>
+              <a href="#" class="dropdown-item custom-focus">Opción 2</a>
+              <a href="#" class="dropdown-item custom-focus">Opción 3</a>
+            </div>
+          </div>
+        </div>
+      </Banner>
+
+      <Banner title="🌙 Modo oscuro" variant="info">
+        <p>
+          En temas oscuros, usa outlines claros. El doble outline es
+          especialmente útil para funcionar en ambos modos.
+        </p>
+        <div class="case-demo dark-theme">
+          <button class="case-btn dark-focus">Botón modo oscuro</button>
+          <input
+            type="text"
+            class="case-input dark-focus"
+            placeholder="Input modo oscuro"
+          />
+        </div>
+      </Banner>
+    </BannerGrid>
+  </section>
+
+  <Checklist
+    title="✅ Antes de publicar, verifica:"
+    items={checklistItems}
+    variant="success"
+  />
+
+  <ToolsSection tools={focusTools}>
+    <div class="tools-grid">
+      <Card title="📐 Para medir contraste" variant="info" borderAccent>
+        <ul>
+          <li>
+            <strong>Regla 3:1:</strong> Para elementos no-texto (outlines, iconos)
+          </li>
+          <li><strong>Regla 4.5:1:</strong> Para texto normal</li>
+          <li><strong>Regla 7:1:</strong> Para texto pequeño (AAA)</li>
+        </ul>
+      </Card>
+    </div>
+  </ToolsSection>
 </Layout>
 
 <style lang="scss">
-  article {
-    max-width: 90ch;
-  }
-
   .demo-container-white {
-    background-color: white;
-    padding: var(--spacing-lg);
-    border-radius: 6px;
-    border: 1px solid var(--color-border);
   }
 
   .demo-container {

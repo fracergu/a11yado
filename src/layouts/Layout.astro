@@ -6,6 +6,9 @@ export interface Props {
   canonical?: string
   noindex?: boolean
   type?: 'website' | 'article'
+  headerTitle?: string
+  headerDescription?: string
+  articleWidth?: 'narrow' | 'medium' | 'wide'
 }
 
 const {
@@ -15,10 +18,14 @@ const {
   canonical,
   noindex = false,
   type = 'website',
+  headerTitle,
+  headerDescription,
+  articleWidth = 'medium',
 } = Astro.props
 
 // Importar fuentes locales
 import '../styles/fonts.css'
+import Header from '../components/Header.astro'
 
 // Construir URL canónica
 const canonicalURL = canonical
@@ -190,7 +197,14 @@ const structuredData = {
     </header>
 
     <main>
-      <slot />
+      <article class={`article-${articleWidth}`}>
+        {
+          headerTitle && (
+            <Header title={headerTitle} description={headerDescription || ''} />
+          )
+        }
+        <slot />
+      </article>
     </main>
 
     <footer>
@@ -429,6 +443,19 @@ const structuredData = {
     margin: 0 auto;
     padding: var(--spacing-xl) var(--spacing-lg);
     width: 100%;
+  }
+
+  /* Article width variants */
+  .article-narrow {
+    max-width: 70ch;
+  }
+
+  .article-medium {
+    max-width: 80ch;
+  }
+
+  .article-wide {
+    max-width: 90ch;
   }
 
   footer {

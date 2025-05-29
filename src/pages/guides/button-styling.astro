@@ -1,7 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro'
 import Checklist from '../../components/Checklist.astro'
-import Header from '../../components/Header.astro'
 import Banner from '../../components/Banner.astro'
 import OrderedList from '../../components/OrderedList.astro'
 import OrderedListItem from '../../components/OrderedListItem.astro'
@@ -44,411 +43,399 @@ const buttonTools = [
   description="Aprende a crear botones accesibles con el estilizado correcto. Tamaños mínimos, contrastes, estados de foco y hover siguiendo WCAG 2.2."
   type="article"
   canonical="/a11yado/guides/button-styling"
+  headerTitle="Estilizado de Botones"
+  headerDescription="Los usuarios deben poder identificar qué elementos son interactivos simplemente mirando la interfaz, sin tener que explorar con el cursor."
+  articleWidth="wide"
 >
-  <article>
-    <Header
-      title="Estilizado de Botones"
-      description="Los usuarios deben poder identificar qué elementos son interactivos simplemente mirando la interfaz, sin tener que explorar con el cursor."
-    />
-
-    <section>
-      <h2>¿Por qué importa el estilizado?</h2>
-      <p>
-        Cuanto más esfuerzo requiera una interfaz para descubrir qué es
-        interactivo, menos se usará. Los botones necesitan <strong
-          >señalizadores visuales claros</strong
-        >
-        que comuniquen su función de forma inmediata.
-      </p>
-
-      <Banner title="🎯 Principio fundamental" variant="info">
-        <p>
-          <strong>La claridad siempre gana sobre la consistencia.</strong>
-          Si necesitas sacrificar consistencia para mejorar la usabilidad, hazlo.
-        </p>
-      </Banner>
-    </section>
-
-    <section>
-      <h2>Las 7 técnicas clave</h2>
-
-      <OrderedList>
-        <OrderedListItem number={1} title="Técnica de Forma">
-          <p>
-            La forma puede indicar si algo es un botón. Los rectángulos son la
-            opción más segura.
-          </p>
-
-          <CardGrid columns="2" gap="lg">
-            <Card
-              title="✅ Formas seguras"
-              variant="success"
-              borderAccent
-              subtitle="Formas reconocibles como botones"
-            >
-              <div class="button-group">
-                <button class="demo-btn rectangular">Rectangular</button>
-                <button class="demo-btn rounded">Redondeado</button>
-                <button class="demo-btn pill">Píldora</button>
-              </div>
-            </Card>
-
-            <Card
-              title="⚠️ Formas creativas"
-              variant="warning"
-              borderAccent
-              subtitle="Requieren señalizadores adicionales"
-            >
-              <div class="button-group">
-                <button class="demo-btn hexagon">Hexágono</button>
-                <button class="demo-btn circle">Círculo</button>
-                <button class="demo-btn diamond">Rombo</button>
-              </div>
-            </Card>
-          </CardGrid>
-
-          <CardGrid columns="2" gap="lg">
-            <Card
-              title="❌ Inconsistente"
-              variant="danger"
-              borderAccent
-              subtitle="Diferentes formas en el mismo grupo"
-            >
-              <div class="button-group">
-                <button class="demo-btn rectangular">Copiar</button>
-                <button class="demo-btn circle">+</button>
-                <button class="demo-btn pill">Eliminar</button>
-              </div>
-            </Card>
-
-            <Card
-              title="✅ Consistente"
-              variant="success"
-              borderAccent
-              subtitle="Todos los botones son rectangulares"
-            >
-              <div class="button-group">
-                <button class="demo-btn rectangular">Copiar</button>
-                <button class="demo-btn rectangular">Agregar</button>
-                <button class="demo-btn rectangular">Eliminar</button>
-              </div>
-            </Card>
-          </CardGrid>
-        </OrderedListItem>
-
-        <OrderedListItem number={2} title="Técnica de Radio de Borde">
-          <p>
-            El radio de borde cambia la "personalidad" del botón: de más serio a
-            más divertido.
-          </p>
-
-          <CardGrid columns="3" gap="lg">
-            <Card variant="default" subtitle="Formal, profesional" borderAccent>
-              <button class="demo-btn serious">Serio (0px)</button>
-            </Card>
-            <Card
-              variant="default"
-              subtitle="Equilibrado, amigable"
-              borderAccent
-            >
-              <button class="demo-btn moderate">Moderado (4px)</button>
-            </Card>
-            <Card variant="default" subtitle="Casual, divertido" borderAccent>
-              <button class="demo-btn playful">Juguetón (50px)</button>
-            </Card>
-          </CardGrid>
-        </OrderedListItem>
-
-        <OrderedListItem number={3} title="Técnica de Relleno y Color">
-          <p>
-            Usa cambios estructurales (no solo color) para crear jerarquía
-            visual según <a
-              href="https://www.w3.org/WAI/WCAG22/Understanding/use-of-color.html"
-              target="_blank"
-              rel="noopener">WCAG 1.4.1: Use of Color</a
-            >.
-          </p>
-
-          <CardGrid columns="2" gap="lg">
-            <Card title="Jerarquía de botones" variant="default" borderAccent>
-              <div class="button-hierarchy">
-                <button class="demo-btn primary">Primario (Sólido)</button>
-                <button class="demo-btn secondary">Secundario (Borde)</button>
-                <button class="demo-btn tertiary">Terciario (Sin borde)</button>
-              </div>
-              <div class="hierarchy-explanation">
-                <div class="hierarchy-item">
-                  <span class="hierarchy-dot primary-dot"></span>
-                  <span>Acciones principales - Relleno sólido</span>
-                </div>
-                <div class="hierarchy-item">
-                  <span class="hierarchy-dot secondary-dot"></span>
-                  <span>Acciones secundarias - Solo borde</span>
-                </div>
-                <div class="hierarchy-item">
-                  <span class="hierarchy-dot tertiary-dot"></span>
-                  <span>Acciones terciarias - Sin borde</span>
-                </div>
-              </div>
-            </Card>
-
-            <Card title="Ejemplo en contexto" variant="default" borderAccent>
-              <div class="form-example">
-                <div class="form-field">
-                  <label>Nombre de usuario:</label>
-                  <input type="text" placeholder="Ingresa tu nombre" />
-                </div>
-                <div class="form-actions">
-                  <button class="demo-btn tertiary">Cancelar</button>
-                  <button class="demo-btn primary">Siguiente</button>
-                </div>
-              </div>
-            </Card>
-          </CardGrid>
-        </OrderedListItem>
-
-        <OrderedListItem number={4} title="Técnica de Sombra y Elevación">
-          <p>Las sombras comunican elevación e importancia visual.</p>
-
-          <CardGrid columns="2" gap="lg">
-            <Card
-              variant="default"
-              borderAccent
-              subtitle="Color 'pesado' para dominio visual"
-            >
-              <button class="demo-btn no-shadow">Sin sombra</button>
-            </Card>
-            <Card
-              variant="default"
-              borderAccent
-              subtitle="Elevación ligera, importancia"
-            >
-              <button class="demo-btn small-shadow">Sombra pequeña</button>
-            </Card>
-            <Card
-              variant="default"
-              borderAccent
-              subtitle="Alta elevación, llama atención"
-            >
-              <button class="demo-btn long-shadow">Sombra larga</button>
-            </Card>
-            <Card
-              variant="default"
-              borderAccent
-              subtitle="La sombra aumenta al hacer hover"
-            >
-              <div class="text-center">
-                <button class="demo-btn interactive-shadow"
-                  >Pasa el cursor aquí</button
-                >
-              </div>
-            </Card>
-          </CardGrid>
-        </OrderedListItem>
-
-        <OrderedListItem number={5} title="Técnica de Competencia">
-          <p>
-            Elementos con estilos similares compiten entre sí. Los CTAs deben
-            destacar claramente.
-          </p>
-
-          <CardGrid columns="2" gap="lg">
-            <Card
-              title="❌ Demasiada competencia"
-              variant="danger"
-              borderAccent
-              highContrast
-              subtitle="Todo compite por atención"
-            >
-              <div class="fake-header">Tecnologías Frontend</div>
-              <div class="fake-header">Aprende las Mejores Herramientas</div>
-              <div class="button-grid">
-                <button class="demo-btn competing">React</button>
-                <button class="demo-btn competing">Vue.js</button>
-                <button class="demo-btn competing">Angular</button>
-              </div>
-              <input
-                type="text"
-                class="competing-input"
-                placeholder="Buscar frameworks..."
-              />
-              <button class="demo-btn competing">Buscar</button>
-            </Card>
-
-            <Card
-              title="✅ CTA claro"
-              variant="success"
-              borderAccent
-              highContrast
-              subtitle="Un CTA principal claro"
-            >
-              <h5>Tecnologías Frontend</h5>
-              <p>Aprende las mejores herramientas</p>
-              <div class="product-grid">
-                <span class="product-tag">React</span>
-                <span class="product-tag">Vue.js</span>
-                <span class="product-tag">Angular</span>
-              </div>
-              <input
-                type="text"
-                class="clean-input"
-                placeholder="Buscar frameworks..."
-              />
-              <button class="demo-btn primary prominent"
-                >Explorar Tecnologías</button
-              >
-            </Card>
-          </CardGrid>
-        </OrderedListItem>
-
-        <OrderedListItem number={6} title="Técnica de Proximidad">
-          <p>
-            El espacio adecuado permite que los elementos interactivos respiren
-            y destaquen.
-          </p>
-
-          <CardGrid columns="2" gap="lg">
-            <Card
-              title="❌ Muy apretado"
-              variant="danger"
-              borderAccent
-              highContrast
-              subtitle="Dificultad para usar, errores accidentales"
-            >
-              <button class="demo-btn small">Guardar</button><button
-                class="demo-btn small">Cancelar</button
-              ><button class="demo-btn small">Eliminar</button>
-            </Card>
-
-            <Card
-              title="✅ Bien espaciado"
-              variant="success"
-              borderAccent
-              highContrast
-              subtitle="Fácil de usar, targets grandes"
-            >
-              <div class="spaced-interface">
-                <button class="demo-btn comfortable">Guardar</button>
-                <button class="demo-btn comfortable">Cancelar</button>
-                <button class="demo-btn comfortable">Eliminar</button>
-              </div>
-            </Card>
-          </CardGrid>
-
-          <Card title="🔍 Tamaños de área táctil" variant="info" borderAccent>
-            <div class="target-examples">
-              <button class="demo-btn tiny">Muy pequeño</button>
-              <button class="demo-btn small-target">Pequeño</button>
-              <button class="demo-btn good-target">Tamaño ideal</button>
-            </div>
-            <p class="demo-desc">
-              Mínimo recomendado: 44px × 44px según <a
-                href="https://www.w3.org/WAI/WCAG22/Understanding/target-size-minimum.html"
-                target="_blank"
-                rel="noopener">WCAG 2.5.8: Target Size</a
-              >
-            </p>
-          </Card>
-        </OrderedListItem>
-
-        <OrderedListItem number={7} title="Técnica de Capitalización">
-          <p>El tipo de capitalización transmite diferentes tonos de voz.</p>
-
-          <CardGrid columns="auto" gap="lg">
-            <Card
-              title="Sentence case"
-              variant="default"
-              borderAccent
-              subtitle="Amigable, conversacional"
-            >
-              <button class="demo-btn cap-sentence">Enviar mensaje</button>
-            </Card>
-            <Card
-              title="Title case"
-              variant="default"
-              borderAccent
-              subtitle="Uniforme, autoritario"
-            >
-              <button class="demo-btn cap-title">Enviar mensaje</button>
-            </Card>
-            <Card
-              title="ALL CAPS"
-              variant="default"
-              borderAccent
-              subtitle="Formal, impersonal"
-            >
-              <button class="demo-btn cap-upper">ENVIAR MENSAJE</button>
-            </Card>
-            <Card
-              title="lower case"
-              variant="default"
-              borderAccent
-              subtitle="Casual, poco esfuerzo"
-            >
-              <button class="demo-btn cap-lower">enviar mensaje</button>
-            </Card>
-          </CardGrid>
-        </OrderedListItem>
-      </OrderedList>
-    </section>
-
-    <section>
-      <h2>Mejores prácticas adicionales</h2>
-
-      <Banner
-        title="🎯 Reserva señalizadores para botones"
-        variant="info"
-        subtitle="No uses formas rectangulares, sombras o colores de botón para elementos no interactivos."
-        highContrast
+  <section>
+    <h2>¿Por qué importa el estilizado?</h2>
+    <p>
+      Cuanto más esfuerzo requiera una interfaz para descubrir qué es
+      interactivo, menos se usará. Los botones necesitan <strong
+        >señalizadores visuales claros</strong
       >
-        <div style="display: flex; gap: var(--spacing-sm)">
-          <div class="fake-button">No soy un botón</div>
-          <button class="demo-btn primary">Soy un botón real</button>
-        </div>
-      </Banner>
-    </section>
+      que comuniquen su función de forma inmediata.
+    </p>
+
+    <Banner title="🎯 Principio fundamental" variant="info">
+      <p>
+        <strong>La claridad siempre gana sobre la consistencia.</strong>
+        Si necesitas sacrificar consistencia para mejorar la usabilidad, hazlo.
+      </p>
+    </Banner>
+  </section>
+
+  <section>
+    <h2>Las 7 técnicas clave</h2>
+
+    <OrderedList>
+      <OrderedListItem number={1} title="Técnica de Forma">
+        <p>
+          La forma puede indicar si algo es un botón. Los rectángulos son la
+          opción más segura.
+        </p>
+
+        <CardGrid columns="2" gap="lg">
+          <Card
+            title="✅ Formas seguras"
+            variant="success"
+            borderAccent
+            subtitle="Formas reconocibles como botones"
+          >
+            <div class="button-group">
+              <button class="demo-btn rectangular">Rectangular</button>
+              <button class="demo-btn rounded">Redondeado</button>
+              <button class="demo-btn pill">Píldora</button>
+            </div>
+          </Card>
+
+          <Card
+            title="⚠️ Formas creativas"
+            variant="warning"
+            borderAccent
+            subtitle="Requieren señalizadores adicionales"
+          >
+            <div class="button-group">
+              <button class="demo-btn hexagon">Hexágono</button>
+              <button class="demo-btn circle">Círculo</button>
+              <button class="demo-btn diamond">Rombo</button>
+            </div>
+          </Card>
+        </CardGrid>
+
+        <CardGrid columns="2" gap="lg">
+          <Card
+            title="❌ Inconsistente"
+            variant="danger"
+            borderAccent
+            subtitle="Diferentes formas en el mismo grupo"
+          >
+            <div class="button-group">
+              <button class="demo-btn rectangular">Copiar</button>
+              <button class="demo-btn circle">+</button>
+              <button class="demo-btn pill">Eliminar</button>
+            </div>
+          </Card>
+
+          <Card
+            title="✅ Consistente"
+            variant="success"
+            borderAccent
+            subtitle="Todos los botones son rectangulares"
+          >
+            <div class="button-group">
+              <button class="demo-btn rectangular">Copiar</button>
+              <button class="demo-btn rectangular">Agregar</button>
+              <button class="demo-btn rectangular">Eliminar</button>
+            </div>
+          </Card>
+        </CardGrid>
+      </OrderedListItem>
+
+      <OrderedListItem number={2} title="Técnica de Radio de Borde">
+        <p>
+          El radio de borde cambia la "personalidad" del botón: de más serio a
+          más divertido.
+        </p>
+
+        <CardGrid columns="3" gap="lg">
+          <Card variant="default" subtitle="Formal, profesional" borderAccent>
+            <button class="demo-btn serious">Serio (0px)</button>
+          </Card>
+          <Card variant="default" subtitle="Equilibrado, amigable" borderAccent>
+            <button class="demo-btn moderate">Moderado (4px)</button>
+          </Card>
+          <Card variant="default" subtitle="Casual, divertido" borderAccent>
+            <button class="demo-btn playful">Juguetón (50px)</button>
+          </Card>
+        </CardGrid>
+      </OrderedListItem>
+
+      <OrderedListItem number={3} title="Técnica de Relleno y Color">
+        <p>
+          Usa cambios estructurales (no solo color) para crear jerarquía visual
+          según <a
+            href="https://www.w3.org/WAI/WCAG22/Understanding/use-of-color.html"
+            target="_blank"
+            rel="noopener">WCAG 1.4.1: Use of Color</a
+          >.
+        </p>
+
+        <CardGrid columns="2" gap="lg">
+          <Card title="Jerarquía de botones" variant="default" borderAccent>
+            <div class="button-hierarchy">
+              <button class="demo-btn primary">Primario (Sólido)</button>
+              <button class="demo-btn secondary">Secundario (Borde)</button>
+              <button class="demo-btn tertiary">Terciario (Sin borde)</button>
+            </div>
+            <div class="hierarchy-explanation">
+              <div class="hierarchy-item">
+                <span class="hierarchy-dot primary-dot"></span>
+                <span>Acciones principales - Relleno sólido</span>
+              </div>
+              <div class="hierarchy-item">
+                <span class="hierarchy-dot secondary-dot"></span>
+                <span>Acciones secundarias - Solo borde</span>
+              </div>
+              <div class="hierarchy-item">
+                <span class="hierarchy-dot tertiary-dot"></span>
+                <span>Acciones terciarias - Sin borde</span>
+              </div>
+            </div>
+          </Card>
+
+          <Card title="Ejemplo en contexto" variant="default" borderAccent>
+            <div class="form-example">
+              <div class="form-field">
+                <label>Nombre de usuario:</label>
+                <input type="text" placeholder="Ingresa tu nombre" />
+              </div>
+              <div class="form-actions">
+                <button class="demo-btn tertiary">Cancelar</button>
+                <button class="demo-btn primary">Siguiente</button>
+              </div>
+            </div>
+          </Card>
+        </CardGrid>
+      </OrderedListItem>
+
+      <OrderedListItem number={4} title="Técnica de Sombra y Elevación">
+        <p>Las sombras comunican elevación e importancia visual.</p>
+
+        <CardGrid columns="2" gap="lg">
+          <Card
+            variant="default"
+            borderAccent
+            subtitle="Color 'pesado' para dominio visual"
+          >
+            <button class="demo-btn no-shadow">Sin sombra</button>
+          </Card>
+          <Card
+            variant="default"
+            borderAccent
+            subtitle="Elevación ligera, importancia"
+          >
+            <button class="demo-btn small-shadow">Sombra pequeña</button>
+          </Card>
+          <Card
+            variant="default"
+            borderAccent
+            subtitle="Alta elevación, llama atención"
+          >
+            <button class="demo-btn long-shadow">Sombra larga</button>
+          </Card>
+          <Card
+            variant="default"
+            borderAccent
+            subtitle="La sombra aumenta al hacer hover"
+          >
+            <div class="text-center">
+              <button class="demo-btn interactive-shadow"
+                >Pasa el cursor aquí</button
+              >
+            </div>
+          </Card>
+        </CardGrid>
+      </OrderedListItem>
+
+      <OrderedListItem number={5} title="Técnica de Competencia">
+        <p>
+          Elementos con estilos similares compiten entre sí. Los CTAs deben
+          destacar claramente.
+        </p>
+
+        <CardGrid columns="2" gap="lg">
+          <Card
+            title="❌ Demasiada competencia"
+            variant="danger"
+            borderAccent
+            highContrast
+            subtitle="Todo compite por atención"
+          >
+            <div class="fake-header">Tecnologías Frontend</div>
+            <div class="fake-header">Aprende las Mejores Herramientas</div>
+            <div class="button-grid">
+              <button class="demo-btn competing">React</button>
+              <button class="demo-btn competing">Vue.js</button>
+              <button class="demo-btn competing">Angular</button>
+            </div>
+            <input
+              type="text"
+              class="competing-input"
+              placeholder="Buscar frameworks..."
+            />
+            <button class="demo-btn competing">Buscar</button>
+          </Card>
+
+          <Card
+            title="✅ CTA claro"
+            variant="success"
+            borderAccent
+            highContrast
+            subtitle="Un CTA principal claro"
+          >
+            <h5>Tecnologías Frontend</h5>
+            <p>Aprende las mejores herramientas</p>
+            <div class="product-grid">
+              <span class="product-tag">React</span>
+              <span class="product-tag">Vue.js</span>
+              <span class="product-tag">Angular</span>
+            </div>
+            <input
+              type="text"
+              class="clean-input"
+              placeholder="Buscar frameworks..."
+            />
+            <button class="demo-btn primary prominent"
+              >Explorar Tecnologías</button
+            >
+          </Card>
+        </CardGrid>
+      </OrderedListItem>
+
+      <OrderedListItem number={6} title="Técnica de Proximidad">
+        <p>
+          El espacio adecuado permite que los elementos interactivos respiren y
+          destaquen.
+        </p>
+
+        <CardGrid columns="2" gap="lg">
+          <Card
+            title="❌ Muy apretado"
+            variant="danger"
+            borderAccent
+            highContrast
+            subtitle="Dificultad para usar, errores accidentales"
+          >
+            <button class="demo-btn small">Guardar</button><button
+              class="demo-btn small">Cancelar</button
+            ><button class="demo-btn small">Eliminar</button>
+          </Card>
+
+          <Card
+            title="✅ Bien espaciado"
+            variant="success"
+            borderAccent
+            highContrast
+            subtitle="Fácil de usar, targets grandes"
+          >
+            <div class="spaced-interface">
+              <button class="demo-btn comfortable">Guardar</button>
+              <button class="demo-btn comfortable">Cancelar</button>
+              <button class="demo-btn comfortable">Eliminar</button>
+            </div>
+          </Card>
+        </CardGrid>
+
+        <Card title="🔍 Tamaños de área táctil" variant="info" borderAccent>
+          <div class="target-examples">
+            <button class="demo-btn tiny">Muy pequeño</button>
+            <button class="demo-btn small-target">Pequeño</button>
+            <button class="demo-btn good-target">Tamaño ideal</button>
+          </div>
+          <p class="demo-desc">
+            Mínimo recomendado: 44px × 44px según <a
+              href="https://www.w3.org/WAI/WCAG22/Understanding/target-size-minimum.html"
+              target="_blank"
+              rel="noopener">WCAG 2.5.8: Target Size</a
+            >
+          </p>
+        </Card>
+      </OrderedListItem>
+
+      <OrderedListItem number={7} title="Técnica de Capitalización">
+        <p>El tipo de capitalización transmite diferentes tonos de voz.</p>
+
+        <CardGrid columns="auto" gap="lg">
+          <Card
+            title="Sentence case"
+            variant="default"
+            borderAccent
+            subtitle="Amigable, conversacional"
+          >
+            <button class="demo-btn cap-sentence">Enviar mensaje</button>
+          </Card>
+          <Card
+            title="Title case"
+            variant="default"
+            borderAccent
+            subtitle="Uniforme, autoritario"
+          >
+            <button class="demo-btn cap-title">Enviar mensaje</button>
+          </Card>
+          <Card
+            title="ALL CAPS"
+            variant="default"
+            borderAccent
+            subtitle="Formal, impersonal"
+          >
+            <button class="demo-btn cap-upper">ENVIAR MENSAJE</button>
+          </Card>
+          <Card
+            title="lower case"
+            variant="default"
+            borderAccent
+            subtitle="Casual, poco esfuerzo"
+          >
+            <button class="demo-btn cap-lower">enviar mensaje</button>
+          </Card>
+        </CardGrid>
+      </OrderedListItem>
+    </OrderedList>
+  </section>
+
+  <section>
+    <h2>Mejores prácticas adicionales</h2>
 
     <Banner
-      title="⚖️ Consistencia vs. Claridad"
+      title="🎯 Reserva señalizadores para botones"
       variant="info"
-      subtitle="Mantén consistencia, pero prioriza siempre la claridad y usabilidad del usuario."
+      subtitle="No uses formas rectangulares, sombras o colores de botón para elementos no interactivos."
+      highContrast
     >
-      <CardGrid columns="2" gap="lg">
-        <Card title="Consistencia ayuda con:" variant="info" borderAccent>
-          <ul>
-            <li>Transferencia de conocimiento</li>
-            <li>Eficiencia del usuario</li>
-            <li>Percepción de confiabilidad</li>
-          </ul>
-        </Card>
-        <Card title="Distinción se usa para:" variant="info" borderAccent>
-          <ul>
-            <li>Diferenciar elementos</li>
-            <li>Llamar atención específica</li>
-            <li>Mejorar objetivos de UX</li>
-          </ul>
-        </Card>
-      </CardGrid>
+      <div style="display: flex; gap: var(--spacing-sm)">
+        <div class="fake-button">No soy un botón</div>
+        <button class="demo-btn primary">Soy un botón real</button>
+      </div>
     </Banner>
+  </section>
 
-    <section>
-      <h2>Lista de verificación</h2>
-      <Checklist
-        title="✅ Antes de publicar, verifica:"
-        items={checklistItems}
-        variant="success"
-      />
-    </section>
+  <Banner
+    title="⚖️ Consistencia vs. Claridad"
+    variant="info"
+    subtitle="Mantén consistencia, pero prioriza siempre la claridad y usabilidad del usuario."
+  >
+    <CardGrid columns="2" gap="lg">
+      <Card title="Consistencia ayuda con:" variant="info" borderAccent>
+        <ul>
+          <li>Transferencia de conocimiento</li>
+          <li>Eficiencia del usuario</li>
+          <li>Percepción de confiabilidad</li>
+        </ul>
+      </Card>
+      <Card title="Distinción se usa para:" variant="info" borderAccent>
+        <ul>
+          <li>Diferenciar elementos</li>
+          <li>Llamar atención específica</li>
+          <li>Mejorar objetivos de UX</li>
+        </ul>
+      </Card>
+    </CardGrid>
+  </Banner>
 
-    <ToolsSection title="Herramientas útiles" tools={buttonTools} />
-  </article>
+  <section>
+    <h2>Lista de verificación</h2>
+    <Checklist
+      title="✅ Antes de publicar, verifica:"
+      items={checklistItems}
+      variant="success"
+    />
+  </section>
+
+  <ToolsSection title="Herramientas útiles" tools={buttonTools} />
 </Layout>
 
 <style lang="scss">
-  article {
-    max-width: 90ch;
-  }
-
   /* Botones demo base */
   .demo-btn {
     padding: var(--spacing-sm) var(--spacing-md);

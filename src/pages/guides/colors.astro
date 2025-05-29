@@ -6,7 +6,6 @@ import Card from '../../components/Card.astro'
 import CardGrid from '../../components/CardGrid.astro'
 import Banner from '../../components/Banner.astro'
 import BannerGrid from '../../components/BannerGrid.astro'
-import Header from '../../components/Header.astro'
 import ToolsSection from '../../components/ToolsSection.astro'
 
 const colorTools = [
@@ -32,1137 +31,1123 @@ const colorTools = [
   description="Aprende a usar colores accesibles en web. Ratios de contraste WCAG 2.2, daltonismo, herramientas de verificación y paletas inclusivas."
   type="article"
   canonical="/a11yado/guides/colors"
+  headerTitle="Colores y Contraste"
+  headerDescription="Asegurar un contraste adecuado entre el color de cada elemento informativo y su fondo."
+  articleWidth="wide"
 >
-  <article>
-    <Header
-      title="Colores y Contraste"
-      description="Asegurar un contraste adecuado entre el color de cada elemento informativo y su fondo."
-    />
+  <section>
+    <h2>Conceptos básicos</h2>
 
-    <section>
-      <h2>Conceptos básicos</h2>
+    <BannerGrid columns="auto" gap="lg">
+      <Banner title="Elementos que llevan información" variant="info">
+        <ul>
+          <li>Texto</li>
+          <li>
+            Imágenes de texto (SVGs o imágenes donde el texto es el elemento
+            principal)
+          </li>
+          <li>Iconos independientes</li>
+        </ul>
+      </Banner>
+      <Banner title="Elementos decorativos" variant="info">
+        <ul>
+          <li>Elementos desactivados (Botones, controles)</li>
+          <li>Patrones de fondo</li>
+          <li>Bordes artísticos</li>
+          <li>Fotografías</li>
+          <li>Logotipos</li>
+        </ul>
+      </Banner>
+      <Banner title="¿Por qué es importante?" variant="info">
+        <ul>
+          <li>
+            Las condiciones de iluminación ambiental pueden afectar la
+            visibilidad
+          </li>
+          <li>Con la edad, se reduce la capacidad de percibir el contraste</li>
+          <li>
+            Las personas con discapacidades visuales necesitan mayor contraste
+          </li>
+        </ul>
+      </Banner>
+    </BannerGrid>
+  </section>
 
-      <BannerGrid columns="auto" gap="lg">
-        <Banner title="Elementos que llevan información" variant="info">
-          <ul>
-            <li>Texto</li>
-            <li>
-              Imágenes de texto (SVGs o imágenes donde el texto es el elemento
-              principal)
-            </li>
-            <li>Iconos independientes</li>
-          </ul>
-        </Banner>
-        <Banner title="Elementos decorativos" variant="info">
-          <ul>
-            <li>Elementos desactivados (Botones, controles)</li>
-            <li>Patrones de fondo</li>
-            <li>Bordes artísticos</li>
-            <li>Fotografías</li>
-            <li>Logotipos</li>
-          </ul>
-        </Banner>
-        <Banner title="¿Por qué es importante?" variant="info">
-          <ul>
-            <li>
-              Las condiciones de iluminación ambiental pueden afectar la
-              visibilidad
-            </li>
-            <li>
-              Con la edad, se reduce la capacidad de percibir el contraste
-            </li>
-            <li>
-              Las personas con discapacidades visuales necesitan mayor contraste
-            </li>
-          </ul>
-        </Banner>
-      </BannerGrid>
-    </section>
+  <section>
+    <h2>Requisitos de contraste</h2>
 
-    <section>
-      <h2>Requisitos de contraste</h2>
+    <BannerGrid columns="auto" gap="lg">
+      <Banner title="Elementos decorativos y deshabilitados" variant="info">
+        <p><strong>Sin requisito de contraste</strong></p>
+        <p class="small-text">
+          Aunque no sea obligatorio, se recomienda mantener buen contraste
+        </p>
+      </Banner>
 
-      <BannerGrid columns="auto" gap="lg">
-        <Banner title="Elementos decorativos y deshabilitados" variant="info">
-          <p><strong>Sin requisito de contraste</strong></p>
-          <p class="small-text">
-            Aunque no sea obligatorio, se recomienda mantener buen contraste
-          </p>
-        </Banner>
-
-        <Banner title="Elementos que llevan información" variant="info">
-          <p><strong>Mínimo 4.5:1</strong></p>
-          <p class="small-text">
-            Según <a
+      <Banner title="Elementos que llevan información" variant="info">
+        <p><strong>Mínimo 4.5:1</strong></p>
+        <p class="small-text">
+          Según <a
+            href="https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html"
+            target="_blank"
+            rel="noopener">WCAG 1.4.3: Contrast (Minimum)</a
+          >
+        </p>
+      </Banner>
+      <Banner title="Excepciones con 3:1" variant="info">
+        <ul>
+          <li>
+            <strong>Texto grande:</strong> 14pt negrita+ o 18pt regular+ según
+            <a
               href="https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html"
               target="_blank"
-              rel="noopener">WCAG 1.4.3: Contrast (Minimum)</a
+              rel="noopener">WCAG 1.4.3</a
             >
+          </li>
+          <li>
+            <strong>Controles de UI:</strong> según
+            <a
+              href="https://www.w3.org/WAI/WCAG22/Understanding/non-text-contrast.html"
+              target="_blank"
+              rel="noopener">WCAG 1.4.11: Non-text Contrast</a
+            >
+          </li>
+          <li>
+            <strong>Objetos gráficos:</strong> partes necesarias según WCAG 1.4.11
+          </li>
+        </ul>
+      </Banner>
+    </BannerGrid>
+
+    <Banner title="💡 Consejo" variant="warning">
+      <p>No busques los mínimos, intenta superarlos.</p>
+    </Banner>
+  </section>
+
+  <section>
+    <h2>Combinaciones problemáticas</h2>
+    <p>
+      Evita estas combinaciones de colores, especialmente si no tienes alto
+      contraste:
+    </p>
+
+    <div class="color-problems">
+      <div class="problem-combo critical">
+        <div class="color-sample red"></div>
+        <div class="color-sample green"></div>
+        <span>Rojo y verde</span>
+        <span class="badge critical">¡Crítico!</span>
+      </div>
+
+      <div class="problem-combo">
+        <div class="color-sample green"></div>
+        <div class="color-sample brown"></div>
+        <span>Verde y marrón</span>
+      </div>
+
+      <div class="problem-combo">
+        <div class="color-sample green"></div>
+        <div class="color-sample blue"></div>
+        <span>Verde y azul</span>
+      </div>
+
+      <div class="problem-combo">
+        <div class="color-sample green"></div>
+        <div class="color-sample gray"></div>
+        <span>Verde y gris</span>
+      </div>
+
+      <div class="problem-combo">
+        <div class="color-sample green"></div>
+        <div class="color-sample black"></div>
+        <span>Verde y negro</span>
+      </div>
+
+      <div class="problem-combo">
+        <div class="color-sample blue"></div>
+        <div class="color-sample gray"></div>
+        <span>Azul y gris</span>
+      </div>
+
+      <div class="problem-combo">
+        <div class="color-sample blue"></div>
+        <div class="color-sample purple"></div>
+        <span>Azul y púrpura</span>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Ejemplos prácticos</h2>
+
+    <h3>Contraste insuficiente</h3>
+    <BannerGrid columns="2" gap="lg">
+      <Banner title="❌ Ratio: 2.8:1 " variant="bad" highContrast>
+        <p
+          style="color: #999; background: #fff; padding: 1rem; border-radius: 4px;"
+        >
+          Este texto tiene contraste insuficiente (2.8:1)
+        </p>
+      </Banner>
+
+      <Banner title="❌ Ratio: 1.5:1 " variant="bad" highContrast>
+        <p
+          style="color: #ffcc00; background: #fff; padding: 1rem; border-radius: 4px;"
+        >
+          Amarillo sobre blanco es difícil de leer (1.5:1)
+        </p>
+      </Banner>
+    </BannerGrid>
+
+    <h3>Contraste adecuado</h3>
+    <BannerGrid columns="2" gap="lg">
+      <Banner title="✅ Ratio: 12.6:1 " variant="good" highContrast>
+        <p
+          style="color: #333; background: #fff; padding: 1rem; border-radius: 4px;"
+        >
+          Este texto tiene buen contraste (12.6:1)
+        </p>
+      </Banner>
+
+      <Banner title="✅ Ratio: 4.5:1 " variant="good" highContrast>
+        <p
+          style="color: #fff; background: #2563eb; padding: 1rem; border-radius: 4px;"
+        >
+          Blanco sobre azul oscuro (4.5:1)
+        </p>
+      </Banner>
+    </BannerGrid>
+  </section>
+
+  <section>
+    <h2>Mejores prácticas</h2>
+
+    <OrderedList>
+      <OrderedListItem number={1} title="Categoriza tus elementos">
+        <p>
+          Separa los elementos en "informativos" y "decorativos" antes de
+          aplicar contraste.
+        </p>
+      </OrderedListItem>
+
+      <OrderedListItem
+        number={2}
+        title="Verifica el contraste durante el diseño"
+      >
+        <p>
+          Revisa manualmente los colores mientras los eliges. Esto entrenará tu
+          ojo para reconocer qué colores cumplen los requisitos.
+        </p>
+      </OrderedListItem>
+
+      <OrderedListItem number={3} title="Supera los mínimos">
+        <p>
+          Si quieres que algo se vea, asegúrate de que tenga suficiente
+          contraste para que todo el mundo pueda verlo.
+        </p>
+      </OrderedListItem>
+
+      <OrderedListItem number={4} title="Si usas colores problemáticos">
+        <p>
+          Asegura alto contraste entre ellos y considera agregar indicadores
+          adicionales (iconos, patrones, etc.).
+        </p>
+      </OrderedListItem>
+    </OrderedList>
+  </section>
+
+  <section>
+    <h2>Independencia de color</h2>
+    <p>
+      Según <a
+        href="https://www.w3.org/WAI/WCAG22/Understanding/use-of-color.html"
+        target="_blank"
+        rel="noopener">WCAG 1.4.1: Use of Color</a
+      >, asegúrate de que el color no sea el <strong>único</strong> medio visual
+      para transmitir información, indicar una acción o distinguir elementos. Puedes
+      usar color, pero no como la única forma de diferenciar.
+    </p>
+
+    <Banner
+      title="🔍 Prueba de escala de grises"
+      variant="info"
+      subtitle="La técnica más efectiva"
+    >
+      <p>
+        <strong>Convierte tu diseño a escala de grises y pregúntate:</strong>
+        "¿Hay algo que no puedo identificar o diferenciar sin los colores?"
+      </p>
+      <ol>
+        <li>Aplica un filtro de escala de grises a tu diseño</li>
+        <li>Revisa si puedes distinguir todos los elementos importantes</li>
+        <li>
+          Identifica qué necesita indicadores adicionales no basados en color
+        </li>
+      </ol>
+    </Banner>
+
+    <div class="independence-examples">
+      <h3>Ejemplos prácticos de independencia de color</h3>
+      <BannerGrid>
+        <Banner
+          title="❌ Incorrecto: Solo color"
+          variant="bad"
+          highContrast
+          subtitle="Solo el color rojo indica el error"
+        >
+          <span class="demo-text">Texto normal</span>
+          <span class="demo-text error-color">Texto con error</span>
+        </Banner>
+
+        <Banner
+          title="✅ Correcto: Color + estructura"
+          variant="good"
+          highContrast
+          subtitle="Icono + color + borde más grueso"
+        >
+          <span class="demo-text">Texto normal</span>
+          <span class="demo-text error-full">⚠️ Texto con error</span>
+        </Banner>
+
+        <Banner
+          title="❌ Enlaces solo por color"
+          variant="bad"
+          highContrast
+          subtitle="Solo el color azul indica el enlace"
+        >
+          <p>
+            Este párrafo tiene un <span class="link-color">enlace</span> que solo
+            se diferencia por color.
           </p>
         </Banner>
-        <Banner title="Excepciones con 3:1" variant="info">
+
+        <Banner
+          title="✅ Enlaces con subrayado"
+          variant="good"
+          highContrast
+          subtitle="Subrayado + color"
+        >
+          <p>
+            Este párrafo tiene un <a href="#" class="proper-link">enlace</a>
+            con subrayado y color.
+          </p>
+        </Banner>
+      </BannerGrid>
+    </div>
+
+    <div class="independence-tips">
+      <h3>Técnicas para lograr independencia de color</h3>
+      <BannerGrid>
+        <Banner title="🔗 Enlaces" variant="info">
           <ul>
+            <li><strong>En texto:</strong> Subrayado + color</li>
+            <li><strong>Botones:</strong> Negrita + contraste alto</li>
             <li>
-              <strong>Texto grande:</strong> 14pt negrita+ o 18pt regular+ según
-              <a
-                href="https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html"
-                target="_blank"
-                rel="noopener">WCAG 1.4.3</a
-              >
-            </li>
-            <li>
-              <strong>Controles de UI:</strong> según
-              <a
-                href="https://www.w3.org/WAI/WCAG22/Understanding/non-text-contrast.html"
-                target="_blank"
-                rel="noopener">WCAG 1.4.11: Non-text Contrast</a
-              >
-            </li>
-            <li>
-              <strong>Objetos gráficos:</strong> partes necesarias según WCAG 1.4.11
+              <strong>Al pasar el cursor:</strong> Cambios estructurales adicionales
             </li>
           </ul>
         </Banner>
-      </BannerGrid>
 
-      <Banner title="💡 Consejo" variant="warning">
-        <p>No busques los mínimos, intenta superarlos.</p>
-      </Banner>
-    </section>
-
-    <section>
-      <h2>Combinaciones problemáticas</h2>
-      <p>
-        Evita estas combinaciones de colores, especialmente si no tienes alto
-        contraste:
-      </p>
-
-      <div class="color-problems">
-        <div class="problem-combo critical">
-          <div class="color-sample red"></div>
-          <div class="color-sample green"></div>
-          <span>Rojo y verde</span>
-          <span class="badge critical">¡Crítico!</span>
-        </div>
-
-        <div class="problem-combo">
-          <div class="color-sample green"></div>
-          <div class="color-sample brown"></div>
-          <span>Verde y marrón</span>
-        </div>
-
-        <div class="problem-combo">
-          <div class="color-sample green"></div>
-          <div class="color-sample blue"></div>
-          <span>Verde y azul</span>
-        </div>
-
-        <div class="problem-combo">
-          <div class="color-sample green"></div>
-          <div class="color-sample gray"></div>
-          <span>Verde y gris</span>
-        </div>
-
-        <div class="problem-combo">
-          <div class="color-sample green"></div>
-          <div class="color-sample black"></div>
-          <span>Verde y negro</span>
-        </div>
-
-        <div class="problem-combo">
-          <div class="color-sample blue"></div>
-          <div class="color-sample gray"></div>
-          <span>Azul y gris</span>
-        </div>
-
-        <div class="problem-combo">
-          <div class="color-sample blue"></div>
-          <div class="color-sample purple"></div>
-          <span>Azul y púrpura</span>
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <h2>Ejemplos prácticos</h2>
-
-      <h3>Contraste insuficiente</h3>
-      <BannerGrid columns="2" gap="lg">
-        <Banner title="❌ Ratio: 2.8:1 " variant="bad" highContrast>
-          <p
-            style="color: #999; background: #fff; padding: 1rem; border-radius: 4px;"
-          >
-            Este texto tiene contraste insuficiente (2.8:1)
-          </p>
+        <Banner title="⚠️ Estados de error" variant="info">
+          <ul>
+            <li>Icono de advertencia</li>
+            <li>Borde más grueso</li>
+            <li>Cambio en la posición (sangría)</li>
+            <li>Mensaje de texto explicativo</li>
+          </ul>
         </Banner>
 
-        <Banner title="❌ Ratio: 1.5:1 " variant="bad" highContrast>
-          <p
-            style="color: #ffcc00; background: #fff; padding: 1rem; border-radius: 4px;"
-          >
-            Amarillo sobre blanco es difícil de leer (1.5:1)
-          </p>
+        <Banner title="📊 Gráficos" variant="info">
+          <ul>
+            <li>Patrones o texturas diferentes</li>
+            <li>Formas variadas</li>
+            <li>Etiquetas directas</li>
+            <li>Líneas punteadas/discontinuas</li>
+          </ul>
+        </Banner>
+
+        <Banner title="🎯 Estados seleccionados" variant="info">
+          <ul>
+            <li>Indicadores de forma (→ ● ◆)</li>
+            <li>Cambios de tamaño</li>
+            <li>Bordes adicionales</li>
+            <li>Cambios tipográficos (negrita)</li>
+          </ul>
+        </Banner>
+
+        <Banner title="📋 Progress trackers" variant="info">
+          <ul>
+            <li>✅ Iconos para pasos completados</li>
+            <li>🔵 Borde grueso + sombra para paso actual</li>
+            <li>⚪ Bordes punteados para pasos futuros</li>
+            <li>📊 Líneas sólidas vs punteadas</li>
+          </ul>
         </Banner>
       </BannerGrid>
+    </div>
+  </section>
 
-      <h3>Contraste adecuado</h3>
-      <BannerGrid columns="2" gap="lg">
-        <Banner title="✅ Ratio: 12.6:1 " variant="good" highContrast>
-          <p
-            style="color: #333; background: #fff; padding: 1rem; border-radius: 4px;"
-          >
-            Este texto tiene buen contraste (12.6:1)
-          </p>
-        </Banner>
+  <section>
+    <h2>Ejemplos de gráficos accesibles</h2>
+    <p>
+      Los gráficos deben ser comprensibles sin depender únicamente del color.
+      Aquí tienes ejemplos prácticos usando patrones, formas y etiquetas.
+    </p>
 
-        <Banner title="✅ Ratio: 4.5:1 " variant="good" highContrast>
-          <p
-            style="color: #fff; background: #2563eb; padding: 1rem; border-radius: 4px;"
-          >
-            Blanco sobre azul oscuro (4.5:1)
-          </p>
-        </Banner>
-      </BannerGrid>
-    </section>
-
-    <section>
-      <h2>Mejores prácticas</h2>
-
-      <OrderedList>
-        <OrderedListItem number={1} title="Categoriza tus elementos">
-          <p>
-            Separa los elementos en "informativos" y "decorativos" antes de
-            aplicar contraste.
-          </p>
-        </OrderedListItem>
-
-        <OrderedListItem
-          number={2}
-          title="Verifica el contraste durante el diseño"
+    <div class="charts-section">
+      <h3>Gráfico de barras</h3>
+      <BannerGrid>
+        <Banner
+          title="❌ Solo color"
+          variant="bad"
+          highContrast
+          subtitle="Barras únicamente distinguibles por color"
         >
-          <p>
-            Revisa manualmente los colores mientras los eliges. Esto entrenará
-            tu ojo para reconocer qué colores cumplen los requisitos.
-          </p>
-        </OrderedListItem>
+          <div class="bar-chart">
+            <div class="bar-container">
+              <div class="bar bar-red" style="height: 80%;" title="Ventas: 80%">
+              </div>
+              <span class="bar-label">Ventas</span>
+            </div>
+            <div class="bar-container">
+              <div
+                class="bar bar-blue"
+                style="height: 60%;"
+                title="Marketing: 60%"
+              >
+              </div>
+              <span class="bar-label">Marketing</span>
+            </div>
+            <div class="bar-container">
+              <div
+                class="bar bar-green"
+                style="height: 45%;"
+                title="Soporte: 45%"
+              >
+              </div>
+              <span class="bar-label">Soporte</span>
+            </div>
+          </div>
+        </Banner>
 
-        <OrderedListItem number={3} title="Supera los mínimos">
-          <p>
-            Si quieres que algo se vea, asegúrate de que tenga suficiente
-            contraste para que todo el mundo pueda verlo.
-          </p>
-        </OrderedListItem>
+        <Banner
+          title="🔍 En escala de grises"
+          variant="info"
+          highContrast
+          subtitle="¡Imposible distinguir las barras!"
+        >
+          <div class="bar-chart grayscale">
+            <div class="bar-container">
+              <div class="bar bar-red" style="height: 80%;" title="Ventas: 80%">
+              </div>
+              <span class="bar-label">Ventas</span>
+            </div>
+            <div class="bar-container">
+              <div
+                class="bar bar-blue"
+                style="height: 60%;"
+                title="Marketing: 60%"
+              >
+              </div>
+              <span class="bar-label">Marketing</span>
+            </div>
+            <div class="bar-container">
+              <div
+                class="bar bar-green"
+                style="height: 45%;"
+                title="Soporte: 45%"
+              >
+              </div>
+              <span class="bar-label">Soporte</span>
+            </div>
+          </div>
+        </Banner>
 
-        <OrderedListItem number={4} title="Si usas colores problemáticos">
-          <p>
-            Asegura alto contraste entre ellos y considera agregar indicadores
-            adicionales (iconos, patrones, etc.).
-          </p>
-        </OrderedListItem>
-      </OrderedList>
-    </section>
+        <Banner
+          title="✅ Color + patrones"
+          variant="good"
+          highContrast
+          subtitle="Patrones + valores + color"
+        >
+          <div class="bar-chart">
+            <div class="bar-container">
+              <div
+                class="bar bar-red pattern-diagonal"
+                style="height: 80%;"
+                title="Ventas: 80%"
+              >
+              </div>
+              <span class="bar-label">Ventas (80%)</span>
+            </div>
+            <div class="bar-container">
+              <div
+                class="bar bar-blue pattern-dots"
+                style="height: 60%;"
+                title="Marketing: 60%"
+              >
+              </div>
+              <span class="bar-label">Marketing (60%)</span>
+            </div>
+            <div class="bar-container">
+              <div
+                class="bar bar-green pattern-lines"
+                style="height: 45%;"
+                title="Soporte: 45%"
+              >
+              </div>
+              <span class="bar-label">Soporte (45%)</span>
+            </div>
+          </div>
+        </Banner>
 
-    <section>
-      <h2>Independencia de color</h2>
-      <p>
-        Según <a
-          href="https://www.w3.org/WAI/WCAG22/Understanding/use-of-color.html"
-          target="_blank"
-          rel="noopener">WCAG 1.4.1: Use of Color</a
-        >, asegúrate de que el color no sea el <strong>único</strong> medio visual
-        para transmitir información, indicar una acción o distinguir elementos. Puedes
-        usar color, pero no como la única forma de diferenciar.
-      </p>
+        <Banner
+          title="🔍 Patrones en escala de grises"
+          variant="info"
+          highContrast
+          subtitle="¡Perfectamente distinguible!"
+        >
+          <div class="bar-chart grayscale">
+            <div class="bar-container">
+              <div
+                class="bar bar-red pattern-diagonal"
+                style="height: 80%;"
+                title="Ventas: 80%"
+              >
+              </div>
+              <span class="bar-label">Ventas (80%)</span>
+            </div>
+            <div class="bar-container">
+              <div
+                class="bar bar-blue pattern-dots"
+                style="height: 60%;"
+                title="Marketing: 60%"
+              >
+              </div>
+              <span class="bar-label">Marketing (60%)</span>
+            </div>
+            <div class="bar-container">
+              <div
+                class="bar bar-green pattern-lines"
+                style="height: 45%;"
+                title="Soporte: 45%"
+              >
+              </div>
+              <span class="bar-label">Soporte (45%)</span>
+            </div>
+          </div>
+        </Banner>
+      </BannerGrid>
 
-      <Banner
-        title="🔍 Prueba de escala de grises"
-        variant="info"
-        subtitle="La técnica más efectiva"
-      >
-        <p>
-          <strong>Convierte tu diseño a escala de grises y pregúntate:</strong>
-          "¿Hay algo que no puedo identificar o diferenciar sin los colores?"
-        </p>
-        <ol>
-          <li>Aplica un filtro de escala de grises a tu diseño</li>
-          <li>Revisa si puedes distinguir todos los elementos importantes</li>
-          <li>
-            Identifica qué necesita indicadores adicionales no basados en color
-          </li>
-        </ol>
-      </Banner>
+      <h3>Gráfico de líneas</h3>
+      <BannerGrid>
+        <Banner
+          title="❌ Solo colores"
+          variant="bad"
+          highContrast
+          subtitle="Líneas únicamente distinguibles por color"
+        >
+          <div class="line-chart">
+            <svg viewBox="0 0 300 150" class="chart-svg">
+              <!-- Línea 1 -->
+              <polyline
+                points="20,120 80,90 140,70 200,80 260,50"
+                stroke="#dc2626"
+                stroke-width="3"
+                fill="none"></polyline>
+              <!-- Línea 2 -->
+              <polyline
+                points="20,100 80,110 140,95 200,100 260,85"
+                stroke="#2563eb"
+                stroke-width="3"
+                fill="none"></polyline>
+              <!-- Línea 3 -->
+              <polyline
+                points="20,80 80,70 140,85 200,75 260,70"
+                stroke="#16a34a"
+                stroke-width="3"
+                fill="none"></polyline>
+            </svg>
+            <div class="legend">
+              <span class="legend-item"
+                ><span class="legend-color" style="background: #dc2626;"
+                ></span>Producto A</span
+              >
+              <span class="legend-item"
+                ><span class="legend-color" style="background: #2563eb;"
+                ></span>Producto B</span
+              >
+              <span class="legend-item"
+                ><span class="legend-color" style="background: #16a34a;"
+                ></span>Producto C</span
+              >
+            </div>
+          </div>
+        </Banner>
 
-      <div class="independence-examples">
-        <h3>Ejemplos prácticos de independencia de color</h3>
-        <BannerGrid>
-          <Banner
-            title="❌ Incorrecto: Solo color"
-            variant="bad"
-            highContrast
-            subtitle="Solo el color rojo indica el error"
-          >
-            <span class="demo-text">Texto normal</span>
-            <span class="demo-text error-color">Texto con error</span>
-          </Banner>
+        <Banner
+          title="🔍 En escala de grises"
+          variant="info"
+          highContrast
+          subtitle="¡Líneas indistinguibles!"
+        >
+          <div class="line-chart grayscale">
+            <svg viewBox="0 0 300 150" class="chart-svg">
+              <!-- Línea 1 -->
+              <polyline
+                points="20,120 80,90 140,70 200,80 260,50"
+                stroke="#dc2626"
+                stroke-width="3"
+                fill="none"></polyline>
+              <!-- Línea 2 -->
+              <polyline
+                points="20,100 80,110 140,95 200,100 260,85"
+                stroke="#2563eb"
+                stroke-width="3"
+                fill="none"></polyline>
+              <!-- Línea 3 -->
+              <polyline
+                points="20,80 80,70 140,85 200,75 260,70"
+                stroke="#16a34a"
+                stroke-width="3"
+                fill="none"></polyline>
+            </svg>
+            <div class="legend grayscale">
+              <span class="legend-item"
+                ><span class="legend-color" style="background: #dc2626;"
+                ></span>Producto A</span
+              >
+              <span class="legend-item"
+                ><span class="legend-color" style="background: #2563eb;"
+                ></span>Producto B</span
+              >
+              <span class="legend-item"
+                ><span class="legend-color" style="background: #16a34a;"
+                ></span>Producto C</span
+              >
+            </div>
+          </div>
+        </Banner>
 
-          <Banner
-            title="✅ Correcto: Color + estructura"
-            variant="good"
-            highContrast
-            subtitle="Icono + color + borde más grueso"
-          >
-            <span class="demo-text">Texto normal</span>
-            <span class="demo-text error-full">⚠️ Texto con error</span>
-          </Banner>
+        <Banner
+          title="✅ Líneas diferenciadas"
+          variant="good"
+          highContrast
+          subtitle="Líneas diferenciadas"
+        >
+          <div class="line-chart">
+            <svg viewBox="0 0 300 150" class="chart-svg">
+              <!-- Línea 1: sólida -->
+              <polyline
+                points="20,120 80,90 140,70 200,80 260,50"
+                stroke="#dc2626"
+                stroke-width="4"
+                fill="none"></polyline>
+              <!-- Línea 2: punteada -->
+              <polyline
+                points="20,100 80,110 140,95 200,100 260,85"
+                stroke="#2563eb"
+                stroke-width="3"
+                fill="none"
+                stroke-dasharray="8,4"></polyline>
+              <!-- Línea 3: discontinua -->
+              <polyline
+                points="20,80 80,70 140,85 200,75 260,70"
+                stroke="#16a34a"
+                stroke-width="2"
+                fill="none"
+                stroke-dasharray="12,6"></polyline>
+            </svg>
+            <div class="legend">
+              <span class="legend-item">
+                <span class="legend-line legend-solid"></span>Producto A
+                (sólida)
+              </span>
+              <span class="legend-item">
+                <span class="legend-line legend-dashed"></span>Producto B
+                (punteada)
+              </span>
+              <span class="legend-item">
+                <span class="legend-line legend-dotted"></span>Producto C
+                (discontinua)
+              </span>
+            </div>
+          </div>
+        </Banner>
 
-          <Banner
-            title="❌ Enlaces solo por color"
-            variant="bad"
-            highContrast
-            subtitle="Solo el color azul indica el enlace"
+        <Banner
+          title="🔍 Estilos en escala de grises"
+          variant="info"
+          highContrast
+          subtitle="¡Líneas indistinguibles!"
+        >
+          <div class="line-chart grayscale">
+            <svg viewBox="0 0 300 150" class="chart-svg">
+              <!-- Línea 1: sólida -->
+              <polyline
+                points="20,120 80,90 140,70 200,80 260,50"
+                stroke="#dc2626"
+                stroke-width="4"
+                fill="none"></polyline>
+              <!-- Línea 2: punteada -->
+              <polyline
+                points="20,100 80,110 140,95 200,100 260,85"
+                stroke="#2563eb"
+                stroke-width="3"
+                fill="none"
+                stroke-dasharray="8,4"></polyline>
+              <!-- Línea 3: discontinua -->
+              <polyline
+                points="20,80 80,70 140,85 200,75 260,70"
+                stroke="#16a34a"
+                stroke-width="2"
+                fill="none"
+                stroke-dasharray="12,6"></polyline>
+            </svg>
+            <div class="legend grayscale">
+              <span class="legend-item">
+                <span class="legend-line legend-solid"></span>Producto A
+                (sólida)
+              </span>
+              <span class="legend-item">
+                <span class="legend-line legend-dashed"></span>Producto B
+                (punteada)
+              </span>
+              <span class="legend-item">
+                <span class="legend-line legend-dotted"></span>Producto C
+                (discontinua)
+              </span>
+            </div>
+          </div>
+        </Banner>
+      </BannerGrid>
+
+      <h3>Gráfico circular</h3>
+      <BannerGrid>
+        <Banner
+          title="❌ Solo colores"
+          variant="bad"
+          highContrast
+          subtitle="Secciones únicamente distinguibles por color"
+        >
+          <div class="pie-chart">
+            <svg viewBox="0 0 200 200" class="pie-svg">
+              <!-- Fondo blanco -->
+              <circle
+                cx="100"
+                cy="100"
+                r="80"
+                fill="white"
+                stroke="#ddd"
+                stroke-width="1"></circle>
+
+              <!-- Sección 1: 40% (144°) - Rojo -->
+              <path
+                d="M 100 20 A 80 80 0 0 1 156.4 156.4 L 100 100 Z"
+                fill="#dc2626"></path>
+
+              <!-- Sección 2: 30% (108°) - Azul -->
+              <path
+                d="M 156.4 156.4 A 80 80 0 0 1 43.6 156.4 L 100 100 Z"
+                fill="#2563eb"></path>
+
+              <!-- Sección 3: 30% (108°) - Verde -->
+              <path
+                d="M 43.6 156.4 A 80 80 0 0 1 100 20 L 100 100 Z"
+                fill="#16a34a"></path>
+            </svg>
+            <div class="legend">
+              <span class="legend-item"
+                ><span class="legend-color" style="background: #dc2626;"
+                ></span>Ventas 40%</span
+              >
+              <span class="legend-item"
+                ><span class="legend-color" style="background: #2563eb;"
+                ></span>Marketing 30%</span
+              >
+              <span class="legend-item"
+                ><span class="legend-color" style="background: #16a34a;"
+                ></span>Soporte 30%</span
+              >
+            </div>
+          </div>
+        </Banner>
+
+        <Banner
+          title="🔍 En escala de grises"
+          variant="info"
+          highContrast
+          subtitle="¡Imposible distinguir secciones!"
+        >
+          <div class="pie-chart grayscale">
+            <svg viewBox="0 0 200 200" class="pie-svg">
+              <!-- Fondo blanco -->
+              <circle
+                cx="100"
+                cy="100"
+                r="80"
+                fill="white"
+                stroke="#ddd"
+                stroke-width="1"></circle>
+
+              <!-- Sección 1: 40% (144°) - Rojo -->
+              <path
+                d="M 100 20 A 80 80 0 0 1 156.4 156.4 L 100 100 Z"
+                fill="#dc2626"></path>
+
+              <!-- Sección 2: 30% (108°) - Azul -->
+              <path
+                d="M 156.4 156.4 A 80 80 0 0 1 43.6 156.4 L 100 100 Z"
+                fill="#2563eb"></path>
+
+              <!-- Sección 3: 30% (108°) - Verde -->
+              <path
+                d="M 43.6 156.4 A 80 80 0 0 1 100 20 L 100 100 Z"
+                fill="#16a34a"></path>
+            </svg>
+            <div class="legend grayscale">
+              <!-- Sección 3: 30% (108°) - Verde -->
+              <path
+                d="M 43.6 156.4 A 80 80 0 0 1 100 20 L 100 100 Z"
+                fill="#16a34a"></path>
+            </div>
+            <div class="legend grayscale">
+              <span class="legend-item"
+                ><span class="legend-color" style="background: #dc2626;"
+                ></span>Ventas 40%</span
+              >
+              <span class="legend-item"
+                ><span class="legend-color" style="background: #2563eb;"
+                ></span>Marketing 30%</span
+              >
+              <span class="legend-item"
+                ><span class="legend-color" style="background: #16a34a;"
+                ></span>Soporte 30%</span
+              >
+            </div>
+          </div>
+        </Banner>
+
+        <Banner
+          title="✅ Con etiquetas directas"
+          variant="good"
+          highContrast
+          subtitle="Etiquetas directas eliminan dependencia de color"
+        >
+          <div class="pie-chart">
+            <svg viewBox="0 0 200 200" class="pie-svg">
+              <!-- Fondo blanco -->
+              <circle
+                cx="100"
+                cy="100"
+                r="80"
+                fill="white"
+                stroke="#ddd"
+                stroke-width="1"></circle>
+
+              <!-- Sección 1: 40% - Rojo con borde -->
+              <path
+                d="M 100 20 A 80 80 0 0 1 156.4 156.4 L 100 100 Z"
+                fill="#dc2626"
+                stroke="white"
+                stroke-width="2"></path>
+
+              <!-- Sección 2: 30% - Azul con borde -->
+              <path
+                d="M 156.4 156.4 A 80 80 0 0 1 43.6 156.4 L 100 100 Z"
+                fill="#2563eb"
+                stroke="white"
+                stroke-width="2"></path>
+
+              <!-- Sección 3: 30% - Verde con borde -->
+              <path
+                d="M 43.6 156.4 A 80 80 0 0 1 100 20 L 100 100 Z"
+                fill="#16a34a"
+                stroke="white"
+                stroke-width="2"></path>
+
+              <!-- Etiquetas directas -->
+              <text x="130" y="70" class="pie-label">Ventas</text>
+              <text x="135" y="85" class="pie-label">40%</text>
+
+              <text x="100" y="140" class="pie-label">Marketing</text>
+              <text x="100" y="155" class="pie-label">30%</text>
+
+              <text x="65" y="70" class="pie-label">Soporte</text>
+              <text x="70" y="85" class="pie-label">30%</text>
+            </svg>
+          </div>
+        </Banner>
+
+        <Banner
+          title="🔍 Etiquetas en escala de grises"
+          variant="info"
+          highContrast
+          subtitle="¡Círculo completamente gris!"
+        >
+          <div class="pie-chart grayscale">
+            <svg viewBox="0 0 200 200" class="pie-svg">
+              <!-- Fondo blanco -->
+              <circle
+                cx="100"
+                cy="100"
+                r="80"
+                fill="white"
+                stroke="#ddd"
+                stroke-width="1"></circle>
+
+              <!-- Sección 1: 40% - Rojo con borde -->
+              <path
+                d="M 100 20 A 80 80 0 0 1 156.4 156.4 L 100 100 Z"
+                fill="#dc2626"
+                stroke="white"
+                stroke-width="2"></path>
+
+              <!-- Sección 2: 30% - Azul con borde -->
+              <path
+                d="M 156.4 156.4 A 80 80 0 0 1 43.6 156.4 L 100 100 Z"
+                fill="#2563eb"
+                stroke="white"
+                stroke-width="2"></path>
+
+              <!-- Sección 3: 30% - Verde con borde -->
+              <path
+                d="M 43.6 156.4 A 80 80 0 0 1 100 20 L 100 100 Z"
+                fill="#16a34a"
+                stroke="white"
+                stroke-width="2"></path>
+
+              <!-- Etiquetas directas -->
+              <text x="130" y="70" class="pie-label">Ventas</text>
+              <text x="135" y="85" class="pie-label">40%</text>
+
+              <text x="100" y="140" class="pie-label">Marketing</text>
+              <text x="100" y="155" class="pie-label">30%</text>
+
+              <text x="65" y="70" class="pie-label">Soporte</text>
+              <text x="70" y="85" class="pie-label">30%</text>
+            </svg>
+          </div>
+        </Banner>
+      </BannerGrid>
+
+      <h3>Progress Tracker (Seguimiento de progreso)</h3>
+      <BannerGrid columns="1" minWidth="300px">
+        <Banner
+          title="❌ Solo colores"
+          variant="bad"
+          highContrast
+          subtitle="Estados de progreso únicamente distinguibles por color"
+        >
+          <div class="progress-tracker">
+            <div class="step completed-color">
+              <div class="step-circle">
+                <div class="step-number">1</div>
+              </div>
+              <span class="step-label">Registro</span>
+            </div>
+            <div class="step-line"></div>
+            <div class="step completed-color">
+              <div class="step-circle">
+                <div class="step-number">2</div>
+              </div>
+              <span class="step-label">Verificación</span>
+            </div>
+            <div class="step-line"></div>
+            <div class="step current-color">
+              <div class="step-circle">
+                <div class="step-number">3</div>
+              </div>
+              <span class="step-label">Pago</span>
+            </div>
+            <div class="step-line"></div>
+            <div class="step pending-color">
+              <div class="step-circle">
+                <div class="step-number">4</div>
+              </div>
+              <span class="step-label">Confirmación</span>
+            </div>
+          </div>
+        </Banner>
+
+        <Banner
+          title="🔍 En escala de grises"
+          variant="info"
+          highContrast
+          subtitle="¡Estados de progreso indistinguibles!"
+        >
+          <div class="progress-tracker grayscale">
+            <div class="step completed-color">
+              <div class="step-circle">
+                <div class="step-number">1</div>
+              </div>
+              <span class="step-label">Registro</span>
+            </div>
+            <div class="step-line"></div>
+            <div class="step completed-color">
+              <div class="step-circle">
+                <div class="step-number">2</div>
+              </div>
+              <span class="step-label">Verificación</span>
+            </div>
+            <div class="step-line"></div>
+            <div class="step current-color">
+              <div class="step-circle">
+                <div class="step-number">3</div>
+              </div>
+              <span class="step-label">Pago</span>
+            </div>
+            <div class="step-line"></div>
+            <div class="step pending-color">
+              <div class="step-circle">
+                <div class="step-number">4</div>
+              </div>
+              <span class="step-label">Confirmación</span>
+            </div>
+          </div>
+        </Banner>
+
+        <Banner
+          title="✅ Con indicadores visuales"
+          variant="good"
+          highContrast
+          subtitle="Indicadores visuales claros"
+        >
+          <div class="progress-tracker">
+            <div class="step completed">
+              <div class="step-circle">
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                >
+                  <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"
+                  ></path>
+                </svg>
+              </div>
+              <span class="step-label">Registro</span>
+            </div>
+            <div class="step-line completed-line"></div>
+            <div class="step completed">
+              <div class="step-circle">
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                >
+                  <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"
+                  ></path>
+                </svg>
+              </div>
+              <span class="step-label">Verificación</span>
+            </div>
+            <div class="step-line completed-line"></div>
+            <div class="step current">
+              <div class="step-circle current-circle">
+                <div class="step-number">3</div>
+              </div>
+              <span class="step-label">Pago</span>
+            </div>
+            <div class="step-line pending-line"></div>
+            <div class="step pending">
+              <div class="step-circle pending-circle">
+                <div class="step-number">4</div>
+              </div>
+              <span class="step-label">Confirmación</span>
+            </div>
+          </div>
+        </Banner>
+
+        <Banner
+          title="🔍 Indicadores en escala de grises"
+          variant="info"
+          highContrast
+          subtitle="Mucho más claro!"
+        >
+          <div class="progress-tracker grayscale">
+            <div class="step completed">
+              <div class="step-circle">
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                >
+                  <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"
+                  ></path>
+                </svg>
+              </div>
+              <span class="step-label">Registro</span>
+            </div>
+            <div class="step-line completed-line"></div>
+            <div class="step completed">
+              <div class="step-circle">
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                >
+                  <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"
+                  ></path>
+                </svg>
+              </div>
+              <span class="step-label">Verificación</span>
+            </div>
+            <div class="step-line completed-line"></div>
+            <div class="step current">
+              <div class="step-circle current-circle">
+                <div class="step-number">3</div>
+              </div>
+              <span class="step-label">Pago</span>
+            </div>
+            <div class="step-line pending-line"></div>
+            <div class="step pending">
+              <div class="step-circle pending-circle">
+                <div class="step-number">4</div>
+              </div>
+              <span class="step-label">Confirmación</span>
+            </div>
+          </div>
+        </Banner>
+      </BannerGrid>
+
+      <div class="chart-tips">
+        <h3>💡 Consejos para gráficos accesibles</h3>
+        <CardGrid columns="auto" minWidth="200px">
+          <Card
+            title="🔍 Prueba en escala de grises"
+            variant="info"
+            borderAccent
           >
             <p>
-              Este párrafo tiene un <span class="link-color">enlace</span> que solo
-              se diferencia por color.
+              Convierte tu gráfico a escala de grises. ¿Sigues pudiendo
+              interpretar los datos?
             </p>
-          </Banner>
-
-          <Banner
-            title="✅ Enlaces con subrayado"
-            variant="good"
-            highContrast
-            subtitle="Subrayado + color"
-          >
+          </Card>
+          <Card title="📊 Usa patrones" variant="info" borderAccent>
             <p>
-              Este párrafo tiene un <a href="#" class="proper-link">enlace</a>
-              con subrayado y color.
+              Rayas, puntos, líneas discontinuas ayudan a diferenciar elementos.
             </p>
-          </Banner>
-        </BannerGrid>
+          </Card>
+          <Card title="🏷️ Etiqueta directamente" variant="info" borderAccent>
+            <p>
+              Coloca valores y nombres directamente en o cerca de cada elemento.
+            </p>
+          </Card>
+          <Card title="🎯 Combina técnicas" variant="info" borderAccent>
+            <p>Color + patrón + etiquetas = máxima accesibilidad.</p>
+          </Card>
+        </CardGrid>
       </div>
+    </div>
+  </section>
 
-      <div class="independence-tips">
-        <h3>Técnicas para lograr independencia de color</h3>
-        <BannerGrid>
-          <Banner title="🔗 Enlaces" variant="info">
-            <ul>
-              <li><strong>En texto:</strong> Subrayado + color</li>
-              <li><strong>Botones:</strong> Negrita + contraste alto</li>
-              <li>
-                <strong>Al pasar el cursor:</strong> Cambios estructurales adicionales
-              </li>
-            </ul>
-          </Banner>
-
-          <Banner title="⚠️ Estados de error" variant="info">
-            <ul>
-              <li>Icono de advertencia</li>
-              <li>Borde más grueso</li>
-              <li>Cambio en la posición (sangría)</li>
-              <li>Mensaje de texto explicativo</li>
-            </ul>
-          </Banner>
-
-          <Banner title="📊 Gráficos" variant="info">
-            <ul>
-              <li>Patrones o texturas diferentes</li>
-              <li>Formas variadas</li>
-              <li>Etiquetas directas</li>
-              <li>Líneas punteadas/discontinuas</li>
-            </ul>
-          </Banner>
-
-          <Banner title="🎯 Estados seleccionados" variant="info">
-            <ul>
-              <li>Indicadores de forma (→ ● ◆)</li>
-              <li>Cambios de tamaño</li>
-              <li>Bordes adicionales</li>
-              <li>Cambios tipográficos (negrita)</li>
-            </ul>
-          </Banner>
-
-          <Banner title="📋 Progress trackers" variant="info">
-            <ul>
-              <li>✅ Iconos para pasos completados</li>
-              <li>🔵 Borde grueso + sombra para paso actual</li>
-              <li>⚪ Bordes punteados para pasos futuros</li>
-              <li>📊 Líneas sólidas vs punteadas</li>
-            </ul>
-          </Banner>
-        </BannerGrid>
-      </div>
-    </section>
-
-    <section>
-      <h2>Ejemplos de gráficos accesibles</h2>
-      <p>
-        Los gráficos deben ser comprensibles sin depender únicamente del color.
-        Aquí tienes ejemplos prácticos usando patrones, formas y etiquetas.
-      </p>
-
-      <div class="charts-section">
-        <h3>Gráfico de barras</h3>
-        <BannerGrid>
-          <Banner
-            title="❌ Solo color"
-            variant="bad"
-            highContrast
-            subtitle="Barras únicamente distinguibles por color"
-          >
-            <div class="bar-chart">
-              <div class="bar-container">
-                <div
-                  class="bar bar-red"
-                  style="height: 80%;"
-                  title="Ventas: 80%"
-                >
-                </div>
-                <span class="bar-label">Ventas</span>
-              </div>
-              <div class="bar-container">
-                <div
-                  class="bar bar-blue"
-                  style="height: 60%;"
-                  title="Marketing: 60%"
-                >
-                </div>
-                <span class="bar-label">Marketing</span>
-              </div>
-              <div class="bar-container">
-                <div
-                  class="bar bar-green"
-                  style="height: 45%;"
-                  title="Soporte: 45%"
-                >
-                </div>
-                <span class="bar-label">Soporte</span>
-              </div>
-            </div>
-          </Banner>
-
-          <Banner
-            title="🔍 En escala de grises"
-            variant="info"
-            highContrast
-            subtitle="¡Imposible distinguir las barras!"
-          >
-            <div class="bar-chart grayscale">
-              <div class="bar-container">
-                <div
-                  class="bar bar-red"
-                  style="height: 80%;"
-                  title="Ventas: 80%"
-                >
-                </div>
-                <span class="bar-label">Ventas</span>
-              </div>
-              <div class="bar-container">
-                <div
-                  class="bar bar-blue"
-                  style="height: 60%;"
-                  title="Marketing: 60%"
-                >
-                </div>
-                <span class="bar-label">Marketing</span>
-              </div>
-              <div class="bar-container">
-                <div
-                  class="bar bar-green"
-                  style="height: 45%;"
-                  title="Soporte: 45%"
-                >
-                </div>
-                <span class="bar-label">Soporte</span>
-              </div>
-            </div>
-          </Banner>
-
-          <Banner
-            title="✅ Color + patrones"
-            variant="good"
-            highContrast
-            subtitle="Patrones + valores + color"
-          >
-            <div class="bar-chart">
-              <div class="bar-container">
-                <div
-                  class="bar bar-red pattern-diagonal"
-                  style="height: 80%;"
-                  title="Ventas: 80%"
-                >
-                </div>
-                <span class="bar-label">Ventas (80%)</span>
-              </div>
-              <div class="bar-container">
-                <div
-                  class="bar bar-blue pattern-dots"
-                  style="height: 60%;"
-                  title="Marketing: 60%"
-                >
-                </div>
-                <span class="bar-label">Marketing (60%)</span>
-              </div>
-              <div class="bar-container">
-                <div
-                  class="bar bar-green pattern-lines"
-                  style="height: 45%;"
-                  title="Soporte: 45%"
-                >
-                </div>
-                <span class="bar-label">Soporte (45%)</span>
-              </div>
-            </div>
-          </Banner>
-
-          <Banner
-            title="🔍 Patrones en escala de grises"
-            variant="info"
-            highContrast
-            subtitle="¡Perfectamente distinguible!"
-          >
-            <div class="bar-chart grayscale">
-              <div class="bar-container">
-                <div
-                  class="bar bar-red pattern-diagonal"
-                  style="height: 80%;"
-                  title="Ventas: 80%"
-                >
-                </div>
-                <span class="bar-label">Ventas (80%)</span>
-              </div>
-              <div class="bar-container">
-                <div
-                  class="bar bar-blue pattern-dots"
-                  style="height: 60%;"
-                  title="Marketing: 60%"
-                >
-                </div>
-                <span class="bar-label">Marketing (60%)</span>
-              </div>
-              <div class="bar-container">
-                <div
-                  class="bar bar-green pattern-lines"
-                  style="height: 45%;"
-                  title="Soporte: 45%"
-                >
-                </div>
-                <span class="bar-label">Soporte (45%)</span>
-              </div>
-            </div>
-          </Banner>
-        </BannerGrid>
-
-        <h3>Gráfico de líneas</h3>
-        <BannerGrid>
-          <Banner
-            title="❌ Solo colores"
-            variant="bad"
-            highContrast
-            subtitle="Líneas únicamente distinguibles por color"
-          >
-            <div class="line-chart">
-              <svg viewBox="0 0 300 150" class="chart-svg">
-                <!-- Línea 1 -->
-                <polyline
-                  points="20,120 80,90 140,70 200,80 260,50"
-                  stroke="#dc2626"
-                  stroke-width="3"
-                  fill="none"></polyline>
-                <!-- Línea 2 -->
-                <polyline
-                  points="20,100 80,110 140,95 200,100 260,85"
-                  stroke="#2563eb"
-                  stroke-width="3"
-                  fill="none"></polyline>
-                <!-- Línea 3 -->
-                <polyline
-                  points="20,80 80,70 140,85 200,75 260,70"
-                  stroke="#16a34a"
-                  stroke-width="3"
-                  fill="none"></polyline>
-              </svg>
-              <div class="legend">
-                <span class="legend-item"
-                  ><span class="legend-color" style="background: #dc2626;"
-                  ></span>Producto A</span
-                >
-                <span class="legend-item"
-                  ><span class="legend-color" style="background: #2563eb;"
-                  ></span>Producto B</span
-                >
-                <span class="legend-item"
-                  ><span class="legend-color" style="background: #16a34a;"
-                  ></span>Producto C</span
-                >
-              </div>
-            </div>
-          </Banner>
-
-          <Banner
-            title="🔍 En escala de grises"
-            variant="info"
-            highContrast
-            subtitle="¡Líneas indistinguibles!"
-          >
-            <div class="line-chart grayscale">
-              <svg viewBox="0 0 300 150" class="chart-svg">
-                <!-- Línea 1 -->
-                <polyline
-                  points="20,120 80,90 140,70 200,80 260,50"
-                  stroke="#dc2626"
-                  stroke-width="3"
-                  fill="none"></polyline>
-                <!-- Línea 2 -->
-                <polyline
-                  points="20,100 80,110 140,95 200,100 260,85"
-                  stroke="#2563eb"
-                  stroke-width="3"
-                  fill="none"></polyline>
-                <!-- Línea 3 -->
-                <polyline
-                  points="20,80 80,70 140,85 200,75 260,70"
-                  stroke="#16a34a"
-                  stroke-width="3"
-                  fill="none"></polyline>
-              </svg>
-              <div class="legend grayscale">
-                <span class="legend-item"
-                  ><span class="legend-color" style="background: #dc2626;"
-                  ></span>Producto A</span
-                >
-                <span class="legend-item"
-                  ><span class="legend-color" style="background: #2563eb;"
-                  ></span>Producto B</span
-                >
-                <span class="legend-item"
-                  ><span class="legend-color" style="background: #16a34a;"
-                  ></span>Producto C</span
-                >
-              </div>
-            </div>
-          </Banner>
-
-          <Banner
-            title="✅ Líneas diferenciadas"
-            variant="good"
-            highContrast
-            subtitle="Líneas diferenciadas"
-          >
-            <div class="line-chart">
-              <svg viewBox="0 0 300 150" class="chart-svg">
-                <!-- Línea 1: sólida -->
-                <polyline
-                  points="20,120 80,90 140,70 200,80 260,50"
-                  stroke="#dc2626"
-                  stroke-width="4"
-                  fill="none"></polyline>
-                <!-- Línea 2: punteada -->
-                <polyline
-                  points="20,100 80,110 140,95 200,100 260,85"
-                  stroke="#2563eb"
-                  stroke-width="3"
-                  fill="none"
-                  stroke-dasharray="8,4"></polyline>
-                <!-- Línea 3: discontinua -->
-                <polyline
-                  points="20,80 80,70 140,85 200,75 260,70"
-                  stroke="#16a34a"
-                  stroke-width="2"
-                  fill="none"
-                  stroke-dasharray="12,6"></polyline>
-              </svg>
-              <div class="legend">
-                <span class="legend-item">
-                  <span class="legend-line legend-solid"></span>Producto A
-                  (sólida)
-                </span>
-                <span class="legend-item">
-                  <span class="legend-line legend-dashed"></span>Producto B
-                  (punteada)
-                </span>
-                <span class="legend-item">
-                  <span class="legend-line legend-dotted"></span>Producto C
-                  (discontinua)
-                </span>
-              </div>
-            </div>
-          </Banner>
-
-          <Banner
-            title="🔍 Estilos en escala de grises"
-            variant="info"
-            highContrast
-            subtitle="¡Líneas indistinguibles!"
-          >
-            <div class="line-chart grayscale">
-              <svg viewBox="0 0 300 150" class="chart-svg">
-                <!-- Línea 1: sólida -->
-                <polyline
-                  points="20,120 80,90 140,70 200,80 260,50"
-                  stroke="#dc2626"
-                  stroke-width="4"
-                  fill="none"></polyline>
-                <!-- Línea 2: punteada -->
-                <polyline
-                  points="20,100 80,110 140,95 200,100 260,85"
-                  stroke="#2563eb"
-                  stroke-width="3"
-                  fill="none"
-                  stroke-dasharray="8,4"></polyline>
-                <!-- Línea 3: discontinua -->
-                <polyline
-                  points="20,80 80,70 140,85 200,75 260,70"
-                  stroke="#16a34a"
-                  stroke-width="2"
-                  fill="none"
-                  stroke-dasharray="12,6"></polyline>
-              </svg>
-              <div class="legend grayscale">
-                <span class="legend-item">
-                  <span class="legend-line legend-solid"></span>Producto A
-                  (sólida)
-                </span>
-                <span class="legend-item">
-                  <span class="legend-line legend-dashed"></span>Producto B
-                  (punteada)
-                </span>
-                <span class="legend-item">
-                  <span class="legend-line legend-dotted"></span>Producto C
-                  (discontinua)
-                </span>
-              </div>
-            </div>
-          </Banner>
-        </BannerGrid>
-
-        <h3>Gráfico circular</h3>
-        <BannerGrid>
-          <Banner
-            title="❌ Solo colores"
-            variant="bad"
-            highContrast
-            subtitle="Secciones únicamente distinguibles por color"
-          >
-            <div class="pie-chart">
-              <svg viewBox="0 0 200 200" class="pie-svg">
-                <!-- Fondo blanco -->
-                <circle
-                  cx="100"
-                  cy="100"
-                  r="80"
-                  fill="white"
-                  stroke="#ddd"
-                  stroke-width="1"></circle>
-
-                <!-- Sección 1: 40% (144°) - Rojo -->
-                <path
-                  d="M 100 20 A 80 80 0 0 1 156.4 156.4 L 100 100 Z"
-                  fill="#dc2626"></path>
-
-                <!-- Sección 2: 30% (108°) - Azul -->
-                <path
-                  d="M 156.4 156.4 A 80 80 0 0 1 43.6 156.4 L 100 100 Z"
-                  fill="#2563eb"></path>
-
-                <!-- Sección 3: 30% (108°) - Verde -->
-                <path
-                  d="M 43.6 156.4 A 80 80 0 0 1 100 20 L 100 100 Z"
-                  fill="#16a34a"></path>
-              </svg>
-              <div class="legend">
-                <span class="legend-item"
-                  ><span class="legend-color" style="background: #dc2626;"
-                  ></span>Ventas 40%</span
-                >
-                <span class="legend-item"
-                  ><span class="legend-color" style="background: #2563eb;"
-                  ></span>Marketing 30%</span
-                >
-                <span class="legend-item"
-                  ><span class="legend-color" style="background: #16a34a;"
-                  ></span>Soporte 30%</span
-                >
-              </div>
-            </div>
-          </Banner>
-
-          <Banner
-            title="🔍 En escala de grises"
-            variant="info"
-            highContrast
-            subtitle="¡Imposible distinguir secciones!"
-          >
-            <div class="pie-chart grayscale">
-              <svg viewBox="0 0 200 200" class="pie-svg">
-                <!-- Fondo blanco -->
-                <circle
-                  cx="100"
-                  cy="100"
-                  r="80"
-                  fill="white"
-                  stroke="#ddd"
-                  stroke-width="1"></circle>
-
-                <!-- Sección 1: 40% (144°) - Rojo -->
-                <path
-                  d="M 100 20 A 80 80 0 0 1 156.4 156.4 L 100 100 Z"
-                  fill="#dc2626"></path>
-
-                <!-- Sección 2: 30% (108°) - Azul -->
-                <path
-                  d="M 156.4 156.4 A 80 80 0 0 1 43.6 156.4 L 100 100 Z"
-                  fill="#2563eb"></path>
-
-                <!-- Sección 3: 30% (108°) - Verde -->
-                <path
-                  d="M 43.6 156.4 A 80 80 0 0 1 100 20 L 100 100 Z"
-                  fill="#16a34a"></path>
-              </svg>
-              <div class="legend grayscale">
-                <span class="legend-item"
-                  ><span class="legend-color" style="background: #dc2626;"
-                  ></span>Ventas 40%</span
-                >
-                <span class="legend-item"
-                  ><span class="legend-color" style="background: #2563eb;"
-                  ></span>Marketing 30%</span
-                >
-                <span class="legend-item"
-                  ><span class="legend-color" style="background: #16a34a;"
-                  ></span>Soporte 30%</span
-                >
-              </div>
-            </div>
-          </Banner>
-
-          <Banner
-            title="✅ Con etiquetas directas"
-            variant="good"
-            highContrast
-            subtitle="Etiquetas directas eliminan dependencia de color"
-          >
-            <div class="pie-chart">
-              <svg viewBox="0 0 200 200" class="pie-svg">
-                <!-- Fondo blanco -->
-                <circle
-                  cx="100"
-                  cy="100"
-                  r="80"
-                  fill="white"
-                  stroke="#ddd"
-                  stroke-width="1"></circle>
-
-                <!-- Sección 1: 40% - Rojo con borde -->
-                <path
-                  d="M 100 20 A 80 80 0 0 1 156.4 156.4 L 100 100 Z"
-                  fill="#dc2626"
-                  stroke="white"
-                  stroke-width="2"></path>
-
-                <!-- Sección 2: 30% - Azul con borde -->
-                <path
-                  d="M 156.4 156.4 A 80 80 0 0 1 43.6 156.4 L 100 100 Z"
-                  fill="#2563eb"
-                  stroke="white"
-                  stroke-width="2"></path>
-
-                <!-- Sección 3: 30% - Verde con borde -->
-                <path
-                  d="M 43.6 156.4 A 80 80 0 0 1 100 20 L 100 100 Z"
-                  fill="#16a34a"
-                  stroke="white"
-                  stroke-width="2"></path>
-
-                <!-- Etiquetas directas -->
-                <text x="130" y="70" class="pie-label">Ventas</text>
-                <text x="135" y="85" class="pie-label">40%</text>
-
-                <text x="100" y="140" class="pie-label">Marketing</text>
-                <text x="100" y="155" class="pie-label">30%</text>
-
-                <text x="65" y="70" class="pie-label">Soporte</text>
-                <text x="70" y="85" class="pie-label">30%</text>
-              </svg>
-            </div>
-          </Banner>
-
-          <Banner
-            title="🔍 Etiquetas en escala de grises"
-            variant="info"
-            highContrast
-            subtitle="¡Círculo completamente gris!"
-          >
-            <div class="pie-chart grayscale">
-              <svg viewBox="0 0 200 200" class="pie-svg">
-                <!-- Fondo blanco -->
-                <circle
-                  cx="100"
-                  cy="100"
-                  r="80"
-                  fill="white"
-                  stroke="#ddd"
-                  stroke-width="1"></circle>
-
-                <!-- Sección 1: 40% - Rojo con borde -->
-                <path
-                  d="M 100 20 A 80 80 0 0 1 156.4 156.4 L 100 100 Z"
-                  fill="#dc2626"
-                  stroke="white"
-                  stroke-width="2"></path>
-
-                <!-- Sección 2: 30% - Azul con borde -->
-                <path
-                  d="M 156.4 156.4 A 80 80 0 0 1 43.6 156.4 L 100 100 Z"
-                  fill="#2563eb"
-                  stroke="white"
-                  stroke-width="2"></path>
-
-                <!-- Sección 3: 30% - Verde con borde -->
-                <path
-                  d="M 43.6 156.4 A 80 80 0 0 1 100 20 L 100 100 Z"
-                  fill="#16a34a"
-                  stroke="white"
-                  stroke-width="2"></path>
-
-                <!-- Etiquetas directas -->
-                <text x="130" y="70" class="pie-label">Ventas</text>
-                <text x="135" y="85" class="pie-label">40%</text>
-
-                <text x="100" y="140" class="pie-label">Marketing</text>
-                <text x="100" y="155" class="pie-label">30%</text>
-
-                <text x="65" y="70" class="pie-label">Soporte</text>
-                <text x="70" y="85" class="pie-label">30%</text>
-              </svg>
-            </div>
-          </Banner>
-        </BannerGrid>
-
-        <h3>Progress Tracker (Seguimiento de progreso)</h3>
-        <BannerGrid columns="1" minWidth="300px">
-          <Banner
-            title="❌ Solo colores"
-            variant="bad"
-            highContrast
-            subtitle="Estados de progreso únicamente distinguibles por color"
-          >
-            <div class="progress-tracker">
-              <div class="step completed-color">
-                <div class="step-circle">
-                  <div class="step-number">1</div>
-                </div>
-                <span class="step-label">Registro</span>
-              </div>
-              <div class="step-line"></div>
-              <div class="step completed-color">
-                <div class="step-circle">
-                  <div class="step-number">2</div>
-                </div>
-                <span class="step-label">Verificación</span>
-              </div>
-              <div class="step-line"></div>
-              <div class="step current-color">
-                <div class="step-circle">
-                  <div class="step-number">3</div>
-                </div>
-                <span class="step-label">Pago</span>
-              </div>
-              <div class="step-line"></div>
-              <div class="step pending-color">
-                <div class="step-circle">
-                  <div class="step-number">4</div>
-                </div>
-                <span class="step-label">Confirmación</span>
-              </div>
-            </div>
-          </Banner>
-
-          <Banner
-            title="🔍 En escala de grises"
-            variant="info"
-            highContrast
-            subtitle="¡Estados de progreso indistinguibles!"
-          >
-            <div class="progress-tracker grayscale">
-              <div class="step completed-color">
-                <div class="step-circle">
-                  <div class="step-number">1</div>
-                </div>
-                <span class="step-label">Registro</span>
-              </div>
-              <div class="step-line"></div>
-              <div class="step completed-color">
-                <div class="step-circle">
-                  <div class="step-number">2</div>
-                </div>
-                <span class="step-label">Verificación</span>
-              </div>
-              <div class="step-line"></div>
-              <div class="step current-color">
-                <div class="step-circle">
-                  <div class="step-number">3</div>
-                </div>
-                <span class="step-label">Pago</span>
-              </div>
-              <div class="step-line"></div>
-              <div class="step pending-color">
-                <div class="step-circle">
-                  <div class="step-number">4</div>
-                </div>
-                <span class="step-label">Confirmación</span>
-              </div>
-            </div>
-          </Banner>
-
-          <Banner
-            title="✅ Con indicadores visuales"
-            variant="good"
-            highContrast
-            subtitle="Indicadores visuales claros"
-          >
-            <div class="progress-tracker">
-              <div class="step completed">
-                <div class="step-circle">
-                  <svg
-                    width="16"
-                    height="16"
-                    viewBox="0 0 24 24"
-                    fill="currentColor"
-                  >
-                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"
-                    ></path>
-                  </svg>
-                </div>
-                <span class="step-label">Registro</span>
-              </div>
-              <div class="step-line completed-line"></div>
-              <div class="step completed">
-                <div class="step-circle">
-                  <svg
-                    width="16"
-                    height="16"
-                    viewBox="0 0 24 24"
-                    fill="currentColor"
-                  >
-                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"
-                    ></path>
-                  </svg>
-                </div>
-                <span class="step-label">Verificación</span>
-              </div>
-              <div class="step-line completed-line"></div>
-              <div class="step current">
-                <div class="step-circle current-circle">
-                  <div class="step-number">3</div>
-                </div>
-                <span class="step-label">Pago</span>
-              </div>
-              <div class="step-line pending-line"></div>
-              <div class="step pending">
-                <div class="step-circle pending-circle">
-                  <div class="step-number">4</div>
-                </div>
-                <span class="step-label">Confirmación</span>
-              </div>
-            </div>
-          </Banner>
-
-          <Banner
-            title="🔍 Indicadores en escala de grises"
-            variant="info"
-            highContrast
-            subtitle="Mucho más claro!"
-          >
-            <div class="progress-tracker grayscale">
-              <div class="step completed">
-                <div class="step-circle">
-                  <svg
-                    width="16"
-                    height="16"
-                    viewBox="0 0 24 24"
-                    fill="currentColor"
-                  >
-                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"
-                    ></path>
-                  </svg>
-                </div>
-                <span class="step-label">Registro</span>
-              </div>
-              <div class="step-line completed-line"></div>
-              <div class="step completed">
-                <div class="step-circle">
-                  <svg
-                    width="16"
-                    height="16"
-                    viewBox="0 0 24 24"
-                    fill="currentColor"
-                  >
-                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"
-                    ></path>
-                  </svg>
-                </div>
-                <span class="step-label">Verificación</span>
-              </div>
-              <div class="step-line completed-line"></div>
-              <div class="step current">
-                <div class="step-circle current-circle">
-                  <div class="step-number">3</div>
-                </div>
-                <span class="step-label">Pago</span>
-              </div>
-              <div class="step-line pending-line"></div>
-              <div class="step pending">
-                <div class="step-circle pending-circle">
-                  <div class="step-number">4</div>
-                </div>
-                <span class="step-label">Confirmación</span>
-              </div>
-            </div>
-          </Banner>
-        </BannerGrid>
-
-        <div class="chart-tips">
-          <h3>💡 Consejos para gráficos accesibles</h3>
-          <CardGrid columns="auto" minWidth="200px">
-            <Card
-              title="🔍 Prueba en escala de grises"
-              variant="info"
-              borderAccent
-            >
-              <p>
-                Convierte tu gráfico a escala de grises. ¿Sigues pudiendo
-                interpretar los datos?
-              </p>
-            </Card>
-            <Card title="📊 Usa patrones" variant="info" borderAccent>
-              <p>
-                Rayas, puntos, líneas discontinuas ayudan a diferenciar
-                elementos.
-              </p>
-            </Card>
-            <Card title="🏷️ Etiqueta directamente" variant="info" borderAccent>
-              <p>
-                Coloca valores y nombres directamente en o cerca de cada
-                elemento.
-              </p>
-            </Card>
-            <Card title="🎯 Combina técnicas" variant="info" borderAccent>
-              <p>Color + patrón + etiquetas = máxima accesibilidad.</p>
-            </Card>
-          </CardGrid>
-        </div>
-      </div>
-    </section>
-
-    <ToolsSection title="Herramientas útiles" tools={colorTools} />
-  </article>
+  <ToolsSection title="Herramientas útiles" tools={colorTools} />
 </Layout>
 
 <style lang="scss">
-  article {
-    max-width: 90ch;
-  }
-
   .small-text {
     font-size: 0.875rem;
     color: var(--color-text-light);

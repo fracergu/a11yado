@@ -1,6 +1,5 @@
 ---
 import Layout from '../layouts/Layout.astro'
-import Header from '../components/Header.astro'
 import Banner from '../components/Banner.astro'
 ---
 
@@ -8,301 +7,292 @@ import Banner from '../components/Banner.astro'
   title="Documentación Oficial - a11yado"
   description="Guías oficiales de accesibilidad web: WCAG 2.2, ADA, Section 508 y otras normativas. Referencias y especificaciones técnicas para implementaciones profesionales."
   canonical="/a11yado/documentation"
+  headerTitle="Documentación Oficial"
+  headerDescription="Las fuentes oficiales y autorizadas para accesibilidad web. Estas son las especificaciones reales que debes consultar para implementaciones profesionales."
+  articleWidth="medium"
 >
-  <article>
-    <Header
-      title="Documentación Oficial"
-      description="Las fuentes oficiales y autorizadas para accesibilidad web. Estas son las especificaciones reales que debes consultar para implementaciones profesionales."
-    />
+  <Banner title="⚠️ Importante" variant="warning">
+    <p>
+      <strong>a11yado</strong> es únicamente una herramienta educativa para hacer
+      más accesibles los conceptos básicos de accesibilidad web. No pretende sustituir
+      la documentación oficial, que siempre debe ser la referencia principal para
+      cualquier implementación profesional.
+    </p>
+  </Banner>
 
-    <Banner title="⚠️ Importante" variant="warning">
+  <section>
+    <h2>WCAG - Pautas de Accesibilidad para el Contenido Web</h2>
+    <div class="doc-card primary">
+      <div class="doc-header">
+        <h3>WCAG 2.2 (Recomendación W3C)</h3>
+        <span class="status current">Estándar Actual</span>
+      </div>
       <p>
-        <strong>a11yado</strong> es únicamente una herramienta educativa para hacer
-        más accesibles los conceptos básicos de accesibilidad web. No pretende sustituir
-        la documentación oficial, que siempre debe ser la referencia principal para
-        cualquier implementación profesional.
+        La especificación oficial más importante para accesibilidad web. La
+        versión actual que añade nuevos criterios de éxito enfocados en móviles
+        y usuarios con discapacidades cognitivas.
       </p>
-    </Banner>
+      <div class="links">
+        <a
+          href="https://www.w3.org/WAI/WCAG22/quickref/"
+          target="_blank"
+          rel="noopener"
+          class="link-primary"
+        >
+          Referencia Rápida WCAG 2.2
+        </a>
+        <a
+          href="https://www.w3.org/TR/WCAG22/"
+          target="_blank"
+          rel="noopener"
+          class="link-secondary"
+        >
+          Especificación Completa
+        </a>
+        <a
+          href="https://www.w3.org/WAI/WCAG22/Understanding/"
+          target="_blank"
+          rel="noopener"
+          class="link-secondary"
+        >
+          Guía de Comprensión
+        </a>
+      </div>
+    </div>
 
-    <section>
-      <h2>WCAG - Pautas de Accesibilidad para el Contenido Web</h2>
-      <div class="doc-card primary">
-        <div class="doc-header">
-          <h3>WCAG 2.2 (Recomendación W3C)</h3>
-          <span class="status current">Estándar Actual</span>
-        </div>
+    <div class="doc-card">
+      <div class="doc-header">
+        <h3>WCAG 2.1 (Recomendación W3C)</h3>
+        <span class="status stable">Estable</span>
+      </div>
+      <p>
+        La versión anterior, ampliamente adoptada. Define criterios de éxito
+        organizados en cuatro principios: Perceptible, Operable, Comprensible y
+        Robusto.
+      </p>
+      <div class="links">
+        <a
+          href="https://www.w3.org/WAI/WCAG21/quickref/"
+          target="_blank"
+          rel="noopener"
+          class="link-secondary"
+        >
+          Referencia Rápida WCAG 2.1
+        </a>
+        <a
+          href="https://www.w3.org/TR/WCAG21/"
+          target="_blank"
+          rel="noopener"
+          class="link-secondary"
+        >
+          Especificación Completa
+        </a>
+      </div>
+    </div>
+
+    <div class="doc-card">
+      <div class="doc-header">
+        <h3>WCAG 3.0</h3>
+        <span class="status draft">En Desarrollo</span>
+      </div>
+      <p>
+        La próxima generación de WCAG, actualmente en desarrollo. Introduce un
+        nuevo modelo de conformidad y se enfoca en la experiencia del usuario.
+      </p>
+      <div class="links">
+        <a
+          href="https://www.w3.org/TR/wcag-3.0/"
+          target="_blank"
+          rel="noopener"
+          class="link-secondary"
+        >
+          Borrador de Trabajo
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Legislación y Normativas</h2>
+
+    <div class="doc-card">
+      <div class="doc-header">
+        <h3>ADA - Ley de Estadounidenses con Discapacidades</h3>
+        <span class="status law">Ley Federal (EE.UU.)</span>
+      </div>
+      <p>
+        Ley federal estadounidense que prohíbe la discriminación por
+        discapacidad. Aunque no especifica estándares técnicos para sitios web,
+        los tribunales suelen usar WCAG como referencia.
+      </p>
+      <div class="links">
+        <a
+          href="https://www.ada.gov/"
+          target="_blank"
+          rel="noopener"
+          class="link-primary"
+        >
+          Sitio Oficial ADA
+        </a>
+        <a
+          href="https://www.ada.gov/resources/web-guidance/"
+          target="_blank"
+          rel="noopener"
+          class="link-secondary"
+        >
+          Guía Web ADA
+        </a>
+      </div>
+    </div>
+
+    <div class="doc-card">
+      <div class="doc-header">
+        <h3>Section 508</h3>
+        <span class="status law">Ley Federal (EE.UU.)</span>
+      </div>
+      <p>
+        Estándar de accesibilidad para tecnología federal en Estados Unidos.
+        Basado en WCAG 2.0 Nivel AA y se aplica a todas las agencias federales.
+      </p>
+      <div class="links">
+        <a
+          href="https://www.section508.gov/"
+          target="_blank"
+          rel="noopener"
+          class="link-primary"
+        >
+          Section 508.gov
+        </a>
+        <a
+          href="https://www.access-board.gov/ict/"
+          target="_blank"
+          rel="noopener"
+          class="link-secondary"
+        >
+          Estándares TIC
+        </a>
+      </div>
+    </div>
+
+    <div class="doc-card">
+      <div class="doc-header">
+        <h3>Ley Europea de Accesibilidad</h3>
+        <span class="status law">Directiva UE</span>
+      </div>
+      <p>
+        Directiva europea que establece requisitos de accesibilidad para
+        productos y servicios digitales en la Unión Europea.
+      </p>
+      <div class="links">
+        <a
+          href="https://ec.europa.eu/social/main.jsp?catId=1202"
+          target="_blank"
+          rel="noopener"
+          class="link-primary"
+        >
+          Información Oficial UE
+        </a>
+        <a
+          href="https://eur-lex.europa.eu/eli/dir/2019/882/oj"
+          target="_blank"
+          rel="noopener"
+          class="link-secondary"
+        >
+          Texto Legal
+        </a>
+      </div>
+    </div>
+
+    <div class="doc-card">
+      <div class="doc-header">
+        <h3>Real Decreto 1112/2018 (España)</h3>
+        <span class="status law">Ley Nacional</span>
+      </div>
+      <p>
+        Normativa española sobre accesibilidad de sitios web y aplicaciones
+        móviles del sector público, basada en WCAG 2.1 Nivel AA.
+      </p>
+      <div class="links">
+        <a
+          href="https://www.boe.es/eli/es/rd/2018/09/07/1112/con"
+          target="_blank"
+          rel="noopener"
+          class="link-primary"
+        >
+          BOE - Texto Completo
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Recursos Adicionales</h2>
+
+    <div class="resource-grid">
+      <div class="resource-card">
+        <h3>WAI - Iniciativa de Accesibilidad Web</h3>
         <p>
-          La especificación oficial más importante para accesibilidad web. La
-          versión actual que añade nuevos criterios de éxito enfocados en
-          móviles y usuarios con discapacidades cognitivas.
+          Iniciativa del W3C para desarrollar estándares y recursos de
+          accesibilidad web.
         </p>
-        <div class="links">
-          <a
-            href="https://www.w3.org/WAI/WCAG22/quickref/"
-            target="_blank"
-            rel="noopener"
-            class="link-primary"
-          >
-            Referencia Rápida WCAG 2.2
-          </a>
-          <a
-            href="https://www.w3.org/TR/WCAG22/"
-            target="_blank"
-            rel="noopener"
-            class="link-secondary"
-          >
-            Especificación Completa
-          </a>
-          <a
-            href="https://www.w3.org/WAI/WCAG22/Understanding/"
-            target="_blank"
-            rel="noopener"
-            class="link-secondary"
-          >
-            Guía de Comprensión
-          </a>
-        </div>
+        <a
+          href="https://www.w3.org/WAI/"
+          target="_blank"
+          rel="noopener"
+          class="link-primary"
+        >
+          Visitar WAI
+        </a>
       </div>
 
-      <div class="doc-card">
-        <div class="doc-header">
-          <h3>WCAG 2.1 (Recomendación W3C)</h3>
-          <span class="status stable">Estable</span>
-        </div>
+      <div class="resource-card">
+        <h3>Prácticas de Autoría ARIA</h3>
         <p>
-          La versión anterior, ampliamente adoptada. Define criterios de éxito
-          organizados en cuatro principios: Perceptible, Operable, Comprensible
-          y Robusto.
+          Guía oficial para implementar ARIA (Aplicaciones de Internet Ricas
+          Accesibles).
         </p>
-        <div class="links">
-          <a
-            href="https://www.w3.org/WAI/WCAG21/quickref/"
-            target="_blank"
-            rel="noopener"
-            class="link-secondary"
-          >
-            Referencia Rápida WCAG 2.1
-          </a>
-          <a
-            href="https://www.w3.org/TR/WCAG21/"
-            target="_blank"
-            rel="noopener"
-            class="link-secondary"
-          >
-            Especificación Completa
-          </a>
-        </div>
+        <a
+          href="https://www.w3.org/WAI/ARIA/apg/"
+          target="_blank"
+          rel="noopener"
+          class="link-primary"
+        >
+          Ver Guía ARIA
+        </a>
       </div>
 
-      <div class="doc-card">
-        <div class="doc-header">
-          <h3>WCAG 3.0</h3>
-          <span class="status draft">En Desarrollo</span>
-        </div>
+      <div class="resource-card">
+        <h3>WebAIM</h3>
         <p>
-          La próxima generación de WCAG, actualmente en desarrollo. Introduce un
-          nuevo modelo de conformidad y se enfoca en la experiencia del usuario.
+          Organización sin fines de lucro con excelentes recursos educativos.
         </p>
-        <div class="links">
-          <a
-            href="https://www.w3.org/TR/wcag-3.0/"
-            target="_blank"
-            rel="noopener"
-            class="link-secondary"
-          >
-            Borrador de Trabajo
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <h2>Legislación y Normativas</h2>
-
-      <div class="doc-card">
-        <div class="doc-header">
-          <h3>ADA - Ley de Estadounidenses con Discapacidades</h3>
-          <span class="status law">Ley Federal (EE.UU.)</span>
-        </div>
-        <p>
-          Ley federal estadounidense que prohíbe la discriminación por
-          discapacidad. Aunque no especifica estándares técnicos para sitios
-          web, los tribunales suelen usar WCAG como referencia.
-        </p>
-        <div class="links">
-          <a
-            href="https://www.ada.gov/"
-            target="_blank"
-            rel="noopener"
-            class="link-primary"
-          >
-            Sitio Oficial ADA
-          </a>
-          <a
-            href="https://www.ada.gov/resources/web-guidance/"
-            target="_blank"
-            rel="noopener"
-            class="link-secondary"
-          >
-            Guía Web ADA
-          </a>
-        </div>
+        <a
+          href="https://webaim.org/"
+          target="_blank"
+          rel="noopener"
+          class="link-primary"
+        >
+          Visitar WebAIM
+        </a>
       </div>
 
-      <div class="doc-card">
-        <div class="doc-header">
-          <h3>Section 508</h3>
-          <span class="status law">Ley Federal (EE.UU.)</span>
-        </div>
-        <p>
-          Estándar de accesibilidad para tecnología federal en Estados Unidos.
-          Basado en WCAG 2.0 Nivel AA y se aplica a todas las agencias
-          federales.
-        </p>
-        <div class="links">
-          <a
-            href="https://www.section508.gov/"
-            target="_blank"
-            rel="noopener"
-            class="link-primary"
-          >
-            Section 508.gov
-          </a>
-          <a
-            href="https://www.access-board.gov/ict/"
-            target="_blank"
-            rel="noopener"
-            class="link-secondary"
-          >
-            Estándares TIC
-          </a>
-        </div>
+      <div class="resource-card">
+        <h3>Fundación ONCE</h3>
+        <p>Recursos españoles sobre accesibilidad y tecnología.</p>
+        <a
+          href="https://www.fundaciononce.es/"
+          target="_blank"
+          rel="noopener"
+          class="link-primary"
+        >
+          Visitar ONCE
+        </a>
       </div>
-
-      <div class="doc-card">
-        <div class="doc-header">
-          <h3>Ley Europea de Accesibilidad</h3>
-          <span class="status law">Directiva UE</span>
-        </div>
-        <p>
-          Directiva europea que establece requisitos de accesibilidad para
-          productos y servicios digitales en la Unión Europea.
-        </p>
-        <div class="links">
-          <a
-            href="https://ec.europa.eu/social/main.jsp?catId=1202"
-            target="_blank"
-            rel="noopener"
-            class="link-primary"
-          >
-            Información Oficial UE
-          </a>
-          <a
-            href="https://eur-lex.europa.eu/eli/dir/2019/882/oj"
-            target="_blank"
-            rel="noopener"
-            class="link-secondary"
-          >
-            Texto Legal
-          </a>
-        </div>
-      </div>
-
-      <div class="doc-card">
-        <div class="doc-header">
-          <h3>Real Decreto 1112/2018 (España)</h3>
-          <span class="status law">Ley Nacional</span>
-        </div>
-        <p>
-          Normativa española sobre accesibilidad de sitios web y aplicaciones
-          móviles del sector público, basada en WCAG 2.1 Nivel AA.
-        </p>
-        <div class="links">
-          <a
-            href="https://www.boe.es/eli/es/rd/2018/09/07/1112/con"
-            target="_blank"
-            rel="noopener"
-            class="link-primary"
-          >
-            BOE - Texto Completo
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <h2>Recursos Adicionales</h2>
-
-      <div class="resource-grid">
-        <div class="resource-card">
-          <h3>WAI - Iniciativa de Accesibilidad Web</h3>
-          <p>
-            Iniciativa del W3C para desarrollar estándares y recursos de
-            accesibilidad web.
-          </p>
-          <a
-            href="https://www.w3.org/WAI/"
-            target="_blank"
-            rel="noopener"
-            class="link-primary"
-          >
-            Visitar WAI
-          </a>
-        </div>
-
-        <div class="resource-card">
-          <h3>Prácticas de Autoría ARIA</h3>
-          <p>
-            Guía oficial para implementar ARIA (Aplicaciones de Internet Ricas
-            Accesibles).
-          </p>
-          <a
-            href="https://www.w3.org/WAI/ARIA/apg/"
-            target="_blank"
-            rel="noopener"
-            class="link-primary"
-          >
-            Ver Guía ARIA
-          </a>
-        </div>
-
-        <div class="resource-card">
-          <h3>WebAIM</h3>
-          <p>
-            Organización sin fines de lucro con excelentes recursos educativos.
-          </p>
-          <a
-            href="https://webaim.org/"
-            target="_blank"
-            rel="noopener"
-            class="link-primary"
-          >
-            Visitar WebAIM
-          </a>
-        </div>
-
-        <div class="resource-card">
-          <h3>Fundación ONCE</h3>
-          <p>Recursos españoles sobre accesibilidad y tecnología.</p>
-          <a
-            href="https://www.fundaciononce.es/"
-            target="_blank"
-            rel="noopener"
-            class="link-primary"
-          >
-            Visitar ONCE
-          </a>
-        </div>
-      </div>
-    </section>
-  </article>
+    </div>
+  </section>
 </Layout>
 
 <style lang="scss">
-  article {
-    max-width: 75ch;
-  }
-
   h3 {
     margin-top: 0;
   }

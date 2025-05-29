@@ -1,36 +1,30 @@
 ---
 import Layout from '../../layouts/Layout.astro'
-import Header from '../../components/Header.astro'
 import Banner from '../../components/Banner.astro'
-import Checklist from '../../components/Checklist.astro'
-import ToolsSection from '../../components/ToolsSection.astro'
 import BannerGrid from '../../components/BannerGrid.astro'
-
-const checklistItems = [
-  'Los enlaces son visualmente diferentes del texto normal',
-  'Todos los enlaces usan el mismo estilo en toda la aplicación',
-  'No usas azul o subrayado para texto no-clickeable',
-  'Los enlaces son identificables sin depender solo del color',
-  'Los efectos hover/focus proporcionan retroalimentación clara',
-  'El contraste de color cumple con los requisitos WCAG',
-]
+import Card from '../../components/Card.astro'
+import CardGrid from '../../components/CardGrid.astro'
+import OrderedList from '../../components/OrderedList.astro'
+import OrderedListItem from '../../components/OrderedListItem.astro'
+import ToolsSection from '../../components/ToolsSection.astro'
 
 const linkTools = [
   {
-    name: 'Contraste de color',
-    description: 'WebAIM Color Contrast Checker',
+    name: 'Verificador de contraste',
+    description: 'WebAIM, Colour Contrast Analyser',
   },
   {
-    name: 'Colores luminosos WCAG',
-    description: 'w3.org/WAI/WCAG22/working-examples/link-contrast',
+    name: 'Prueba de escala de grises',
+    description:
+      'Convierte tu diseño y verifica si los enlaces son distinguibles',
   },
   {
-    name: 'Simulador de daltonismo',
-    description: 'Colorblinding.com',
+    name: 'Navegación por teclado',
+    description: 'Usa Tab para verificar que los enlaces sean navegables',
   },
   {
-    name: 'Test de navegación',
-    description: 'Navega solo con teclado (Tab)',
+    name: 'Lectores de pantalla',
+    description: 'NVDA, VoiceOver para probar la experiencia auditiva',
   },
 ]
 ---
@@ -40,355 +34,340 @@ const linkTools = [
   description="Aprende a crear enlaces accesibles. Indicadores visuales, colores, underlines y estados siguiendo criterios WCAG 2.2 para navegación inclusiva."
   type="article"
   canonical="/a11yado/guides/link-styling"
+  headerTitle="Estilizado de Enlaces"
+  headerDescription="Los enlaces deben ser claramente identificables como elementos interactivos, distinguibles del texto normal y accesibles para todos los usuarios."
+  articleWidth="wide"
 >
-  <article>
-    <Header
-      title="Estilizado de Enlaces"
-      description="Haz que los enlaces sean visualmente distinguibles del texto normal y consistentes entre sí, para que las personas puedan identificar qué es interactivo sin tener que explorar con el cursor."
-    />
+  <section>
+    <h2>¿Por qué importa el estilizado de enlaces?</h2>
+    <p>
+      Los usuarios necesitan poder identificar qué elementos son interactivos
+      simplemente mirando la interfaz. Si los enlaces se ven igual que el texto
+      normal, las personas tendrán que "barrer" la página con el cursor para
+      encontrar qué es clickeable.
+    </p>
 
-    <section>
-      <h2>¿Por qué es importante el estilizado de enlaces?</h2>
-      <p>
-        Los usuarios necesitan poder identificar qué elementos son interactivos
-        simplemente mirando la interfaz. Si los enlaces se ven igual que el
-        texto normal, las personas tendrán que "barrer" la página con el cursor
-        para encontrar qué es clickeable.
-      </p>
+    <Banner
+      title="🎯 Un buen estilizado de enlaces debe ser:"
+      variant="concept"
+    >
+      <ul>
+        <li>
+          <strong>Distinguible:</strong> Claramente diferente del texto normal según
+          <a
+            href="https://www.w3.org/WAI/WCAG22/Understanding/use-of-color.html"
+            target="_blank"
+            rel="noopener">WCAG 1.4.1: Use of Color</a
+          >
+        </li>
+        <li><strong>Consistente:</strong> Igual en toda la aplicación</li>
+        <li>
+          <strong>Accesible:</strong> Funciona para personas con daltonismo
+        </li>
+      </ul>
+    </Banner>
+  </section>
+
+  <section>
+    <h2>Técnica recomendada: Subrayado + Color</h2>
+    <p>
+      La forma más accesible de estilizar enlaces es combinar subrayado con
+      color azul.
+    </p>
+
+    <BannerGrid columns="2" gap="lg">
+      <Banner
+        title="✅ Enlaces accesibles"
+        variant="good"
+        highContrast
+        subtitle="Subrayado + color azul = máxima accesibilidad"
+      >
+        <p>
+          Para mejorar tu código JavaScript, consulta la
+          <a href="#" class="accessible-link">guía de ES6+ y módulos</a>
+          que explica las características modernas del lenguaje.
+        </p>
+        <p>
+          También puedes revisar nuestros
+          <a href="#" class="accessible-link"
+            >patrones de diseño en TypeScript</a
+          >
+          y <a href="#" class="accessible-link">mejores prácticas de testing</a
+          >.
+        </p>
+      </Banner>
 
       <Banner
-        title="🎯 Un buen estilizado de enlaces debe ser:"
-        variant="concept"
+        title="❌ Enlaces problemáticos"
+        variant="bad"
+        highContrast
+        subtitle="Solo color = invisible para personas con daltonismo"
       >
-        <ul>
-          <li>
-            <strong>Distinguible:</strong> Claramente diferente del texto normal
+        <p>
+          Para mejorar tu código JavaScript, consulta la
+          <a href="#" class="problematic-link">guía de ES6+ y módulos</a>
+          que explica las características modernas del lenguaje.
+        </p>
+        <p>
+          También puedes revisar nuestros
+          <a href="#" class="problematic-link"
+            >patrones de diseño en TypeScript</a
+          >
+          y <a href="#" class="problematic-link">mejores prácticas de testing</a
+          >.
+        </p>
+      </Banner>
+    </BannerGrid>
+  </section>
+
+  <section>
+    <h2>Estrategias de estilizado</h2>
+    <p>Si no quieres usar subrayado, aquí tienes 3 alternativas accesibles:</p>
+
+    <BannerGrid columns="auto" minWidth="300px">
+      <Banner title="Estrategia 1: Otros estilos de texto" variant="info">
+        <div class="strategy-demo">
+          <p>
+            Consulta nuestros <a href="#" class="bold-link"
+              >tutoriales de React</a
+            >
+            para ver técnicas avanzadas de componentes.
+          </p>
+        </div>
+        <div class="strategy-details">
+          <p>
+            <strong>Opciones:</strong> Negrita, cursiva, tamaño de fuente, tipografía
+            diferente, borde
+          </p>
+          <p>
+            <strong>Importante:</strong> Solo usa ese estilo para enlaces, nunca
+            para texto normal
+          </p>
+        </div>
+      </Banner>
+
+      <Banner
+        title="Estrategia 2: Color luminoso + efectos hover/focus"
+        variant="info"
+      >
+        <div class="strategy-demo">
+          <p>
+            Revisa la <a href="#" class="luminous-link"
+              >documentación de APIs REST</a
+            >
+            para más información sobre integración.
+          </p>
+        </div>
+        <div class="strategy-details">
+          <p>
+            <strong>Requisitos:</strong> Contraste 3:1 con texto + 4.5:1 con fondo
             según
             <a
-              href="https://www.w3.org/WAI/WCAG22/Understanding/use-of-color.html"
+              href="https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html"
               target="_blank"
-              rel="noopener">WCAG 1.4.1: Use of Color</a
+              rel="noopener">WCAG 1.4.3</a
             >
-          </li>
-          <li><strong>Consistente:</strong> Igual en toda la aplicación</li>
-          <li>
-            <strong>Accesible:</strong> Funciona para personas con daltonismo
-          </li>
+          </p>
+          <p>
+            <strong>Efectos:</strong> Subrayado al hacer hover, borde al enfocar
+          </p>
+          <p>
+            <strong>Nota:</strong> Menos accesible que el subrayado permanente
+          </p>
+        </div>
+      </Banner>
+
+      <Banner title="Estrategia 3: Ubicación independiente" variant="info">
+        <div class="strategy-demo">
+          <div style="display: flex; gap: var(--spacing-sm)">
+            <a href="#" class="standalone-link">DOCUMENTACIÓN</a>
+            <a href="#" class="standalone-link">EJEMPLOS</a>
+            <a href="#" class="standalone-link">GITHUB</a>
+          </div>
+        </div>
+        <div class="strategy-details">
+          <p>
+            <strong>Ubicación:</strong> Separado del texto, no dentro de párrafos
+          </p>
+          <p><strong>Estilo:</strong> Negrita o mayúsculas pequeñas</p>
+          <p>
+            <strong>Contexto:</strong> Su posición indica que es interactivo
+          </p>
+        </div>
+      </Banner>
+    </BannerGrid>
+  </section>
+
+  <section>
+    <h2>Comparación visual de estrategias</h2>
+    <p>
+      Aquí puedes ver las diferentes estrategias aplicadas al mismo contenido:
+    </p>
+
+    <BannerGrid columns="2" minWidth="280px">
+      <Banner title="Subrayado tradicional" variant="info" highContrast>
+        <div class="blog-card">
+          <h5>
+            <a href="#" class="underlined-link"
+              >Arquitectura de Microservicios</a
+            >
+          </h5>
+          <p>
+            Cómo diseñar y implementar una arquitectura escalable con Node.js y
+            Docker...
+          </p>
+          <div class="meta">Francisco Cerdán • Backend • 5 comentarios</div>
+        </div>
+      </Banner>
+
+      <Banner title="Color luminoso + hover" variant="info" highContrast>
+        <div class="blog-card">
+          <h5>
+            <a href="#" class="luminous-hover-link"
+              >Arquitectura de Microservicios</a
+            >
+          </h5>
+          <p>
+            Cómo diseñar y implementar una arquitectura escalable con Node.js y
+            Docker...
+          </p>
+          <div class="meta">Francisco Cerdán • Backend • 5 comentarios</div>
+        </div>
+      </Banner>
+
+      <Banner title="Ubicación independiente" variant="info" highContrast>
+        <div class="blog-card">
+          <h5>Arquitectura de Microservicios</h5>
+          <p>
+            Cómo diseñar y implementar una arquitectura escalable con Node.js y
+            Docker...
+          </p>
+          <div class="meta">Francisco Cerdán • Backend • 5 comentarios</div>
+          <div class="standalone-actions">
+            <a href="#" class="standalone-action">VER TUTORIAL</a>
+          </div>
+        </div>
+      </Banner>
+
+      <Banner title="Estilo alternativo (negrita)" variant="info" highContrast>
+        <div class="blog-card">
+          <h5>
+            <a href="#" class="bold-style-link"
+              >Arquitectura de Microservicios</a
+            >
+          </h5>
+          <p>
+            Cómo diseñar y implementar una arquitectura escalable con Node.js y
+            Docker...
+          </p>
+          <div class="meta">Francisco Cerdán • Backend • 5 comentarios</div>
+        </div>
+      </Banner>
+    </BannerGrid>
+  </section>
+
+  <section>
+    <h2>Reglas de consistencia</h2>
+    <p>Una vez que elijas un estilo, manténlo en toda tu aplicación.</p>
+
+    <BannerGrid columns="auto" minWidth="280px">
+      <Banner
+        title="🔒 Reserva estos elementos SOLO para enlaces"
+        variant="warning"
+        subtitle="Usar estos estilos en texto no-clickeable confundirá a los usuarios"
+      >
+        <ul>
+          <li>Subrayado</li>
+          <li>Texto azul</li>
+          <li>Subrayado + texto azul</li>
         </ul>
       </Banner>
-    </section>
 
-    <section>
-      <h2>Técnica recomendada: Subrayado + Color</h2>
-      <p>
-        La forma más accesible de estilizar enlaces es combinar subrayado con
-        color azul.
-      </p>
+      <Banner
+        title="🎨 Elige un color para elementos interactivos"
+        variant="info"
+      >
+        <p>
+          Reserva un color específico para todos los elementos clickeables
+          (enlaces, botones) y evita usarlo en elementos no-interactivos.
+        </p>
+      </Banner>
 
-      <BannerGrid columns="2" gap="lg">
-        <Banner
-          title="✅ Enlaces accesibles"
-          variant="good"
-          highContrast
-          subtitle="Subrayado + color azul = máxima accesibilidad"
-        >
-          <p>
-            Para mejorar tu código JavaScript, consulta la
-            <a href="#" class="accessible-link">guía de ES6+ y módulos</a>
-            que explica las características modernas del lenguaje.
-          </p>
-          <p>
-            También puedes revisar nuestros
-            <a href="#" class="accessible-link"
-              >patrones de diseño en TypeScript</a
-            >
-            y <a href="#" class="accessible-link"
-              >mejores prácticas de testing</a
-            >.
-          </p>
-        </Banner>
+      <Banner title="📐 Mantén consistencia visual" variant="info">
+        <p>
+          Si eliges negrita para enlaces, úsala siempre. Si eliges subrayado,
+          úsalo siempre. La consistencia ayuda a los usuarios a aprender tu
+          interfaz.
+        </p>
+      </Banner>
+    </BannerGrid>
+  </section>
 
-        <Banner
-          title="❌ Enlaces problemáticos"
-          variant="bad"
-          highContrast
-          subtitle="Solo color = invisible para personas con daltonismo"
-        >
-          <p>
-            Para mejorar tu código JavaScript, consulta la
-            <a href="#" class="problematic-link">guía de ES6+ y módulos</a>
-            que explica las características modernas del lenguaje.
-          </p>
-          <p>
-            También puedes revisar nuestros
-            <a href="#" class="problematic-link"
-              >patrones de diseño en TypeScript</a
-            >
-            y <a href="#" class="problematic-link"
-              >mejores prácticas de testing</a
-            >.
-          </p>
-        </Banner>
-      </BannerGrid>
-    </section>
+  <section>
+    <h2>Errores comunes a evitar</h2>
 
-    <section>
-      <h2>Estrategias de estilizado</h2>
-      <p>
-        Si no quieres usar subrayado, aquí tienes 3 alternativas accesibles:
-      </p>
+    <BannerGrid columns="2" gap="lg">
+      <Banner
+        title="❌ Usar azul para texto no-clickeable"
+        variant="bad"
+        highContrast
+        subtitle="El texto azul parece un enlace pero no lo es"
+      >
+        <p>
+          <span class="fake-link">Nota importante:</span>
+          Recuerda validar todas las entradas del usuario antes de procesarlas.
+        </p>
+      </Banner>
 
-      <BannerGrid columns="auto" minWidth="300px">
-        <Banner title="Estrategia 1: Otros estilos de texto" variant="info">
-          <div class="strategy-demo">
-            <p>
-              Consulta nuestros <a href="#" class="bold-link"
-                >tutoriales de React</a
-              >
-              para ver técnicas avanzadas de componentes.
-            </p>
-          </div>
-          <div class="strategy-details">
-            <p>
-              <strong>Opciones:</strong> Negrita, cursiva, tamaño de fuente, tipografía
-              diferente, borde
-            </p>
-            <p>
-              <strong>Importante:</strong> Solo usa ese estilo para enlaces, nunca
-              para texto normal
-            </p>
-          </div>
-        </Banner>
+      <Banner
+        title="❌ Subrayar texto decorativo"
+        variant="bad"
+        highContrast
+        subtitle="El subrayado sugiere que es clickeable"
+      >
+        <p>
+          <span class="fake-underline">Configuración del Proyecto</span>
+        </p>
+        <p>Aquí están los pasos para configurar tu entorno de desarrollo...</p>
+      </Banner>
 
-        <Banner
-          title="Estrategia 2: Color luminoso + efectos hover/focus"
-          variant="info"
-        >
-          <div class="strategy-demo">
-            <p>
-              Revisa la <a href="#" class="luminous-link"
-                >documentación de APIs REST</a
-              >
-              para más información sobre integración.
-            </p>
-          </div>
-          <div class="strategy-details">
-            <p>
-              <strong>Requisitos:</strong> Contraste 3:1 con texto + 4.5:1 con fondo
-              según
-              <a
-                href="https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html"
-                target="_blank"
-                rel="noopener">WCAG 1.4.3</a
-              >
-            </p>
-            <p>
-              <strong>Efectos:</strong> Subrayado al hacer hover, borde al enfocar
-            </p>
-            <p>
-              <strong>Nota:</strong> Menos accesible que el subrayado permanente
-            </p>
-          </div>
-        </Banner>
+      <Banner
+        title="❌ Enlaces inconsistentes"
+        variant="bad"
+        highContrast
+        subtitle="Diferentes estilos confunden al usuario"
+      >
+        <p>
+          Ve nuestros <a href="#" class="inconsistent-1">repositorios</a> y
+          <a href="#" class="inconsistent-2">tutoriales</a> para más información.
+        </p>
+      </Banner>
+    </BannerGrid>
+  </section>
 
-        <Banner title="Estrategia 3: Ubicación independiente" variant="info">
-          <div class="strategy-demo">
-            <div style="display: flex; gap: var(--spacing-sm)">
-              <a href="#" class="standalone-link">DOCUMENTACIÓN</a>
-              <a href="#" class="standalone-link">EJEMPLOS</a>
-              <a href="#" class="standalone-link">GITHUB</a>
-            </div>
-          </div>
-          <div class="strategy-details">
-            <p>
-              <strong>Ubicación:</strong> Separado del texto, no dentro de párrafos
-            </p>
-            <p><strong>Estilo:</strong> Negrita o mayúsculas pequeñas</p>
-            <p>
-              <strong>Contexto:</strong> Su posición indica que es interactivo
-            </p>
-          </div>
-        </Banner>
-      </BannerGrid>
-    </section>
+  <section>
+    <h2>Lista de verificación</h2>
 
-    <section>
-      <h2>Comparación visual de estrategias</h2>
-      <p>
-        Aquí puedes ver las diferentes estrategias aplicadas al mismo contenido:
-      </p>
+    <Banner title="✅ Antes de publicar, verifica que:" variant="good">
+      <ul>
+        <li>Los enlaces son visualmente diferentes del texto normal</li>
+        <li>Todos los enlaces usan el mismo estilo en toda la aplicación</li>
+        <li>No usas azul o subrayado para texto no-clickeable</li>
+        <li>Los enlaces son identificables sin depender solo del color</li>
+        <li>Los efectos hover/focus proporcionan retroalimentación clara</li>
+        <li>El contraste de color cumple con los requisitos WCAG</li>
+      </ul>
+    </Banner>
+  </section>
 
-      <BannerGrid columns="2" minWidth="280px">
-        <Banner title="Subrayado tradicional" variant="info" highContrast>
-          <div class="blog-card">
-            <h5>
-              <a href="#" class="underlined-link"
-                >Arquitectura de Microservicios</a
-              >
-            </h5>
-            <p>
-              Cómo diseñar y implementar una arquitectura escalable con Node.js
-              y Docker...
-            </p>
-            <div class="meta">Francisco Cerdán • Backend • 5 comentarios</div>
-          </div>
-        </Banner>
-
-        <Banner title="Color luminoso + hover" variant="info" highContrast>
-          <div class="blog-card">
-            <h5>
-              <a href="#" class="luminous-hover-link"
-                >Arquitectura de Microservicios</a
-              >
-            </h5>
-            <p>
-              Cómo diseñar y implementar una arquitectura escalable con Node.js
-              y Docker...
-            </p>
-            <div class="meta">Francisco Cerdán • Backend • 5 comentarios</div>
-          </div>
-        </Banner>
-
-        <Banner title="Ubicación independiente" variant="info" highContrast>
-          <div class="blog-card">
-            <h5>Arquitectura de Microservicios</h5>
-            <p>
-              Cómo diseñar y implementar una arquitectura escalable con Node.js
-              y Docker...
-            </p>
-            <div class="meta">Francisco Cerdán • Backend • 5 comentarios</div>
-            <div class="standalone-actions">
-              <a href="#" class="standalone-action">VER TUTORIAL</a>
-            </div>
-          </div>
-        </Banner>
-
-        <Banner
-          title="Estilo alternativo (negrita)"
-          variant="info"
-          highContrast
-        >
-          <div class="blog-card">
-            <h5>
-              <a href="#" class="bold-style-link"
-                >Arquitectura de Microservicios</a
-              >
-            </h5>
-            <p>
-              Cómo diseñar y implementar una arquitectura escalable con Node.js
-              y Docker...
-            </p>
-            <div class="meta">Francisco Cerdán • Backend • 5 comentarios</div>
-          </div>
-        </Banner>
-      </BannerGrid>
-    </section>
-
-    <section>
-      <h2>Reglas de consistencia</h2>
-      <p>Una vez que elijas un estilo, manténlo en toda tu aplicación.</p>
-
-      <BannerGrid columns="auto" minWidth="280px">
-        <Banner
-          title="🔒 Reserva estos elementos SOLO para enlaces"
-          variant="warning"
-          subtitle="Usar estos estilos en texto no-clickeable confundirá a los usuarios"
-        >
-          <ul>
-            <li>Subrayado</li>
-            <li>Texto azul</li>
-            <li>Subrayado + texto azul</li>
-          </ul>
-        </Banner>
-
-        <Banner
-          title="🎨 Elige un color para elementos interactivos"
-          variant="info"
-        >
-          <p>
-            Reserva un color específico para todos los elementos clickeables
-            (enlaces, botones) y evita usarlo en elementos no-interactivos.
-          </p>
-        </Banner>
-
-        <Banner title="📐 Mantén consistencia visual" variant="info">
-          <p>
-            Si eliges negrita para enlaces, úsala siempre. Si eliges subrayado,
-            úsalo siempre. La consistencia ayuda a los usuarios a aprender tu
-            interfaz.
-          </p>
-        </Banner>
-      </BannerGrid>
-    </section>
-
-    <section>
-      <h2>Errores comunes a evitar</h2>
-
-      <BannerGrid columns="2" gap="lg">
-        <Banner
-          title="❌ Usar azul para texto no-clickeable"
-          variant="bad"
-          highContrast
-          subtitle="El texto azul parece un enlace pero no lo es"
-        >
-          <p>
-            <span class="fake-link">Nota importante:</span>
-            Recuerda validar todas las entradas del usuario antes de procesarlas.
-          </p>
-        </Banner>
-
-        <Banner
-          title="❌ Subrayar texto decorativo"
-          variant="bad"
-          highContrast
-          subtitle="El subrayado sugiere que es clickeable"
-        >
-          <p>
-            <span class="fake-underline">Configuración del Proyecto</span>
-          </p>
-          <p>
-            Aquí están los pasos para configurar tu entorno de desarrollo...
-          </p>
-        </Banner>
-
-        <Banner
-          title="❌ Enlaces inconsistentes"
-          variant="bad"
-          highContrast
-          subtitle="Diferentes estilos confunden al usuario"
-        >
-          <p>
-            Ve nuestros <a href="#" class="inconsistent-1">repositorios</a> y
-            <a href="#" class="inconsistent-2">tutoriales</a> para más información.
-          </p>
-        </Banner>
-      </BannerGrid>
-    </section>
-
-    <section>
-      <h2>Lista de verificación</h2>
-
-      <Checklist
-        title="✅ Antes de publicar, verifica que:"
-        items={checklistItems}
-        variant="success"
-      />
-    </section>
-
-    <section>
-      <h2>Herramientas útiles</h2>
-      <ToolsSection title="Herramientas útiles" tools={linkTools}>
-        <p>Para verificar la accesibilidad de tus enlaces:</p>
-      </ToolsSection>
-    </section>
-  </article>
+  <section>
+    <ToolsSection title="Herramientas útiles" tools={linkTools}>
+      <p>Para verificar la accesibilidad de tus enlaces:</p>
+    </ToolsSection>
+  </section>
 </Layout>
 
 <style lang="scss">
-  article {
-    max-width: 90ch;
-  }
-
   .accessible-link {
     color: #0066cc;
     text-decoration: underline;

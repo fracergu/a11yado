@@ -1,5 +1,4 @@
 ---
-import Header from '../components/Header.astro'
 import Layout from '../layouts/Layout.astro'
 import Banner from '../components/Banner.astro'
 import BannerGrid from '../components/BannerGrid.astro'
@@ -9,126 +8,116 @@ import BannerGrid from '../components/BannerGrid.astro'
   title="a11yado - Accesibilidad accesible"
   description="Aprende accesibilidad web de forma sencilla y práctica. Guías, herramientas y documentación para hacer tus sitios web más inclusivos."
   canonical="/a11yado/"
+  headerTitle="¿Por qué a11yado?"
+  headerDescription="Accesibilidad accesible: aprende los conceptos fundamentales de accesibilidad web de forma simple, práctica y sin complicaciones."
+  articleWidth="narrow"
 >
-  <article>
-    <Header
-      title="¿Por qué a11yado?"
-      description="Accesibilidad accesible: aprende los conceptos fundamentales de accesibilidad web de forma simple, práctica y sin complicaciones."
-    />
+  <section>
+    <h2>El problema</h2>
+    <p>
+      La documentación oficial de accesibilidad como WCAG es extensa y compleja.
+      Para muchos desarrolladores, esto se convierte en una barrera que impide
+      crear sitios web verdaderamente accesibles.
+    </p>
 
-    <section>
-      <h2>El problema</h2>
-      <p>
-        La documentación oficial de accesibilidad como WCAG es extensa y
-        compleja. Para muchos desarrolladores, esto se convierte en una barrera
-        que impide crear sitios web verdaderamente accesibles.
-      </p>
+    <p>
+      <strong>a11yado</strong> es un proyecto personal que busca simplificar el aprendizaje
+      de conceptos básicos de accesibilidad web, sin pretender sustituir las especificaciones
+      oficiales.
+    </p>
+  </section>
 
-      <p>
-        <strong>a11yado</strong> es un proyecto personal que busca simplificar el
-        aprendizaje de conceptos básicos de accesibilidad web, sin pretender sustituir
-        las especificaciones oficiales.
-      </p>
-    </section>
-
-    <section>
-      <h2>Enfoque</h2>
-      <BannerGrid columns="2">
-        <Banner title="🎯 Directo al grano" variant="info">
-          <p>
-            Sin introducciones largas ni teoría excesiva. Conceptos claros con
-            ejemplos prácticos.
-          </p>
-        </Banner>
-        <Banner title="♿ Accesible por diseño" variant="info">
-          <p>
-            Esta página practica lo que enseña. Cada elemento está pensado para
-            ser accesible.
-          </p>
-        </Banner>
-        <Banner title="⚡ Fácil de implementar" variant="info">
-          <p>
-            Guías paso a paso que puedes aplicar inmediatamente en tus
-            proyectos.
-          </p>
-        </Banner>
-        <Banner title="📚 Complementario" variant="info">
-          <p>
-            Los conceptos aquí simplificados siempre deben contrastarse con la
-            <a href="/a11yado/documentation">documentación oficial</a>.
-          </p>
-        </Banner>
-      </BannerGrid>
-    </section>
-
-    <section>
-      <h2>¿Qué encontrarás aquí?</h2>
-      <nav aria-label="Secciones disponibles">
-        <ul class="topics-list">
-          <li>
-            <a href="/a11yado/guides" class="topic-link">
-              <h3>Guías Prácticas</h3>
-              <p>
-                Conceptos de accesibilidad explicados de forma simple con
-                ejemplos que puedes aplicar inmediatamente.
-              </p>
-            </a>
-          </li>
-          <li>
-            <a href="/a11yado/documentation" class="topic-link">
-              <h3>Documentación Oficial</h3>
-              <p>
-                Enlaces a las especificaciones oficiales de WCAG, ADA, Section
-                508 y otras normativas de accesibilidad.
-              </p>
-            </a>
-          </li>
-          <li>
-            <a href="/a11yado/tools" class="topic-link">
-              <h3>Herramientas</h3>
-              <p>
-                Extensiones, aplicaciones y recursos para evaluar y mejorar la
-                accesibilidad de tus sitios web.
-              </p>
-            </a>
-          </li>
-        </ul>
-      </nav>
-    </section>
-
-    <section>
-      <Banner title="⚠️ Importante" variant="warning">
+  <section>
+    <h2>Enfoque</h2>
+    <BannerGrid columns="2">
+      <Banner title="🎯 Directo al grano" variant="info">
         <p>
-          Este sitio es un proyecto educativo personal que simplifica conceptos
-          de accesibilidad web. <strong
-            >No sustituye la documentación oficial</strong
-          >
-          como WCAG, que debe ser siempre tu referencia principal para implementaciones
-          profesionales.
-        </p>
-        <p>
-          Consulta siempre la <a href="/a11yado/documentation"
-            >documentación oficial</a
-          >
-          para validar y profundizar en los conceptos presentados aquí.
+          Sin introducciones largas ni teoría excesiva. Conceptos claros con
+          ejemplos prácticos.
         </p>
       </Banner>
-      <Banner title="🚀 Empezar es fácil" variant="info">
+      <Banner title="♿ Accesible por diseño" variant="info">
         <p>
-          Elige un tema del menú superior o comienza por las
-          <a href="/a11yado/guides">Guías Prácticas</a>, donde encontrarás
-          conceptos fundamentales explicados de forma simple y directa.
+          Esta página practica lo que enseña. Cada elemento está pensado para
+          ser accesible.
         </p>
       </Banner>
-    </section>
-  </article>
+      <Banner title="⚡ Fácil de implementar" variant="info">
+        <p>
+          Guías paso a paso que puedes aplicar inmediatamente en tus proyectos.
+        </p>
+      </Banner>
+      <Banner title="📚 Complementario" variant="info">
+        <p>
+          Los conceptos aquí simplificados siempre deben contrastarse con la
+          <a href="/a11yado/documentation">documentación oficial</a>.
+        </p>
+      </Banner>
+    </BannerGrid>
+  </section>
+
+  <section>
+    <h2>¿Qué encontrarás aquí?</h2>
+    <nav aria-label="Secciones disponibles">
+      <ul class="topics-list">
+        <li>
+          <a href="/a11yado/guides" class="topic-link">
+            <h3>Guías Prácticas</h3>
+            <p>
+              Conceptos de accesibilidad explicados de forma simple con ejemplos
+              que puedes aplicar inmediatamente.
+            </p>
+          </a>
+        </li>
+        <li>
+          <a href="/a11yado/documentation" class="topic-link">
+            <h3>Documentación Oficial</h3>
+            <p>
+              Enlaces a las especificaciones oficiales de WCAG, ADA, Section 508
+              y otras normativas de accesibilidad.
+            </p>
+          </a>
+        </li>
+        <li>
+          <a href="/a11yado/tools" class="topic-link">
+            <h3>Herramientas</h3>
+            <p>
+              Extensiones, aplicaciones y recursos para evaluar y mejorar la
+              accesibilidad de tus sitios web.
+            </p>
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </section>
+
+  <section>
+    <Banner title="⚠️ Importante" variant="warning">
+      <p>
+        Este sitio es un proyecto educativo personal que simplifica conceptos de
+        accesibilidad web. <strong>No sustituye la documentación oficial</strong
+        >
+        como WCAG, que debe ser siempre tu referencia principal para implementaciones
+        profesionales.
+      </p>
+      <p>
+        Consulta siempre la <a href="/a11yado/documentation"
+          >documentación oficial</a
+        >
+        para validar y profundizar en los conceptos presentados aquí.
+      </p>
+    </Banner>
+    <Banner title="🚀 Empezar es fácil" variant="info">
+      <p>
+        Elige un tema del menú superior o comienza por las
+        <a href="/a11yado/guides">Guías Prácticas</a>, donde encontrarás
+        conceptos fundamentales explicados de forma simple y directa.
+      </p>
+    </Banner>
+  </section>
 </Layout>
 
 <style lang="scss">
-  article {
-    max-width: 70ch;
-  }
-
   .topics-list {
     list-style: none;
     padding: 0;

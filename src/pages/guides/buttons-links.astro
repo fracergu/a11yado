@@ -3,7 +3,6 @@ import Layout from '../../layouts/Layout.astro'
 import ToolsSection from '../../components/ToolsSection.astro'
 import Banner from '../../components/Banner.astro'
 import BannerGrid from '../../components/BannerGrid.astro'
-import Header from '../../components/Header.astro'
 
 const buttonsLinksTools = [
   {
@@ -30,354 +29,326 @@ const buttonsLinksTools = [
   description="Aprende cuándo usar botones vs enlaces en web accesible. Semántica HTML correcta, ARIA y UX inclusivo siguiendo criterios WCAG 2.2."
   type="article"
   canonical="/a11yado/guides/buttons-links"
+  headerTitle="Botones y Enlaces"
+  headerDescription="El texto de botones y enlaces debe comunicar claramente qué acción se realizará o a dónde llevará al usuario."
+  articleWidth="wide"
 >
-  <article>
-    <Header
-      title="Botones y Enlaces"
-      description="El texto de botones y enlaces debe comunicar claramente qué acción se realizará o a dónde llevará al usuario."
-    />
+  <section>
+    <h2>¿Qué son los señalizadores?</h2>
+    <p>
+      Los <strong>señalizadores</strong> son las pistas visuales, auditivas o textuales
+      que indican cómo se puede interactuar con un elemento. En botones y enlaces,
+      el texto es el señalizador más importante.
+    </p>
 
-    <section>
-      <h2>¿Qué son los señalizadores?</h2>
-      <p>
-        Los <strong>señalizadores</strong> son las pistas visuales, auditivas o textuales
-        que indican cómo se puede interactuar con un elemento. En botones y enlaces,
-        el texto es el señalizador más importante.
-      </p>
+    <Banner title="Señalizadores efectivos deben ser:" variant="concept">
+      <ul>
+        <li>
+          <strong>Apropiados:</strong> Que correspondan con la acción o destino
+        </li>
+        <li>
+          <strong>Claros:</strong> Fáciles de interpretar por tu audiencia
+        </li>
+        <li><strong>Específicos:</strong> Únicos y descriptivos</li>
+      </ul>
+    </Banner>
+  </section>
 
-      <Banner title="Señalizadores efectivos deben ser:" variant="concept">
-        <ul>
-          <li>
-            <strong>Apropiados:</strong> Que correspondan con la acción o destino
-          </li>
-          <li>
-            <strong>Claros:</strong> Fáciles de interpretar por tu audiencia
-          </li>
-          <li><strong>Específicos:</strong> Únicos y descriptivos</li>
-        </ul>
+  <section>
+    <h2>Botones: Palabras de acción</h2>
+    <p>
+      Los botones deben usar verbos que describan claramente la acción que se
+      realizará.
+    </p>
+
+    <BannerGrid columns="2" gap="lg">
+      <Banner title="❌ Ambiguo" variant="bad" subtitle="¿Sí a qué? ¿No a qué?">
+        <div class="button-demo">
+          <button class="demo-button">Sí</button>
+          <button class="demo-button">No</button>
+        </div>
       </Banner>
-    </section>
-
-    <section>
-      <h2>Botones: Palabras de acción</h2>
-      <p>
-        Los botones deben usar verbos que describan claramente la acción que se
-        realizará.
-      </p>
-
-      <BannerGrid columns="2" gap="lg">
-        <Banner
-          title="❌ Ambiguo"
-          variant="bad"
-          subtitle="¿Sí a qué? ¿No a qué?"
-        >
-          <div class="button-demo">
-            <button class="demo-button">Sí</button>
-            <button class="demo-button">No</button>
-          </div>
-        </Banner>
-
-        <Banner
-          title="✅ Específico"
-          variant="good"
-          subtitle="Acción clara y específica"
-        >
-          <div class="button-demo">
-            <button class="demo-button">Guardar cambios</button>
-            <button class="demo-button">Descartar</button>
-          </div>
-        </Banner>
-      </BannerGrid>
-
-      <BannerGrid columns="2" gap="lg">
-        <Banner
-          title="❌ Genérico"
-          variant="bad"
-          subtitle="¿Continuar con qué?"
-        >
-          <div class="button-demo">
-            <button class="demo-button">Continuar</button>
-          </div>
-        </Banner>
-
-        <Banner
-          title="✅ Descriptivo"
-          variant="good"
-          subtitle="Acción y objeto claros"
-        >
-          <div class="button-demo">
-            <button class="demo-button">Descargar actualización</button>
-          </div>
-        </Banner>
-      </BannerGrid>
-
-      <Banner title="💡 Fórmula para buenos botones" variant="tip">
-        <p><strong>Verbo + Objeto = Claridad</strong></p>
-        <ul>
-          <li>Guardar → Guardar documento</li>
-          <li>Enviar → Enviar mensaje</li>
-          <li>Comprar → Comprar ahora</li>
-        </ul>
-      </Banner>
-    </section>
-
-    <section>
-      <h2>Enlaces: Evita "Leer más"</h2>
-      <p>
-        Los enlaces ambiguos como "leer más", "clic aquí" o "detalles" crean
-        problemas de usabilidad, accesibilidad y SEO. Según <a
-          href="https://www.w3.org/WAI/WCAG22/Understanding/link-purpose-in-context.html"
-          target="_blank"
-          rel="noopener">WCAG 2.4.4: Link Purpose</a
-        >, los enlaces deben ser comprensibles por su texto.
-      </p>
-
-      <div class="blog-comparison">
-        <Banner
-          title="❌ Enlaces ambiguos"
-          variant="bad"
-          subtitle="Todos los enlaces dicen lo mismo"
-        >
-          <div class="blog-posts">
-            <article class="blog-post">
-              <h5>Optimización de Bases de Datos</h5>
-              <p>
-                Técnicas avanzadas para mejorar el rendimiento de consultas
-                SQL...
-              </p>
-              <a href="#" class="read-more-link">leer más</a>
-              <div class="post-meta">Francisco C. Backend 2 comentarios</div>
-            </article>
-
-            <article class="blog-post">
-              <h5>Componentes Reutilizables</h5>
-              <p>
-                Cómo crear componentes modulares que mejoren la
-                mantenibilidad...
-              </p>
-              <a href="#" class="read-more-link">leer más</a>
-              <div class="post-meta">Francisco C. Frontend 1 comentario</div>
-            </article>
-
-            <article class="blog-post">
-              <h5>Testing Automatizado</h5>
-              <p>
-                Estrategias para implementar pruebas efectivas en tu
-                aplicación...
-              </p>
-              <a href="#" class="read-more-link">leer más</a>
-              <div class="post-meta">Francisco C. Backend 3 comentarios</div>
-            </article>
-          </div>
-        </Banner>
-
-        <Banner
-          title="✅ Enlaces descriptivos"
-          variant="good"
-          subtitle="Cada enlace es único y descriptivo"
-        >
-          <div class="blog-posts">
-            <article class="blog-post">
-              <h5>
-                <a href="#" class="title-link accessible-link"
-                  >Optimización de Bases de Datos</a
-                >
-              </h5>
-              <p>
-                Técnicas avanzadas para mejorar el rendimiento de consultas
-                SQL...
-              </p>
-              <div class="post-meta">Francisco C. Backend 2 comentarios</div>
-            </article>
-
-            <article class="blog-post">
-              <h5>
-                <a href="#" class="title-link accessible-link"
-                  >Componentes Reutilizables</a
-                >
-              </h5>
-              <p>
-                Cómo crear componentes modulares que mejoren la
-                mantenibilidad...
-              </p>
-              <div class="post-meta">Francisco C. Frontend 1 comentario</div>
-            </article>
-
-            <article class="blog-post">
-              <h5>
-                <a href="#" class="title-link accessible-link"
-                  >Testing Automatizado</a
-                >
-              </h5>
-              <p>
-                Estrategias para implementar pruebas efectivas en tu
-                aplicación...
-              </p>
-              <div class="post-meta">Francisco C. Backend 3 comentarios</div>
-            </article>
-          </div>
-        </Banner>
-      </div>
-    </section>
-
-    <section>
-      <h2>Problemas con "Clic aquí"</h2>
-      <p>Evita "clic aquí" por tres razones principales:</p>
-
-      <BannerGrid columns="auto" minWidth="250px">
-        <Banner title="🖱️ Asume dispositivo" variant="bad">
-          <p>
-            No todos usan ratón. Algunos usan teclado, pantalla táctil o
-            tecnologías asistivas.
-          </p>
-        </Banner>
-
-        <Banner title="🧠 Subestima al usuario" variant="bad">
-          <p>
-            Los usuarios saben cómo hacer clic. No necesitan que se lo digas.
-          </p>
-        </Banner>
-
-        <Banner title="🎭 Oculta la acción" variant="bad">
-          <p>No dice qué pasará al hacer clic. Es una promesa vacía.</p>
-        </Banner>
-      </BannerGrid>
-
-      <BannerGrid columns="2" gap="lg">
-        <Banner title="❌ Oculta información" variant="bad" highContrast>
-          <p>
-            Para más consejos de programación <a href="#" class="demo-link"
-              >clic aquí</a
-            >
-          </p>
-          <p>
-            Para ver nuestros proyectos <a href="#" class="demo-link"
-              >clic aquí</a
-            >
-          </p>
-        </Banner>
-
-        <Banner title="✅ Revela información" variant="good" highContrast>
-          <p>
-            <a href="#" class="demo-link">Suscríbete a nuestro newsletter</a> para
-            más consejos de programación
-          </p>
-          <p>
-            <a href="#" class="demo-link">Ve nuestro portafolio de proyectos</a>
-          </p>
-        </Banner>
-      </BannerGrid>
-    </section>
-
-    <section>
-      <h2>Frontloading: Lo importante primero</h2>
-      <p>
-        Coloca las palabras más importantes al inicio del texto del enlace o
-        botón. Los usuarios escanean de izquierda a derecha.
-      </p>
-      <BannerGrid columns="2" gap="lg">
-        <Banner title="❌ Casos problemáticos" variant="bad" highContrast>
-          <div>
-            <span class="label">Acción:</span>
-            <button class="demo-button">Clic aquí para suscribirte</button>
-          </div>
-          <div style="margin-top: var(--spacing-sm)">
-            <span class="label">Tema:</span>
-            <a href="#" class="demo-link"
-              >Leer más sobre optimización de código</a
-            >
-          </div>
-        </Banner>
-
-        <Banner title="✅ Casos mejorados" variant="good" highContrast>
-          <div>
-            <span class="label">Acción:</span>
-            <button class="demo-button">Suscríbete a nuestro newsletter</button>
-          </div>
-          <div style="margin-top: var(--spacing-sm)">
-            <span class="label">Tema:</span>
-            <a href="#" class="demo-link">Técnicas de optimización de código</a>
-          </div>
-        </Banner>
-      </BannerGrid>
-    </section>
-
-    <section>
-      <h2>Enlaces externos y archivos</h2>
-      <p>
-        Indica cuando un enlace abre en nueva pestaña o descarga un archivo.
-      </p>
 
       <Banner
-        title="❌ URLs desnudas"
-        variant="bad"
-        subtitle="Difícil de leer y no describe el contenido"
-        highContrast
+        title="✅ Específico"
+        variant="good"
+        subtitle="Acción clara y específica"
       >
+        <div class="button-demo">
+          <button class="demo-button">Guardar cambios</button>
+          <button class="demo-button">Descartar</button>
+        </div>
+      </Banner>
+    </BannerGrid>
+
+    <BannerGrid columns="2" gap="lg">
+      <Banner title="❌ Genérico" variant="bad" subtitle="¿Continuar con qué?">
+        <div class="button-demo">
+          <button class="demo-button">Continuar</button>
+        </div>
+      </Banner>
+
+      <Banner
+        title="✅ Descriptivo"
+        variant="good"
+        subtitle="Acción y objeto claros"
+      >
+        <div class="button-demo">
+          <button class="demo-button">Descargar actualización</button>
+        </div>
+      </Banner>
+    </BannerGrid>
+
+    <Banner title="💡 Fórmula para buenos botones" variant="tip">
+      <p><strong>Verbo + Objeto = Claridad</strong></p>
+      <ul>
+        <li>Guardar → Guardar documento</li>
+        <li>Enviar → Enviar mensaje</li>
+        <li>Comprar → Comprar ahora</li>
+      </ul>
+    </Banner>
+  </section>
+
+  <section>
+    <h2>Enlaces: Evita "Leer más"</h2>
+    <p>
+      Los enlaces ambiguos como "leer más", "clic aquí" o "detalles" crean
+      problemas de usabilidad, accesibilidad y SEO. Según <a
+        href="https://www.w3.org/WAI/WCAG22/Understanding/link-purpose-in-context.html"
+        target="_blank"
+        rel="noopener">WCAG 2.4.4: Link Purpose</a
+      >, los enlaces deben ser comprensibles por su texto.
+    </p>
+
+    <div class="blog-comparison">
+      <Banner
+        title="❌ Enlaces ambiguos"
+        variant="bad"
+        subtitle="Todos los enlaces dicen lo mismo"
+      >
+        <div class="blog-posts">
+          <article class="blog-post">
+            <h5>Optimización de Bases de Datos</h5>
+            <p>
+              Técnicas avanzadas para mejorar el rendimiento de consultas SQL...
+            </p>
+            <a href="#" class="read-more-link">leer más</a>
+            <div class="post-meta">Francisco C. Backend 2 comentarios</div>
+          </article>
+
+          <article class="blog-post">
+            <h5>Componentes Reutilizables</h5>
+            <p>
+              Cómo crear componentes modulares que mejoren la mantenibilidad...
+            </p>
+            <a href="#" class="read-more-link">leer más</a>
+            <div class="post-meta">Francisco C. Frontend 1 comentario</div>
+          </article>
+
+          <article class="blog-post">
+            <h5>Testing Automatizado</h5>
+            <p>
+              Estrategias para implementar pruebas efectivas en tu aplicación...
+            </p>
+            <a href="#" class="read-more-link">leer más</a>
+            <div class="post-meta">Francisco C. Backend 3 comentarios</div>
+          </article>
+        </div>
+      </Banner>
+
+      <Banner
+        title="✅ Enlaces descriptivos"
+        variant="good"
+        subtitle="Cada enlace es único y descriptivo"
+      >
+        <div class="blog-posts">
+          <article class="blog-post">
+            <h5>
+              <a href="#" class="title-link accessible-link"
+                >Optimización de Bases de Datos</a
+              >
+            </h5>
+            <p>
+              Técnicas avanzadas para mejorar el rendimiento de consultas SQL...
+            </p>
+            <div class="post-meta">Francisco C. Backend 2 comentarios</div>
+          </article>
+
+          <article class="blog-post">
+            <h5>
+              <a href="#" class="title-link accessible-link"
+                >Componentes Reutilizables</a
+              >
+            </h5>
+            <p>
+              Cómo crear componentes modulares que mejoren la mantenibilidad...
+            </p>
+            <div class="post-meta">Francisco C. Frontend 1 comentario</div>
+          </article>
+
+          <article class="blog-post">
+            <h5>
+              <a href="#" class="title-link accessible-link"
+                >Testing Automatizado</a
+              >
+            </h5>
+            <p>
+              Estrategias para implementar pruebas efectivas en tu aplicación...
+            </p>
+            <div class="post-meta">Francisco C. Backend 3 comentarios</div>
+          </article>
+        </div>
+      </Banner>
+    </div>
+  </section>
+
+  <section>
+    <h2>Problemas con "Clic aquí"</h2>
+    <p>Evita "clic aquí" por tres razones principales:</p>
+
+    <BannerGrid columns="auto" minWidth="250px">
+      <Banner title="🖱️ Asume dispositivo" variant="bad">
         <p>
-          Consulta la documentación en: <code class="naked-url"
-            >http://www.ejemplo.com/api-documentation.pdf</code
+          No todos usan ratón. Algunos usan teclado, pantalla táctil o
+          tecnologías asistivas.
+        </p>
+      </Banner>
+
+      <Banner title="🧠 Subestima al usuario" variant="bad">
+        <p>Los usuarios saben cómo hacer clic. No necesitan que se lo digas.</p>
+      </Banner>
+
+      <Banner title="🎭 Oculta la acción" variant="bad">
+        <p>No dice qué pasará al hacer clic. Es una promesa vacía.</p>
+      </Banner>
+    </BannerGrid>
+
+    <BannerGrid columns="2" gap="lg">
+      <Banner title="❌ Oculta información" variant="bad" highContrast>
+        <p>
+          Para más consejos de programación <a href="#" class="demo-link"
+            >clic aquí</a
+          >
+        </p>
+        <p>
+          Para ver nuestros proyectos <a href="#" class="demo-link">clic aquí</a
           >
         </p>
       </Banner>
 
-      <Banner title="✅ Enlaces externos" variant="good" highContrast>
-        <div
-          style="display: flex; flex-direction: column; gap: var(--spacing-sm)"
-        >
-          <a href="#" class="demo-link external"
-            >Documentación de React <span class="external-icon">↗</span></a
-          >
-          <a href="#" class="demo-link external"
-            >Guía de JavaScript (PDF) <span class="file-icon">📄</span></a
+      <Banner title="✅ Revela información" variant="good" highContrast>
+        <p>
+          <a href="#" class="demo-link">Suscríbete a nuestro newsletter</a> para
+          más consejos de programación
+        </p>
+        <p>
+          <a href="#" class="demo-link">Ve nuestro portafolio de proyectos</a>
+        </p>
+      </Banner>
+    </BannerGrid>
+  </section>
+
+  <section>
+    <h2>Frontloading: Lo importante primero</h2>
+    <p>
+      Coloca las palabras más importantes al inicio del texto del enlace o
+      botón. Los usuarios escanean de izquierda a derecha.
+    </p>
+    <BannerGrid columns="2" gap="lg">
+      <Banner title="❌ Casos problemáticos" variant="bad" highContrast>
+        <div>
+          <span class="label">Acción:</span>
+          <button class="demo-button">Clic aquí para suscribirte</button>
+        </div>
+        <div style="margin-top: var(--spacing-sm)">
+          <span class="label">Tema:</span>
+          <a href="#" class="demo-link">Leer más sobre optimización de código</a
           >
         </div>
       </Banner>
-    </section>
-    <section>
-      <h2>Mejores prácticas resumidas</h2>
 
-      <BannerGrid columns="auto" minWidth="250px">
-        <Banner title="🎯 Para botones" variant="info">
-          <ul>
-            <li>Usa verbos de acción</li>
-            <li>Sé específico sobre la tarea</li>
-            <li>Mantén el texto conciso</li>
-            <li>Frontload palabras importantes</li>
-          </ul>
-        </Banner>
+      <Banner title="✅ Casos mejorados" variant="good" highContrast>
+        <div>
+          <span class="label">Acción:</span>
+          <button class="demo-button">Suscríbete a nuestro newsletter</button>
+        </div>
+        <div style="margin-top: var(--spacing-sm)">
+          <span class="label">Tema:</span>
+          <a href="#" class="demo-link">Técnicas de optimización de código</a>
+        </div>
+      </Banner>
+    </BannerGrid>
+  </section>
 
-        <Banner title="🔗 Para enlaces" variant="info">
-          <ul>
-            <li>Evita "leer más" y "clic aquí"</li>
-            <li>Haz cada enlace único</li>
-            <li>Describe el destino claramente</li>
-            <li>Indica enlaces externos</li>
-          </ul>
-        </Banner>
+  <section>
+    <h2>Enlaces externos y archivos</h2>
+    <p>Indica cuando un enlace abre en nueva pestaña o descarga un archivo.</p>
 
-        <Banner title="📝 Para ambos" variant="info">
-          <ul>
-            <li>El propósito debe ser claro</li>
-            <li>Funciona fuera de contexto</li>
-            <li>No asumas dispositivo específico</li>
-            <li>Sé transparente sobre la acción</li>
-          </ul>
-        </Banner>
-      </BannerGrid>
-    </section>
+    <Banner
+      title="❌ URLs desnudas"
+      variant="bad"
+      subtitle="Difícil de leer y no describe el contenido"
+      highContrast
+    >
+      <p>
+        Consulta la documentación en: <code class="naked-url"
+          >http://www.ejemplo.com/api-documentation.pdf</code
+        >
+      </p>
+    </Banner>
 
-    <ToolsSection title="Herramientas útiles" tools={buttonsLinksTools}>
-      <p>Para verificar la claridad de tus botones y enlaces:</p>
-    </ToolsSection>
-  </article>
+    <Banner title="✅ Enlaces externos" variant="good" highContrast>
+      <div
+        style="display: flex; flex-direction: column; gap: var(--spacing-sm)"
+      >
+        <a href="#" class="demo-link external"
+          >Documentación de React <span class="external-icon">↗</span></a
+        >
+        <a href="#" class="demo-link external"
+          >Guía de JavaScript (PDF) <span class="file-icon">📄</span></a
+        >
+      </div>
+    </Banner>
+  </section>
+  <section>
+    <h2>Mejores prácticas resumidas</h2>
+
+    <BannerGrid columns="auto" minWidth="250px">
+      <Banner title="🎯 Para botones" variant="info">
+        <ul>
+          <li>Usa verbos de acción</li>
+          <li>Sé específico sobre la tarea</li>
+          <li>Mantén el texto conciso</li>
+          <li>Frontload palabras importantes</li>
+        </ul>
+      </Banner>
+
+      <Banner title="🔗 Para enlaces" variant="info">
+        <ul>
+          <li>Evita "leer más" y "clic aquí"</li>
+          <li>Haz cada enlace único</li>
+          <li>Describe el destino claramente</li>
+          <li>Indica enlaces externos</li>
+        </ul>
+      </Banner>
+
+      <Banner title="📝 Para ambos" variant="info">
+        <ul>
+          <li>El propósito debe ser claro</li>
+          <li>Funciona fuera de contexto</li>
+          <li>No asumas dispositivo específico</li>
+          <li>Sé transparente sobre la acción</li>
+        </ul>
+      </Banner>
+    </BannerGrid>
+  </section>
+
+  <ToolsSection title="Herramientas útiles" tools={buttonsLinksTools}>
+    <p>Para verificar la claridad de tus botones y enlaces:</p>
+  </ToolsSection>
 </Layout>
 
 <style lang="scss">
-  article {
-    max-width: 90ch;
-  }
-
   .button-demo {
     display: flex;
     gap: var(--spacing-sm);

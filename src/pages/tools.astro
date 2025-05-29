@@ -1,6 +1,5 @@
 ---
 import Layout from '../layouts/Layout.astro'
-import Header from '../components/Header.astro'
 import Banner from '../components/Banner.astro'
 import Card from '../components/Card.astro'
 import CardGrid from '../components/CardGrid.astro'
@@ -10,249 +9,240 @@ import CardGrid from '../components/CardGrid.astro'
   title="Herramientas de Accesibilidad - a11yado"
   description="Extensiones, aplicaciones y servicios para evaluar, probar y mejorar la accesibilidad de tus sitios web. Herramientas para diseñadores y desarrolladores."
   canonical="/a11yado/tools"
+  headerTitle="Herramientas de Accesibilidad"
+  headerDescription="Extensiones, aplicaciones y servicios para evaluar, probar y mejorar la accesibilidad de tus sitios web."
+  articleWidth="medium"
 >
-  <article>
-    <Header
-      title="Herramientas de Accesibilidad"
-      description="Extensiones, aplicaciones y servicios para evaluar, probar y mejorar la accesibilidad de tus sitios web."
-    />
+  <section>
+    <h2>Para Diseñadores</h2>
+    <p>
+      Herramientas esenciales para tomar decisiones de diseño accesibles desde
+      el inicio.
+    </p>
 
-    <section>
-      <h2>Para Diseñadores</h2>
-      <p>
-        Herramientas esenciales para tomar decisiones de diseño accesibles desde
-        el inicio.
-      </p>
-
-      <div class="tool-grid">
-        <div class="tool-card featured">
-          <div class="tool-header">
-            <h3>WAVE - Herramienta de Evaluación de Accesibilidad Web</h3>
-            <span class="badge best-for">Ideal para principiantes</span>
-          </div>
-          <p>
-            Excelente herramienta visual que muestra errores de accesibilidad
-            directamente en la página web. Perfecta para diseñadores y personas
-            nuevas en accesibilidad.
-          </p>
-          <div class="tool-links">
-            <a
-              href="https://wave.webaim.org/"
-              target="_blank"
-              rel="noopener"
-              class="link-primary"
-            >
-              WAVE Online
-            </a>
-            <a
-              href="https://wave.webaim.org/extension/"
-              target="_blank"
-              rel="noopener"
-              class="link-secondary"
-            >
-              Extensiones Chrome/Firefox
-            </a>
-          </div>
-          <div class="tool-features">
-            <span class="feature">Evaluación visual</span>
-            <span class="feature">Fácil de usar</span>
-            <span class="feature">Gratuita</span>
-          </div>
+    <div class="tool-grid">
+      <div class="tool-card featured">
+        <div class="tool-header">
+          <h3>WAVE - Herramienta de Evaluación de Accesibilidad Web</h3>
+          <span class="badge best-for">Ideal para principiantes</span>
         </div>
-
-        <div class="tool-card featured">
-          <div class="tool-header">
-            <h3>NoCoffee Vision Simulator</h3>
-            <span class="badge essential">Esencial para diseñadores</span>
-          </div>
-          <p>
-            Simula diferentes tipos de discapacidades visuales para probar cómo
-            se ven tus diseños. Indispensable para elegir colores y contrastes
-            apropiados.
-          </p>
-          <div class="tool-links">
-            <a
-              href="https://addons.mozilla.org/en-US/firefox/addon/nocoffee/"
-              target="_blank"
-              rel="noopener"
-              class="link-primary"
-            >
-              Extensión Firefox
-            </a>
-            <a
-              href="https://chrome.google.com/webstore/detail/nocoffee/jjeeggmbnhckmgdhmgdckeigabjfbddl"
-              target="_blank"
-              rel="noopener"
-              class="link-secondary"
-            >
-              Extensión Chrome
-            </a>
-          </div>
-          <div class="tool-features">
-            <span class="feature">Simulación visual</span>
-            <span class="feature">Diferentes tipos de daltonismo</span>
-            <span class="feature">Tiempo real</span>
-          </div>
+        <p>
+          Excelente herramienta visual que muestra errores de accesibilidad
+          directamente en la página web. Perfecta para diseñadores y personas
+          nuevas en accesibilidad.
+        </p>
+        <div class="tool-links">
+          <a
+            href="https://wave.webaim.org/"
+            target="_blank"
+            rel="noopener"
+            class="link-primary"
+          >
+            WAVE Online
+          </a>
+          <a
+            href="https://wave.webaim.org/extension/"
+            target="_blank"
+            rel="noopener"
+            class="link-secondary"
+          >
+            Extensiones Chrome/Firefox
+          </a>
+        </div>
+        <div class="tool-features">
+          <span class="feature">Evaluación visual</span>
+          <span class="feature">Fácil de usar</span>
+          <span class="feature">Gratuita</span>
         </div>
       </div>
-    </section>
 
-    <section>
-      <h2>Para Desarrolladores</h2>
-      <p>
-        Herramientas técnicas para integrar en tu flujo de trabajo de
-        desarrollo.
-      </p>
-
-      <div class="tool-grid">
-        <div class="tool-card featured">
-          <div class="tool-header">
-            <h3>axe - Pruebas de Accesibilidad Web</h3>
-            <span class="badge dev-focused">Para desarrolladores</span>
-          </div>
-          <p>
-            La herramienta más robusta para desarrolladores. Integrable en
-            CI/CD, con APIs y librerías para diferentes frameworks.
-          </p>
-          <div class="tool-links">
-            <a
-              href="https://chrome.google.com/webstore/detail/axe-web-accessibility-tes/lhdoppojpmngadmnindnejefpokejbdd"
-              target="_blank"
-              rel="noopener"
-              class="link-primary"
-            >
-              Extensión Chrome
-            </a>
-            <a
-              href="https://www.deque.com/axe/"
-              target="_blank"
-              rel="noopener"
-              class="link-secondary"
-            >
-              Librerías y APIs
-            </a>
-          </div>
-          <div class="tool-features">
-            <span class="feature">DevTools integrado</span>
-            <span class="feature">APIs disponibles</span>
-            <span class="feature">Listo para CI/CD</span>
-          </div>
+      <div class="tool-card featured">
+        <div class="tool-header">
+          <h3>NoCoffee Vision Simulator</h3>
+          <span class="badge essential">Esencial para diseñadores</span>
         </div>
-
-        <div class="tool-card">
-          <div class="tool-header">
-            <h3>Auditoría de Accesibilidad Lighthouse</h3>
-            <span class="badge">Integrado en Chrome</span>
-          </div>
-          <p>
-            Auditoría de accesibilidad integrada en Chrome DevTools. Parte del
-            flujo de trabajo de desarrollo estándar para muchos equipos.
-          </p>
-          <div class="tool-links">
-            <a
-              href="https://developers.google.com/web/tools/lighthouse/"
-              target="_blank"
-              rel="noopener"
-              class="link-primary"
-            >
-              Documentación Lighthouse
-            </a>
-          </div>
-          <div class="tool-features">
-            <span class="feature">DevTools nativo</span>
-            <span class="feature">Puntuación 0-100</span>
-            <span class="feature">Recomendaciones</span>
-          </div>
+        <p>
+          Simula diferentes tipos de discapacidades visuales para probar cómo se
+          ven tus diseños. Indispensable para elegir colores y contrastes
+          apropiados.
+        </p>
+        <div class="tool-links">
+          <a
+            href="https://addons.mozilla.org/en-US/firefox/addon/nocoffee/"
+            target="_blank"
+            rel="noopener"
+            class="link-primary"
+          >
+            Extensión Firefox
+          </a>
+          <a
+            href="https://chrome.google.com/webstore/detail/nocoffee/jjeeggmbnhckmgdhmgdckeigabjfbddl"
+            target="_blank"
+            rel="noopener"
+            class="link-secondary"
+          >
+            Extensión Chrome
+          </a>
+        </div>
+        <div class="tool-features">
+          <span class="feature">Simulación visual</span>
+          <span class="feature">Diferentes tipos de daltonismo</span>
+          <span class="feature">Tiempo real</span>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section>
-      <h2>Lectores de pantalla para pruebas</h2>
-      <p>
-        Para probar cómo los usuarios de lectores de pantalla experimentan tu
-        sitio.
-      </p>
+  <section>
+    <h2>Para Desarrolladores</h2>
+    <p>
+      Herramientas técnicas para integrar en tu flujo de trabajo de desarrollo.
+    </p>
 
-      <div class="tool-grid">
-        <div class="tool-card">
-          <div class="tool-header">
-            <h3>NVDA - Acceso al Escritorio No Visual</h3>
-            <span class="badge free">Gratuito</span>
-          </div>
-          <p>
-            Lector de pantalla gratuito para Windows. Ideal para desarrolladores
-            que quieren probar la experiencia de usuarios con discapacidades
-            visuales.
-          </p>
-          <div class="tool-links">
-            <a
-              href="https://www.nvaccess.org/"
-              target="_blank"
-              rel="noopener"
-              class="link-primary"
-            >
-              Descargar NVDA
-            </a>
-          </div>
+    <div class="tool-grid">
+      <div class="tool-card featured">
+        <div class="tool-header">
+          <h3>axe - Pruebas de Accesibilidad Web</h3>
+          <span class="badge dev-focused">Para desarrolladores</span>
         </div>
-
-        <div class="tool-card">
-          <div class="tool-header">
-            <h3>VoiceOver (macOS/iOS)</h3>
-            <span class="badge native">Nativo Apple</span>
-          </div>
-          <p>
-            Lector de pantalla integrado en dispositivos Apple. Se activa con
-            Cmd+F5 en Mac o en Configuración > Accesibilidad en iOS.
-          </p>
-          <div class="tool-links">
-            <a
-              href="https://support.apple.com/guide/voiceover/welcome/mac"
-              target="_blank"
-              rel="noopener"
-              class="link-primary"
-            >
-              Guía VoiceOver
-            </a>
-          </div>
+        <p>
+          La herramienta más robusta para desarrolladores. Integrable en CI/CD,
+          con APIs y librerías para diferentes frameworks.
+        </p>
+        <div class="tool-links">
+          <a
+            href="https://chrome.google.com/webstore/detail/axe-web-accessibility-tes/lhdoppojpmngadmnindnejefpokejbdd"
+            target="_blank"
+            rel="noopener"
+            class="link-primary"
+          >
+            Extensión Chrome
+          </a>
+          <a
+            href="https://www.deque.com/axe/"
+            target="_blank"
+            rel="noopener"
+            class="link-secondary"
+          >
+            Librerías y APIs
+          </a>
+        </div>
+        <div class="tool-features">
+          <span class="feature">DevTools integrado</span>
+          <span class="feature">APIs disponibles</span>
+          <span class="feature">Listo para CI/CD</span>
         </div>
       </div>
-    </section>
 
-    <Banner title="💡 Recomendaciones de uso" variant="info">
-      <CardGrid columns="3" minWidth="280px">
-        <Card title="Para empezar">
-          <p>
-            Comienza con <strong>WAVE</strong> para una visión general y <strong
-              >NoCoffee</strong
-            > para probar colores.
-          </p>
-        </Card>
-        <Card title="Para desarrollo">
-          <p>
-            Usa <strong>axe</strong> en tu flujo de trabajo de desarrollo y <strong
-              >Lighthouse</strong
-            > para auditorías regulares.
-          </p>
-        </Card>
-        <Card title="Para pruebas completas">
-          <p>
-            Combina herramientas automatizadas con pruebas manuales usando <strong
-              >NVDA</strong
-            > o <strong>VoiceOver</strong>.
-          </p>
-        </Card>
-      </CardGrid>
-    </Banner>
-  </article>
+      <div class="tool-card">
+        <div class="tool-header">
+          <h3>Auditoría de Accesibilidad Lighthouse</h3>
+          <span class="badge">Integrado en Chrome</span>
+        </div>
+        <p>
+          Auditoría de accesibilidad integrada en Chrome DevTools. Parte del
+          flujo de trabajo de desarrollo estándar para muchos equipos.
+        </p>
+        <div class="tool-links">
+          <a
+            href="https://developers.google.com/web/tools/lighthouse/"
+            target="_blank"
+            rel="noopener"
+            class="link-primary"
+          >
+            Documentación Lighthouse
+          </a>
+        </div>
+        <div class="tool-features">
+          <span class="feature">DevTools nativo</span>
+          <span class="feature">Puntuación 0-100</span>
+          <span class="feature">Recomendaciones</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Lectores de pantalla para pruebas</h2>
+    <p>
+      Para probar cómo los usuarios de lectores de pantalla experimentan tu
+      sitio.
+    </p>
+
+    <div class="tool-grid">
+      <div class="tool-card">
+        <div class="tool-header">
+          <h3>NVDA - Acceso al Escritorio No Visual</h3>
+          <span class="badge free">Gratuito</span>
+        </div>
+        <p>
+          Lector de pantalla gratuito para Windows. Ideal para desarrolladores
+          que quieren probar la experiencia de usuarios con discapacidades
+          visuales.
+        </p>
+        <div class="tool-links">
+          <a
+            href="https://www.nvaccess.org/"
+            target="_blank"
+            rel="noopener"
+            class="link-primary"
+          >
+            Descargar NVDA
+          </a>
+        </div>
+      </div>
+
+      <div class="tool-card">
+        <div class="tool-header">
+          <h3>VoiceOver (macOS/iOS)</h3>
+          <span class="badge native">Nativo Apple</span>
+        </div>
+        <p>
+          Lector de pantalla integrado en dispositivos Apple. Se activa con
+          Cmd+F5 en Mac o en Configuración > Accesibilidad en iOS.
+        </p>
+        <div class="tool-links">
+          <a
+            href="https://support.apple.com/guide/voiceover/welcome/mac"
+            target="_blank"
+            rel="noopener"
+            class="link-primary"
+          >
+            Guía VoiceOver
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <Banner title="💡 Recomendaciones de uso" variant="info">
+    <CardGrid columns="3" minWidth="280px">
+      <Card title="Para empezar">
+        <p>
+          Comienza con <strong>WAVE</strong> para una visión general y <strong
+            >NoCoffee</strong
+          > para probar colores.
+        </p>
+      </Card>
+      <Card title="Para desarrollo">
+        <p>
+          Usa <strong>axe</strong> en tu flujo de trabajo de desarrollo y <strong
+            >Lighthouse</strong
+          > para auditorías regulares.
+        </p>
+      </Card>
+      <Card title="Para pruebas completas">
+        <p>
+          Combina herramientas automatizadas con pruebas manuales usando <strong
+            >NVDA</strong
+          > o <strong>VoiceOver</strong>.
+        </p>
+      </Card>
+    </CardGrid>
+  </Banner>
 </Layout>
 
 <style lang="scss">
-  article {
-    max-width: 80ch;
-  }
-
   .tool-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
