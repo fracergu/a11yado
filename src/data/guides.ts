@@ -30,7 +30,7 @@ export const guidesData: GuideSection[] = [
         topics: [
           "Requisitos de contraste",
           "Combinaciones problemáticas",
-          "Herramientas de verificación",
+          "Independencia de color",
         ],
         status: "available",
         href: "/a11yado/guides/colors",
@@ -147,7 +147,8 @@ export const guidesData: GuideSection[] = [
           "Enlaces de salto",
           "Atajos de teclado",
         ],
-        status: "coming-soon",
+        status: "available",
+        href: "/a11yado/guides/keyboard-navigation",
         category: "interaction",
       },
       {
