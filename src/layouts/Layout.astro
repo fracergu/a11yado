@@ -1,12 +1,71 @@
 ---
 export interface Props {
   title?: string
+  description?: string
+  image?: string
+  canonical?: string
+  noindex?: boolean
+  type?: 'website' | 'article'
 }
 
-const { title = 'a11yado - Accesibilidad accesible' } = Astro.props
+const {
+  title = 'a11yado - Accesibilidad accesible',
+  description = 'Aprende accesibilidad web de forma sencilla y práctica. Guías, herramientas y documentación para hacer tus sitios web más inclusivos.',
+  image = '/a11yado/og-image.svg',
+  canonical,
+  noindex = false,
+  type = 'website',
+} = Astro.props
 
 // Importar fuentes locales
 import '../styles/fonts.css'
+
+// Construir URL canónica
+const canonicalURL = canonical
+  ? new URL(canonical, Astro.site)
+  : new URL(Astro.url.pathname, Astro.site)
+const imageURL = new URL(image, Astro.site)
+
+// Datos estructurados para Schema.org
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@type': type === 'article' ? 'Article' : 'WebSite',
+  name: title,
+  description: description,
+  url: canonicalURL.toString(),
+  ...(type === 'article'
+    ? {
+        author: {
+          '@type': 'Person',
+          name: 'Francisco Cerdán',
+          url: 'https://github.com/fracergu',
+        },
+        publisher: {
+          '@type': 'Organization',
+          name: 'a11yado',
+          url: 'https://fracergu.github.io/a11yado/',
+        },
+        image: imageURL.toString(),
+        headline: title,
+        inLanguage: 'es-ES',
+      }
+    : {
+        publisher: {
+          '@type': 'Organization',
+          name: 'a11yado',
+          description: 'Plataforma educativa sobre accesibilidad web',
+          url: 'https://fracergu.github.io/a11yado/',
+        },
+        potentialAction: {
+          '@type': 'SearchAction',
+          target: {
+            '@type': 'EntryPoint',
+            urlTemplate: 'https://fracergu.github.io/a11yado/guides',
+          },
+          'query-input': 'required name=search_term_string',
+        },
+      }),
+}
 ---
 
 <!doctype html>
@@ -14,13 +73,69 @@ import '../styles/fonts.css'
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/svg+xml" href="/a11yado/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
-    <meta
-      name="description"
-      content="Aprende accesibilidad web de forma sencilla y práctica"
-    />
+
+    <!-- SEO Meta Tags -->
     <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalURL} />
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content={type} />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={imageURL} />
+    <meta property="og:image:alt" content={`Imagen de ${title}`} />
+    <meta property="og:site_name" content="a11yado" />
+    <meta property="og:locale" content="es_ES" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={canonicalURL} />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={description} />
+    <meta property="twitter:image" content={imageURL} />
+    <meta property="twitter:image:alt" content={`Imagen de ${title}`} />
+
+    <!-- Favicons y Icons -->
+    <link
+      rel="icon"
+      type="image/png"
+      href="/a11yado/favicon-96x96.png"
+      sizes="96x96"
+    />
+    <link rel="icon" type="image/svg+xml" href="/a11yado/favicon.svg" />
+    <link rel="shortcut icon" href="/a11yado/favicon.ico" />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/a11yado/apple-touch-icon.png"
+    />
+    <link rel="manifest" href="/a11yado/site.webmanifest" />
+
+    <meta name="theme-color" content="#2563eb" />
+
+    <!-- Additional SEO -->
+    <meta name="author" content="Francisco Cerdán" />
+    <meta
+      name="keywords"
+      content="accesibilidad web, a11y, WCAG, inclusión digital, desarrollo web accesible, diseño universal"
+    />
+    <link rel="sitemap" href="/a11yado/sitemap.xml" />
+
+    <!-- Structured Data -->
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify(structuredData)}
+    />
+
+    <!-- Security -->
+    <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+    <meta http-equiv="X-Frame-Options" content="DENY" />
+    <meta http-equiv="X-XSS-Protection" content="1; mode=block" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
   </head>
   <body>
     <header>
