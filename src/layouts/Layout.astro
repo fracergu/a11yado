@@ -33,6 +33,17 @@ const canonicalURL = canonical
   : new URL(Astro.url.pathname, Astro.site)
 const imageURL = new URL(image, Astro.site)
 
+// Obtener la ruta actual para determinar el enlace activo
+const currentPath = Astro.url.pathname
+
+// Función para determinar si un enlace está activo
+const isActiveLink = (href: string) => {
+  if (href === '/a11yado/') {
+    return currentPath === '/a11yado/' || currentPath === '/a11yado'
+  }
+  return currentPath.startsWith(href)
+}
+
 // Datos estructurados para Schema.org
 const structuredData = {
   '@context': 'https://schema.org',
@@ -166,10 +177,41 @@ const structuredData = {
           </button>
 
           <ul class="nav-links" id="nav-menu">
-            <li><a href="/a11yado/">Inicio</a></li>
-            <li><a href="/a11yado/guides">Guías Prácticas</a></li>
-            <li><a href="/a11yado/documentation">Documentación Oficial</a></li>
-            <li><a href="/a11yado/tools">Herramientas</a></li>
+            <li>
+              <a
+                href="/a11yado/"
+                class={isActiveLink('/a11yado/') ? 'active' : ''}
+                aria-current={isActiveLink('/a11yado/') ? 'page' : undefined}
+                >Inicio</a
+              >
+            </li>
+            <li>
+              <a
+                href="/a11yado/guides"
+                class={isActiveLink('/a11yado/guides') ? 'active' : ''}
+                aria-current={isActiveLink('/a11yado/guides')
+                  ? 'page'
+                  : undefined}>Guías Prácticas</a
+              >
+            </li>
+            <li>
+              <a
+                href="/a11yado/documentation"
+                class={isActiveLink('/a11yado/documentation') ? 'active' : ''}
+                aria-current={isActiveLink('/a11yado/documentation')
+                  ? 'page'
+                  : undefined}>Documentación Oficial</a
+              >
+            </li>
+            <li>
+              <a
+                href="/a11yado/tools"
+                class={isActiveLink('/a11yado/tools') ? 'active' : ''}
+                aria-current={isActiveLink('/a11yado/tools')
+                  ? 'page'
+                  : undefined}>Herramientas</a
+              >
+            </li>
             <li>
               <a
                 href="https://github.com/fracergu/a11yado"
@@ -408,6 +450,7 @@ const structuredData = {
       transition:
         background-color 0.2s,
         color 0.2s;
+      position: relative;
 
       &:hover {
         background-color: var(--color-surface);
@@ -417,6 +460,23 @@ const structuredData = {
       &:focus {
         outline: 2px solid var(--color-primary);
         outline-offset: 2px;
+      }
+
+      &.active {
+        color: var(--color-primary);
+        font-weight: 600;
+
+        &::after {
+          content: '';
+          position: absolute;
+          bottom: -6px;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 6px;
+          height: 6px;
+          background-color: var(--color-primary);
+          border-radius: 50%;
+        }
       }
     }
   }
@@ -545,6 +605,12 @@ const structuredData = {
 
         &:hover {
           background-color: var(--color-surface);
+        }
+
+        &.active::after {
+          bottom: var(--spacing-xs);
+          left: var(--spacing-md);
+          transform: none;
         }
       }
     }
