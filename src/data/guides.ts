@@ -27,11 +27,7 @@ export const guidesData: GuideSection[] = [
         title: "Colores y Contraste",
         description:
           "Aprende a usar colores con contraste adecuado para que todos puedan leer tu contenido. Incluye ejemplos prácticos y herramientas.",
-        topics: [
-          "Requisitos de contraste",
-          "Combinaciones problemáticas",
-          "Independencia de color",
-        ],
+        topics: ["Ratios de contraste", "Independencia de color", "Daltonismo"],
         status: "available",
         href: "/a11yado/guides/colors",
         category: "visual",
@@ -41,7 +37,7 @@ export const guidesData: GuideSection[] = [
         title: "Tipografía Accesible",
         description:
           "Tamaños de fuente, espaciado, legibilidad y cómo elegir tipografías que funcionen para todos los usuarios.",
-        topics: ["Tamaños mínimos", "Espaciado de líneas", "Fuentes legibles"],
+        topics: ["Tamaños mínimos", "Interlineado", "Fuentes legibles"],
         status: "available",
         href: "/a11yado/guides/typography",
         category: "visual",
@@ -73,9 +69,9 @@ export const guidesData: GuideSection[] = [
         description:
           "Las 4 reglas oficiales de WCAG para crear estados de foco accesibles que funcionen para todos los usuarios de teclado.",
         topics: [
-          "4 reglas de WCAG",
-          "Ejemplos prácticos",
-          "Estrategias recomendadas",
+          "Indicadores visibles",
+          "Outline y contraste",
+          "Navegación por teclado",
         ],
         status: "available",
         href: "/a11yado/guides/focus-states",
@@ -87,9 +83,9 @@ export const guidesData: GuideSection[] = [
         description:
           "Las 6 preguntas reveladoras para crear estados hover accesibles y consistentes con la navegación por teclado.",
         topics: [
-          "6 preguntas clave",
+          "Dispositivos táctiles",
           "Consistencia hover/focus",
-          "WCAG 1.4.13",
+          "Señalizadores apropiados",
         ],
         status: "available",
         href: "/a11yado/guides/hover-states",
@@ -101,9 +97,9 @@ export const guidesData: GuideSection[] = [
         description:
           "Cómo escribir texto claro y descriptivo para botones y enlaces que comunique efectivamente la acción o destino.",
         topics: [
-          "Señalizadores efectivos",
-          'Evitar "leer más"',
+          "Texto descriptivo",
           "Frontloading",
+          "Señalizadores efectivos",
         ],
         status: "available",
         href: "/a11yado/guides/buttons-links",
@@ -115,9 +111,9 @@ export const guidesData: GuideSection[] = [
         description:
           "Las 7 técnicas clave para hacer botones que se vean claramente interactivos y comuniquen su función de forma inmediata.",
         topics: [
-          "7 técnicas visuales",
-          "Jerarquía de botones",
+          "Jerarquía visual",
           "Targets táctiles",
+          "Formas y señalizadores",
         ],
         status: "available",
         href: "/a11yado/guides/button-styling",
@@ -129,8 +125,8 @@ export const guidesData: GuideSection[] = [
         description:
           "Cómo hacer que los enlaces sean visualmente distinguibles del texto normal y consistentes entre sí, usando técnicas accesibles.",
         topics: [
-          "3 estrategias de estilizado",
-          "Consistencia visual",
+          "Subrayado y color",
+          "Indicadores visuales",
           "Colores luminosos",
         ],
         status: "available",
@@ -142,11 +138,7 @@ export const guidesData: GuideSection[] = [
         title: "Navegación por Teclado",
         description:
           "Orden de tabulación, enlaces de salto y técnicas avanzadas para navegación completa por teclado.",
-        topics: [
-          "Orden lógico de tabulación",
-          "Enlaces de salto",
-          "Atajos de teclado",
-        ],
+        topics: ["Orden de tabulación", "Skip links", "Trampas de teclado"],
         status: "available",
         href: "/a11yado/guides/keyboard-navigation",
         category: "interaction",
@@ -244,24 +236,20 @@ export const guidesData: GuideSection[] = [
   },
 ];
 
-// Función utilitaria para obtener todas las guías
 export const getAllGuides = (): Guide[] => {
   return guidesData.flatMap((section) => section.guides);
 };
 
-// Función utilitaria para obtener guías por estado
 export const getGuidesByStatus = (
   status: "available" | "coming-soon",
 ): Guide[] => {
   return getAllGuides().filter((guide) => guide.status === status);
 };
 
-// Función utilitaria para obtener una guía por ID
 export const getGuideById = (id: string): Guide | undefined => {
   return getAllGuides().find((guide) => guide.id === id);
 };
 
-// Función utilitaria para obtener guías por categoría
 export const getGuidesByCategory = (category: string): Guide[] => {
   return getAllGuides().filter((guide) => guide.category === category);
 };

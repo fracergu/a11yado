@@ -1,0 +1,255 @@
+---
+export interface Props {
+  id?: string
+}
+
+const { id = 'guides-filter' } = Astro.props
+---
+
+<div class="guides-filter">
+  <div class="filter-controls">
+    <div class="search-container">
+      <label for={`${id}-search`} class="search-label">
+        <span class="sr-only">Buscar guías</span>
+        <svg
+          width="20"
+          height="20"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+        >
+          <circle cx="11" cy="11" r="8"></circle>
+          <path d="21 21l-4.35-4.35"></path>
+        </svg>
+      </label>
+      <input
+        type="search"
+        id={`${id}-search`}
+        placeholder="Buscar por título, descripción o temas..."
+        class="search-input"
+        autocomplete="off"
+      />
+    </div>
+
+    <div class="view-controls">
+      <span class="view-label">Vista:</span>
+      <button
+        class="view-toggle active"
+        data-view="grid"
+        aria-label="Vista en cuadrícula"
+        title="Vista en cuadrícula"
+      >
+        <svg
+          width="16"
+          height="16"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          aria-hidden="true"
+        >
+          <rect x="3" y="3" width="7" height="7"></rect>
+          <rect x="14" y="3" width="7" height="7"></rect>
+          <rect x="14" y="14" width="7" height="7"></rect>
+          <rect x="3" y="14" width="7" height="7"></rect>
+        </svg>
+      </button>
+      <button
+        class="view-toggle"
+        data-view="compact"
+        aria-label="Vista compacta"
+        title="Vista compacta"
+      >
+        <svg
+          width="16"
+          height="16"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          aria-hidden="true"
+        >
+          <line x1="8" y1="6" x2="21" y2="6"></line>
+          <line x1="8" y1="12" x2="21" y2="12"></line>
+          <line x1="8" y1="18" x2="21" y2="18"></line>
+          <line x1="3" y1="6" x2="3.01" y2="6"></line>
+          <line x1="3" y1="12" x2="3.01" y2="12"></line>
+          <line x1="3" y1="18" x2="3.01" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <div class="filter-status">
+    <span class="results-count">
+      <span data-count="total">0</span> guías encontradas
+    </span>
+    <button class="clear-search" style="display: none;">
+      Limpiar búsqueda
+    </button>
+  </div>
+</div>
+
+<style lang="scss">
+  .guides-filter {
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    padding: var(--spacing-lg);
+    margin-bottom: var(--spacing-xl);
+  }
+
+  .filter-controls {
+    display: flex;
+    gap: var(--spacing-lg);
+    align-items: center;
+    margin-bottom: var(--spacing-md);
+  }
+
+  .search-container {
+    flex: 1;
+    position: relative;
+    max-width: 400px;
+  }
+
+  .search-label {
+    position: absolute;
+    left: var(--spacing-md);
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--color-text-light);
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .search-input {
+    width: 100%;
+    padding: var(--spacing-md) var(--spacing-md) var(--spacing-md) 2.75rem;
+    border: 1px solid var(--color-border);
+    border-radius: 6px;
+    font-size: 1rem;
+    transition:
+      border-color 0.2s,
+      box-shadow 0.2s;
+
+    &:focus {
+      outline: none;
+      border-color: var(--color-primary);
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+    }
+
+    &::placeholder {
+      color: var(--color-text-light);
+    }
+  }
+
+  .view-controls {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+  }
+
+  .view-label {
+    font-size: 0.875rem;
+    color: var(--color-text-light);
+    font-weight: 500;
+  }
+
+  .view-toggle {
+    padding: var(--spacing-xs);
+    border: 1px solid var(--color-border);
+    background: var(--color-background);
+    border-radius: 4px;
+    cursor: pointer;
+    color: var(--color-text-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+
+    &:hover {
+      background-color: var(--color-surface);
+      color: var(--color-text);
+    }
+
+    &:focus {
+      outline: 2px solid var(--color-primary);
+      outline-offset: 2px;
+    }
+
+    &.active {
+      background-color: var(--color-primary);
+      color: white;
+      border-color: var(--color-primary);
+    }
+  }
+
+  .filter-status {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.875rem;
+    color: var(--color-text-light);
+  }
+
+  .results-count {
+    font-weight: 500;
+  }
+
+  .clear-search {
+    background: none;
+    border: none;
+    color: var(--color-primary);
+    cursor: pointer;
+    font-size: 0.875rem;
+    text-decoration: underline;
+
+    &:hover {
+      color: var(--color-primary-dark);
+    }
+
+    &:focus {
+      outline: 2px solid var(--color-primary);
+      outline-offset: 2px;
+      border-radius: 2px;
+    }
+  }
+
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  @media (max-width: 768px) {
+    .filter-controls {
+      flex-direction: column;
+      align-items: stretch;
+      gap: var(--spacing-md);
+    }
+
+    .search-container {
+      max-width: none;
+    }
+
+    .view-controls {
+      justify-content: center;
+    }
+
+    .filter-status {
+      flex-direction: column;
+      gap: var(--spacing-xs);
+      align-items: center;
+    }
+  }
+</style>

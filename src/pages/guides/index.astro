@@ -2,7 +2,11 @@
 import Layout from '../../layouts/Layout.astro'
 import Banner from '../../components/Banner.astro'
 import GuideCard from '../../components/GuideCard.astro'
-import { guidesData } from '../../data/guides'
+import GuideListItem from '../../components/GuideListItem.astro'
+import GuidesFilter from '../../components/GuidesFilter.astro'
+import { guidesData, getAllGuides } from '../../data/guides'
+
+const allGuides = getAllGuides()
 ---
 
 <Layout
@@ -26,38 +30,417 @@ import { guidesData } from '../../data/guides'
     </p>
   </Banner>
 
-  {
-    guidesData.map((section) => (
-      <section>
-        <h2>{section.title}</h2>
-        <p>{section.description}</p>
+  <GuidesFilter />
 
-        <div class="guides-grid">
-          {section.guides.map((guide) => (
-            <GuideCard
-              title={guide.title}
-              description={guide.description}
-              topics={guide.topics}
-              status={guide.status}
-              href={guide.href}
-            />
-          ))}
-        </div>
-      </section>
-    ))
-  }
+  <div id="guides-container">
+    <div class="guides-list-view" data-view="compact" style="display: none;">
+      {
+        allGuides.map((guide) => (
+          <GuideListItem
+            title={guide.title}
+            description={guide.description}
+            topics={guide.topics}
+            status={guide.status}
+            href={guide.href}
+            category={guide.category}
+          />
+        ))
+      }
+    </div>
+
+    <div class="guides-grid-view" data-view="grid">
+      {
+        guidesData.map((section) => (
+          <section data-section={section.id}>
+            <h2>{section.title}</h2>
+            <p>{section.description}</p>
+            <div class="guides-grid">
+              {section.guides.map((guide) => (
+                <GuideCard
+                  title={guide.title}
+                  description={guide.description}
+                  topics={guide.topics}
+                  status={guide.status}
+                  href={guide.href}
+                />
+              ))}
+            </div>
+          </section>
+        ))
+      }
+    </div>
+
+    <div class="no-results" style="display: none;">
+      <div class="no-results-content">
+        <h3>No se encontraron guías</h3>
+        <p>
+          Intenta con otros términos de búsqueda o <button
+            class="clear-search-inline">limpia el filtro</button
+          > para ver todas las guías.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <script define:vars={{ allGuidesData: allGuides, sectionsData: guidesData }}>
+    class GuidesFilter {
+      constructor() {
+        this.searchInput = null
+        this.viewToggleButtons = null
+        this.guidesContainer = null
+        this.listView = null
+        this.gridView = null
+        this.noResults = null
+        this.resultsCount = null
+        this.filterStatus = null
+        this.clearButton = null
+        this.clearInlineButton = null
+        this.currentView = this.getStoredView() || 'grid'
+        this.availableGuides = allGuidesData.filter(
+          (guide) => guide.status === 'available'
+        )
+
+        this.initElements()
+        this.bindEvents()
+        this.initializeView()
+      }
+
+      getStoredView() {
+        try {
+          return localStorage.getItem('guidesView')
+        } catch (e) {
+          return null
+        }
+      }
+
+      setStoredView(view) {
+        try {
+          localStorage.setItem('guidesView', view)
+        } catch (e) {
+          // localStorage not available
+        }
+      }
+
+      initElements() {
+        this.searchInput = document.querySelector('#guides-filter-search')
+        this.viewToggleButtons = document.querySelectorAll('.view-toggle')
+        this.guidesContainer = document.querySelector('#guides-container')
+        this.listView = document.querySelector('.guides-list-view')
+        this.gridView = document.querySelector('.guides-grid-view')
+        this.noResults = document.querySelector('.no-results')
+        this.resultsCount = document.querySelector('[data-count="total"]')
+        this.filterStatus = document.querySelector('.filter-status')
+        this.clearButton = document.querySelector('.clear-search')
+        this.clearInlineButton = document.querySelector('.clear-search-inline')
+      }
+
+      initializeView() {
+        this.viewToggleButtons?.forEach((btn) => {
+          btn.classList.remove('active')
+          if (btn.getAttribute('data-view') === this.currentView) {
+            btn.classList.add('active')
+          }
+        })
+
+        // Ocultar contador inicialmente
+        this.hideFilterStatus()
+
+        if (this.currentView === 'compact') {
+          if (this.listView) this.listView.style.display = 'flex'
+          if (this.gridView) this.gridView.style.display = 'none'
+          this.hideComingSoonInCompact()
+        } else {
+          if (this.listView) this.listView.style.display = 'none'
+          if (this.gridView) this.gridView.style.display = 'block'
+        }
+      }
+
+      hideComingSoonInCompact() {
+        if (!this.listView) return
+
+        const items = this.listView.querySelectorAll('[data-guide-item]')
+        items.forEach((item, index) => {
+          const guide = allGuidesData[index]
+          if (guide && guide.status === 'coming-soon') {
+            item.style.display = 'none'
+          }
+        })
+      }
+
+      bindEvents() {
+        this.searchInput?.addEventListener('input', () => this.handleSearch())
+        this.searchInput?.addEventListener('search', () => this.handleSearch())
+
+        this.viewToggleButtons?.forEach((button) => {
+          button.addEventListener('click', () => this.handleViewChange(button))
+        })
+
+        this.clearButton?.addEventListener('click', () => this.clearSearch())
+        this.clearInlineButton?.addEventListener('click', () =>
+          this.clearSearch()
+        )
+      }
+
+      handleSearch() {
+        if (!this.searchInput || !this.clearButton) return
+
+        const query = this.searchInput.value.toLowerCase().trim()
+
+        if (query === '') {
+          this.showAllGuides()
+          this.clearButton.style.display = 'none'
+          this.hideFilterStatus()
+        } else {
+          this.filterGuides(query)
+          this.clearButton.style.display = 'inline-block'
+          this.showFilterStatus()
+        }
+      }
+
+      filterGuides(query) {
+        // Solo buscar en guías disponibles
+        const matchingGuides = this.availableGuides.filter((guide) => {
+          const searchText = [guide.title, guide.description, ...guide.topics]
+            .join(' ')
+            .toLowerCase()
+
+          return searchText.includes(query)
+        })
+
+        if (this.currentView === 'compact') {
+          this.filterListView(matchingGuides)
+        } else {
+          this.filterGridView(matchingGuides)
+        }
+
+        this.updateResultsCount(matchingGuides.length, true)
+        this.toggleNoResults(matchingGuides.length === 0)
+      }
+
+      filterListView(matchingGuides) {
+        if (!this.listView) return
+
+        const items = this.listView.querySelectorAll('[data-guide-item]')
+
+        items.forEach((item, index) => {
+          const guide = allGuidesData[index]
+          if (guide && guide.status === 'coming-soon') {
+            item.style.display = 'none'
+            return
+          }
+
+          const shouldShow = matchingGuides.includes(guide)
+          item.style.display = shouldShow ? 'block' : 'none'
+        })
+      }
+
+      filterGridView(matchingGuides) {
+        if (!this.gridView) return
+
+        const sections = this.gridView.querySelectorAll('[data-section]')
+
+        sections.forEach((section) => {
+          const cards = section.querySelectorAll('.guide-card')
+          let visibleCards = 0
+
+          cards.forEach((card, index) => {
+            const sectionId = section.getAttribute('data-section')
+            const sectionData = sectionsData.find((s) => s.id === sectionId)
+            if (sectionData && sectionData.guides[index]) {
+              const guide = sectionData.guides[index]
+
+              // Solo mostrar si está disponible y coincide con la búsqueda
+              const isAvailable = guide.status === 'available'
+              const shouldShow =
+                isAvailable &&
+                matchingGuides.some(
+                  (mg) =>
+                    mg.title === guide.title &&
+                    mg.description === guide.description
+                )
+
+              card.style.display = shouldShow ? 'block' : 'none'
+              if (shouldShow) visibleCards++
+            }
+          })
+
+          section.style.display = visibleCards > 0 ? 'block' : 'none'
+        })
+      }
+
+      showAllGuides() {
+        if (this.currentView === 'compact' && this.listView) {
+          const items = this.listView.querySelectorAll('[data-guide-item]')
+          items.forEach((item, index) => {
+            const guide = allGuidesData[index]
+            // En vista compacta, ocultar las que están "coming-soon"
+            if (guide && guide.status === 'coming-soon') {
+              item.style.display = 'none'
+            } else {
+              item.style.display = 'block'
+            }
+          })
+        } else if (this.gridView) {
+          const sections = this.gridView.querySelectorAll('[data-section]')
+          sections.forEach((section) => {
+            section.style.display = 'block'
+            const cards = section.querySelectorAll('.guide-card')
+            cards.forEach((card) => {
+              card.style.display = 'block'
+            })
+          })
+        }
+
+        this.updateResultsCount(null, false)
+        this.toggleNoResults(false)
+      }
+
+      handleViewChange(clickedButton) {
+        const newView = clickedButton.getAttribute('data-view') || 'grid'
+
+        if (newView === this.currentView) return
+
+        this.viewToggleButtons?.forEach((btn) => btn.classList.remove('active'))
+        clickedButton.classList.add('active')
+
+        if (newView === 'compact') {
+          if (this.listView) this.listView.style.display = 'flex'
+          if (this.gridView) this.gridView.style.display = 'none'
+          this.hideComingSoonInCompact()
+        } else {
+          if (this.listView) this.listView.style.display = 'none'
+          if (this.gridView) this.gridView.style.display = 'block'
+        }
+
+        this.currentView = newView
+        this.setStoredView(newView)
+
+        if (this.searchInput?.value.trim()) {
+          this.handleSearch()
+        }
+      }
+
+      updateResultsCount(count, isFiltered) {
+        if (!this.resultsCount) return
+
+        if (isFiltered) {
+          const total =
+            count !== undefined ? count : this.availableGuides.length
+          this.resultsCount.parentElement.innerHTML = `<span data-count="total">${total}</span> guías encontradas`
+          this.resultsCount = document.querySelector('[data-count="total"]')
+        }
+      }
+
+      showFilterStatus() {
+        if (this.filterStatus) {
+          this.filterStatus.style.display = 'flex'
+        }
+      }
+
+      hideFilterStatus() {
+        if (this.filterStatus) {
+          this.filterStatus.style.display = 'none'
+        }
+      }
+
+      toggleNoResults(show) {
+        if (!this.noResults || !this.listView || !this.gridView) return
+
+        this.noResults.style.display = show ? 'block' : 'none'
+        this.listView.style.display = show
+          ? 'none'
+          : this.currentView === 'compact'
+            ? 'flex'
+            : 'none'
+        this.gridView.style.display = show
+          ? 'none'
+          : this.currentView === 'grid'
+            ? 'block'
+            : 'none'
+      }
+
+      clearSearch() {
+        if (!this.searchInput || !this.clearButton) return
+
+        this.searchInput.value = ''
+        this.showAllGuides()
+        this.clearButton.style.display = 'none'
+        this.hideFilterStatus()
+        this.searchInput.focus()
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      new GuidesFilter()
+    })
+  </script>
 </Layout>
 
 <style lang="scss">
-  .guides-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  .guides-list-view {
+    display: flex;
+    flex-direction: column;
     gap: var(--spacing-lg);
-    margin: var(--spacing-lg) 0 var(--spacing-2xl) 0;
+  }
+
+  .guides-grid-view {
+    section {
+      margin-bottom: var(--spacing-2xl);
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    .guides-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: var(--spacing-lg);
+      margin: var(--spacing-lg) 0 var(--spacing-2xl) 0;
+    }
+  }
+
+  .no-results {
+    text-align: center;
+    padding: var(--spacing-2xl);
+    background-color: var(--color-surface);
+    border-radius: 8px;
+    border: 1px solid var(--color-border);
+  }
+
+  .no-results-content {
+    h3 {
+      color: var(--color-text);
+      margin-bottom: var(--spacing-md);
+    }
+
+    p {
+      color: var(--color-text-light);
+      margin: 0;
+    }
+  }
+
+  .clear-search-inline {
+    background: none;
+    border: none;
+    color: var(--color-primary);
+    cursor: pointer;
+    text-decoration: underline;
+    font: inherit;
+
+    &:hover {
+      color: var(--color-primary-dark);
+    }
+
+    &:focus {
+      outline: 2px solid var(--color-primary);
+      outline-offset: 2px;
+      border-radius: 2px;
+    }
   }
 
   @media (max-width: 768px) {
-    .guides-grid {
+    .guides-grid-view .guides-grid {
       grid-template-columns: 1fr;
     }
   }
